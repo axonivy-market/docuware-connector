@@ -215,7 +215,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /DocuWare/Platform/Account/Logoff:
+  /Account/Logoff:
     get:
       tags:
         - Authentication
@@ -1116,7 +1116,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /DocuWare/Platform/WebClient/336/Integration:
+  /WebClient/336/Integration:
     get:
       tags:
         - IFrame
@@ -1367,7 +1367,6 @@ paths:
           schema:
             type: number
           example: application/json, text/javascript, */*; q=0.01
-
         - name: X-Requested-With
           in: header
           schema:
@@ -1394,47 +1393,47 @@ paths:
           description: Successful response
           content:
             application/json: {}
+            
   /Organization/Users:
     get:
       tags:
         - User/Group/Role handling
       summary: Get Users
-      parameters:
-
-
       responses:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Users"
+                
   /Organization/UserByID:
     get:
       tags:
         - User/Group/Role handling
       summary: Get User
       parameters:
-
         - name: userId
           in: query
           schema:
             type: string
           example: '{{UserId}}'
-
       responses:
         '200':
           description: Successful response
           content:
-            application/json: {}
-  /Organization/UserInfo:
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/User"
     post:
       tags:
         - User/Group/Role handling
       summary: Update User
       requestBody:
         content:
-          application/json:
+          application/xml:
             schema:
-              type: object
+              $ref: "#/components/schemas/User"
               example:
                 Id: 00000000-0000-0000-0000-000000000000
                 Name: Peter Engineering Update
@@ -1450,20 +1449,8 @@ paths:
           description: Successful response
           content:
             application/json: {}
+            
   /Organization/Roles:
-    get:
-      tags:
-        - User/Group/Role handling
-      summary: Get Roles
-      parameters:
-
-
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /Organization/UserRoles:
     get:
       tags:
         - User/Group/Role handling
@@ -1479,7 +1466,9 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Roles"
     put:
       tags:
         - User/Group/Role handling
@@ -1500,12 +1489,14 @@ paths:
           schema:
             type: string
           example: '{{UserId}}'
-
       responses:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Roles"
+                
   /Organization/Groups:
     get:
       tags:
@@ -1515,7 +1506,9 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Groups"
   /Organization/UserGroups:
     get:
       tags:
@@ -1531,7 +1524,9 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Groups"
     put:
       tags:
         - User/Group/Role handling
@@ -1557,6 +1552,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+ 
 components:
   schemas:
     Organizations:
@@ -1570,5 +1566,13 @@ components:
     Document:
       type: object
     DocumentActionInfo:
+      type: object
+    Groups:
+      type: object
+    Roles:
+      type: object
+    Users:
+      type: object
+    User:
       type: object
 
