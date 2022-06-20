@@ -483,6 +483,8 @@ paths:
             application/xml:
               schema:
                 $ref: "#/components/schemas/Documents"
+
+  /FileCabinets/{FileCabinetId}/Documents:
     get:
       tags:
         - Search in FileCabinets > Search in single FileCabinet
@@ -511,7 +513,6 @@ paths:
           schema:
             type: string
           example: COMPANY Asc
-
         - name: FileCabinetId
           in: path
           schema:
@@ -560,6 +561,8 @@ paths:
             application/xml:
               schema:
                 $ref: "#/components/schemas/Document"
+
+  /FileCabinets/{FileCabinetId}/Documents/{DocumentId}:
     get:
       tags:
         - Update index values
