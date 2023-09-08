@@ -38,7 +38,7 @@ import io.swagger.v3.oas.annotations.Hidden;
 
 @Path("docuWareMock")
 @PermitAll
-//@Hidden
+@Hidden
 public class DocuWareServiceMock {
 
   /**
