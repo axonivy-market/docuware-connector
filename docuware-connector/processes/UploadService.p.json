@@ -71,7 +71,9 @@
           "  in.document = DocuWareService.uploadFile(client, in.uploadFile, in.configuration, in.propertiesList );",
           "}catch(DocuWareException dex){",
           "  in.error = BpmError.create(\"com:eon:ivy:shared:docuware:rest\").withMessage(dex.getErrorMessage()).build();",
-          "  ivy.log.info(\"Document upload failed. Error: \" + dex.getErrorMessage());",
+          "  ivy.log.error(\"Document upload failed. Error: \" + dex.getErrorMessage());",
+          "} catch(Exception e){",
+          "  ivy.log.error(e.getMessage());",
           "}"
         ],
         "templateParams" : {
@@ -196,7 +198,11 @@
           "}catch(DocuWareException dex){",
           "  in.error = BpmError.create(\"com:eon:ivy:shared:docuware:rest\").withMessage(dex.getErrorMessage()).build();",
           "  in.error.setAttribute(\"RestClientResponseStatusCode\", dex.httpCode);",
-          "  ivy.log.info(\"Document upload failed. Error: \" + dex.getErrorMessage());",
+          "  ivy.log.error(\"Document upload failed. Error: \" + dex.getErrorMessage());",
+          "  ",
+          "} catch(Exception e){",
+          "  ivy.log.error(e.getMessage());",
+          "  ",
           "}"
         ],
         "templateParams" : {
