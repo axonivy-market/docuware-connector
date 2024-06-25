@@ -11,6 +11,7 @@ This connector:
 
 1. Upload a document to a DocuWare file cabinet.
 2. Provide a GUI to test some basic DocuWare calls.
+
 ![demo-dialog](images/demo1.png)
 
 ## Setup
