@@ -17,17 +17,19 @@ Upload result
 
 ![demo-dialog](images/demo2.png)
 
-2. Provide a GUI to test some basic DocuWare calls.
-
 ![demo-dialog](images/demo3.png)
 
-Get Organizations
+2. Provide a GUI to test some basic DocuWare calls.
 
 ![demo-dialog](images/demo4.png)
 
-Get File Cabinets
+Get Organizations
 
 ![demo-dialog](images/demo5.png)
+
+Get File Cabinets
+
+![demo-dialog](images/demo6.png)
 
 ## Setup
 
