@@ -10,9 +10,24 @@ This connector:
 ## Demo
 
 1. Upload a document to a DocuWare file cabinet.
-2. Provide a GUI to test some basic DocuWare calls.
+
+Upload result
 
 ![demo-dialog](images/demo1.png)
+
+![demo-dialog](images/demo2.png)
+
+2. Provide a GUI to test some basic DocuWare calls.
+
+![demo-dialog](images/demo3.png)
+
+Get Organizations
+
+![demo-dialog](images/demo4.png)
+
+Get File Cabinets
+
+![demo-dialog](images/demo5.png)
 
 ## Setup
 
