@@ -50,6 +50,7 @@ public class DocuWareAuthFeature implements Feature, ClientRequestFilter, Client
     String PASSWORD = "Password";
     String HOSTID = "HostId";
     String LOGONURL = "LogonUrl";
+    String ORGANIZATION = "Organization";
   }
 
   @Override
@@ -74,6 +75,10 @@ public class DocuWareAuthFeature implements Feature, ClientRequestFilter, Client
         .param("Password", config.readMandatory(Property.PASSWORD))
         .param("HostID", config.readMandatory(Property.HOSTID))
         .param("RedirectToMyselfInCaseOfError", "false");
+      String organization = config.read(Property.ORGANIZATION).orElse(null);
+      if (StringUtils.isNotBlank(organization)) {
+        form.param("Organization", organization);
+      }
       String logonUrl = getLogonUrl(reqContext, config);
       if (logonUrl == null) {
       }
