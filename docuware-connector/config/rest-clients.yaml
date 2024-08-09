@@ -17,6 +17,7 @@ RestClients:
       http.protocol.handle-redirects: 'true'
       JSON.Serialization.PROPERTY_INCLUSION: NON_NULL
       jersey.config.client.connectTimeout: ${ivy.var.docuware-connector.connectTimeout}
+      Organization: ${ivy.var.docuware-connector.organization}
     OpenAPI:
       SpecUrl: file:///X:/AxonIvy/marketplace/docuware/openapi-handmade.json
       Namespace: com.axonivy.connector.docuware.connector.model
