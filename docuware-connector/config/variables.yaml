@@ -32,5 +32,6 @@ Variables:
     # The value MUST be an instance convertible to Integer. A value of zero (0) is equivalent to an interval of infinity.
     connectTimeout: 0
     
-    organization:
+    # Your organization name
+    organization: ''
     
