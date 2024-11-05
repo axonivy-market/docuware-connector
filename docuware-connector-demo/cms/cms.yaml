@@ -6,7 +6,9 @@ Dialogs:
           connector:
             demo:
               DocuWareDemo:
-                Title: DocuWareDemo
+                Title: DocuWare Demo
+                UploadMessageFailed: Upload doc to Docuware failed
+                UploadMessageOK: Upload doc to Docuware successful
 Labels:
   CabinetId: 'Cabinet Id: {0}'
   Close: Close

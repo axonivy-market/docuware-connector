@@ -183,10 +183,10 @@
           "FacesMessage message;",
           "if (HttpStatus.SC_OK != response.getStatus()) {",
           "  message.severity = FacesMessage.SEVERITY_ERROR;",
-          "  message.summary = \"Upload doc to Docuware failed\";",
+          "  message.summary = ivy.cms.co(\"/Dialogs/com/axonivy/connector/docuware/connector/demo/DocuWareDemo/UploadMessageFailed\");",
           "} else {",
           "  message.severity = FacesMessage.SEVERITY_INFO;",
-          "  message.summary = \"Upload doc to Docuware successful\";",
+          "  message.summary = ivy.cms.co(\"/Dialogs/com/axonivy/connector/docuware/connector/demo/DocuWareDemo/UploadMessageOK\");",
           "}",
           "",
           "FacesContext.getCurrentInstance().addMessage(\"\", message);"
