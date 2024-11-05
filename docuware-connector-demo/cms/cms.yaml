@@ -1,0 +1,16 @@
+Dialogs:
+  com:
+    axonivy:
+      connector:
+        docuware:
+          connector:
+            demo:
+              DocuWareDemo:
+                Title: DocuWareDemo
+Labels:
+  CabinetId: 'Cabinet Id: {0}'
+  Close: Close
+  FileCabinets: File Cabinets
+  Organizations: Organizations
+  Result: Result
+  Upload: Upload
