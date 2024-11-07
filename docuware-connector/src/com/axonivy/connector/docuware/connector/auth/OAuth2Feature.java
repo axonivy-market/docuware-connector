@@ -64,7 +64,9 @@ public class OAuth2Feature implements Feature {
 			AccessTokenByPasswordRequest authRequest = new AccessTokenByPasswordRequest();
 			paramsMap = authRequest.paramsMap();
 		} else {
+			
 			AccessTokenByDWTokenRequest authRequest = new AccessTokenByDWTokenRequest();
+			paramsMap = authRequest.paramsMap();
 		}
 		return ctxt.target.request().post(Entity.form(paramsMap));
 	}
