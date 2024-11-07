@@ -5,8 +5,8 @@ RestClients:
     Icon: res:/webContent/icons/docuware.png
     Features:
     - ch.ivyteam.ivy.rest.client.mapper.JsonFeature
-    - com.axonivy.connector.docuware.connector.DocuWareAuthFeature
     - org.glassfish.jersey.media.multipart.MultiPartFeature
+    - com.axonivy.connector.docuware.connector.auth.OAuth2Feature
     Properties:
       PATH.host: ${ivy.var.docuwareConnector.host}
       UserName: ${ivy.var.docuwareConnector.username}

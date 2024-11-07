@@ -10,7 +10,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
+import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.util.StringUtil;
 
 /**
@@ -33,6 +35,8 @@ public class JsonUtils {
 
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		mapper.configure(DeserializationFeature.READ_DATE_TIMESTAMPS_AS_NANOSECONDS, false);
+		mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+		mapper.setSerializationInclusion(Include.NON_NULL);
 
 		return mapper;
 	}
@@ -81,6 +85,13 @@ public class JsonUtils {
 			throw new RuntimeException("JSR time module not available", e);
 		}
 	}
-	
 
+	public static String writeObjectAsJson(Object entity) {
+		try {
+			return JsonUtils.buildObjectMapper().writeValueAsString(entity);
+		} catch (JsonProcessingException e) {
+			Ivy.log().warn(e.getMessage());
+		}
+		return null;
+	}
 }
