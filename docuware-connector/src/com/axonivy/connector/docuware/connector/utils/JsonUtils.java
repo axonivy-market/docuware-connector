@@ -3,6 +3,8 @@ package com.axonivy.connector.docuware.connector.utils;
 
 import java.lang.reflect.InvocationTargetException;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.axonivy.connector.docuware.connector.DocuWareProperties;
 import com.axonivy.connector.docuware.connector.DocuWarePropertiesUpdate;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -22,24 +24,8 @@ import ch.ivyteam.util.StringUtil;
  *
  */
 public class JsonUtils {
-	/**
-	 * Builds and returns an {@link ObjectMapper} with all required features and options required in the NScale interface.
-	 *
-	 * @return
-	 */
-	public static ObjectMapper buildObjectMapper() {
-		ObjectMapper mapper = new ObjectMapper();
 
-		Module timeModule = timeModule();
-		mapper.registerModule(timeModule);
-
-		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-		mapper.configure(DeserializationFeature.READ_DATE_TIMESTAMPS_AS_NANOSECONDS, false);
-		mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
-		mapper.setSerializationInclusion(Include.NON_NULL);
-
-		return mapper;
-	}
+	private static ObjectMapper objectMapper;
 
 	/**
 	 * Serializes {@link DocuWareProperties} to {@link String}
@@ -50,7 +36,7 @@ public class JsonUtils {
 	 */
 	public static String serializeProperties(DocuWareProperties properties) throws JsonProcessingException {
 		String result;
-		result = JsonUtils.buildObjectMapper().setSerializationInclusion(Include.NON_NULL).writeValueAsString(properties);
+		result = getObjectMapper().setSerializationInclusion(Include.NON_NULL).writeValueAsString(properties);
 
 		return result;
 	}
@@ -64,7 +50,7 @@ public class JsonUtils {
 	 */
 	public static String serializeProperties(DocuWarePropertiesUpdate properties) throws JsonProcessingException {
 		String result;
-		result = JsonUtils.buildObjectMapper().setSerializationInclusion(Include.NON_NULL).writeValueAsString(properties);
+		result = getObjectMapper().setSerializationInclusion(Include.NON_NULL).writeValueAsString(properties);
 
 		return result;
 	}
@@ -88,10 +74,38 @@ public class JsonUtils {
 
 	public static String writeObjectAsJson(Object entity) {
 		try {
-			return JsonUtils.buildObjectMapper().writeValueAsString(entity);
+			return getObjectMapper().writeValueAsString(entity);
 		} catch (JsonProcessingException e) {
 			Ivy.log().warn(e.getMessage());
 		}
 		return null;
 	}
+
+	public static <T> T convertJsonToObject(String json, Class<T> objectType) {
+		if (StringUtils.isEmpty(json)) {
+			return null;
+		}
+		try {
+			return getObjectMapper().readValue(json, objectType);
+		} catch (JsonProcessingException e) {
+			Ivy.log().warn(e.getMessage());
+		}
+		return null;
+	}
+
+	public static ObjectMapper getObjectMapper() {
+		if (objectMapper == null) {
+			objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+			Module timeModule = timeModule();
+			objectMapper.registerModule(timeModule);
+			objectMapper.registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule());
+			objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+			objectMapper.configure(DeserializationFeature.READ_DATE_TIMESTAMPS_AS_NANOSECONDS, false);
+			objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);			
+			objectMapper.configure(DeserializationFeature.READ_DATE_TIMESTAMPS_AS_NANOSECONDS, false);
+			objectMapper.setSerializationInclusion(Include.NON_NULL);
+		}
+		return objectMapper;
+	}
+
 }

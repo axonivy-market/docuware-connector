@@ -14,7 +14,7 @@ public class Token {
 	private Instant created;
 	private Map<String, Object> values;
 
-	public Token() {}
+	public Token() { }
 
 	public Token(Map<String, Object> values) {
 		this.values = values;
@@ -28,7 +28,7 @@ public class Token {
 	public boolean hasAccessToken() {
 		return StringUtils.isNotBlank(accessToken());
 	}
-	
+
 	public boolean hasLoginToken() {
 		return StringUtils.isNotBlank(accessToken());
 	}
@@ -36,7 +36,7 @@ public class Token {
 	public String loginToken() {
 		return (String) values.get(Constants.LOGIN_TOKEN);
 	}
-	
+
 	public String accessToken() {
 		return (String) values.get(Constants.ACCESS_TOKEN);
 	}

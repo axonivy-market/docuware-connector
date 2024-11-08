@@ -10,12 +10,22 @@ Variables:
     # your docuware instance: e.g. 'acme.docuware.cloud'
     host: ''
 
-    platform: 'DocuWare/Platform'
+    # The type of authorization grant to provide.
+    # [enum: password, trusted ]
+    grantType: 'password'
 
+    # The username used for authenticating to DocuWare.
     username: ''
 
+    # The password used for authenticating to DocuWare.
     # [password]
     password: ''
+
+    # The Trusted username used for authenticating to DocuWare when GrantType is trusted.
+    trustedUserName: ''
+
+    # The password used for authenticating to DocuWare  when GrantType is trusted.
+    trustedUserPassword: ''
 
     hostid: ''
 
