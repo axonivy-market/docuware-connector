@@ -3,6 +3,7 @@ package com.axonivy.connector.docuware.connector.auth;
 import static com.axonivy.connector.docuware.connector.utils.DocuWareUtils.getIvyVar;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.ws.rs.Priorities;
 import javax.ws.rs.client.Entity;
@@ -67,6 +68,13 @@ public class OAuth2Feature implements Feature {
       AccessTokenByTrustedRequest trustedRequest = new AccessTokenByTrustedRequest(trustedUsername, trustedPassword);
       paramsMap = trustedRequest.paramsMap();
       break;
+    case DW_TOKEN:
+      var loginToken = getIvyVar(DocuWareVariable.LOGIN_TOKEN);
+      Objects.requireNonNull(loginToken);
+
+      AccessTokenByLoginTokenRequest dwRequest = new AccessTokenByLoginTokenRequest(loginToken);
+      paramsMap = dwRequest.paramsMap();
+      break;
     default:
       break;
     }
@@ -110,6 +118,24 @@ public class OAuth2Feature implements Feature {
       values.put(Constants.ACCESS_TOKEN_REQUEST_IMPERSONATE_NAME, List.of(getIvyVar(DocuWareVariable.USERNAME)));
       values.put(Constants.USERNAME, List.of(trustedUsername));
       values.put(Constants.PASSWORD, List.of(trustedPassword));
+      return values;
+    }
+  }
+
+  public static class AccessTokenByLoginTokenRequest {
+    private String loginToken;
+
+    public AccessTokenByLoginTokenRequest(String loginToken) {
+      this.loginToken = loginToken;
+    }
+
+    public MultivaluedMap<String, String> paramsMap() {
+      MultivaluedMap<String, String> values = new MultivaluedHashMap<>();
+      values.put(Constants.ACCESS_TOKEN_REQUEST_GRANT_TYPE, List.of(GrantType.DW_TOKEN.getCode()));
+      values.put(Constants.ACCESS_TOKEN_REQUEST_SCOPE, List.of(Property.SCOPE));
+      values.put(Constants.ACCESS_TOKEN_REQUEST_CLIENT_ID, List.of(Property.CLIENT_ID));
+      values.put(Constants.ACCESS_TOKEN_REQUEST_IMPERSONATE_NAME, List.of(getIvyVar(DocuWareVariable.USERNAME)));
+      values.put(Constants.ACCESS_TOKEN_REQUEST_TOKEN, List.of(loginToken));
       return values;
     }
   }
