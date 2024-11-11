@@ -59,15 +59,15 @@ Variables:
     hostid: <mhostid>
 ```
 
-3. DocuWare supports 3 ways to generate an Access Token from the Identity Service:
+3. DocuWare unterstützt 3 Wege, um ein Access Token vom Identity Service zu generieren:
 
-    3.a Request Token by Username & Password - GrantType is `password`
-    
-    3.b Request Token by a DocuWare Token - GrantType is `dwtoken`
-    
-    3.c Request Token by Username & Password (Trusted User) - GrantType is `trusted`
+    3.a Token anfordern durch Benutzername & Passwort - GrantType ist `password`
 
-4. For GrantType is `dwtoken`, we must get a LoginToken. Please start the process startRequestALoginToken.ivp and follow the guide to generate a new LoginToken
+    3.b Token anfordern durch ein DocuWare-Token - GrantType ist `dwtoken`
+
+    3.c Token anfordern durch Username & Passwort (Trusted User) - GrantType ist `trusted`
+
+4. Für GrantType ist `dwtoken`, wir müssen ein LoginToken bekommen. Bitte starten Sie den Prozess startRequestALoginToken.ivp und folgen Sie der Anleitung, um ein neues LoginToken zu erzeugen
 
 If your REST URL does not follow the predefined REST URL pattern of this connector, you can change the URL in the Engine Cockpit. To change the URL in the Designer, you have to unpack the connector project and change it there.
 
