@@ -12,10 +12,6 @@ public class OAuth2UriProperty extends ch.ivyteam.ivy.rest.client.oauth2.uri.OAu
     super(config, defaultBaseUri);
   }
 
-  public OAuth2UriProperty(FeatureConfig config, String baseUriPropertyName, String defaultBaseUri) {
-    super(config, baseUriPropertyName, defaultBaseUri);
-  }
-
   @Override
   public URI getTokenUri() {
     return getUri(TOKEN_RELATIVE_PATH);

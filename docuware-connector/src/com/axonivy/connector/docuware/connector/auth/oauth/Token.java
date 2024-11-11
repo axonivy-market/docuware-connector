@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 
 import com.axonivy.connector.docuware.connector.constant.Constants;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import ch.ivyteam.util.date.Now;
 
@@ -14,8 +15,7 @@ public class Token {
   private Instant created;
   private Map<String, Object> values;
 
-  public Token() {
-  }
+  public Token() { }
 
   public Token(Map<String, Object> values) {
     this.values = values;
@@ -34,6 +34,7 @@ public class Token {
     return (String) values.get(Constants.ACCESS_TOKEN);
   }
 
+  @JsonIgnore
   public boolean isExpired() {
     if (created == null) {
       return true;

@@ -45,28 +45,22 @@ public class OAuth2BearerFilter implements javax.ws.rs.client.ClientRequestFilte
     context.getHeaders().add(AUTHORIZATION, BEARER + accessToken);
   }
 
-  protected final String getAccessToken(ClientRequestContext context) {
-    FeatureConfig config = new FeatureConfig(context.getConfiguration(), getSource());
+  private final String getAccessToken(ClientRequestContext context) {
     VarTokenStore accessTokenStore = VarTokenStore.get(DocuWareVariable.ACCESS_TOKEN.getVariableName());
     var accessToken = accessTokenStore.getToken();
 
-    String resultToken = null;
-
     if (accessToken == null || accessToken.isExpired()) {
+      FeatureConfig config = new FeatureConfig(context.getConfiguration(), getSource());
       accessToken = getNewAccessToken(context.getClient(), config);
       accessTokenStore.setToken(accessToken);
-      accessTokenStore.setToken(accessToken);
-      resultToken = accessToken.accessToken();
-    } else {
-      resultToken = accessToken.accessToken();
     }
 
-    if (accessToken != null && !accessToken.hasAccessToken()) {
+    if (!accessToken.hasAccessToken()) {
       accessTokenStore.setToken(null);
       authError().withMessage("Failed to read 'access_token' from " + accessToken).throwError();
     }
 
-    return resultToken;
+    return accessToken.accessToken();
   }
 
   private Class<?> getSource() {
@@ -81,19 +75,16 @@ public class OAuth2BearerFilter implements javax.ws.rs.client.ClientRequestFilte
   private Token getNewAccessToken(Client client, FeatureConfig config) {
     String type = getIvyVar(DocuWareVariable.GRANT_TYPE);
     GrantType grantType = Optional.ofNullable(GrantType.of(type)).orElse(GrantType.PASSWORD);
-    return getAccessToken(client, config, grantType);
-  }
 
-  private Token getAccessToken(Client client, FeatureConfig config, GrantType grantType) {
     GenericType<Map<String, Object>> map = new GenericType<>(Map.class);
 
     var tokenUri = uriFactory.getTokenUri();
     var authContext = new AuthContext(client.target(tokenUri), config, grantType);
     var response = getToken.requestToken(authContext);
-    if (response.getStatusInfo().getFamily() == Family.SUCCESSFUL) {
+    if (Family.SUCCESSFUL == response.getStatusInfo().getFamily()) {
       return new Token(response.readEntity(map));
     }
-    throw authError().withMessage("Failed to get or refresh access token: " + response)
+    throw authError().withMessage("Failed to get access token: " + response)
         .withAttribute("status", response.getStatus()).withAttribute("payload", response.readEntity(String.class))
         .build();
   }

@@ -28,17 +28,17 @@ public class OAuth2Feature implements Feature {
     String HOST = "PATH.host";
     String USERNAME = "UserName";
     String PASSWORD = "Password";
+    String TRUSTED_USERNAME = "TrustedUserName";
+    String TRUSTED_PASSWORD = "TrustedUserPassword";
     String CLIENT_ID = "docuware.platform.net.client";
     String SCOPE = "docuware.platform";
-    String AUTH_BASE_URI = "AUTH.baseUri";
   }
 
   @Override
   public boolean configure(FeatureContext context) {
     var config = new FeatureConfig(context.getConfiguration(), OAuth2Feature.class);
     var identityServiceContext = new IdentityServiceContext(config);
-    var docuWareTokenEndpoint = new OAuth2UriProperty(config, Property.AUTH_BASE_URI,
-        identityServiceContext.identifyTokenEndpointUrl());
+    var docuWareTokenEndpoint = new OAuth2UriProperty(config, identityServiceContext.identifyTokenEndpointUrl());
     var oauth2 = new OAuth2BearerFilter(ctxt -> requestToken(ctxt, docuWareTokenEndpoint), docuWareTokenEndpoint);
     context.register(oauth2, Priorities.AUTHORIZATION);
 
@@ -51,7 +51,7 @@ public class OAuth2Feature implements Feature {
    * @param ctxt
    * @param uriFactory
    */
-  protected static Response requestToken(AuthContext ctxt, OAuth2UriProperty uriFactory) {
+  private static Response requestToken(AuthContext ctxt, OAuth2UriProperty uriFactory) {
     MultivaluedMap<String, String> paramsMap = new MultivaluedHashMap<>();
     GrantType grantType = ctxt.grantType().orElse(GrantType.PASSWORD);
     switch (grantType) {
@@ -62,7 +62,9 @@ public class OAuth2Feature implements Feature {
       paramsMap = passwordRequest.paramsMap();
       break;
     case TRUSTED:
-      AccessTokenByTrustedRequest trustedRequest = new AccessTokenByTrustedRequest();
+      var trustedUsername = ctxt.config.readMandatory(Property.TRUSTED_USERNAME);
+      var trustedPassword = ctxt.config.readMandatory(Property.TRUSTED_PASSWORD);
+      AccessTokenByTrustedRequest trustedRequest = new AccessTokenByTrustedRequest(trustedUsername, trustedPassword);
       paramsMap = trustedRequest.paramsMap();
       break;
     default:
@@ -92,8 +94,12 @@ public class OAuth2Feature implements Feature {
   }
 
   public static class AccessTokenByTrustedRequest {
+    String trustedUsername;
+    String trustedPassword;
 
-    public AccessTokenByTrustedRequest() {
+    public AccessTokenByTrustedRequest(String trustedUsername, String trustedPassword) {
+      this.trustedUsername = trustedUsername;
+      this.trustedPassword = trustedPassword;
     }
 
     public MultivaluedMap<String, String> paramsMap() {
@@ -102,8 +108,8 @@ public class OAuth2Feature implements Feature {
       values.put(Constants.ACCESS_TOKEN_REQUEST_SCOPE, List.of(Property.SCOPE));
       values.put(Constants.ACCESS_TOKEN_REQUEST_CLIENT_ID, List.of(Property.CLIENT_ID));
       values.put(Constants.ACCESS_TOKEN_REQUEST_IMPERSONATE_NAME, List.of(getIvyVar(DocuWareVariable.USERNAME)));
-      values.put(Constants.USERNAME, List.of(getIvyVar(DocuWareVariable.TRUSTED_USERNAME)));
-      values.put(Constants.PASSWORD, List.of(getIvyVar(DocuWareVariable.TRUSTED_USER_PASSWORD)));
+      values.put(Constants.USERNAME, List.of(trustedUsername));
+      values.put(Constants.PASSWORD, List.of(trustedPassword));
       return values;
     }
   }
