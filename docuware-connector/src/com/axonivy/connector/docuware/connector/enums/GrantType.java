@@ -3,23 +3,23 @@ package com.axonivy.connector.docuware.connector.enums;
 import java.util.stream.Stream;
 
 public enum GrantType {
-	PASSWORD("password"), DW_TOKEN("dwtoken"), TRUSTED("trusted");
-	
-	private String code;
+  PASSWORD("password"), DW_TOKEN("dwtoken"), TRUSTED("trusted");
 
-	private GrantType(String code) {
-		this.code = code;
-	}
+  private String code;
 
-	public String getCode() {
-		return code;
-	}
+  private GrantType(String code) {
+    this.code = code;
+  }
 
-	public void setCode(String code) {
-		this.code = code;
-	}
+  public String getCode() {
+    return code;
+  }
 
-	public static GrantType of(String searchValue) {
-		return Stream.of(values()).filter(type -> type.code.equals(searchValue)).findAny().orElse(null);
-	}
+  public void setCode(String code) {
+    this.code = code;
+  }
+
+  public static GrantType of(String searchValue) {
+    return Stream.of(values()).filter(type -> type.code.equals(searchValue)).findAny().orElse(null);
+  }
 }

@@ -6,18 +6,18 @@ import ch.ivyteam.ivy.rest.client.FeatureConfig;
 
 public class OAuth2UriProperty extends ch.ivyteam.ivy.rest.client.oauth2.uri.OAuth2UriProperty {
 
-	public static final String TOKEN_RELATIVE_PATH = "";
+  public static final String TOKEN_RELATIVE_PATH = "";
 
-	public OAuth2UriProperty(FeatureConfig config, String defaultBaseUri) {
-		super(config, defaultBaseUri);
-	}
+  public OAuth2UriProperty(FeatureConfig config, String defaultBaseUri) {
+    super(config, defaultBaseUri);
+  }
 
-	public OAuth2UriProperty(FeatureConfig config, String baseUriPropertyName, String defaultBaseUri) {
-		super(config, baseUriPropertyName, defaultBaseUri);
-	}
+  public OAuth2UriProperty(FeatureConfig config, String baseUriPropertyName, String defaultBaseUri) {
+    super(config, baseUriPropertyName, defaultBaseUri);
+  }
 
-	@Override
-	public URI getTokenUri() {
-		return getUri(TOKEN_RELATIVE_PATH);
-	}
+  @Override
+  public URI getTokenUri() {
+    return getUri(TOKEN_RELATIVE_PATH);
+  }
 }

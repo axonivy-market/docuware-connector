@@ -27,15 +27,6 @@ Variables:
     # The password used for authenticating to DocuWare  when GrantType is trusted.
     trustedUserPassword: ''
 
-    hostid: ''
-
-    # The Logon URL will be automatically determined.
-    # If this variable is set (not-empty), this URL
-    # will be taken as the Logon URL. It typically looks like
-    # https://.../Acount/Logon
-    # Only set this value, if the automatic determination does not work.
-    logonurl: ''
-
     # Your organization name
     organization: ''
 

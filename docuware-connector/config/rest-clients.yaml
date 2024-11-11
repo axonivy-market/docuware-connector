@@ -11,8 +11,6 @@ RestClients:
       PATH.host: ${ivy.var.docuwareConnector.host}
       UserName: ${ivy.var.docuwareConnector.username}
       Password: ${ivy.var.docuwareConnector.password}
-      HostId: ${ivy.var.docuwareConnector.hostid}
-      LogonUrl: ${ivy.var.docuwareConnector.logonurl}
       Organization: ${ivy.var.docuwareConnector.organization}
       com.sun.jersey.impl.client.httpclient.handleCookies: 'true'
       http.protocol.handle-redirects: 'true'

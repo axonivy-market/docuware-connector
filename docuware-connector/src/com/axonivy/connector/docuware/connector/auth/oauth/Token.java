@@ -11,70 +11,63 @@ import com.axonivy.connector.docuware.connector.constant.Constants;
 import ch.ivyteam.util.date.Now;
 
 public class Token {
-	private Instant created;
-	private Map<String, Object> values;
+  private Instant created;
+  private Map<String, Object> values;
 
-	public Token() { }
+  public Token() {
+  }
 
-	public Token(Map<String, Object> values) {
-		this.values = values;
-		this.created = Now.asInstant();
-	}
+  public Token(Map<String, Object> values) {
+    this.values = values;
+    this.created = Now.asInstant();
+  }
 
-	public Object value(String name) {
-		return values.get(name);
-	}
+  public Object value(String name) {
+    return values.get(name);
+  }
 
-	public boolean hasAccessToken() {
-		return StringUtils.isNotBlank(accessToken());
-	}
+  public boolean hasAccessToken() {
+    return StringUtils.isNotBlank(accessToken());
+  }
 
-	public boolean hasLoginToken() {
-		return StringUtils.isNotBlank(accessToken());
-	}
+  public String accessToken() {
+    return (String) values.get(Constants.ACCESS_TOKEN);
+  }
 
-	public String loginToken() {
-		return (String) values.get(Constants.LOGIN_TOKEN);
-	}
+  public boolean isExpired() {
+    if (created == null) {
+      return true;
+    }
+    var expiresAt = created.plus(expiresIn(), ChronoUnit.SECONDS);
+    return Instant.now().isAfter(expiresAt);
+  }
 
-	public String accessToken() {
-		return (String) values.get(Constants.ACCESS_TOKEN);
-	}
+  private int expiresIn() {
+    var expiresIn = (Integer) values.get(Constants.EXPIRES_IN);
+    if (expiresIn == null) {
+      return Integer.MAX_VALUE;
+    }
+    return expiresIn.intValue();
+  }
 
-	public boolean isExpired() {
-		if (created == null) {
-			return true;
-		}
-		var expiresAt = created.plus(expiresIn(), ChronoUnit.SECONDS);
-		return Instant.now().isAfter(expiresAt);
-	}
+  public Instant getCreated() {
+    return created;
+  }
 
-	private int expiresIn() {
-		var expiresIn = (Integer) values.get(Constants.EXPIRES_IN);
-		if (expiresIn == null) {
-			return Integer.MAX_VALUE;
-		}
-		return expiresIn.intValue();
-	}
+  public void setCreated(Instant created) {
+    this.created = created;
+  }
 
-	public Instant getCreated() {
-		return created;
-	}
+  public void setValues(Map<String, Object> values) {
+    this.values = values;
+  }
 
-	public void setCreated(Instant created) {
-		this.created = created;
-	}
+  public Map<String, Object> getValues() {
+    return values;
+  }
 
-	public void setValues(Map<String, Object> values) {
-		this.values = values;
-	}
-
-	public Map<String, Object> getValues() {
-		return values;
-	}
-
-	@Override
-	public String toString() {
-		return "Token [created=" + created + " expired=" + isExpired() + " values=" + values + "]";
-	}
+  @Override
+  public String toString() {
+    return "Token [created=" + created + " expired=" + isExpired() + " values=" + values + "]";
+  }
 }

@@ -23,82 +23,82 @@ import ch.ivyteam.ivy.rest.client.internal.oauth2.RedirectToIdentityProvider;
 
 @SuppressWarnings("restriction")
 public class OAuth2BearerFilter implements javax.ws.rs.client.ClientRequestFilter {
-	public static final String AUTHORIZATION = "Authorization";
-	public static final String BEARER = "Bearer ";
-	public static final String CODE_PARAM = "code";
+  public static final String AUTHORIZATION = "Authorization";
+  public static final String BEARER = "Bearer ";
+  public static final String CODE_PARAM = "code";
 
-	private final OAuth2TokenRequester getToken;
-	private final OAuth2UriProperty uriFactory;
+  private final OAuth2TokenRequester getToken;
+  private final OAuth2UriProperty uriFactory;
 
-	public OAuth2BearerFilter(OAuth2TokenRequester getToken, OAuth2UriProperty uriFactory) {
-		this.getToken = getToken;
-		this.uriFactory = uriFactory;
-	}
+  public OAuth2BearerFilter(OAuth2TokenRequester getToken, OAuth2UriProperty uriFactory) {
+    this.getToken = getToken;
+    this.uriFactory = uriFactory;
+  }
 
-	@Override
-	public void filter(ClientRequestContext context) throws IOException {
-		if (uriFactory.isAuthRequest(context.getUri()) || context.getHeaders().containsKey(AUTHORIZATION)) {
-			return;
-		}
+  @Override
+  public void filter(ClientRequestContext context) throws IOException {
+    if (uriFactory.isAuthRequest(context.getUri()) || context.getHeaders().containsKey(AUTHORIZATION)) {
+      return;
+    }
 
-		String accessToken = getAccessToken(context);
-		context.getHeaders().add(AUTHORIZATION, BEARER + accessToken);
-	}
+    String accessToken = getAccessToken(context);
+    context.getHeaders().add(AUTHORIZATION, BEARER + accessToken);
+  }
 
-	protected final String getAccessToken(ClientRequestContext context) {
-		FeatureConfig config = new FeatureConfig(context.getConfiguration(), getSource());
-		VarTokenStore accessTokenStore = VarTokenStore.get(DocuWareVariable.ACCESS_TOKEN.getVariableName());
-		var accessToken = accessTokenStore.getToken();
+  protected final String getAccessToken(ClientRequestContext context) {
+    FeatureConfig config = new FeatureConfig(context.getConfiguration(), getSource());
+    VarTokenStore accessTokenStore = VarTokenStore.get(DocuWareVariable.ACCESS_TOKEN.getVariableName());
+    var accessToken = accessTokenStore.getToken();
 
-		String resultToken = null;
+    String resultToken = null;
 
-		if (accessToken == null || accessToken.isExpired()) {
-			accessToken = getNewAccessToken(context.getClient(), config);
-			accessTokenStore.setToken(accessToken);
-			accessTokenStore.setToken(accessToken);
-			resultToken = accessToken.accessToken();
-		} else {
-			resultToken = accessToken.accessToken();
-		}
+    if (accessToken == null || accessToken.isExpired()) {
+      accessToken = getNewAccessToken(context.getClient(), config);
+      accessTokenStore.setToken(accessToken);
+      accessTokenStore.setToken(accessToken);
+      resultToken = accessToken.accessToken();
+    } else {
+      resultToken = accessToken.accessToken();
+    }
 
-		if (accessToken != null && !accessToken.hasAccessToken()) {
-			accessTokenStore.setToken(null);
-			authError().withMessage("Failed to read 'access_token' from " + accessToken).throwError();
-		}
+    if (accessToken != null && !accessToken.hasAccessToken()) {
+      accessTokenStore.setToken(null);
+      authError().withMessage("Failed to read 'access_token' from " + accessToken).throwError();
+    }
 
-		return resultToken;
-	}
+    return resultToken;
+  }
 
-	private Class<?> getSource() {
-		Class<?> type = getToken.getClass();
-		Class<?> declaring = type.getDeclaringClass();
-		if (declaring != null) {
-			return declaring;
-		}
-		return type;
-	}
+  private Class<?> getSource() {
+    Class<?> type = getToken.getClass();
+    Class<?> declaring = type.getDeclaringClass();
+    if (declaring != null) {
+      return declaring;
+    }
+    return type;
+  }
 
-	private Token getNewAccessToken(Client client, FeatureConfig config) {
-		String type = getIvyVar(DocuWareVariable.GRANT_TYPE);
-		GrantType grantType = Optional.ofNullable(GrantType.of(type)).orElse(GrantType.PASSWORD);
-		return getAccessToken(client, config, grantType);
-	}
+  private Token getNewAccessToken(Client client, FeatureConfig config) {
+    String type = getIvyVar(DocuWareVariable.GRANT_TYPE);
+    GrantType grantType = Optional.ofNullable(GrantType.of(type)).orElse(GrantType.PASSWORD);
+    return getAccessToken(client, config, grantType);
+  }
 
-	private Token getAccessToken(Client client, FeatureConfig config, GrantType grantType) {
-		GenericType<Map<String, Object>> map = new GenericType<>(Map.class);
+  private Token getAccessToken(Client client, FeatureConfig config, GrantType grantType) {
+    GenericType<Map<String, Object>> map = new GenericType<>(Map.class);
 
-		var tokenUri = uriFactory.getTokenUri();
-		var authContext = new AuthContext(client.target(tokenUri), config, grantType);
-		var response = getToken.requestToken(authContext);
-		if (response.getStatusInfo().getFamily() == Family.SUCCESSFUL) {
-			return new Token(response.readEntity(map));
-		}
-		throw authError().withMessage("Failed to get or refresh access token: " + response)
-				.withAttribute("status", response.getStatus())
-				.withAttribute("payload", response.readEntity(String.class)).build();
-	}
+    var tokenUri = uriFactory.getTokenUri();
+    var authContext = new AuthContext(client.target(tokenUri), config, grantType);
+    var response = getToken.requestToken(authContext);
+    if (response.getStatusInfo().getFamily() == Family.SUCCESSFUL) {
+      return new Token(response.readEntity(map));
+    }
+    throw authError().withMessage("Failed to get or refresh access token: " + response)
+        .withAttribute("status", response.getStatus()).withAttribute("payload", response.readEntity(String.class))
+        .build();
+  }
 
-	private static BpmPublicErrorBuilder authError() {
-		return BpmError.create(RedirectToIdentityProvider.OAUTH2_ERROR_CODE);
-	}
+  private static BpmPublicErrorBuilder authError() {
+    return BpmError.create(RedirectToIdentityProvider.OAUTH2_ERROR_CODE);
+  }
 }
