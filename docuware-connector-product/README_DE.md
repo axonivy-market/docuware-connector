@@ -59,6 +59,16 @@ Variables:
     hostid: <mhostid>
 ```
 
+3. DocuWare supports 3 ways to generate an Access Token from the Identity Service:
+
+    3.a Request Token by Username & Password - GrantType is `password`
+    
+    3.b Request Token by a DocuWare Token - GrantType is `dwtoken`
+    
+    3.c Request Token by Username & Password (Trusted User) - GrantType is `trusted`
+
+4. For GrantType is `dwtoken`, we must get a LoginToken. Please start the process startRequestALoginToken.ivp and follow the guide to generate a new LoginToken
+
 If your REST URL does not follow the predefined REST URL pattern of this connector, you can change the URL in the Engine Cockpit. To change the URL in the Designer, you have to unpack the connector project and change it there.
 
 Run `start.ivp` of the DocuWareDemo demo process to test your setup.

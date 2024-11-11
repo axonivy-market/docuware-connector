@@ -11,7 +11,7 @@
       "config" : {
         "callSignature" : "startRequestALoginToken",
         "outLink" : "startRequestALoginToken.ivp",
-        "startName" : "Start to request a LoginToken for DW-Token",
+        "startName" : "<%=ivy.cms.co(\"/Processes/LoginToken/name\")%>",
         "case" : { }
       },
       "visual" : {

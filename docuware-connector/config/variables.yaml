@@ -11,7 +11,7 @@ Variables:
     host: ''
 
     # The type of authorization grant to provide.
-    # [enum: password, trusted ]
+    # [enum: password, trusted, dwtoken ]
     grantType: 'password'
 
     # The username used for authenticating to DocuWare.
@@ -26,6 +26,10 @@ Variables:
 
     # The password used for authenticating to DocuWare  when GrantType is trusted.
     trustedUserPassword: ''
+
+    # Use for getting a new DocuWare token by GrantType is dwtoken
+    # Please start process startRequestALoginToken.ivp to generate a new LoginToken
+    loginToken: ''
 
     # Your organization name
     organization: ''

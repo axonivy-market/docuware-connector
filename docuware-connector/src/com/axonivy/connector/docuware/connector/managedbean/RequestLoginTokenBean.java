@@ -52,38 +52,49 @@ public class RequestLoginTokenBean {
     Token token = generateNewIdentityToken();
 
     Client client = ClientBuilder.newClient();
-    var target = client.target(IdentityServiceContext.buildOrganizationLoginTokenURI(host));
-    Response response = target.request(MediaType.APPLICATION_JSON).header(AUTHORIZATION, BEARER + token.accessToken())
-        .post(Entity.json(DocuWareUtils.generateLoginTokenBody()));
+    Response response = null;
+    try {
+      var target = client.target(IdentityServiceContext.buildOrganizationLoginTokenURI(host));
+      response = target.request(MediaType.APPLICATION_JSON).header(AUTHORIZATION, BEARER + token.accessToken())
+          .post(Entity.json(DocuWareUtils.generateLoginTokenBody()));
 
-    if (Family.SUCCESSFUL == response.getStatusInfo().getFamily()) {
-      loginToken = response.readEntity(String.class);
-      FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,
-          Ivy.cms().co("/Dialogs/com/axonivy/market/docuware/connector/RequestLoginToken/GotLoginToken"),
-          Ivy.cms().co("/Dialogs/com/axonivy/market/docuware/connector/RequestLoginToken/GotLoginTokenMessage"));
-      FacesContext.getCurrentInstance().addMessage(null, message);
-      DocuWareUtils.setIvyVar(DocuWareVariable.LOGIN_TOKEN, loginToken);
+      if (Family.SUCCESSFUL == response.getStatusInfo().getFamily()) {
+        loginToken = response.readEntity(String.class);
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,
+            Ivy.cms().co("/Dialogs/com/axonivy/market/docuware/connector/RequestLoginToken/GotLoginToken"),
+            Ivy.cms().co("/Dialogs/com/axonivy/market/docuware/connector/RequestLoginToken/GotLoginTokenMessage"));
+        FacesContext.getCurrentInstance().addMessage(null, message);
+        DocuWareUtils.setIvyVar(DocuWareVariable.LOGIN_TOKEN, loginToken);
+      }
+    } catch (Exception e) {
+      Ivy.log().error(e);
+    } finally {
+      response.close();
+      client.close();
     }
-    response.close();
-    client.close();
   }
 
   public Token generateNewIdentityToken() {
     String tokenEndpointUrl = identifyTokenEndpointUrl();
 
+    Token token = null;
     GenericType<Map<String, Object>> map = new GenericType<>(Map.class);
     AccessTokenByPasswordRequest passwordRequest = new AccessTokenByPasswordRequest(username, password);
     var paramsMap = passwordRequest.paramsMap();
-
     Client client = ClientBuilder.newClient();
-    WebTarget target = client.target(tokenEndpointUrl);
-    Response postResponse = target.request(MediaType.APPLICATION_JSON).post(Entity.form(paramsMap));
-    Token token = null;
-    if (Family.SUCCESSFUL == postResponse.getStatusInfo().getFamily()) {
-      token = new Token(postResponse.readEntity(map));
+    Response postResponse = null;
+    try {
+      WebTarget target = client.target(tokenEndpointUrl);
+      postResponse = target.request(MediaType.APPLICATION_JSON).post(Entity.form(paramsMap));
+      if (Family.SUCCESSFUL == postResponse.getStatusInfo().getFamily()) {
+        token = new Token(postResponse.readEntity(map));
+      }
+    } catch (Exception e) {
+      Ivy.log().error(e);
+    } finally {
+      postResponse.close();
+      client.close();
     }
-    postResponse.close();
-    client.close();
     return token;
   }
 
