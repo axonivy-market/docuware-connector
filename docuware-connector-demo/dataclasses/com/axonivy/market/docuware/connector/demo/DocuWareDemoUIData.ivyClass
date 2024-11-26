@@ -1,0 +1,8 @@
+DocuWareDemoUIData #class
+com.axonivy.market.docuware.connector.demo #namespace
+documents List<com.docuware.dev.schema._public.services.platform.Document> #field
+organizations com.docuware.dev.schema._public.services.platform.Organizations #field
+documentId String #field
+fileCabinetId String #field
+organizationId String #field
+fileCabinet com.docuware.dev.schema._public.services.platform.FileCabinet #field

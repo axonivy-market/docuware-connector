@@ -9,6 +9,9 @@ Dialogs:
                 Title: DocuWare Demo
                 UploadMessageFailed: Upload doc to Docuware failed
                 UploadMessageOK: Upload doc to Docuware successful
+              DocuWareDemoUI:
+                Title: DocuWare Demo UI
+                ContentTitle: 'Documents in {0}'
 Labels:
   CabinetId: 'Cabinet Id: {0}'
   Close: Close
@@ -16,3 +19,4 @@ Labels:
   Organizations: Organizations
   Result: Result
   Upload: Upload
+  NoRecordsFound: No records found. Please try a different search.

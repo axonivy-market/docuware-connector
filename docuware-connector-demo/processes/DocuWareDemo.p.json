@@ -507,7 +507,7 @@
             { "name" : "configuration", "type" : "com.axonivy.connector.docuware.connector.DocuWareEndpointConfiguration" }
           ],
           "map" : {
-            "param.file" : "com.axonivy.connector.docuware.connector.demo.DocuWareDemoService.exportFromCMS(\"/Files/uploadSample\", \"pdf\")",
+            "param.file" : "com.axonivy.connector.docuware.connector.demo.service.DocuWareDemoService.exportFromCMS(\"/Files/uploadSample\", \"pdf\")",
             "param.indexFields" : "in.properties",
             "param.configuration.fileCabinetId" : "in.configuration.fileCabinetId"
           }
