@@ -164,13 +164,14 @@
         },
         "resultType" : "com.axonivy.connector.docuware.connector.DocuWareProperties",
         "responseCode" : [
+          "import com.axonivy.connector.docuware.connector.demo.enums.ItemType;",
           "import com.axonivy.connector.docuware.connector.DocuWareProperty;",
           "import com.axonivy.connector.docuware.connector.DocuWareProperties;",
           "",
           "out.properties = new DocuWareProperties();",
-          "for (DocuWareProperty p : result.properties) {",
-          "  if (p.itemElementName == \"Int\" || p.itemElementName == \"Decimal\" || p.itemElementName == \"String\") {",
-          "    out.properties.properties.add(p);",
+          "for (DocuWareProperty property : result.properties) {",
+          "  if (ItemType.INT.getValue() == property.itemElementName || ItemType.DECIMAL.getValue() == property.itemElementName || ItemType.STRING.getValue() == property.itemElementName) {",
+          "    out.properties.properties.add(property);",
           "  }",
           "}"
         ]

@@ -21,30 +21,27 @@
 		showGridlines="true" resizableColumns="true" resizeMode="fit"
 		emptyMessage="#{ivy.cms.co('/Labels/NoRecordsFound')}"
 		rowIndexVar="rowIndex" lazy="false">
-		<p:column width="30" headerText="Index">
+		<p:column width="30"
+			headerText="#{ivy.cms.co('/Dialogs/com/axonivy/connector/docuware/connector/demo/DocuWareDemoUI/PropertyTable/IndexHeaderText')}">
 			<h:outputText value="#{rowIndex}" />
 		</p:column>
 
-		<p:column headerText="Field Name">
+		<p:column
+			headerText="#{ivy.cms.co('/Dialogs/com/axonivy/connector/docuware/connector/demo/DocuWareDemoUI/PropertyTable/FieldNameHeaderText')}">
 			<h:outputText value="#{field.fieldName}" />
 		</p:column>
 
-		<p:column headerText="Update Value">
+		<p:column
+			headerText="#{ivy.cms.co('/Dialogs/com/axonivy/connector/docuware/connector/demo/DocuWareDemoUI/PropertyTable/UpdateValueHeaderText')}">
 			<h:panelGroup>
-				<p:inputNumber value="#{field.item}" min="0" max="10000"
-					rendered="#{field.itemElementName == 'Int' and !field.isReadOnly()}">
-					<p:ajax event="change"
-						listener="#{logic.addToPropertiesUpdate(field)}" />
-				</p:inputNumber>
-
-				<p:inputNumber value="#{field.item}" decimalPlaces="2" min="0"
-					rendered="#{field.itemElementName == 'Decimal' and !field.isReadOnly()}">
+				<p:inputNumber value="#{field.item}"
+					rendered="#{docuWareDemoBean.isFieldNameTypeNumber(field) and !field.isReadOnly()}">
 					<p:ajax event="change"
 						listener="#{logic.addToPropertiesUpdate(field)}" />
 				</p:inputNumber>
 
 				<p:inputText value="#{field.item}"
-					rendered="#{field.itemElementName == 'String' and !field.isReadOnly()}">
+					rendered="#{docuWareDemoBean.isFieldNameTypeString(field) and !field.isReadOnly()}">
 					<p:ajax event="change"
 						listener="#{logic.addToPropertiesUpdate(field)}" />
 				</p:inputText>
@@ -58,9 +55,12 @@
 	<div class="command-btns">
 		<p:commandButton id="save"
 			actionListener="#{logic.updateDocumentProperties(documentId, fileCabinetId)}"
-			process="@this" value="Save" />
+			process="@this" value="Save" oncomplete="updateGrowl()"
+			update="updateGrowlCommand" />
 	</div>
-
+	<p:remoteCommand id="updateGrowlCommand" name="updateGrowl"
+		actionListener="#{docuWareDemoBean.updateGrowl(data.isUpdateSuccess)}"
+		update=":form:growl" />
 </cc:implementation>
 
 </html>

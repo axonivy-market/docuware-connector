@@ -20,7 +20,7 @@ public class DocuWareProperty {
   @JsonProperty("ItemElementName")
   private Object itemElementName;
   @JsonProperty("ReadOnly")
-  private Boolean readOnly;
+  private Boolean isReadOnly;
 
   public DocuWareProperty() {}
 
@@ -30,11 +30,11 @@ public class DocuWareProperty {
     this.itemElementName = itemElementName;
   }
 
-  public DocuWareProperty(String fieldName, Object item, String itemElementName, Boolean readOnly) {
+  public DocuWareProperty(String fieldName, Object item, String itemElementName, Boolean isReadOnly) {
     this.fieldName = fieldName;
     this.item = item;
     this.itemElementName = itemElementName;
-    this.readOnly = readOnly;
+    this.isReadOnly = isReadOnly;
   }
 
   public String getFieldName() {
@@ -62,10 +62,10 @@ public class DocuWareProperty {
   }
 
   public Boolean isReadOnly() {
-    return readOnly;
+    return isReadOnly;
   }
 
-  public void setReadOnly(Boolean readOnly) {
-    this.readOnly = readOnly;
+  public void setReadOnly(Boolean isReadOnly) {
+    this.isReadOnly = isReadOnly;
   }
 }

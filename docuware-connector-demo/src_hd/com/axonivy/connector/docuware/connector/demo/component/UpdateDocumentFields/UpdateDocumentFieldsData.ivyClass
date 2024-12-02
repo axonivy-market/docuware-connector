@@ -12,3 +12,5 @@ property com.axonivy.connector.docuware.connector.DocuWareProperty #field
 property PERSISTENT #fieldModifier
 propertiesJson String #field
 propertiesJson PERSISTENT #fieldModifier
+isUpdateSuccess Boolean #field
+isUpdateSuccess PERSISTENT #fieldModifier
