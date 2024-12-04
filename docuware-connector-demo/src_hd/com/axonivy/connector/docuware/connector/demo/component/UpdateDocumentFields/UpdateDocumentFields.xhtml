@@ -34,7 +34,7 @@
 		<p:column
 			headerText="#{ivy.cms.co('/Dialogs/com/axonivy/connector/docuware/connector/demo/DocuWareDemoUI/PropertyTable/UpdateValueHeaderText')}">
 			<h:panelGroup>
-				<p:inputNumber value="#{field.item}"
+				<p:inputNumber value="#{field.item}" minValue="0"
 					rendered="#{docuWareDemoBean.isFieldNameTypeNumber(field) and !field.isReadOnly()}">
 					<p:ajax event="change"
 						listener="#{logic.addToPropertiesUpdate(field)}" />
@@ -55,11 +55,11 @@
 	<div class="command-btns">
 		<p:commandButton id="save"
 			actionListener="#{logic.updateDocumentProperties(documentId, fileCabinetId)}"
-			process="@this" value="Save" oncomplete="updateGrowl()"
-			update="updateGrowlCommand" />
+			process="@this" value="Save" oncomplete="updateGrowlMessageForEditAction()"
+			update="updateGrowlMessageForEditActionCommand" />
 	</div>
-	<p:remoteCommand id="updateGrowlCommand" name="updateGrowl"
-		actionListener="#{docuWareDemoBean.updateGrowl(data.isUpdateSuccess)}"
+	<p:remoteCommand id="updateGrowlMessageForEditActionCommand" name="updateGrowlMessageForEditAction"
+		actionListener="#{docuWareDemoBean.updateGrowlMessageForEditAction(data.isUpdateSuccess)}"
 		update=":form:growl" />
 </cc:implementation>
 

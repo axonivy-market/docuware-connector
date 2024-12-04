@@ -39,7 +39,7 @@ public class DocuWareDemoBean implements Serializable {
 		return field.getItemElementName().equals(ItemType.STRING.getValue());
 	}
 
-	public void updateGrowl(boolean isUpdateSuccess) {
+	public void updateGrowlMessageForEditAction(boolean isUpdateSuccess) {
 		if (isUpdateSuccess) {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_INFO, Ivy.cms().co("/Labels/Success"), Ivy.cms().co(
