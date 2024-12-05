@@ -42,7 +42,7 @@ Damit eine Interaktion zwischen der Axon Ivy Engine und den DocuWare-Diensten m�
 
 1. Erstelle ein DocuWare-Konto bei der DocuWare Cloud und notiere die Zugangsdaten: `host-name`, `user-name`, `password` and `host-id` to use.
 
-2. Überschreibe die globalen Variablen `host-name`, `user-name`, `password` and `host-id` im Demoprojekt wie im folgenden Beispiel:
+2. Überschreibe die globalen Variablen `host-name`, `user-name`, `password` und `host-id` im Demoprojekt wie im folgenden Beispiel:
 
 ```
 Variables:
