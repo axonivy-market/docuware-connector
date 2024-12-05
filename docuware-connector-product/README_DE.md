@@ -28,11 +28,11 @@ Das hochgeladene Dokument im DocuWare-Dashboard:
 
 ![demo-dialog](images/demo4.png)
 
-Beispiel: Organisationen abrufen Klicke auf den Button „Organizations“, um die Organisation-ID zu erhalten. Diese wird automatisch in die Upload-Anfrage eingefügt.
+Beispiel: Organisationen abrufen - Klicke auf den Button „Organizations“, um die Organisation-ID zu erhalten. Diese wird automatisch in die Upload-Anfrage eingefügt.
 
 ![demo-dialog](images/demo5.png)
 
-Beispiel: Archive abrufen Klicke auf den Button „File Cabinets“, um die Archiv-ID der Organisation zu erhalten und das Zielarchiv für den Datei-Upload festzulegen.
+Beispiel: Archive abrufen - Klicke auf den Button „File Cabinets“, um die Archiv-ID der Organisation zu erhalten und das Zielarchiv für den Datei-Upload festzulegen.
 
 ![demo-dialog](images/demo6.png)
 
