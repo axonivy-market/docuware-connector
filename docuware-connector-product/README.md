@@ -12,37 +12,43 @@ This connector:
 
 ## Demo
 
-The **DocuWare Demo UI** provides the following functionalities to help manage documents in DocuWare:
-
 ### Features
 
-1. **Document Retrieval**  
-   Automatically fetch documents using the predefined **organization** and **filecabinetid** fields from the `variables.yaml` file.
+1. **Get Organizations**: Click the **Organizations** button to retrieve the organization ID. The system will automatically include this ID in subsequent requests.
+
+    ![organization-result](images/get-organization-result.png)
+
+2. **Get File Cabinets**: Click the **File Cabinets** button to fetch the cabinet ID of the selected organization. The cabinet ID determines where the file will be uploaded.
+
+    ![file-cabinet-result](images/get-file-cabinet-result.png)
+
+3. **Upload Document**: Select a file to upload to the chosen DocuWare file cabinet. You can verify the uploaded file on the DocuWare dashboard.
+
+    ![upload-document](images/upload-document-result.png)
+
+4. **Document Retrieval**  
+   Automatically fetch documents using the predefined **organization** and **fileCabinetId** fields from the `variables.yaml` file.
 
    ![fetch-documents](images/fetch-documents.png)
 
-2. **Document Viewing**  
+5. **Document Viewing**  
    View documents directly within the interface using DocuWare’s document viewer.
 
    ![view-document](images/view-document.png)
 
-3. **Edit Document Properties**  
+6. **Edit Document Properties**  
    Modify document properties, including metadata and custom fields.
 
    ![edit-document-properties](images/edit-document-properties.png)
 
-4. **Document Deletion**  
+7. **Document Deletion**  
    Delete documents from the file cabinet.
 
    ![delete-document](images/delete-document.png)
 
-### DocuWare Advanced Operations
+To view and edit documents and its properties, run the process named **DocuWare View/Edit Document**.
 
-In case you want to perform advanced operations with DocuWare, including uploading documents or testing API calls, please run the process named **Start some DocuWare calls**. This process will guide you through:
-
-1. **Get Organizations**: Click the **Organizations** button to retrieve the organization ID. The system will automatically include this ID in subsequent requests.
-2. **Get File Cabinets**: Click the **File Cabinets** button to fetch the cabinet ID of the selected organization. The cabinet ID determines where the file will be uploaded.
-3. **Upload Document**: Select a file to upload to the chosen DocuWare file cabinet. You can verify the uploaded file on the DocuWare dashboard.
+To upload documents and perform actions like retrieving organizations, getting file cabinets, and uploading documents, run the process named **Start some DocuWare calls**.
 
 ## Setup
 
