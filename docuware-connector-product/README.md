@@ -12,29 +12,37 @@ This connector:
 
 ## Demo
 
-1. Upload a document to a DocuWare file cabinet.
+The **DocuWare Demo UI** provides the following functionalities to help manage documents in DocuWare:
 
-Upload result
+### Features
 
-![demo-dialog](images/demo1.png)
+1. **Document Retrieval**  
+   Automatically fetch documents using the predefined **organization** and **filecabinetid** fields from the `variables.yaml` file.
 
-![demo-dialog](images/demo2.png)
+   ![fetch-documents](images/fetch-documents.png)
 
-The uploaded file in Docuware dashboard.
+2. **Document Viewing**  
+   View documents directly within the interface using DocuWare’s document viewer.
 
-![demo-dialog](images/demo3.png)
+   ![view-document](images/view-document.png)
 
-2. Provide a GUI to test some basic DocuWare calls.
+3. **Edit Document Properties**  
+   Modify document properties, including metadata and custom fields.
 
-![demo-dialog](images/demo4.png)
+   ![edit-document-properties](images/edit-document-properties.png)
 
-Get Organizations: click on Organizations button to get the organization id and automatically add to the request when upload file.
+4. **Document Deletion**  
+   Delete documents from the file cabinet.
 
-![demo-dialog](images/demo5.png)
+   ![delete-document](images/delete-document.png)
 
-Get File Cabinets: click on File Cabinets button to get the cabinet ID of the organization to locate which cabinet that the file will be uploaded.
+### DocuWare Advanced Operations
 
-![demo-dialog](images/demo6.png)
+In case you want to perform advanced operations with DocuWare, including uploading documents or testing API calls, please run the process named **Start some DocuWare calls**. This process will guide you through:
+
+1. **Get Organizations**: Click the **Organizations** button to retrieve the organization ID. The system will automatically include this ID in subsequent requests.
+2. **Get File Cabinets**: Click the **File Cabinets** button to fetch the cabinet ID of the selected organization. The cabinet ID determines where the file will be uploaded.
+3. **Upload Document**: Select a file to upload to the chosen DocuWare file cabinet. You can verify the uploaded file on the DocuWare dashboard.
 
 ## Setup
 
