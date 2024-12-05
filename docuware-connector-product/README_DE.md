@@ -69,7 +69,9 @@ Variables:
 
 4. Für deb GrantType wird der `dwtoken` verwendet, hier müssen wir einen LoginToken bekommen. Bitte starte den Prozess startRequestALoginToken.ivp und folge der Anleitung, um einen neuen LoginToken zu erzeugen
 
-Falls deine REST-URL nicht dem vordefinierten URL-Muster des Konnektors entspricht, kannst du sie wie folgt anpassen. Im Engine Cockpit: Passe die URL direkt in der Konfiguration der Engine an. Im Designer: Entpacke das Konnektor-Projekt und ändere die URL manuell in den entsprechenden Dateien.
+Falls deine REST-URL nicht dem vordefinierten URL-Muster des Konnektors entspricht, kannst du sie wie folgt anpassen. 
+- Im Engine Cockpit: Passe die URL direkt in der Konfiguration der Engine an.
+- Im Designer: Entpacke das Konnektor-Projekt und ändere die URL manuell in den entsprechenden Dateien.
 
 Um deine Einrichtung zu überprüfen, führe den Prozess start.ivp aus dem DocuWare-Demo-Projekt aus. Dies stellt sicher, dass die Integration korrekt funktioniert.
 
