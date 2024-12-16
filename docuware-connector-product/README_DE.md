@@ -53,7 +53,7 @@ Um Dokumente anzuzeigen und deren Eigenschaften zu bearbeiten, starte den Prozes
 
 Um Dokumente hochzuladen und Aktionen wie Abruf von Organisationen, Abruf von Dateiablagen und Hochladen von Dokumenten auszuführen, starte den Prozess mit dem Namen **Start some DocuWare calls**.
 
-## Einrichtung
+## Setup
 
 Bevor eine Interaktion zwischen der Axon Ivy Engine und den DocuWare-Diensten ausgeführt werden kann, müssen diese mit einander verknüpft werden. Dies kann wie folgt durchgeführt werden:
 
