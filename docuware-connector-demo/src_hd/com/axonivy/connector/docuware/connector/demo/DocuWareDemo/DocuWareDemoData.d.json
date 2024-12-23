@@ -21,11 +21,9 @@
     "modifiers" : [ "PERSISTENT" ]
   }, {
     "name" : "organizations",
-    "type" : "com.docuware.dev.schema._public.services.platform.Organizations",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "com.docuware.dev.schema._public.services.platform.Organizations"
   }, {
     "name" : "fileCabinets",
-    "type" : "com.docuware.dev.schema._public.services.platform.FileCabinets",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "com.docuware.dev.schema._public.services.platform.FileCabinets"
   } ]
 }
