@@ -8,51 +8,28 @@
   "elements" : [ {
       "id" : "f0",
       "type" : "HtmlDialogStart",
-      "name" : "start(FileCabinet,List<Document>)",
+      "name" : "start()",
       "config" : {
         "signature" : "start",
         "input" : {
-          "params" : [
-            { "name" : "fileCabinet", "type" : "com.docuware.dev.schema._public.services.platform.FileCabinet", "desc" : "" },
-            { "name" : "documents", "type" : "List<com.docuware.dev.schema._public.services.platform.Document>", "desc" : "" }
-          ],
           "map" : {
-            "out.documents" : "param.documents",
-            "out.fileCabinet" : "param.fileCabinet"
+            "out.fileCabinetId" : "ivy.var.docuwareConnector_filecabinetid",
+            "out.organizationId" : "ivy.var.docuwareConnector_organization"
           }
         },
         "guid" : "193491716B25A2A9"
       },
       "visual" : {
-        "at" : { "x" : 96, "y" : 64 }
+        "at" : { "x" : 112, "y" : 96 }
       },
       "connect" : [
-        { "id" : "f2", "to" : "f1" }
+        { "id" : "f2", "to" : "f74" }
       ]
     }, {
       "id" : "f1",
       "type" : "HtmlDialogEnd",
       "visual" : {
-        "at" : { "x" : 224, "y" : 64 }
-      }
-    }, {
-      "id" : "f3",
-      "type" : "HtmlDialogEventStart",
-      "name" : "close",
-      "config" : {
-        "guid" : "193491716B3FA623"
-      },
-      "visual" : {
-        "at" : { "x" : 96, "y" : 160 }
-      },
-      "connect" : [
-        { "id" : "f5", "to" : "f4" }
-      ]
-    }, {
-      "id" : "f4",
-      "type" : "HtmlDialogExit",
-      "visual" : {
-        "at" : { "x" : 224, "y" : 160 }
+        "at" : { "x" : 736, "y" : 96 }
       }
     }, {
       "id" : "f6",
@@ -71,7 +48,7 @@
         "guid" : "1934DEB39566411B"
       },
       "visual" : {
-        "at" : { "x" : 96, "y" : 256 }
+        "at" : { "x" : 112, "y" : 192 }
       },
       "connect" : [
         { "id" : "f8", "to" : "f7" }
@@ -86,8 +63,8 @@
           "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
           "path" : "/FileCabinets/{FileCabinetId}/Documents/{DocumentId}",
           "templateParams" : {
-            "DocumentId" : "in.documentId",
-            "FileCabinetId" : "in.fileCabinet.getId()"
+            "FileCabinetId" : "in.fileCabinetId",
+            "DocumentId" : "in.documentId"
           },
           "headers" : {
             "Accept" : "application/xml"
@@ -95,7 +72,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 248, "y" : 256 }
+        "at" : { "x" : 264, "y" : 192 }
       },
       "connect" : [
         { "id" : "f10", "to" : "f9" }
@@ -109,7 +86,7 @@
           "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
           "path" : "/FileCabinets/{FileCabinetId}/Documents",
           "templateParams" : {
-            "FileCabinetId" : "in.fileCabinet.getId()"
+            "FileCabinetId" : "in.fileCabinetId"
           },
           "queryParams" : {
             "q" : "",
@@ -130,7 +107,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 440, "y" : 256 }
+        "at" : { "x" : 432, "y" : 192 }
       },
       "connect" : [
         { "id" : "f12", "to" : "f11" }
@@ -139,7 +116,7 @@
       "id" : "f11",
       "type" : "HtmlDialogEnd",
       "visual" : {
-        "at" : { "x" : 592, "y" : 256 }
+        "at" : { "x" : 592, "y" : 192 }
       }
     }, {
       "id" : "f13",
@@ -158,7 +135,7 @@
         "guid" : "1935FA55672C1004"
       },
       "visual" : {
-        "at" : { "x" : 104, "y" : 368 }
+        "at" : { "x" : 112, "y" : 304 }
       },
       "connect" : [
         { "id" : "f15", "to" : "f21" }
@@ -172,8 +149,8 @@
           "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
           "path" : "/FileCabinets/{FileCabinetId}/Documents/{DocumentId}",
           "templateParams" : {
-            "DocumentId" : "in.documentId",
-            "FileCabinetId" : "in.fileCabinet.id"
+            "FileCabinetId" : "in.fileCabinetId",
+            "DocumentId" : "in.documentId"
           },
           "headers" : {
             "Accept" : "application/json"
@@ -198,16 +175,16 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 248, "y" : 368 }
+        "at" : { "x" : 264, "y" : 304 }
       },
       "boundaries" : [ {
           "id" : "f17",
           "type" : "ErrorBoundaryEvent",
           "visual" : {
-            "at" : { "x" : 280, "y" : 410 }
+            "at" : { "x" : 296, "y" : 346 }
           },
           "connect" : [
-            { "id" : "f18", "to" : "f14", "via" : [ { "x" : 440, "y" : 410 } ] }
+            { "id" : "f18", "to" : "f14", "via" : [ { "x" : 432, "y" : 346 } ] }
           ]
         } ],
       "connect" : [
@@ -217,7 +194,366 @@
       "id" : "f14",
       "type" : "HtmlDialogEnd",
       "visual" : {
-        "at" : { "x" : 440, "y" : 368 }
+        "at" : { "x" : 432, "y" : 304 }
       }
+    }, {
+      "id" : "f19",
+      "type" : "HtmlDialogMethodStart",
+      "name" : "completeOrganization(String)",
+      "config" : {
+        "signature" : "completeOrganization",
+        "input" : {
+          "params" : [
+            { "name" : "keyword", "type" : "String", "desc" : "" }
+          ],
+          "map" : {
+            "out.orgFilterkeyword" : "param.keyword"
+          }
+        },
+        "result" : {
+          "params" : [
+            { "name" : "orgs", "type" : "List<com.docuware.dev.schema._public.services.platform.Organization>", "desc" : "" }
+          ],
+          "map" : {
+            "result.orgs" : "in.availableOrganizations"
+          }
+        },
+        "guid" : "19583807401D3015"
+      },
+      "visual" : {
+        "at" : { "x" : 112, "y" : 432 }
+      },
+      "connect" : [
+        { "id" : "f22", "to" : "f30" }
+      ]
+    }, {
+      "id" : "f20",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 432, "y" : 432 }
+      }
+    }, {
+      "id" : "f23",
+      "type" : "HtmlDialogMethodStart",
+      "name" : "completeFileCabinet(String)",
+      "config" : {
+        "signature" : "completeFileCabinet",
+        "input" : {
+          "params" : [
+            { "name" : "keyword", "type" : "String", "desc" : "" }
+          ],
+          "map" : {
+            "out.fileCabinetFilterKeyword" : "param.keyword"
+          }
+        },
+        "result" : {
+          "params" : [
+            { "name" : "fileCabinets", "type" : "List<com.docuware.dev.schema._public.services.platform.FileCabinet>", "desc" : "" }
+          ],
+          "map" : {
+            "result.fileCabinets" : "in.availableFileCabinets"
+          }
+        },
+        "guid" : "1958380CE9C29AF6"
+      },
+      "visual" : {
+        "at" : { "x" : 112, "y" : 544 }
+      },
+      "connect" : [
+        { "id" : "f25", "to" : "f28" }
+      ]
+    }, {
+      "id" : "f24",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 432, "y" : 544 }
+      }
+    }, {
+      "id" : "f28",
+      "type" : "RestClientCall",
+      "name" : "Find all cabinet",
+      "config" : {
+        "target" : {
+          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "path" : "/FileCabinets"
+        },
+        "response" : {
+          "entity" : {
+            "type" : "com.docuware.dev.schema._public.services.platform.FileCabinets",
+            "code" : [
+              "import com.docuware.dev.schema._public.services.platform.FileCabinet;",
+              "",
+              "for (FileCabinet cabinet : result.getFileCabinet()) {",
+              "  if (cabinet.getName().contains(in.fileCabinetFilterKeyword)) {",
+              "    in.availableFileCabinets.add(cabinet);",
+              "  }",
+              "}"
+            ]
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 264, "y" : 544 }
+      },
+      "connect" : [
+        { "id" : "f29", "to" : "f24" }
+      ]
+    }, {
+      "id" : "f30",
+      "type" : "RestClientCall",
+      "name" : "Find all orgs",
+      "config" : {
+        "target" : {
+          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "path" : "/Organizations"
+        },
+        "response" : {
+          "entity" : {
+            "type" : "com.docuware.dev.schema._public.services.platform.Organizations",
+            "code" : [
+              "import com.docuware.dev.schema._public.services.platform.Organization;",
+              "import org.apache.commons.collections4.CollectionUtils;",
+              "",
+              "in.availableOrganizations.clear();",
+              "for (Organization org : result.getOrganization()) {",
+              "  if (org.name.contains(in.orgFilterkeyword)) {",
+              "    in.availableOrganizations.add(org);",
+              "  }",
+              "}"
+            ]
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 264, "y" : 432 }
+      },
+      "connect" : [
+        { "id" : "f26", "to" : "f20" }
+      ]
+    }, {
+      "id" : "f74",
+      "type" : "RestClientCall",
+      "name" : [
+        "Load",
+        "Organizations"
+      ],
+      "config" : {
+        "target" : {
+          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "path" : "/Organizations"
+        },
+        "response" : {
+          "entity" : {
+            "type" : "com.docuware.dev.schema._public.services.platform.Organizations",
+            "code" : [
+              "import com.docuware.dev.schema._public.services.platform.Organization;",
+              "import org.apache.commons.lang3.StringUtils;",
+              "in.availableOrganizations = result.getOrganization();",
+              "if (StringUtils.isBlank(in.organizationId)) {",
+              "  Organization organization = result.getOrganization().get(0);",
+              "  in.organizationId = organization.id;",
+              "  in.selectedOrganizations.add(organization);",
+              "} else {",
+              "  for (Organization org : in.availableOrganizations) {",
+              "    if (org.id.equals(in.organizationId)) {",
+              "      in.selectedOrganizations.add(org);",
+              "      break;",
+              "    }",
+              "  }",
+              "}"
+            ]
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 264, "y" : 96 }
+      },
+      "connect" : [
+        { "id" : "f98", "to" : "f81" }
+      ]
+    }, {
+      "id" : "f81",
+      "type" : "RestClientCall",
+      "name" : "Get FileCabinets By Org",
+      "config" : {
+        "target" : {
+          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "path" : "/FileCabinets",
+          "queryParams" : {
+            "orgid" : "in.organizationId"
+          }
+        },
+        "response" : {
+          "entity" : {
+            "type" : "com.docuware.dev.schema._public.services.platform.FileCabinets",
+            "code" : [
+              "import com.docuware.dev.schema._public.services.platform.FileCabinet;",
+              "import org.apache.commons.lang3.StringUtils;",
+              "in.availableFileCabinets = result.getFileCabinet();",
+              "if (StringUtils.isBlank(in.fileCabinetId)) {",
+              "  FileCabinet cabinet = in.availableFileCabinets.get(0);",
+              "  in.selectedFileCabinets.add(cabinet);",
+              "  in.fileCabinetId = cabinet.id;",
+              "} else {",
+              "  for (FileCabinet cabinet : in.availableFileCabinets) {",
+              "    if (cabinet.id.equals(in.fileCabinetId)) {",
+              "      in.selectedFileCabinets.add(cabinet);",
+              "      break;",
+              "    }",
+              "  }",
+              "}"
+            ]
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 432, "y" : 96 }
+      },
+      "connect" : [
+        { "id" : "f92", "to" : "f83" }
+      ]
+    }, {
+      "id" : "f83",
+      "type" : "RestClientCall",
+      "name" : [
+        "Query",
+        "Documents"
+      ],
+      "config" : {
+        "target" : {
+          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "path" : "/FileCabinets/{FileCabinetId}/Documents",
+          "templateParams" : {
+            "FileCabinetId" : "in.fileCabinetId"
+          },
+          "queryParams" : {
+            "q" : "",
+            "fields" : "",
+            "sortOrder" : ""
+          }
+        },
+        "response" : {
+          "entity" : {
+            "type" : "com.docuware.dev.schema._public.services.platform.DocumentsQueryResult",
+            "map" : {
+              "out.documents" : "result.items.getItem()"
+            }
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 592, "y" : 96 }
+      },
+      "connect" : [
+        { "id" : "f27", "to" : "f1" }
+      ]
+    }, {
+      "id" : "f31",
+      "type" : "HtmlDialogMethodStart",
+      "name" : "queryDocs()",
+      "config" : {
+        "signature" : "queryDocs",
+        "guid" : "195887F1D3FF992D"
+      },
+      "visual" : {
+        "at" : { "x" : 112, "y" : 656 }
+      },
+      "connect" : [
+        { "id" : "f34", "to" : "f33" }
+      ]
+    }, {
+      "id" : "f32",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 432, "y" : 656 }
+      }
+    }, {
+      "id" : "f33",
+      "type" : "SubProcessCall",
+      "name" : "Query doc",
+      "config" : {
+        "processCall" : "FileCabinetService:queryDocument(com.axonivy.connector.docuware.connector.DocuWareEndpointConfiguration)",
+        "call" : {
+          "map" : { },
+          "code" : [
+            "import com.docuware.dev.schema._public.services.platform.FileCabinet;",
+            "import com.axonivy.connector.docuware.connector.DocuWareEndpointConfiguration;",
+            "DocuWareEndpointConfiguration configuration;",
+            "for (FileCabinet cabinet : in.selectedFileCabinets) {",
+            "  configuration.fileCabinetIds.add(cabinet.id);",
+            "}",
+            "",
+            "param.configration = configuration;"
+          ]
+        },
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.documents" : "result.documents"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 264, "y" : 656 }
+      },
+      "connect" : [
+        { "id" : "f35", "to" : "f32" }
+      ]
+    }, {
+      "id" : "f39",
+      "type" : "HtmlDialogMethodStart",
+      "name" : "queryFileCabinetByOrgs()",
+      "config" : {
+        "signature" : "queryFileCabinetByOrgs",
+        "input" : {
+          "map" : {
+            "out.documents" : "null"
+          }
+        },
+        "guid" : "1958E3CF0D28D5B8"
+      },
+      "visual" : {
+        "at" : { "x" : 112, "y" : 768 }
+      },
+      "connect" : [
+        { "id" : "f41", "to" : "f42" }
+      ]
+    }, {
+      "id" : "f40",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 432, "y" : 768 },
+        "labelOffset" : { "x" : 10, "y" : 30 }
+      }
+    }, {
+      "id" : "f42",
+      "type" : "SubProcessCall",
+      "name" : "Query FileCabinet by OrgId",
+      "config" : {
+        "processCall" : "FileCabinetService:findAllByMultiOrgs(List<String>)",
+        "call" : {
+          "map" : { },
+          "code" : [
+            "import com.docuware.dev.schema._public.services.platform.Organization;",
+            "List<String> orgIds;",
+            "for (Organization org: in.selectedOrganizations) {",
+            "  orgIds.add(org.id);",
+            "}",
+            "param.organizationIds = orgIds;"
+          ]
+        },
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.availableFileCabinets" : "result.fileCabinets"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 264, "y" : 768 }
+      },
+      "connect" : [
+        { "id" : "f43", "to" : "f40", "color" : "default" }
+      ]
     } ]
 }

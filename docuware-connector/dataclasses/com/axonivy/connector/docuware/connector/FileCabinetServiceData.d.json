@@ -1,0 +1,42 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "simpleName" : "FileCabinetServiceData",
+  "namespace" : "com.axonivy.connector.docuware.connector",
+  "isBusinessCaseData" : false,
+  "fields" : [ {
+    "name" : "error",
+    "type" : "ch.ivyteam.ivy.bpm.error.BpmError",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "configuration",
+    "type" : "com.axonivy.connector.docuware.connector.DocuWareEndpointConfiguration",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "fileCabinetId",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "documents",
+    "type" : "List<com.docuware.dev.schema._public.services.platform.Document>",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "fileCabinets",
+    "type" : "List<com.docuware.dev.schema._public.services.platform.FileCabinet>"
+  }, {
+    "name" : "fileCabinet",
+    "type" : "com.docuware.dev.schema._public.services.platform.FileCabinet",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "fileCabinetIds",
+    "type" : "List<String>",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "organizationId",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "organizationIds",
+    "type" : "List<String>",
+    "modifiers" : [ "PERSISTENT" ]
+  } ]
+}
