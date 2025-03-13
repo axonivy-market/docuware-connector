@@ -5,38 +5,30 @@
   "isBusinessCaseData" : false,
   "fields" : [ {
     "name" : "error",
-    "type" : "ch.ivyteam.ivy.bpm.error.BpmError",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "ch.ivyteam.ivy.bpm.error.BpmError"
   }, {
     "name" : "configuration",
-    "type" : "com.axonivy.connector.docuware.connector.DocuWareEndpointConfiguration",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "com.axonivy.connector.docuware.connector.DocuWareEndpointConfiguration"
   }, {
     "name" : "fileCabinetId",
-    "type" : "String",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "String"
   }, {
     "name" : "documents",
-    "type" : "List<com.docuware.dev.schema._public.services.platform.Document>",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "List<com.docuware.dev.schema._public.services.platform.Document>"
   }, {
     "name" : "fileCabinets",
     "type" : "List<com.docuware.dev.schema._public.services.platform.FileCabinet>"
   }, {
     "name" : "fileCabinet",
-    "type" : "com.docuware.dev.schema._public.services.platform.FileCabinet",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "com.docuware.dev.schema._public.services.platform.FileCabinet"
   }, {
     "name" : "fileCabinetIds",
-    "type" : "List<String>",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "List<String>"
   }, {
     "name" : "organizationId",
-    "type" : "String",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "String"
   }, {
     "name" : "organizationIds",
-    "type" : "List<String>",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "List<String>"
   } ]
 }

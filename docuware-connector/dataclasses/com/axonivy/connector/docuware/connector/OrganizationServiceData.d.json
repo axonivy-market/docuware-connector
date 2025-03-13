@@ -8,11 +8,9 @@
     "type" : "List<com.docuware.dev.schema._public.services.platform.Organization>"
   }, {
     "name" : "orgId",
-    "type" : "String",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "String"
   }, {
     "name" : "organization",
-    "type" : "com.docuware.dev.schema._public.services.platform.Organization",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "com.docuware.dev.schema._public.services.platform.Organization"
   } ]
 }

@@ -63,7 +63,7 @@
     }, {
       "id" : "f31",
       "type" : "RestClientCall",
-      "name" : "download file",
+      "name" : "Find Documents",
       "config" : {
         "target" : {
           "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
