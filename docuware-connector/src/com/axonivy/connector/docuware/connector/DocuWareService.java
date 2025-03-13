@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -24,6 +26,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -204,7 +207,14 @@ public class DocuWareService {
 
   public static DocuWareEndpointConfiguration initializeDefaultConfiguration() {
     DocuWareEndpointConfiguration config = new DocuWareEndpointConfiguration();
-    config.setFileCabinetId(Ivy.var().get("docuwareConnector_filecabinetid"));
+    var fileCabinetId = Ivy.var().get("docuwareConnector_filecabinetid");
+    if (StringUtils.contains(fileCabinetId, DocuWareConstants.SEMICOLON)) {
+      config.setFileCabinetIds(Arrays.asList(fileCabinetId.split(DocuWareConstants.SEMICOLON)));
+      config.setFileCabinetId(config.getFileCabinetIds().get(0));
+    } else {
+      config.setFileCabinetId(fileCabinetId);
+      config.setFileCabinetIds(new ArrayList<>());
+    }
     config.setStoreDialogId(Ivy.var().get("docuwareConnector_storedialogid"));
     return config;
   }
@@ -214,9 +224,15 @@ public class DocuWareService {
     if (StringUtils.isBlank(config.getFileCabinetId())) {
       config.setFileCabinetId(defaultConfig.getFileCabinetId());
     }
+    if (CollectionUtils.isEmpty(config.getFileCabinetIds())) {
+      config.setFileCabinetIds(defaultConfig.getFileCabinetIds());
+    }
+    config.setFileCabinetIds(config.getFileCabinetIds().stream().filter(StringUtils::isNoneBlank).distinct().toList());
+
     if (StringUtils.isBlank(config.getStoreDialogId())) {
       config.setStoreDialogId(defaultConfig.getStoreDialogId());
     }
     return config;
   }
+
 }
