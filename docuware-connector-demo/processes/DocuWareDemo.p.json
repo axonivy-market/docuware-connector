@@ -1093,12 +1093,6 @@
       "name" : "viewAndEditDocument.ivp",
       "config" : {
         "signature" : "viewAndEditDocument",
-        "input" : {
-          "map" : {
-            "out.cabinetId" : "ivy.var.docuwareConnector_filecabinetid",
-            "out.organizationId" : "ivy.var.docuwareConnector_organization"
-          }
-        },
         "request" : {
           "name" : "DocuWare View/Edit Document",
           "description" : "UI for viewing or editing document"

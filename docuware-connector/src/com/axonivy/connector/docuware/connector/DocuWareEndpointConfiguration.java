@@ -6,6 +6,7 @@ import java.util.List;
 import com.axonivy.connector.docuware.connector.enums.GrantType;
 
 public class DocuWareEndpointConfiguration {
+  private String instance;
   private String host;
   private GrantType grantType;
   private String username;
@@ -20,7 +21,18 @@ public class DocuWareEndpointConfiguration {
   private String accessToken;
   private String loginToken;
 
-  public DocuWareEndpointConfiguration() {
+  public DocuWareEndpointConfiguration() { }
+  
+  public DocuWareEndpointConfiguration(String instance) {
+    this.instance = instance;
+  }
+
+  public String getInstance() {
+    return instance;
+  }
+
+  public void setInstance(String instance) {
+    this.instance = instance;
   }
 
   public String getHost() {
@@ -129,8 +141,8 @@ public class DocuWareEndpointConfiguration {
 
   @Override
   public String toString() {
-    return String.format("host: %s / username: %s / organization: %s / filecabinet: %s / storeDialogId: %s / connectTimeout: %d",
-        host, username, organization, Arrays.asList(fileCabinetId, fileCabinetIds), storeDialogId, connectTimeout);
+    return String.format("instance: %s / host: %s / username: %s / organization: %s / filecabinet: %s / storeDialogId: %s / connectTimeout: %d",
+        instance, host, username, organization, Arrays.asList(fileCabinetId, fileCabinetIds), storeDialogId, connectTimeout);
   }
 
 }

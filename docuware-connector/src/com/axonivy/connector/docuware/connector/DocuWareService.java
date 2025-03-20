@@ -37,6 +37,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
+import com.axonivy.connector.docuware.connector.auth.oauth.VarTokenStore;
 import com.axonivy.connector.docuware.connector.enums.DocuWareVariable;
 import com.axonivy.connector.docuware.connector.utils.DocuWareUtils;
 import com.axonivy.connector.docuware.connector.utils.JsonUtils;
@@ -45,6 +46,7 @@ import com.docuware.dev.schema._public.services.platform.DocumentIndexField;
 
 import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.scripting.objects.File;
+import ch.ivyteam.ivy.vars.Variables;
 
 public class DocuWareService {
 
@@ -238,7 +240,19 @@ public class DocuWareService {
   }
 
   public List<String> collectAvailableIntances() {
-    return DocuWareUtils.extractVariableByName(DocuWareVariable.HOST).keySet().stream().toList();
+    final int INSTANCE_NAME_INDEX = 2;
+    List<String> instances = new ArrayList<>();
+    Variables.current().all().stream()
+        .filter(var -> var.name().startsWith(DocuWareConstants.INSTANCE_PATTERN))
+        .forEach(variable -> {
+          // The expected value should be docuwareConnector.instances.key
+          var variableNameArrays = variable.name().split("\\.");
+          if (variableNameArrays.length > INSTANCE_NAME_INDEX
+              && !instances.contains(variableNameArrays[INSTANCE_NAME_INDEX])) {
+            instances.add(variableNameArrays[INSTANCE_NAME_INDEX]);
+          }
+        });
+    return instances.stream().distinct().toList();
   }
 
   public DocuWareEndpointConfiguration defaultInstance() {
@@ -247,10 +261,13 @@ public class DocuWareService {
 
   public DocuWareEndpointConfiguration initializeConfigurationForInstance(String instanceName) {
     DocuWareEndpointConfiguration config = DocuWareUtils.extractVariableByInstanceName(instanceName);
-    String currentHost = Ivy.var().get(DocuWareVariable.HOST.getVariableName());
-    if (StringUtils.isNoneBlank(config.getHost()) && !config.getHost().equals(currentHost)) {
-      DocuWareUtils.updateVariable(DocuWareVariable.HOST, currentHost);
-      Ivy.log().warn("DocuWareService: Changed DocuWare Host from {0} to {1}", currentHost, config.getHost());
+    String currentDefaultInstance = Ivy.var().get(DocuWareVariable.DEFAULT_INSTANCE.getVariableName());
+    if (StringUtils.isNoneBlank(config.getInstance()) && !config.getInstance().equals(currentDefaultInstance)) {
+      Ivy.log().warn("DocuWareService: Changed DefaultInstance from {0} to {1}", currentDefaultInstance, config.getInstance());
+      DocuWareUtils.setIvyVar(DocuWareVariable.DEFAULT_INSTANCE, currentDefaultInstance);
+      Ivy.log().warn("DocuWareService: remove access token of instance {0}", currentDefaultInstance);
+      VarTokenStore accessTokenStore = VarTokenStore.get(DocuWareVariable.ACCESS_TOKEN.getVariableName());
+      accessTokenStore.setToken(null);
     }
     return config;
   }

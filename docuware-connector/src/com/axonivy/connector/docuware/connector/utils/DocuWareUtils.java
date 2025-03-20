@@ -1,8 +1,8 @@
 package com.axonivy.connector.docuware.connector.utils;
 
+import static com.axonivy.connector.docuware.connector.DocuWareConstants.INSTANCE_PROPERTY_PATTERN;
+
 import java.net.URI;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -19,13 +19,8 @@ import com.axonivy.connector.docuware.connector.enums.GrantType;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import ch.ivyteam.ivy.environment.Ivy;
-import ch.ivyteam.ivy.vars.Variable;
-import ch.ivyteam.ivy.vars.Variables;
 
 public class DocuWareUtils {
-
-  private static final String INSTANCES = "instances";
-  private static final String INSTANCE_VAR_PATTERN = DocuWareVariable.ROOT.variableKey + "." + INSTANCES + ".%s.%s";
 
   private DocuWareUtils() { }
 
@@ -35,6 +30,10 @@ public class DocuWareUtils {
 
   public static String setIvyVar(DocuWareVariable variable, String value) {
     return Ivy.var().set(variable.getVariableName(), value);
+  }
+
+  public static String getVariableValueByInstance(String instanceName, DocuWareVariable variable) {
+    return Ivy.var().get(String.format(INSTANCE_PROPERTY_PATTERN, instanceName, variable.variableKey));
   }
 
   public static JsonNode getWebTargetResponseAsJsonNode(URI targetURI) {
@@ -68,38 +67,13 @@ public class DocuWareUtils {
         """;
   }
 
-  public static Map<String, Variable> extractVariableByName(DocuWareVariable docuWareVariable) {
-    Map<String, Variable> docuWareVariables = new HashMap<>();
-    for (var variable : Variables.current().all().stream().sorted((v1, v2) -> v1.name().compareTo(v2.name())).toList()) {
-      String variableName = variable.name();
-      if (variableName.startsWith(DocuWareVariable.ROOT.variableKey)) {
-        // The expected value should be docuwareConnector.instances.key or docuwareConnector.key for old structure
-        var variableNameArrays = variableName.split("\\.");
-        DocuWareVariable docuWareVar = null;
-        if (variableName.contains(INSTANCES)) {
-          docuWareVar = DocuWareVariable.of(variableNameArrays[3]);
-          if (docuWareVar == docuWareVariable) {
-            docuWareVariables.put(variableNameArrays[2], variable);
-          }
-        } else {
-          // For old variables
-          docuWareVar = DocuWareVariable.of(variableNameArrays[1]);
-          if (docuWareVar == docuWareVariable) {
-            docuWareVariables.put(variableNameArrays[1], variable);
-          }
-        }
-      }
-    }
-    return docuWareVariables;
-  }
-
   public static DocuWareEndpointConfiguration getDefaultInstance() {
     var defaultInstanceName = Ivy.var().get(DocuWareVariable.DEFAULT_INSTANCE.getVariableName());
     return extractVariableByInstanceName(defaultInstanceName);
   }
 
   public static DocuWareEndpointConfiguration extractVariableByInstanceName(String instanceName) {
-    var config = new DocuWareEndpointConfiguration();
+    var config = new DocuWareEndpointConfiguration(instanceName);
     for (var docuVar : DocuWareVariable.values()) {
       getInstanceConfiguration(config, instanceName, docuVar);
     }
@@ -148,13 +122,5 @@ public class DocuWareUtils {
       break;
     }
     return config;
-  }
-
-  public static String getVariableValueByInstance(String instanceName, DocuWareVariable variable) {
-    return Ivy.var().get(String.format(INSTANCE_VAR_PATTERN, instanceName, variable.variableKey));
-  }
-
-  public static void updateVariable(DocuWareVariable variable, String value) {
-    Ivy.var().set(variable.getVariableName(), value);
   }
 }

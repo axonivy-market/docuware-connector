@@ -7,9 +7,36 @@
 # '<project>/Config/_<environment>/variables.yaml
 #
 Variables:
-  docuwareConnector:
-    host: ''
-    username: ''
-    password: ''
-    organization: ''
-    fileCabinetId: ''
+    host: presales-axonivy.docuware.cloud
+    grantType: 'password'
+    username: 'presales.axonivy'
+    password: 'C4F9!0a094'
+    trustedUserName: 'presales.axonivy'
+    trustedUserPassword: 'C4F9!0a094'
+    fileCabinetId: '4b4be7af-629f-4340-82cb-126d249d2b95'
+    defaultInstance: primary
+    instances:
+      primary:
+        host: 'localhost'
+        grantType: 'password'
+        username: 'test'
+        password: ''
+        organization: ''
+        fileCabinetId: ''
+        connectTimeout: 0
+
+      hdsupply-could:
+        host: 'hdsupply.docuware.cloud'
+        grantType: 'password'
+        username: 'service-xxxx'
+        password: ''
+        organization: '949bfb89-xxxx'
+        fileCabinetId: 'e0e3ecbd-xxxxx'
+
+      presale-clound:
+        host: 'presales-axonivy.docuware.cloud'
+        grantType: 'password'
+        username: 'presales.xxxx'
+        password: ''
+        organization: ''
+        fileCabinetId: '4b4be7af-xxxxx'

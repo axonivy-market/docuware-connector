@@ -1,5 +1,7 @@
 package com.axonivy.connector.docuware.connector.enums;
 
+import java.util.stream.Stream;
+
 import ch.ivyteam.ivy.environment.Ivy;
 
 public enum DocuWareVariable {
@@ -32,11 +34,6 @@ public enum DocuWareVariable {
   }
 
   public static DocuWareVariable of(String variableName) {
-    for (var variable : values()) {
-      if (variable.variableKey.equals(variableName)) {
-        return variable;
-      }
-    }
-    return null;
+    return Stream.of(values()).filter(var -> var.variableKey.equals(variableName)).findAny().orElse(null);
   }
 }

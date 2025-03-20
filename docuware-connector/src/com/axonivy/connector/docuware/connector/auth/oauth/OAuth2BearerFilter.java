@@ -2,6 +2,8 @@
 package com.axonivy.connector.docuware.connector.auth.oauth;
 
 import static com.axonivy.connector.docuware.connector.utils.DocuWareUtils.getIvyVar;
+import static org.apache.commons.lang3.StringUtils.isBlank;
+import static org.apache.commons.lang3.StringUtils.isNoneBlank;
 
 import java.io.IOException;
 import java.util.Map;
@@ -12,9 +14,13 @@ import javax.ws.rs.client.ClientRequestContext;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response.Status.Family;
 
+import org.apache.commons.lang3.StringUtils;
+
+import com.axonivy.connector.docuware.connector.DocuWareEndpointConfiguration;
 import com.axonivy.connector.docuware.connector.auth.oauth.OAuth2TokenRequester.AuthContext;
 import com.axonivy.connector.docuware.connector.enums.DocuWareVariable;
 import com.axonivy.connector.docuware.connector.enums.GrantType;
+import com.axonivy.connector.docuware.connector.utils.DocuWareUtils;
 
 import ch.ivyteam.ivy.bpm.error.BpmError;
 import ch.ivyteam.ivy.bpm.error.BpmPublicErrorBuilder;
@@ -73,6 +79,7 @@ public class OAuth2BearerFilter implements javax.ws.rs.client.ClientRequestFilte
   }
 
   private Token getNewAccessToken(Client client, FeatureConfig config) {
+    loadMandatoryConfigurationByActiveInstance();
     String type = getIvyVar(DocuWareVariable.GRANT_TYPE);
     GrantType grantType = Optional.ofNullable(GrantType.of(type)).orElse(GrantType.PASSWORD);
 
@@ -87,6 +94,46 @@ public class OAuth2BearerFilter implements javax.ws.rs.client.ClientRequestFilte
     throw authError().withMessage("Failed to get access token: " + response)
         .withAttribute("status", response.getStatus()).withAttribute("payload", response.readEntity(String.class))
         .build();
+  }
+
+  private void loadMandatoryConfigurationByActiveInstance() {
+    DocuWareEndpointConfiguration defaultConfiguration = DocuWareUtils.getDefaultInstance();
+    // Load configuration for Host
+    String activeHost = DocuWareUtils.getIvyVar(DocuWareVariable.HOST);
+    if (isNoneBlank(defaultConfiguration.getHost())
+        && (isBlank(activeHost) || !activeHost.equals(defaultConfiguration.getHost()))) {
+      DocuWareUtils.setIvyVar(DocuWareVariable.HOST, defaultConfiguration.getHost());
+    }
+    // Load configuration for Grant Type
+    GrantType activeGrantType = GrantType.of(DocuWareUtils.getIvyVar(DocuWareVariable.GRANT_TYPE));
+    if (defaultConfiguration.getGrantType() != null
+        && (activeGrantType == null || activeGrantType != defaultConfiguration.getGrantType())) {
+      DocuWareUtils.setIvyVar(DocuWareVariable.GRANT_TYPE, defaultConfiguration.getGrantType().getCode());
+    }
+    // Load configuration for User name
+    String activeUsername = DocuWareUtils.getIvyVar(DocuWareVariable.USERNAME);
+    if (isNoneBlank(defaultConfiguration.getUsername())
+        && (isBlank(activeUsername) || !activeUsername.equals(defaultConfiguration.getUsername()))) {
+      DocuWareUtils.setIvyVar(DocuWareVariable.USERNAME, defaultConfiguration.getUsername());
+    }
+    // Load configuration for Password
+    String activePassword = DocuWareUtils.getIvyVar(DocuWareVariable.PASSWORD);
+    if (isNoneBlank(defaultConfiguration.getPassword())
+        && (isBlank(activePassword) || !activePassword.equals(defaultConfiguration.getPassword()))) {
+      DocuWareUtils.setIvyVar(DocuWareVariable.PASSWORD, defaultConfiguration.getPassword());
+    }
+    // Load configuration for Trusted user name
+    String activeTrustedUsername = DocuWareUtils.getIvyVar(DocuWareVariable.TRUSTED_USERNAME);
+    if (isNoneBlank(defaultConfiguration.getTrustedUserName())
+        && (isBlank(activeTrustedUsername) || !activeTrustedUsername.equals(defaultConfiguration.getTrustedUserName()))) {
+      DocuWareUtils.setIvyVar(DocuWareVariable.TRUSTED_USERNAME, defaultConfiguration.getTrustedUserName());
+    }
+    // Load configuration for Trusted password
+    String activeTrustedPassword = DocuWareUtils.getIvyVar(DocuWareVariable.TRUSTED_USER_PASSWORD);
+    if (isNoneBlank(defaultConfiguration.getTrustedUserPassword())
+        && isBlank(activeTrustedPassword) || !activeTrustedPassword.equals(defaultConfiguration.getTrustedUserPassword())) {
+      DocuWareUtils.setIvyVar(DocuWareVariable.TRUSTED_USER_PASSWORD, defaultConfiguration.getTrustedUserPassword());
+    }
   }
 
   private static BpmPublicErrorBuilder authError() {
