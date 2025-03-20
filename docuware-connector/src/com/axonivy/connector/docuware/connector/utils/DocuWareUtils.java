@@ -1,6 +1,17 @@
 package com.axonivy.connector.docuware.connector.utils;
 
 import static com.axonivy.connector.docuware.connector.DocuWareConstants.INSTANCE_PROPERTY_PATTERN;
+import static com.axonivy.connector.docuware.connector.enums.DocuWareVariable.ACCESS_TOKEN;
+import static com.axonivy.connector.docuware.connector.enums.DocuWareVariable.CONNECT_TIMEOUT;
+import static com.axonivy.connector.docuware.connector.enums.DocuWareVariable.DEFAULT_INSTANCE;
+import static com.axonivy.connector.docuware.connector.enums.DocuWareVariable.FILE_CABINET_ID;
+import static com.axonivy.connector.docuware.connector.enums.DocuWareVariable.GRANT_TYPE;
+import static com.axonivy.connector.docuware.connector.enums.DocuWareVariable.HOST;
+import static com.axonivy.connector.docuware.connector.enums.DocuWareVariable.LOGIN_TOKEN;
+import static com.axonivy.connector.docuware.connector.enums.DocuWareVariable.PASSWORD;
+import static com.axonivy.connector.docuware.connector.enums.DocuWareVariable.TRUSTED_USERNAME;
+import static com.axonivy.connector.docuware.connector.enums.DocuWareVariable.TRUSTED_USER_PASSWORD;
+import static com.axonivy.connector.docuware.connector.enums.DocuWareVariable.USERNAME;
 
 import java.net.URI;
 
@@ -33,7 +44,20 @@ public class DocuWareUtils {
   }
 
   public static String getVariableValueByInstance(String instanceName, DocuWareVariable variable) {
-    return Ivy.var().get(String.format(INSTANCE_PROPERTY_PATTERN, instanceName, variable.variableKey));
+    return Ivy.var().get(buildVariableKeyForInstance(instanceName, variable));
+  }
+  
+  public static String setVariableByInstance(String instanceName, DocuWareVariable variable, String value) {
+    return Ivy.var().set(buildVariableKeyForInstance(instanceName, variable), value);
+  }
+
+  private static String buildVariableKeyForInstance(String instanceName, DocuWareVariable variable) {
+    return String.format(INSTANCE_PROPERTY_PATTERN, instanceName, variable.variableKey);
+  }
+  
+  public static String getActiveVariableValue(DocuWareVariable variable) {
+    var defaultInstanceName = Ivy.var().get(DEFAULT_INSTANCE.getVariableName());
+    return getVariableValueByInstance(defaultInstanceName, variable);
   }
 
   public static JsonNode getWebTargetResponseAsJsonNode(URI targetURI) {
@@ -68,7 +92,7 @@ public class DocuWareUtils {
   }
 
   public static DocuWareEndpointConfiguration getDefaultInstance() {
-    var defaultInstanceName = Ivy.var().get(DocuWareVariable.DEFAULT_INSTANCE.getVariableName());
+    var defaultInstanceName = Ivy.var().get(DEFAULT_INSTANCE.getVariableName());
     return extractVariableByInstanceName(defaultInstanceName);
   }
 
@@ -87,36 +111,36 @@ public class DocuWareUtils {
     }
     switch (variable) {
     case HOST:
-      config.setHost(getVariableValueByInstance(instanceName, DocuWareVariable.HOST));
+      config.setHost(getVariableValueByInstance(instanceName, HOST));
       break;
     case GRANT_TYPE:
-      String grantType = getVariableValueByInstance(instanceName, DocuWareVariable.GRANT_TYPE);
+      String grantType = getVariableValueByInstance(instanceName, GRANT_TYPE);
       config.setGrantType(GrantType.of(grantType));
       break;
     case USERNAME:
-      config.setUsername(getVariableValueByInstance(instanceName, DocuWareVariable.USERNAME));
+      config.setUsername(getVariableValueByInstance(instanceName, USERNAME));
       break;
     case PASSWORD:
-      config.setPassword(getVariableValueByInstance(instanceName, DocuWareVariable.PASSWORD));
+      config.setPassword(getVariableValueByInstance(instanceName, PASSWORD));
       break;
     case CONNECT_TIMEOUT:
-      String connectTimeout = getVariableValueByInstance(instanceName, DocuWareVariable.CONNECT_TIMEOUT);
+      String connectTimeout = getVariableValueByInstance(instanceName, CONNECT_TIMEOUT);
       config.setConnectTimeout(NumberUtils.isCreatable(connectTimeout) ? NumberUtils.toInt(connectTimeout) : 0);
       break;
     case TRUSTED_USERNAME:
-      config.setTrustedUserName(getVariableValueByInstance(instanceName, DocuWareVariable.TRUSTED_USERNAME));
+      config.setTrustedUserName(getVariableValueByInstance(instanceName, TRUSTED_USERNAME));
       break;
     case TRUSTED_USER_PASSWORD:
-      config.setTrustedUserPassword(getVariableValueByInstance(instanceName, DocuWareVariable.TRUSTED_USER_PASSWORD));
+      config.setTrustedUserPassword(getVariableValueByInstance(instanceName, TRUSTED_USER_PASSWORD));
       break;
     case ACCESS_TOKEN:
-      config.setAccessToken(getVariableValueByInstance(instanceName, DocuWareVariable.ACCESS_TOKEN));
+      config.setAccessToken(getVariableValueByInstance(instanceName, ACCESS_TOKEN));
       break;
     case FILE_CABINET_ID:
-      config.setFileCabinetId(getVariableValueByInstance(instanceName, DocuWareVariable.FILE_CABINET_ID));
+      config.setFileCabinetId(getVariableValueByInstance(instanceName, FILE_CABINET_ID));
       break;
     case LOGIN_TOKEN:
-      config.setLoginToken(getVariableValueByInstance(instanceName, DocuWareVariable.LOGIN_TOKEN));
+      config.setLoginToken(getVariableValueByInstance(instanceName, LOGIN_TOKEN));
       break;
     default:
       break;

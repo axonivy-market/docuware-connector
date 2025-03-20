@@ -1,6 +1,8 @@
 package com.axonivy.connector.docuware.connector.auth;
 
 import static com.axonivy.connector.docuware.connector.utils.DocuWareUtils.getIvyVar;
+import static org.apache.commons.lang3.StringUtils.isBlank;
+import static org.apache.commons.lang3.StringUtils.isNoneBlank;
 
 import java.util.List;
 import java.util.Objects;
@@ -13,6 +15,8 @@ import javax.ws.rs.core.MultivaluedHashMap;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 
+import com.axonivy.connector.docuware.connector.DocuWareEndpointConfiguration;
+import com.axonivy.connector.docuware.connector.DocuWareService;
 import com.axonivy.connector.docuware.connector.auth.oauth.IdentityServiceContext;
 import com.axonivy.connector.docuware.connector.auth.oauth.OAuth2BearerFilter;
 import com.axonivy.connector.docuware.connector.auth.oauth.OAuth2TokenRequester.AuthContext;
@@ -20,23 +24,23 @@ import com.axonivy.connector.docuware.connector.auth.oauth.OAuth2UriProperty;
 import com.axonivy.connector.docuware.connector.constant.Constants;
 import com.axonivy.connector.docuware.connector.enums.DocuWareVariable;
 import com.axonivy.connector.docuware.connector.enums.GrantType;
+import com.axonivy.connector.docuware.connector.utils.DocuWareUtils;
 
+import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.rest.client.FeatureConfig;
+import ch.ivyteam.ivy.vars.Variable;
 
 public class OAuth2Feature implements Feature {
 
   public static interface Property {
     String HOST = "PATH.host";
-    String USERNAME = "UserName";
-    String PASSWORD = "Password";
-    String TRUSTED_USERNAME = "TrustedUserName";
-    String TRUSTED_PASSWORD = "TrustedUserPassword";
     String CLIENT_ID = "docuware.platform.net.client";
     String SCOPE = "docuware.platform";
   }
 
   @Override
   public boolean configure(FeatureContext context) {
+    DocuWareService.unifyConfigurationByInstance();
     var config = new FeatureConfig(context.getConfiguration(), OAuth2Feature.class);
     var identityServiceContext = new IdentityServiceContext(config);
     var docuWareTokenEndpoint = new OAuth2UriProperty(config, identityServiceContext.identifyTokenEndpointUrl());
@@ -57,19 +61,19 @@ public class OAuth2Feature implements Feature {
     GrantType grantType = ctxt.grantType().orElse(GrantType.PASSWORD);
     switch (grantType) {
     case PASSWORD:
-      var username = ctxt.config.readMandatory(Property.USERNAME);
-      var password = ctxt.config.readMandatory(Property.PASSWORD);
+      var username = DocuWareUtils.getActiveVariableValue(DocuWareVariable.USERNAME);
+      var password = DocuWareUtils.getActiveVariableValue(DocuWareVariable.PASSWORD);
       AccessTokenByPasswordRequest passwordRequest = new AccessTokenByPasswordRequest(username, password);
       paramsMap = passwordRequest.paramsMap();
       break;
     case TRUSTED:
-      var trustedUsername = ctxt.config.readMandatory(Property.TRUSTED_USERNAME);
-      var trustedPassword = ctxt.config.readMandatory(Property.TRUSTED_PASSWORD);
+      var trustedUsername = DocuWareUtils.getActiveVariableValue(DocuWareVariable.TRUSTED_USERNAME);
+      var trustedPassword = DocuWareUtils.getActiveVariableValue(DocuWareVariable.TRUSTED_USER_PASSWORD);
       AccessTokenByTrustedRequest trustedRequest = new AccessTokenByTrustedRequest(trustedUsername, trustedPassword);
       paramsMap = trustedRequest.paramsMap();
       break;
     case DW_TOKEN:
-      var loginToken = getIvyVar(DocuWareVariable.LOGIN_TOKEN);
+      var loginToken = DocuWareUtils.getActiveVariableValue(DocuWareVariable.LOGIN_TOKEN);
       Objects.requireNonNull(loginToken);
 
       AccessTokenByLoginTokenRequest dwRequest = new AccessTokenByLoginTokenRequest(loginToken);

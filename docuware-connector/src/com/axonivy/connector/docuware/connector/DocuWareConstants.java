@@ -10,6 +10,7 @@ public class DocuWareConstants {
   public static final String PROPERTY_CONTENT_TYPE3 = "contentType";
   public static final String RESPONSE_STATUS_CODE_ATTRIBUTE = "RestClientResponseStatusCode";
   public static final String SEMICOLON = ";";
+  public static final String ARCHIVED_INSTANCE = "archivedInstance";
   public static final String INSTANCES = "instances";
   public static final String INSTANCE_PATTERN = DocuWareVariable.ROOT.variableKey + "." + INSTANCES + ".";
   public static final String INSTANCE_PROPERTY_PATTERN = INSTANCE_PATTERN + "%s.%s";

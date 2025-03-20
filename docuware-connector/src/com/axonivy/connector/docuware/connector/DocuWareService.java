@@ -1,5 +1,21 @@
 package com.axonivy.connector.docuware.connector;
 
+import static com.axonivy.connector.docuware.connector.DocuWareConstants.ARCHIVED_INSTANCE;
+import static com.axonivy.connector.docuware.connector.enums.DocuWareVariable.ACCESS_TOKEN;
+import static com.axonivy.connector.docuware.connector.enums.DocuWareVariable.CONNECT_TIMEOUT;
+import static com.axonivy.connector.docuware.connector.enums.DocuWareVariable.DEFAULT_INSTANCE;
+import static com.axonivy.connector.docuware.connector.enums.DocuWareVariable.FILE_CABINET_ID;
+import static com.axonivy.connector.docuware.connector.enums.DocuWareVariable.GRANT_TYPE;
+import static com.axonivy.connector.docuware.connector.enums.DocuWareVariable.HOST;
+import static com.axonivy.connector.docuware.connector.enums.DocuWareVariable.LOGIN_TOKEN;
+import static com.axonivy.connector.docuware.connector.enums.DocuWareVariable.PASSWORD;
+import static com.axonivy.connector.docuware.connector.enums.DocuWareVariable.STORE_DIALOG_ID;
+import static com.axonivy.connector.docuware.connector.enums.DocuWareVariable.TRUSTED_USERNAME;
+import static com.axonivy.connector.docuware.connector.enums.DocuWareVariable.TRUSTED_USER_PASSWORD;
+import static com.axonivy.connector.docuware.connector.enums.DocuWareVariable.USERNAME;
+import static org.apache.commons.lang3.StringUtils.EMPTY;
+import static com.axonivy.connector.docuware.connector.utils.DocuWareUtils.*;
+
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -30,6 +46,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.glassfish.jersey.media.multipart.Boundary;
 import org.glassfish.jersey.media.multipart.FormDataMultiPart;
 import org.glassfish.jersey.media.multipart.file.StreamDataBodyPart;
@@ -39,6 +56,7 @@ import org.xml.sax.SAXException;
 
 import com.axonivy.connector.docuware.connector.auth.oauth.VarTokenStore;
 import com.axonivy.connector.docuware.connector.enums.DocuWareVariable;
+import com.axonivy.connector.docuware.connector.enums.GrantType;
 import com.axonivy.connector.docuware.connector.utils.DocuWareUtils;
 import com.axonivy.connector.docuware.connector.utils.JsonUtils;
 import com.docuware.dev.schema._public.services.platform.Document;
@@ -60,7 +78,7 @@ public class DocuWareService {
   private static final String CONTENT_DISPOSITION = "Content-Disposition";
   private static final String RESPONSE_XML_ERROR_NODE = "Error";
   private static final String RESPONSE_XML_MESSAGE_NODE = "Message";
-  private static final String STORE_DIALOG_ID = "storeDialogId";
+  private static final String STORE_DIALOG_ID_PARAM = "storeDialogId";
   private static final DocuWareService INSTANCE = new DocuWareService();
 
   public static DocuWareService get() {
@@ -136,7 +154,7 @@ public class DocuWareService {
     MediaType contentType = MediaType.MULTIPART_FORM_DATA_TYPE;
     contentType = Boundary.addBoundary(contentType);
     if(StringUtils.isNotBlank(configuration.getStoreDialogId())) {
-  	  target = target.queryParam(STORE_DIALOG_ID, configuration.getStoreDialogId());
+  	  target = target.queryParam(STORE_DIALOG_ID_PARAM, configuration.getStoreDialogId());
   	}
     Response response = prepareRestClient(target, configuration).post(Entity.entity(multipart, contentType));
     FileUtils.forceDelete(propertiesFile.getJavaFile());
@@ -261,14 +279,77 @@ public class DocuWareService {
 
   public DocuWareEndpointConfiguration initializeConfigurationForInstance(String instanceName) {
     DocuWareEndpointConfiguration config = DocuWareUtils.extractVariableByInstanceName(instanceName);
-    String currentDefaultInstance = Ivy.var().get(DocuWareVariable.DEFAULT_INSTANCE.getVariableName());
+    String currentDefaultInstance = getIvyVar(DEFAULT_INSTANCE);
     if (StringUtils.isNoneBlank(config.getInstance()) && !config.getInstance().equals(currentDefaultInstance)) {
       Ivy.log().warn("DocuWareService: Changed DefaultInstance from {0} to {1}", currentDefaultInstance, config.getInstance());
-      DocuWareUtils.setIvyVar(DocuWareVariable.DEFAULT_INSTANCE, currentDefaultInstance);
+      setIvyVar(DEFAULT_INSTANCE, currentDefaultInstance);
       Ivy.log().warn("DocuWareService: remove access token of instance {0}", currentDefaultInstance);
-      VarTokenStore accessTokenStore = VarTokenStore.get(DocuWareVariable.ACCESS_TOKEN.getVariableName());
+      VarTokenStore accessTokenStore = VarTokenStore.get(ACCESS_TOKEN.getVariableName());
       accessTokenStore.setToken(null);
     }
     return config;
   }
+
+  /**
+   * This method unify the old variable to default instance
+   * And fill-in the mandatory properties
+   */
+  public static DocuWareEndpointConfiguration unifyConfigurationByInstance() {
+    DocuWareEndpointConfiguration configuration = null;
+    var defaultInstanceName = Ivy.var().get(DEFAULT_INSTANCE.getVariableName());
+    if (StringUtils.isNoneBlank(defaultInstanceName)) {
+      configuration = extractVariableByInstanceName(defaultInstanceName);
+    } else {
+      // For old structure, try to collect all vars and backup to default
+      // Then clean up it, only keep the host and connectTimeout due to RestClient properties
+      configuration = new DocuWareEndpointConfiguration();
+      configuration.setHost(getIvyVar(HOST));
+      setVariableByInstance(ARCHIVED_INSTANCE, HOST, configuration.getHost());
+      setIvyVar(DEFAULT_INSTANCE, ARCHIVED_INSTANCE);
+
+      String archivedGrantType = getIvyVar(GRANT_TYPE);
+      configuration.setGrantType(GrantType.of(archivedGrantType));
+      setVariableByInstance(ARCHIVED_INSTANCE, GRANT_TYPE, archivedGrantType);
+      setIvyVar(GRANT_TYPE, EMPTY);
+
+      configuration.setUsername(getIvyVar(USERNAME));
+      setVariableByInstance(ARCHIVED_INSTANCE, USERNAME, configuration.getUsername());
+      setIvyVar(USERNAME, EMPTY);
+
+      configuration.setPassword(getIvyVar(PASSWORD));
+      setVariableByInstance(ARCHIVED_INSTANCE, PASSWORD, configuration.getPassword());
+      setIvyVar(PASSWORD, EMPTY);
+
+      configuration.setTrustedUserName(getIvyVar(TRUSTED_USERNAME));
+      setVariableByInstance(ARCHIVED_INSTANCE, TRUSTED_USERNAME, configuration.getTrustedUserName());
+      setIvyVar(TRUSTED_USERNAME, EMPTY);
+
+      configuration.setTrustedUserPassword(getIvyVar(TRUSTED_USER_PASSWORD));
+      setVariableByInstance(ARCHIVED_INSTANCE, TRUSTED_USER_PASSWORD, configuration.getTrustedUserPassword());
+      setIvyVar(TRUSTED_USER_PASSWORD, EMPTY);
+
+      configuration.setAccessToken(getIvyVar(ACCESS_TOKEN));
+      setVariableByInstance(ARCHIVED_INSTANCE, ACCESS_TOKEN, configuration.getAccessToken());
+      setIvyVar(ACCESS_TOKEN, EMPTY);
+
+      configuration.setLoginToken(getIvyVar(LOGIN_TOKEN));
+      setVariableByInstance(ARCHIVED_INSTANCE, LOGIN_TOKEN, configuration.getLoginToken());
+      setIvyVar(LOGIN_TOKEN, EMPTY);
+
+      configuration.setFileCabinetId(getIvyVar(FILE_CABINET_ID));
+      setVariableByInstance(ARCHIVED_INSTANCE, FILE_CABINET_ID, configuration.getFileCabinetId());
+      setIvyVar(FILE_CABINET_ID, EMPTY);
+
+      configuration.setStoreDialogId(getIvyVar(STORE_DIALOG_ID));
+      setVariableByInstance(ARCHIVED_INSTANCE, STORE_DIALOG_ID, configuration.getStoreDialogId());
+      setIvyVar(STORE_DIALOG_ID, EMPTY);
+
+      String archivedConnectTimeout = getIvyVar(CONNECT_TIMEOUT);
+      configuration.setConnectTimeout(NumberUtils.isCreatable(archivedConnectTimeout)
+          ? NumberUtils.createInteger(archivedConnectTimeout) : 0);
+      setVariableByInstance(ARCHIVED_INSTANCE, CONNECT_TIMEOUT, archivedConnectTimeout);
+    }
+    return configuration;
+  }
+
 }
