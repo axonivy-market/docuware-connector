@@ -29,20 +29,25 @@ Dialogs:
                   TitleHeaderText: Title
                 FileCabinet: File Cabinet
                 Filter: Filter
+                HelpText: This demo will show you how DocuWare is on for multi-instances by providing a selection dropdown to select a wish instance and query all documents belonging to that instance by organizations and file cabinet.
                 Organization: Organization
                 PleaseSelect: Please select...
+                PleaseSelectInstance: Please select the instance first...
+                PleaseSelectOrg: Please select the Organization first...
                 PropertyTable:
                   FieldNameHeaderText: Field Name
                   IndexHeaderText: Index
                   UpdateValueHeaderText: Update Value
                 Refresh: Refresh
                 Title: DocuWare Demo UI
+                VariableHelpText: We can configure multi-instances via config/variables.yaml file.
 Labels:
   CabinetId: 'Cabinet Id: {0}'
   Cancel: Cancel
   Close: Close
   Failed: Failed
   FileCabinets: File Cabinets
+  Instance: Instance
   'NO':
     name: 'No'
   NoRecordsFound: No records found. Please try a different search.

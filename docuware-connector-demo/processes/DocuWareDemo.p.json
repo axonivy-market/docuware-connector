@@ -1124,7 +1124,8 @@
         "dialog" : "com.axonivy.connector.docuware.connector.demo.DocuWareDemoUI:start()"
       },
       "visual" : {
-        "at" : { "x" : 200, "y" : 880 }
+        "at" : { "x" : 200, "y" : 880 },
+        "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
         { "id" : "f100", "to" : "f69" }

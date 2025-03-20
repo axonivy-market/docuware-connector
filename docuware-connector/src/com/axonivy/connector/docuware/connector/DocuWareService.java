@@ -37,6 +37,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
+import com.axonivy.connector.docuware.connector.enums.DocuWareVariable;
+import com.axonivy.connector.docuware.connector.utils.DocuWareUtils;
 import com.axonivy.connector.docuware.connector.utils.JsonUtils;
 import com.docuware.dev.schema._public.services.platform.Document;
 import com.docuware.dev.schema._public.services.platform.DocumentIndexField;
@@ -207,7 +209,7 @@ public class DocuWareService {
 
   public static DocuWareEndpointConfiguration initializeDefaultConfiguration() {
     DocuWareEndpointConfiguration config = new DocuWareEndpointConfiguration();
-    var fileCabinetId = Ivy.var().get("docuwareConnector_filecabinetid");
+    var fileCabinetId = Ivy.var().get(DocuWareVariable.FILE_CABINET_ID.getVariableName());
     if (StringUtils.contains(fileCabinetId, DocuWareConstants.SEMICOLON)) {
       config.setFileCabinetIds(Arrays.asList(fileCabinetId.split(DocuWareConstants.SEMICOLON)));
       config.setFileCabinetId(config.getFileCabinetIds().get(0));
@@ -215,7 +217,7 @@ public class DocuWareService {
       config.setFileCabinetId(fileCabinetId);
       config.setFileCabinetIds(new ArrayList<>());
     }
-    config.setStoreDialogId(Ivy.var().get("docuwareConnector_storedialogid"));
+    config.setStoreDialogId(Ivy.var().get(DocuWareVariable.STORE_DIALOG_ID.getVariableName()));
     return config;
   }
 
@@ -235,4 +237,21 @@ public class DocuWareService {
     return config;
   }
 
+  public List<String> collectAvailableIntances() {
+    return DocuWareUtils.extractVariableByName(DocuWareVariable.HOST).keySet().stream().toList();
+  }
+
+  public DocuWareEndpointConfiguration defaultInstance() {
+    return DocuWareUtils.getDefaultInstance();
+  }
+
+  public DocuWareEndpointConfiguration initializeConfigurationForInstance(String instanceName) {
+    DocuWareEndpointConfiguration config = DocuWareUtils.extractVariableByInstanceName(instanceName);
+    String currentHost = Ivy.var().get(DocuWareVariable.HOST.getVariableName());
+    if (StringUtils.isNoneBlank(config.getHost()) && !config.getHost().equals(currentHost)) {
+      DocuWareUtils.updateVariable(DocuWareVariable.HOST, currentHost);
+      Ivy.log().warn("DocuWareService: Changed DocuWare Host from {0} to {1}", currentHost, config.getHost());
+    }
+    return config;
+  }
 }
