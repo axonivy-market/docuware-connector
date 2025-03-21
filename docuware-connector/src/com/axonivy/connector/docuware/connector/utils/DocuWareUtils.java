@@ -22,6 +22,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status.Family;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import com.axonivy.connector.docuware.connector.DocuWareEndpointConfiguration;
@@ -51,7 +52,7 @@ public class DocuWareUtils {
     return Ivy.var().set(buildVariableKeyForInstance(instanceName, variable), value);
   }
 
-  private static String buildVariableKeyForInstance(String instanceName, DocuWareVariable variable) {
+  public static String buildVariableKeyForInstance(String instanceName, DocuWareVariable variable) {
     return String.format(INSTANCE_PROPERTY_PATTERN, instanceName, variable.variableKey);
   }
   
@@ -91,9 +92,12 @@ public class DocuWareUtils {
         """;
   }
 
-  public static DocuWareEndpointConfiguration getDefaultInstance() {
+  public static DocuWareEndpointConfiguration getDefaultActiveInstance() {
     var defaultInstanceName = Ivy.var().get(DEFAULT_INSTANCE.getVariableName());
-    return extractVariableByInstanceName(defaultInstanceName);
+    if (StringUtils.isNoneBlank(defaultInstanceName)) {
+      return extractVariableByInstanceName(defaultInstanceName);
+    }
+    return null;
   }
 
   public static DocuWareEndpointConfiguration extractVariableByInstanceName(String instanceName) {

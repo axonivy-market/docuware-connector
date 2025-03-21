@@ -41,11 +41,12 @@
     "type" : "com.axonivy.connector.docuware.connector.DocuWareProperties"
   }, {
     "name" : "availableInstances",
-    "type" : "List<String>",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "List<com.axonivy.connector.docuware.connector.bo.DocuWareInstance>"
   }, {
     "name" : "selectedInstance",
-    "type" : "String",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "com.axonivy.connector.docuware.connector.bo.DocuWareInstance"
+  }, {
+    "name" : "docuWareDocuments",
+    "type" : "List<com.axonivy.connector.docuware.connector.bo.DocuWareDocument>"
   } ]
 }

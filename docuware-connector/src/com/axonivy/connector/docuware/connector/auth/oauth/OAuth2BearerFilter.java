@@ -14,10 +14,10 @@ import javax.ws.rs.client.ClientRequestContext;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response.Status.Family;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import com.axonivy.connector.docuware.connector.DocuWareEndpointConfiguration;
+import com.axonivy.connector.docuware.connector.DocuWareService;
 import com.axonivy.connector.docuware.connector.auth.oauth.OAuth2TokenRequester.AuthContext;
 import com.axonivy.connector.docuware.connector.enums.DocuWareVariable;
 import com.axonivy.connector.docuware.connector.enums.GrantType;
@@ -53,7 +53,7 @@ public class OAuth2BearerFilter implements javax.ws.rs.client.ClientRequestFilte
   }
 
   private final String getAccessToken(ClientRequestContext context) {
-    VarTokenStore accessTokenStore = VarTokenStore.get(DocuWareVariable.ACCESS_TOKEN.getVariableName());
+    VarTokenStore accessTokenStore = VarTokenStore.get();
     var accessToken = accessTokenStore.getToken();
 
     if (accessToken == null || accessToken.isExpired()) {
@@ -98,19 +98,25 @@ public class OAuth2BearerFilter implements javax.ws.rs.client.ClientRequestFilte
   }
 
   private void loadMandatoryConfigurationByActiveInstance() {
-    DocuWareEndpointConfiguration defaultConfiguration = DocuWareUtils.getDefaultInstance();
-    // Load configuration for Host
-    String activeHost = DocuWareUtils.getIvyVar(DocuWareVariable.HOST);
-    if (isNoneBlank(defaultConfiguration.getHost())
-        && (isBlank(activeHost) || !activeHost.equals(defaultConfiguration.getHost()))) {
-      DocuWareUtils.setIvyVar(DocuWareVariable.HOST, defaultConfiguration.getHost());
+    DocuWareEndpointConfiguration defaultConfiguration = DocuWareUtils.getDefaultActiveInstance();
+    if (defaultConfiguration == null) {
+      DocuWareService.unifyConfigurationByInstance();
+      defaultConfiguration = DocuWareUtils.getDefaultActiveInstance();
     }
-    // Load configuration for connect timeout
-    String activeConnectTimeoutString = DocuWareUtils.getIvyVar(DocuWareVariable.CONNECT_TIMEOUT);
-    int activeConnectTimeout = NumberUtils.isCreatable(activeConnectTimeoutString) ? NumberUtils.toInt(activeConnectTimeoutString) : 0;
-    if (defaultConfiguration.getConnectTimeout() != null
-        && activeConnectTimeout != defaultConfiguration.getConnectTimeout()) {
-      DocuWareUtils.setIvyVar(DocuWareVariable.CONNECT_TIMEOUT, activeConnectTimeoutString);
+    if (defaultConfiguration != null) {
+      // Load configuration for Host
+      String activeHost = DocuWareUtils.getIvyVar(DocuWareVariable.HOST);
+      if (isNoneBlank(defaultConfiguration.getHost())
+          && (isBlank(activeHost) || !activeHost.equals(defaultConfiguration.getHost()))) {
+        DocuWareUtils.setIvyVar(DocuWareVariable.HOST, defaultConfiguration.getHost());
+      }
+      // Load configuration for connect timeout
+      String activeConnectTimeoutString = DocuWareUtils.getIvyVar(DocuWareVariable.CONNECT_TIMEOUT);
+      int activeConnectTimeout = NumberUtils.isCreatable(activeConnectTimeoutString) ? NumberUtils.toInt(activeConnectTimeoutString) : 0;
+      if (defaultConfiguration.getConnectTimeout() != null
+          && activeConnectTimeout != defaultConfiguration.getConnectTimeout()) {
+        DocuWareUtils.setIvyVar(DocuWareVariable.CONNECT_TIMEOUT, activeConnectTimeoutString);
+      }
     }
   }
 

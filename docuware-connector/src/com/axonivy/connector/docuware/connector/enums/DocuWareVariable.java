@@ -5,10 +5,24 @@ import java.util.stream.Stream;
 import ch.ivyteam.ivy.environment.Ivy;
 
 public enum DocuWareVariable {
-  ROOT("docuwareConnector"), HOST("host"), PLATFORM("platform"), USERNAME("username"), PASSWORD("password"),
-  ACCESS_TOKEN("accessToken"), GRANT_TYPE("grantType"), TRUSTED_USERNAME("trustedUserName"),
-  TRUSTED_USER_PASSWORD("trustedUserPassword"), LOGIN_TOKEN("loginToken"), DEFAULT_INSTANCE("defaultInstance"),
-  FILE_CABINET_ID("fileCabinetId"), STORE_DIALOG_ID("storedialogid"), CONNECT_TIMEOUT("connectTimeout");
+  ROOT("docuwareConnector"),
+  HOST("host"),
+  PLATFORM("platform"),
+  USERNAME("username"),
+  PASSWORD("password"),
+  ACCESS_TOKEN("accessToken"),
+  GRANT_TYPE("grantType"),
+  TRUSTED_USERNAME("trustedUserName"),
+  TRUSTED_USER_PASSWORD("trustedUserPassword"),
+  LOGIN_TOKEN("loginToken"),
+  DEFAULT_INSTANCE("defaultInstance"),
+  FILE_CABINET_ID("fileCabinetId"),
+  STORE_DIALOG_ID("storedialogid"),
+  CONNECT_TIMEOUT("connectTimeout"),
+  @Deprecated
+  HOST_ID("hostid"),
+  @Deprecated
+  LOGON_URL("logonurl");
 
   public String variableKey;
   public static final String SEPERATOR = ".";

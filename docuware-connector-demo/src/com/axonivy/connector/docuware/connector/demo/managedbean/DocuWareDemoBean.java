@@ -8,6 +8,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import com.axonivy.connector.docuware.connector.DocuWareProperty;
+import com.axonivy.connector.docuware.connector.bo.DocuWareDocument;
 import com.axonivy.connector.docuware.connector.demo.enums.ItemType;
 
 import ch.ivyteam.ivy.environment.Ivy;
@@ -21,9 +22,9 @@ public class DocuWareDemoBean implements Serializable {
 	private String documentUrl;
 	private final String DOCUMENT_URL_FORMAT = "https://%s/DocuWare/Platform/WebClient/Client/Document?did=%s&fc=%s";
 
-	public void buildDocumentUrl(String documentId, String fileCabinetId) {
+	public void buildDocumentUrl(DocuWareDocument document) {
 		String host = Ivy.var().get("docuwareConnector.host");
-		this.documentUrl = String.format(DOCUMENT_URL_FORMAT, host, documentId, fileCabinetId);
+		this.documentUrl = String.format(DOCUMENT_URL_FORMAT, host, document.getId(), document.getFileCabinetId());
 	}
 
 	public String getDocumentUrl() {

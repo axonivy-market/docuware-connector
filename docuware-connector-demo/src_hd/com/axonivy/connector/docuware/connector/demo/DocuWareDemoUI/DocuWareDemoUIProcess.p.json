@@ -28,15 +28,16 @@
     }, {
       "id" : "f6",
       "type" : "HtmlDialogMethodStart",
-      "name" : "deleteDocument(String)",
+      "name" : "deleteDocument(DocuWareDocument)",
       "config" : {
         "signature" : "deleteDocument",
         "input" : {
           "params" : [
-            { "name" : "documentId", "type" : "String", "desc" : "" }
+            { "name" : "document", "type" : "com.axonivy.connector.docuware.connector.bo.DocuWareDocument", "desc" : "" }
           ],
           "map" : {
-            "out.documentId" : "param.documentId"
+            "out.documentId" : "String.valueOf(param.document.id)",
+            "out.fileCabinetId" : "param.document.fileCabinetId"
           }
         },
         "guid" : "1934DEB39566411B"
@@ -69,61 +70,27 @@
         "at" : { "x" : 280, "y" : 400 }
       },
       "connect" : [
-        { "id" : "f10", "to" : "f9" }
-      ]
-    }, {
-      "id" : "f9",
-      "type" : "RestClientCall",
-      "name" : "Query Documents",
-      "config" : {
-        "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
-          "path" : "/FileCabinets/{FileCabinetId}/Documents",
-          "templateParams" : {
-            "FileCabinetId" : "in.fileCabinetId"
-          },
-          "queryParams" : {
-            "q" : "",
-            "fields" : "",
-            "sortOrder" : ""
-          },
-          "headers" : {
-            "Accept" : "application/xml"
-          }
-        },
-        "response" : {
-          "entity" : {
-            "type" : "com.docuware.dev.schema._public.services.platform.DocumentsQueryResult",
-            "map" : {
-              "out.documents" : "result.items.getItem()"
-            }
-          }
-        }
-      },
-      "visual" : {
-        "at" : { "x" : 448, "y" : 400 }
-      },
-      "connect" : [
-        { "id" : "f12", "to" : "f11" }
+        { "id" : "f10", "to" : "f27" }
       ]
     }, {
       "id" : "f11",
       "type" : "HtmlDialogEnd",
       "visual" : {
-        "at" : { "x" : 608, "y" : 400 }
+        "at" : { "x" : 600, "y" : 400 }
       }
     }, {
       "id" : "f13",
       "type" : "HtmlDialogMethodStart",
-      "name" : "onClickEditDocument(String)",
+      "name" : "onClickEditDocument(DocuWareDocument)",
       "config" : {
         "signature" : "onClickEditDocument",
         "input" : {
           "params" : [
-            { "name" : "documentId", "type" : "String", "desc" : "" }
+            { "name" : "document", "type" : "com.axonivy.connector.docuware.connector.bo.DocuWareDocument", "desc" : "" }
           ],
           "map" : {
-            "out.documentId" : "param.documentId"
+            "out.documentId" : "String.valueOf(param.document.id)",
+            "out.fileCabinetId" : "param.document.fileCabinetId"
           }
         },
         "guid" : "1935FA55672C1004"
@@ -366,7 +333,7 @@
         "output" : {
           "map" : {
             "out" : "in",
-            "out.documents" : "result.documents"
+            "out.docuWareDocuments" : "result.docuWareDocuments"
           }
         }
       },
@@ -557,7 +524,7 @@
         "output" : {
           "code" : [
             "import com.axonivy.connector.docuware.connector.DocuWareService;",
-            "DocuWareService.get().initializeConfigurationForInstance(in.selectedInstance);"
+            "DocuWareService.get().initializeConfigurationForInstance(in.selectedInstance.instance);"
           ]
         }
       },
@@ -567,6 +534,38 @@
       },
       "connect" : [
         { "id" : "f50", "to" : "f45", "color" : "default" }
+      ]
+    }, {
+      "id" : "f27",
+      "type" : "SubProcessCall",
+      "name" : "Query doc",
+      "config" : {
+        "processCall" : "FileCabinetService:queryDocument(com.axonivy.connector.docuware.connector.DocuWareEndpointConfiguration)",
+        "call" : {
+          "map" : { },
+          "code" : [
+            "import com.docuware.dev.schema._public.services.platform.FileCabinet;",
+            "import com.axonivy.connector.docuware.connector.DocuWareEndpointConfiguration;",
+            "DocuWareEndpointConfiguration configuration;",
+            "for (FileCabinet cabinet : in.selectedFileCabinets) {",
+            "  configuration.fileCabinetIds.add(cabinet.id);",
+            "}",
+            "",
+            "param.configration = configuration;"
+          ]
+        },
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.docuWareDocuments" : "result.docuWareDocuments"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 440, "y" : 400 }
+      },
+      "connect" : [
+        { "id" : "f51", "to" : "f11" }
       ]
     } ],
   "layout" : {

@@ -1,11 +1,8 @@
 package com.axonivy.connector.docuware.connector.auth;
 
 import static com.axonivy.connector.docuware.connector.utils.DocuWareUtils.getIvyVar;
-import static org.apache.commons.lang3.StringUtils.isBlank;
-import static org.apache.commons.lang3.StringUtils.isNoneBlank;
 
 import java.util.List;
-import java.util.Objects;
 
 import javax.ws.rs.Priorities;
 import javax.ws.rs.client.Entity;
@@ -15,7 +12,8 @@ import javax.ws.rs.core.MultivaluedHashMap;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 
-import com.axonivy.connector.docuware.connector.DocuWareEndpointConfiguration;
+import org.apache.commons.lang3.ObjectUtils;
+
 import com.axonivy.connector.docuware.connector.DocuWareService;
 import com.axonivy.connector.docuware.connector.auth.oauth.IdentityServiceContext;
 import com.axonivy.connector.docuware.connector.auth.oauth.OAuth2BearerFilter;
@@ -26,9 +24,7 @@ import com.axonivy.connector.docuware.connector.enums.DocuWareVariable;
 import com.axonivy.connector.docuware.connector.enums.GrantType;
 import com.axonivy.connector.docuware.connector.utils.DocuWareUtils;
 
-import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.rest.client.FeatureConfig;
-import ch.ivyteam.ivy.vars.Variable;
 
 public class OAuth2Feature implements Feature {
 
@@ -74,7 +70,7 @@ public class OAuth2Feature implements Feature {
       break;
     case DW_TOKEN:
       var loginToken = DocuWareUtils.getActiveVariableValue(DocuWareVariable.LOGIN_TOKEN);
-      Objects.requireNonNull(loginToken);
+      ObjectUtils.requireNonEmpty(loginToken);
 
       AccessTokenByLoginTokenRequest dwRequest = new AccessTokenByLoginTokenRequest(loginToken);
       paramsMap = dwRequest.paramsMap();

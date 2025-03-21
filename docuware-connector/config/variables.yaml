@@ -9,28 +9,12 @@
 Variables:
   docuwareConnector:
     # The default active host. Managed by the system, should not manually modify.
-    host: ''
-    # The default active grant type. Managed by the system, should not manually modify.
-    # [enum: password, trusted, dwtoken]
-    grantType: 'password'
-    # The default active username. Managed by the system, should not manually modify.
-    username: ''
-    # The default active password. Managed by the system, should not manually modify.
-    # [password]
-    password: ''
-    # The default active trusted username. Managed by the system, should not manually modify.
-    trustedUserName: ''
-    # The default active trusted password. Managed by the system, should not manually modify.
-    trustedUserPassword: ''
-    # The default active organization. Managed by the system, should not manually modify.
-    organization: ""
-    # The default active file cabinet Id. Managed by the system, should not manually modify.
-    filecabinetid: ""
+    host: ""
     # The default active connection timeout. Managed by the system, should not manually modify.
     connectTimeout: "0"
     # The default active instance, it should be match with one of the instances in the configured  instance
     # [enum: primary]
-    defaultInstance: primary
+    defaultInstance: ""
     instances:
       primary:
         # Your docuware instance: e.g. 'acme.docuware.cloud'
@@ -41,8 +25,8 @@ Variables:
         # The username used for authenticating to DocuWare.
         username: ""
         # The password used for authenticating to DocuWare.
-        # [password]
-        password: ""
+        #[password]
+        password: ${decrypt:}
         # The Trusted username used for authenticating to DocuWare when GrantType is trusted.
         trustedUserName: ""
         # The password used for authenticating to DocuWare  when GrantType is trusted.

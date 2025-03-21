@@ -30,5 +30,8 @@
   }, {
     "name" : "organizationIds",
     "type" : "List<String>"
+  }, {
+    "name" : "docuWareDocuments",
+    "type" : "List<com.axonivy.connector.docuware.connector.bo.DocuWareDocument>"
   } ]
 }
