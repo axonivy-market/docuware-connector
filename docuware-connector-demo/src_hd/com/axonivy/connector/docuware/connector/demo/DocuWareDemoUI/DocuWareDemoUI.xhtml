@@ -25,7 +25,7 @@
 							<f:selectItem noSelectionOption="true" />
 							<f:selectItems value="#{data.availableInstances}"
 								var="instance" itemLabel="#{instance.displayName}" itemValue="#{instance}" />
-							<p:ajax process="@this" update="form" partialSubmit="true"
+							<p:ajax process="@this" update="@this form"
 								listener="#{logic.onChangeInstance()}" />
 						</p:selectOneMenu>
 					</div>

@@ -7,19 +7,19 @@
   "elements" : [ {
       "id" : "f0",
       "type" : "RequestStart",
-      "name" : "start.ivp",
+      "name" : "startUploadNewFileDemo",
       "config" : {
-        "signature" : "start",
+        "signature" : "startUploadNewFileDemo",
         "request" : {
-          "name" : "Start some DocuWare calls",
-          "description" : "Start a UI to demonstrate some basic UI calls."
+          "name" : "1. Start upload new document to DocuWare",
+          "description" : "Start a UI to demonstrate some basic UI calls and upload a doc."
         }
       },
       "tags" : [
         "demo"
       ],
       "visual" : {
-        "at" : { "x" : 80, "y" : 64 },
+        "at" : { "x" : 144, "y" : 80 },
         "labelOffset" : { "x" : 12, "y" : 37 },
         "description" : "Start a simple UI to demonstrate some DocuWare calls."
       },
@@ -30,7 +30,7 @@
       "id" : "f1",
       "type" : "TaskEnd",
       "visual" : {
-        "at" : { "x" : 360, "y" : 64 }
+        "at" : { "x" : 584, "y" : 80 }
       }
     }, {
       "id" : "f3",
@@ -40,7 +40,8 @@
         "dialog" : "com.axonivy.connector.docuware.connector.demo.DocuWareDemo:start()"
       },
       "visual" : {
-        "at" : { "x" : 200, "y" : 64 },
+        "at" : { "x" : 376, "y" : 80 },
+        "size" : { "width" : 240, "height" : 62 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -67,7 +68,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 80, "y" : 160 },
+        "at" : { "x" : 144, "y" : 336 },
         "labelOffset" : { "x" : 8, "y" : 53 }
       },
       "connect" : [
@@ -77,7 +78,7 @@
       "id" : "f8",
       "type" : "TaskEnd",
       "visual" : {
-        "at" : { "x" : 360, "y" : 160 }
+        "at" : { "x" : 424, "y" : 336 }
       }
     }, {
       "id" : "f7",
@@ -94,7 +95,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 80, "y" : 256 },
+        "at" : { "x" : 144, "y" : 432 },
         "labelOffset" : { "x" : 26, "y" : 37 }
       },
       "connect" : [
@@ -120,7 +121,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 200, "y" : 256 },
+        "at" : { "x" : 264, "y" : 432 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -163,7 +164,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 360, "y" : 352 },
+        "at" : { "x" : 424, "y" : 528 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -177,7 +178,7 @@
         "signature" : "downloadFile"
       },
       "visual" : {
-        "at" : { "x" : 80, "y" : 352 },
+        "at" : { "x" : 144, "y" : 528 },
         "labelOffset" : { "x" : 11, "y" : 48 }
       },
       "connect" : [
@@ -187,7 +188,7 @@
       "id" : "f15",
       "type" : "TaskEnd",
       "visual" : {
-        "at" : { "x" : 1024, "y" : 544 }
+        "at" : { "x" : 1088, "y" : 720 }
       }
     }, {
       "id" : "f31",
@@ -224,7 +225,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 536, "y" : 448 },
+        "at" : { "x" : 600, "y" : 624 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -256,7 +257,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 712, "y" : 448 },
+        "at" : { "x" : 776, "y" : 624 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -294,7 +295,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 888, "y" : 448 },
+        "at" : { "x" : 952, "y" : 624 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -308,7 +309,7 @@
         "signature" : "sections"
       },
       "visual" : {
-        "at" : { "x" : 80, "y" : 448 },
+        "at" : { "x" : 144, "y" : 624 },
         "labelOffset" : { "x" : 16, "y" : 37 }
       },
       "connect" : [
@@ -351,7 +352,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 1064, "y" : 448 },
+        "at" : { "x" : 1128, "y" : 624 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -365,7 +366,7 @@
         "signature" : "dialogs"
       },
       "visual" : {
-        "at" : { "x" : 80, "y" : 544 },
+        "at" : { "x" : 144, "y" : 720 },
         "labelOffset" : { "x" : 12, "y" : 37 }
       },
       "connect" : [
@@ -406,7 +407,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 360, "y" : 544 },
+        "at" : { "x" : 424, "y" : 720 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -438,7 +439,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 536, "y" : 544 },
+        "at" : { "x" : 600, "y" : 720 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -483,7 +484,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 712, "y" : 544 },
+        "at" : { "x" : 776, "y" : 720 },
         "size" : { "width" : 128 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
@@ -529,7 +530,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 888, "y" : 544 },
+        "at" : { "x" : 952, "y" : 720 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -543,7 +544,7 @@
         "signature" : "fileIndexFields"
       },
       "visual" : {
-        "at" : { "x" : 80, "y" : 656 }
+        "at" : { "x" : 144, "y" : 832 }
       },
       "connect" : [
         { "id" : "f44", "to" : "f43" }
@@ -578,7 +579,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 520, "y" : 656 },
+        "at" : { "x" : 600, "y" : 832 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -616,7 +617,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 800, "y" : 656 },
+        "at" : { "x" : 864, "y" : 832 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -643,7 +644,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 1056, "y" : 656 },
+        "at" : { "x" : 1120, "y" : 832 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -653,7 +654,7 @@
       "id" : "f65",
       "type" : "TaskEnd",
       "visual" : {
-        "at" : { "x" : 1440, "y" : 656 }
+        "at" : { "x" : 1504, "y" : 832 }
       }
     }, {
       "id" : "f70",
@@ -665,14 +666,14 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 672, "y" : 656 },
+        "at" : { "x" : 736, "y" : 832 },
         "labelOffset" : { "y" : -16 }
       },
       "connect" : [
         { "id" : "f62", "to" : "f61", "label" : {
             "name" : "yes"
           } },
-        { "id" : "f73", "to" : "f72", "via" : [ { "x" : 672, "y" : 768 } ], "label" : {
+        { "id" : "f73", "to" : "f72", "via" : [ { "x" : 736, "y" : 944 } ], "label" : {
             "name" : "no",
             "segment" : 1.38
           } }
@@ -687,7 +688,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 1184, "y" : 768 }
+        "at" : { "x" : 1248, "y" : 944 }
       },
       "connect" : [
         { "id" : "f68", "to" : "f67" }
@@ -702,14 +703,14 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 928, "y" : 656 },
+        "at" : { "x" : 992, "y" : 832 },
         "labelOffset" : { "y" : -16 }
       },
       "connect" : [
         { "id" : "f64", "to" : "f63", "label" : {
             "name" : "yes"
           } },
-        { "id" : "f77", "to" : "f72", "via" : [ { "x" : 928, "y" : 768 } ], "label" : {
+        { "id" : "f77", "to" : "f72", "via" : [ { "x" : 992, "y" : 944 } ], "label" : {
             "name" : "no",
             "segment" : 1.23
           } }
@@ -724,7 +725,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 1184, "y" : 656 },
+        "at" : { "x" : 1248, "y" : 832 },
         "labelOffset" : { "y" : -16 }
       },
       "connect" : [
@@ -739,13 +740,13 @@
       "id" : "f9",
       "type" : "TaskEnd",
       "visual" : {
-        "at" : { "x" : 672, "y" : 256 }
+        "at" : { "x" : 736, "y" : 432 }
       }
     }, {
       "id" : "f13",
       "type" : "TaskEnd",
       "visual" : {
-        "at" : { "x" : 824, "y" : 352 }
+        "at" : { "x" : 888, "y" : 528 }
       }
     }, {
       "id" : "f21",
@@ -776,7 +777,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 536, "y" : 256 },
+        "at" : { "x" : 600, "y" : 432 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -810,7 +811,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 200, "y" : 160 },
+        "at" : { "x" : 264, "y" : 336 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -848,7 +849,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 360, "y" : 256 },
+        "at" : { "x" : 424, "y" : 432 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -884,7 +885,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 360, "y" : 448 },
+        "at" : { "x" : 424, "y" : 624 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -894,7 +895,7 @@
       "id" : "f12",
       "type" : "TaskEnd",
       "visual" : {
-        "at" : { "x" : 1200, "y" : 448 }
+        "at" : { "x" : 1264, "y" : 624 }
       }
     }, {
       "id" : "f11",
@@ -909,7 +910,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 200, "y" : 352 },
+        "at" : { "x" : 264, "y" : 528 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -934,7 +935,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 536, "y" : 352 },
+        "at" : { "x" : 600, "y" : 528 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -953,7 +954,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 200, "y" : 448 },
+        "at" : { "x" : 264, "y" : 624 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -975,7 +976,7 @@
         "sudo" : true
       },
       "visual" : {
-        "at" : { "x" : 712, "y" : 352 }
+        "at" : { "x" : 776, "y" : 528 }
       },
       "connect" : [
         { "id" : "f25", "to" : "f13" }
@@ -993,7 +994,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 200, "y" : 544 },
+        "at" : { "x" : 264, "y" : 720 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -1012,7 +1013,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 200, "y" : 656 },
+        "at" : { "x" : 264, "y" : 832 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -1055,7 +1056,7 @@
         "sudo" : true
       },
       "visual" : {
-        "at" : { "x" : 360, "y" : 656 }
+        "at" : { "x" : 424, "y" : 832 }
       },
       "connect" : [
         { "id" : "f46", "to" : "f60" }
@@ -1076,7 +1077,7 @@
         "sudo" : true
       },
       "visual" : {
-        "at" : { "x" : 1312, "y" : 656 }
+        "at" : { "x" : 1376, "y" : 832 }
       },
       "connect" : [
         { "id" : "f66", "to" : "f65" }
@@ -1085,21 +1086,21 @@
       "id" : "f67",
       "type" : "TaskEnd",
       "visual" : {
-        "at" : { "x" : 1312, "y" : 768 }
+        "at" : { "x" : 1376, "y" : 944 }
       }
     }, {
       "id" : "f51",
       "type" : "RequestStart",
-      "name" : "viewAndEditDocument.ivp",
+      "name" : "startViewAndEditDocumentDemo.ivp",
       "config" : {
-        "signature" : "viewAndEditDocument",
+        "signature" : "startViewAndEditDocumentDemo",
         "request" : {
-          "name" : "DocuWare View/Edit Document",
-          "description" : "UI for viewing or editing document"
+          "name" : "2. DocuWare View/Edit Document",
+          "description" : "UI for viewing or editing document by selecting an instance"
         }
       },
       "visual" : {
-        "at" : { "x" : 80, "y" : 880 }
+        "at" : { "x" : 144, "y" : 192 }
       },
       "connect" : [
         { "id" : "f91", "to" : "f87" }
@@ -1108,21 +1109,42 @@
       "id" : "f69",
       "type" : "TaskEnd",
       "visual" : {
-        "at" : { "x" : 352, "y" : 880 }
+        "at" : { "x" : 584, "y" : 192 }
       }
     }, {
       "id" : "f87",
       "type" : "DialogCall",
-      "name" : "DocuWare View - Edit Demo",
+      "name" : "DocuWare View/Edit Document",
       "config" : {
         "dialog" : "com.axonivy.connector.docuware.connector.demo.DocuWareDemoUI:start()"
       },
       "visual" : {
-        "at" : { "x" : 200, "y" : 880 },
+        "at" : { "x" : 376, "y" : 193 },
+        "size" : { "width" : 240, "height" : 62 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
         { "id" : "f100", "to" : "f69" }
       ]
-    } ]
+    } ],
+  "layout" : {
+    "lanes" : [ {
+        "name" : "DocuWare Demo process",
+        "offset" : 16,
+        "size" : 992,
+        "lanes" : [ {
+            "name" : "UI Demo",
+            "size" : 272,
+            "color" : "ui-dem"
+          }, {
+            "name" : "Console demo",
+            "size" : 720,
+            "color" : "console"
+          } ]
+      } ],
+    "colors" : {
+      "ui-dem" : "#2990ff",
+      "console" : "#5c5c5c"
+    }
+  }
 }

@@ -205,7 +205,12 @@ public class DocuWareService {
     String filename = null;
     if (response != null) {
       String disposition = response.getHeaderString(CONTENT_DISPOSITION);
-      filename = disposition.replaceFirst("(?i)^.*filename=\"?([^\"]+)\"?.*$", "$1");
+      // Try to extract filename* (RFC 5987) first, then fallback to filename=
+      Pattern pattern = Pattern.compile("(?i)filename\\*?=\"?([^\";]+)");
+      Matcher matcher = pattern.matcher(disposition);
+      if (matcher.find()) {
+        filename = matcher.group(1);
+      }
     }
     return filename;
   }
@@ -290,7 +295,8 @@ public class DocuWareService {
     String currentDefaultInstance = getIvyVar(DEFAULT_INSTANCE);
     if (StringUtils.isNoneBlank(config.getInstance()) && !config.getInstance().equals(currentDefaultInstance)) {
       Ivy.log().warn("DocuWareService: Changed DefaultInstance from {0} to {1}", currentDefaultInstance, config.getInstance());
-      setIvyVar(DEFAULT_INSTANCE, currentDefaultInstance);
+      setIvyVar(DEFAULT_INSTANCE, config.getInstance());
+      setIvyVar(HOST, config.getHost());
     }
     return config;
   }

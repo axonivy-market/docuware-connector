@@ -435,7 +435,7 @@
       "id" : "f36",
       "type" : "HtmlDialogEnd",
       "visual" : {
-        "at" : { "x" : 720, "y" : 512 },
+        "at" : { "x" : 888, "y" : 512 },
         "labelOffset" : { "x" : 10, "y" : 30 }
       }
     }, {
@@ -449,7 +449,8 @@
             "in.selectedFileCabinets.clear();",
             "in.availableOrganizations.clear();",
             "in.selectedOrganizations.clear();",
-            "in.documents.clear();"
+            "in.documents.clear();",
+            "in.docuWareDocuments.clear();"
           ]
         }
       },
@@ -510,11 +511,11 @@
             "labelOffset" : { "x" : 13, "y" : 33 }
           },
           "connect" : [
-            { "id" : "f48", "to" : "f36", "via" : [ { "x" : 720, "y" : 552 } ] }
+            { "id" : "f48", "to" : "f36", "via" : [ { "x" : 888, "y" : 552 } ] }
           ]
         } ],
       "connect" : [
-        { "id" : "f46", "to" : "f36", "color" : "default" }
+        { "id" : "f46", "to" : "f9", "color" : "default" }
       ]
     }, {
       "id" : "f49",
@@ -566,6 +567,24 @@
       },
       "connect" : [
         { "id" : "f51", "to" : "f11" }
+      ]
+    }, {
+      "id" : "f9",
+      "type" : "Script",
+      "name" : "Init instances",
+      "config" : {
+        "output" : {
+          "code" : [
+            "import com.axonivy.connector.docuware.connector.DocuWareService;",
+            "in.availableInstances = DocuWareService.get().collectAvailableIntances();"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 760, "y" : 512 }
+      },
+      "connect" : [
+        { "id" : "f12", "to" : "f36", "color" : "default" }
       ]
     } ],
   "layout" : {

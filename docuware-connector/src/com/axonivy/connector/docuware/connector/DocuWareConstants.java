@@ -14,4 +14,5 @@ public class DocuWareConstants {
   public static final String INSTANCES = "instances";
   public static final String INSTANCE_PATTERN = DocuWareVariable.ROOT.variableKey + "." + INSTANCES + ".";
   public static final String INSTANCE_PROPERTY_PATTERN = INSTANCE_PATTERN + "%s.%s";
+  public static final String VIEW_DOCUMENT_URL_FORMAT = "https://%s/DocuWare/Platform/WebClient/Client/Document?did=%s&fc=%s";
 }
