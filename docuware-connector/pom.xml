@@ -10,13 +10,6 @@
     <project.build.plugin.version>12.0.0</project.build.plugin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-  <dependencies>
-    <dependency>
-      <groupId>com.axonivy.utils.persistence</groupId>
-      <artifactId>persistence-utils</artifactId>
-      <version>12.0.2</version>
-    </dependency>
-  </dependencies>
   <repositories>
     <repository>
       <snapshots>

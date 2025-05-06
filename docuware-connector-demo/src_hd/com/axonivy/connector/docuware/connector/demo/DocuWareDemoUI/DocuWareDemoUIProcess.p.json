@@ -124,7 +124,6 @@
               "import com.axonivy.connector.docuware.connector.demo.enums.ItemType;",
               "import com.axonivy.connector.docuware.connector.DocuWareProperty;",
               "import com.axonivy.connector.docuware.connector.DocuWareProperties;",
-              "",
               "out.properties = new DocuWareProperties();",
               "for (DocuWareProperty property : result.properties) {",
               "  if (ItemType.INT.getValue() == property.itemElementName || ItemType.DECIMAL.getValue() == property.itemElementName || ItemType.STRING.getValue() == property.itemElementName) {",
@@ -243,7 +242,6 @@
             "type" : "com.docuware.dev.schema._public.services.platform.FileCabinets",
             "code" : [
               "import com.docuware.dev.schema._public.services.platform.FileCabinet;",
-              "",
               "for (FileCabinet cabinet : result.getFileCabinet()) {",
               "  if (cabinet.getName().contains(in.fileCabinetFilterKeyword)) {",
               "    in.availableFileCabinets.add(cabinet);",
@@ -273,8 +271,6 @@
             "type" : "com.docuware.dev.schema._public.services.platform.Organizations",
             "code" : [
               "import com.docuware.dev.schema._public.services.platform.Organization;",
-              "import org.apache.commons.collections4.CollectionUtils;",
-              "",
               "in.availableOrganizations.clear();",
               "for (Organization org : result.getOrganization()) {",
               "  if (org.name.contains(in.orgFilterkeyword)) {",
@@ -474,8 +470,6 @@
             "type" : "com.docuware.dev.schema._public.services.platform.Organizations",
             "code" : [
               "import com.docuware.dev.schema._public.services.platform.Organization;",
-              "import org.apache.commons.collections4.CollectionUtils;",
-              "",
               "in.availableOrganizations.clear();",
               "for (Organization org : result.getOrganization()) {",
               "  if (org.name.contains(in.orgFilterkeyword)) {",
@@ -495,10 +489,8 @@
           "config" : {
             "output" : {
               "code" : [
-                "import sun.net.httpserver.HttpError;",
                 "import javax.faces.context.FacesContext;",
                 "import javax.faces.application.FacesMessage;",
-                "",
                 "FacesMessage message = new FacesMessage();",
                 "message.severity = FacesMessage.SEVERITY_ERROR;",
                 "message.summary = error.getMessage();",

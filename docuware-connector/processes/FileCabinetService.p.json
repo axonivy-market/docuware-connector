@@ -44,9 +44,7 @@
       "config" : {
         "output" : {
           "code" : [
-            "import com.docuware.dev.schema._public.services.platform.FileCabinet;",
             "import com.axonivy.connector.docuware.connector.DocuWareService;",
-            "",
             "in.configuration = DocuWareService.initializeConfiguration(in.configuration);",
             "in.docuWareDocuments.clear();",
             "in.fileCabinetIds.clear();",
@@ -86,7 +84,6 @@
             "code" : [
               "import com.axonivy.connector.docuware.connector.bo.DocuWareDocument;",
               "import com.docuware.dev.schema._public.services.platform.Document;",
-              "import org.apache.commons.lang3.StringUtils;",
               "ivy.log.info(\"Found {0} doc in cabinet {1}\", result.count.value, out.fileCabinetId);",
               "for (Document doc : result.items.getItem()) {",
               "  DocuWareDocument docuWareDocument = new DocuWareDocument(in.fileCabinetId, doc);",

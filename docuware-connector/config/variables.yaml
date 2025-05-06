@@ -30,10 +30,12 @@ Variables:
         # The Trusted username used for authenticating to DocuWare when GrantType is trusted.
         trustedUserName: ""
         # The password used for authenticating to DocuWare  when GrantType is trusted.
-        trustedUserPassword: ""
+        #[password]
+        trustedUserPassword: ${decrypt:}
         # Use for getting a new DocuWare token by GrantType is dwtoken
         # Please start process startRequestALoginToken.ivp to generate a new LoginToken
-        loginToken: ""
+        #[password]
+        loginToken: ${decrypt:}
         # Your organization name
         organization: ""
         # The file cabinet Id, it must belong to provided organization

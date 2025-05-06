@@ -75,6 +75,8 @@ public class DocuWareService {
   private static final String PROPERTIES_FILE_NAME = "document";
   private static final String PROPERTIES_FILE_EXTENSION = ".json";
   private static final String PROPERTIES_FILE_CHARSET = "UTF-8";
+  private static final String FILE_NAME_DISPOSITION_REGEX = "(?i)filename\\*?=\"?([^\";]+)"; // Try to extract filename* (RFC 5987) first, then fallback to filename=
+  private static final Pattern FILE_NAME_DISPOSITION_PATTERN = Pattern.compile(FILE_NAME_DISPOSITION_REGEX);
   private static final String CONTENT_DISPOSITION = "Content-Disposition";
   private static final String RESPONSE_XML_ERROR_NODE = "Error";
   private static final String RESPONSE_XML_MESSAGE_NODE = "Message";
@@ -205,9 +207,7 @@ public class DocuWareService {
     String filename = null;
     if (response != null) {
       String disposition = response.getHeaderString(CONTENT_DISPOSITION);
-      // Try to extract filename* (RFC 5987) first, then fallback to filename=
-      Pattern pattern = Pattern.compile("(?i)filename\\*?=\"?([^\";]+)");
-      Matcher matcher = pattern.matcher(disposition);
+      Matcher matcher = FILE_NAME_DISPOSITION_PATTERN.matcher(disposition);
       if (matcher.find()) {
         filename = matcher.group(1);
       }
@@ -274,7 +274,7 @@ public class DocuWareService {
           var variableNameArrays = variable.name().split(VAR_SEPERATOR);
           if (variableNameArrays.length > INSTANCE_NAME_INDEX) {
             String instanceName = variableNameArrays[INSTANCE_NAME_INDEX];
-            if (!instances.stream().anyMatch(instance -> instance.getInstance().equals(instanceName))) {
+            if (instances.stream().noneMatch(instance -> instance.getInstance().equals(instanceName))) {
               DocuWareInstance docuWareInstance = new DocuWareInstance(instanceName);
               String host = DocuWareUtils.getVariableValueByInstance(instanceName, HOST);
               docuWareInstance.setHost(host);
