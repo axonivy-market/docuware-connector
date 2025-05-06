@@ -235,6 +235,10 @@ public class DocuWareService {
 
   public static DocuWareEndpointConfiguration initializeDefaultConfiguration() {
     DocuWareEndpointConfiguration config = DocuWareUtils.getDefaultActiveInstance();
+    if (config == null) {
+      unifyConfigurationByInstance();
+      config = DocuWareUtils.getDefaultActiveInstance();
+    }
     var fileCabinetId = config.getFileCabinetId();
     if (StringUtils.contains(fileCabinetId, SEMICOLON)) {
       config.setFileCabinetIds(Arrays.asList(fileCabinetId.split(SEMICOLON)));

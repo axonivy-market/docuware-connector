@@ -26,7 +26,7 @@ Variables:
       organization: ""
       fileCabinetId: ""
       connectTimeout: "0"
-    testing-clound:
+    testCloud:
       host: ""
       grantType: password
       username: ""
