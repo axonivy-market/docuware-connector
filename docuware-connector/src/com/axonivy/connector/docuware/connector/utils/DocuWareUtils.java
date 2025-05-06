@@ -94,10 +94,7 @@ public class DocuWareUtils {
 
   public static DocuWareEndpointConfiguration getDefaultActiveInstance() {
     var defaultInstanceName = Ivy.var().get(DEFAULT_INSTANCE.getVariableName());
-    if (StringUtils.isNoneBlank(defaultInstanceName)) {
-      return extractVariableByInstanceName(defaultInstanceName);
-    }
-    return null;
+    return StringUtils.isNoneBlank(defaultInstanceName) ? extractVariableByInstanceName(defaultInstanceName) : null;
   }
 
   public static DocuWareEndpointConfiguration extractVariableByInstanceName(String instanceName) {
@@ -110,9 +107,6 @@ public class DocuWareUtils {
 
   public static DocuWareEndpointConfiguration getInstanceConfiguration(DocuWareEndpointConfiguration config,
       String instanceName, DocuWareVariable variable) {
-    if (config == null) {
-      config = new DocuWareEndpointConfiguration();
-    }
     switch (variable) {
     case HOST:
       config.setHost(getVariableValueByInstance(instanceName, HOST));
