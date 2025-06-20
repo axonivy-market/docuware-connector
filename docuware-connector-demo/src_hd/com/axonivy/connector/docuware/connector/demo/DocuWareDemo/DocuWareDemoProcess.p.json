@@ -221,7 +221,6 @@
               "import javax.faces.application.FacesMessage;",
               "import javax.faces.context.FacesContext;",
               "import com.axonivy.connector.docuware.connector.demo.service.DocuWareDemoService;",
-              "",
               "out.result = DocuWareDemoService.get().getLog(response, result);",
               "FacesMessage message;",
               "if (HttpStatus.SC_OK != response.getStatus()) {",
@@ -234,7 +233,8 @@
               "",
               "FacesContext.getCurrentInstance().addMessage(\"\", message);"
             ]
-          }
+          },
+          "statusError" : ">> Ignore error"
         }
       },
       "visual" : {

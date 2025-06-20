@@ -9,6 +9,10 @@ Dialogs:
                 Title: DocuWare Demo
                 UploadMessageFailed: Upload doc to Docuware failed
                 UploadMessageOK: Upload doc to Docuware successful
+                XmlUploadHint: |-
+                  If you want to <span class="font-bold">upload a XML file</span>, please make sure that your XML content has  <span class="font-bold">root element Document</span> and <span class="font-bold">xmlns http://dev.docuware.com/schema/public/services/platform.</span>
+                  <br>
+                  For more information, refer to the <a href="https://support.docuware.com/en-us/knowledgebase/article/KBA-37367" target="_blank">DocuWare support article (KBA-37367)</a>.
               DocuWareDemoUI:
                 ContentTitle: Available documents
                 Dialog:
