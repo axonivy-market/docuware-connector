@@ -29,6 +29,9 @@
 							<p:fileUpload id="fileUpload" value="#{data.file}" mode="simple"
 								update="messages" skinSimple="true" />
 						</div>
+						<p:outputLabel
+							value="#{ivy.cms.co('/Dialogs/com/axonivy/connector/docuware/connector/demo/DocuWareDemo/XmlUploadHint')}"
+							escape="false" />
 						<div class="ui-g-12">
 							<p:commandButton value="#{ivy.cms.co('/Labels/Upload')}"
 								actionListener="#{logic.fileUpload}" ajax="false"
