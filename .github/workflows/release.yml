@@ -1,8 +1,5 @@
 name: Release-Build
 
-permissions:
-  contents: read
-
 on: workflow_dispatch
 
 jobs:
