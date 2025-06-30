@@ -14,11 +14,13 @@
   <packaging>iar</packaging>
   <properties>
     <project.build.plugin.version>12.0.0</project.build.plugin.version>
+    <ivy.api.version>13.1.1</ivy.api.version>
   </properties>
   <dependencies>
     <dependency>
       <groupId>com.axonivy.ivy.api</groupId>
       <artifactId>ivy-api</artifactId>
+      <version>${ivy.api.version}</version>
     </dependency>
   </dependencies>
   <repositories>

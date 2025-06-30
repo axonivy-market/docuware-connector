@@ -15,6 +15,7 @@
   <properties>
     <tester.version>12.0.1</tester.version>
     <project.build.plugin.version>12.0.0</project.build.plugin.version>
+    <ivy.api.version>13.1.1</ivy.api.version>
   </properties>
   <dependencies>
     <dependency>
@@ -37,6 +38,7 @@
     <dependency>
       <groupId>com.axonivy.ivy.api</groupId>
       <artifactId>ivy-api</artifactId>
+      <version>${ivy.api.version}</version>
     </dependency>
   </dependencies>
   <repositories>
