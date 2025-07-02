@@ -1,0 +1,49 @@
+<Document xmlns="http://dev.docuware.com/schema/public/services/platform">
+    <Fields>
+        <Field FieldName="DOCUMENT_NAME">
+            <String>Sample XML file</String>
+        </Field>
+        <Field FieldName="DOCUMENT_TYPE">
+            <String>Gift Agreement</String>
+        </Field>
+        <Field FieldName="COMPANY">
+            <String>AxonIvy</String>
+        </Field>
+        <Field FieldName="DATE">
+            <String>07/16/2025</String>
+        </Field>
+        <Field FieldName="CONTACT">
+            <String>Hung Pham</String>
+        </Field>
+        <Field FieldName="CUSTOMER_ID">
+            <String>Hung-10234</String>
+        </Field>
+        <Field FieldName="EMAIL">
+            <String>hungtest@axonivy.com</String>
+        </Field>
+        <Field FieldName="SUBJECT">
+            <String>Test Document 1</String>
+        </Field>
+        <Field FieldName="STATUS">
+            <String>Pending</String>
+        </Field>
+        <Field FieldName="PENDING_DATE">
+            <String>07/16/2025</String>
+        </Field>
+        <Field FieldName="DOCUMENT_NUMBER">
+            <String>INV-20250716-001</String>
+        </Field>
+        <Field FieldName="PROJECT">
+            <String>Enterprise ERP Integration</String>
+        </Field>
+        <Field FieldName="AMOUNT">
+            <String>1250.00</String>
+        </Field>
+        <Field FieldName="VAT_ID">
+            <String>DE123456789</String>
+        </Field>
+        <Field FieldName="IBAN">
+            <String>DE89370400440532013000</String>
+        </Field>
+    </Fields>
+</Document>
