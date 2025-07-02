@@ -13,12 +13,35 @@
 				<p:growl id="messages" showDetail="true" />
 				<p:fieldset id="commands" legend="Commands" styleClass="p-field">
 					<div class="ui-g">
-						<p:commandButton id="organizations"
-							actionListener="#{logic.organizations}"
-							value="#{ivy.cms.co('/Labels/Organizations')}" update="form" />
-						<p:commandButton id="fileCabinets" styleClass="p-ml-4"
-							actionListener="#{logic.fileCabinets}"
-							value="#{ivy.cms.co('/Labels/FileCabinets')}" update="form" />
+						<div class="ui-g-3">
+							<p:commandButton id="organizations"
+								actionListener="#{logic.organizations}"
+								value="#{ivy.cms.co('/Dialogs/com/axonivy/connector/docuware/connector/demo/DocuWareDemo/GetFirstOrganization')}"
+								update="form" />
+						</div>
+						<p:outputPanel styleClass="ui-g-9"
+							rendered="#{not empty data.selectedOrganization.name}">
+							<p:outputLabel id="organization"
+								value="#{ivy.cms.co('/Dialogs/com/axonivy/connector/docuware/connector/demo/DocuWareDemo/Organization', [data.selectedOrganization.name])}" />
+						</p:outputPanel>
+					</div>
+					<div>
+						<p:outputPanel styleClass="ui-g-3">
+							<p:selectOneMenu id="fileCabinet" value="#{data.fileCabinetId}">
+								<f:selectItem
+									itemLabel="#{ivy.cms.co('/Dialogs/com/axonivy/connector/docuware/connector/demo/DocuWareDemo/SelectFileCabinet')}"
+									itemValue="" />
+								<f:selectItems value="#{data.fileCabinets.fileCabinet}"
+									var="cabinet" itemLabel="#{cabinet.name}"
+									itemValue="#{cabinet.id}" />
+								<p:ajax process="@this" update="@this form" />
+							</p:selectOneMenu>
+						</p:outputPanel>
+						<p:outputPanel styleClass="ui-g-9"
+							rendered="#{not empty data.fileCabinetId}">
+							<p:outputLabel
+								value="#{ivy.cms.co('/Dialogs/com/axonivy/connector/docuware/connector/demo/DocuWareDemo/FileCabinetId', [data.fileCabinetId])}" />
+						</p:outputPanel>
 					</div>
 				</p:fieldset>
 
@@ -36,10 +59,6 @@
 							<p:commandButton value="#{ivy.cms.co('/Labels/Upload')}"
 								actionListener="#{logic.fileUpload}" ajax="false"
 								id="fileUploadButton" icon="fa-solid fa-cloud-arrow-up" />
-						</div>
-						<div class="ui-g-12">
-							<h:outputText
-								value="#{ivy.cms.co('/Labels/CabinetId', [data.fileCabinetId])}" />
 						</div>
 					</div>
 				</p:fieldset>

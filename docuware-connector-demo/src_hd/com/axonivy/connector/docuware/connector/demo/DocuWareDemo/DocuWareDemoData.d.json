@@ -25,5 +25,8 @@
   }, {
     "name" : "fileCabinets",
     "type" : "com.docuware.dev.schema._public.services.platform.FileCabinets"
+  }, {
+    "name" : "selectedOrganization",
+    "type" : "com.docuware.dev.schema._public.services.platform.Organization"
   } ]
 }
