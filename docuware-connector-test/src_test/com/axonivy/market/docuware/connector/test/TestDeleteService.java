@@ -10,7 +10,6 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 import com.axonivy.connector.docuware.connector.DocuWareEndpointConfiguration;
 import com.axonivy.market.docuware.connector.DeleteServiceData;
 import com.axonivy.market.docuware.connector.constants.DocuwareTestConstants;
-import com.axonivy.market.docuware.connector.utils.DocuwareTestUtils;
 import ch.ivyteam.ivy.bpm.engine.client.BpmClient;
 import ch.ivyteam.ivy.bpm.engine.client.ExecutionResult;
 import ch.ivyteam.ivy.bpm.engine.client.element.BpmElement;
@@ -27,7 +26,6 @@ public class TestDeleteService extends TestDocuWareConnector {
 
   @TestTemplate
   public void deleteDocument(BpmClient bpmClient, ExtensionContext context) throws IOException {
-    boolean isRealCall = context.getDisplayName().equals(DocuwareTestConstants.REAL_CALL_CONTEXT_DISPLAY_NAME);
     ExecutionResult result =
         bpmClient.start().subProcess(testeeDelete).withParam("documentId", String.valueOf(DOCUMENT_ID)).execute();
     DeleteServiceData data = result.data().last();
@@ -41,7 +39,6 @@ public class TestDeleteService extends TestDocuWareConnector {
 
   @TestTemplate
   public void deleteDocumentError(BpmClient bpmClient, ExtensionContext context) throws IOException {
-    boolean isRealCall = context.getDisplayName().equals(DocuwareTestConstants.REAL_CALL_CONTEXT_DISPLAY_NAME);
     ExecutionResult result =
         bpmClient.start().subProcess(testeeDelete).withParam("documentId", Constants.DOCUMENT_ID_ERRROR_CASE).execute();
     DeleteServiceData data = result.data().last();
@@ -58,8 +55,7 @@ public class TestDeleteService extends TestDocuWareConnector {
   @TestTemplate
   public void deleteDocumentWithEndpointConfiguration(BpmClient bpmClient, ExtensionContext context)
       throws IOException {
-    boolean isRealCall = context.getDisplayName().equals(DocuwareTestConstants.REAL_CALL_CONTEXT_DISPLAY_NAME);
-    DocuWareEndpointConfiguration configuration = DocuwareTestUtils.prepareDocuWareEndpointConfiguration();
+    DocuWareEndpointConfiguration configuration = prepareDocuWareEndpointConfiguration();
     ExecutionResult result = bpmClient.start().subProcess(testeeDelete_2)
         .withParam("documentId", String.valueOf(DOCUMENT_ID)).withParam("configuration", configuration).execute();
     DeleteServiceData data = result.data().last();

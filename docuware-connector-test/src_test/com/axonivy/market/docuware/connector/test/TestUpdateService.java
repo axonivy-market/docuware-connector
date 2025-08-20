@@ -9,7 +9,6 @@ import com.axonivy.connector.docuware.connector.DocuWareEndpointConfiguration;
 import com.axonivy.connector.docuware.connector.DocuWareProperty;
 import com.axonivy.market.docuware.connector.UpdateServiceData;
 import com.axonivy.market.docuware.connector.constants.DocuwareTestConstants;
-import com.axonivy.market.docuware.connector.utils.DocuwareTestUtils;
 import ch.ivyteam.ivy.bpm.engine.client.BpmClient;
 import ch.ivyteam.ivy.bpm.engine.client.ExecutionResult;
 import ch.ivyteam.ivy.bpm.engine.client.element.BpmElement;
@@ -27,8 +26,7 @@ public class TestUpdateService extends TestDocuWareConnector {
 
   @TestTemplate
   public void updateDocument(BpmClient bpmClient, ExtensionContext context) throws IOException {
-    boolean isRealCall = context.getDisplayName().equals(DocuwareTestConstants.REAL_CALL_CONTEXT_DISPLAY_NAME);
-    List<DocuWareProperty> propertyList = DocuwareTestUtils.prepareDocuWareProperties();
+    List<DocuWareProperty> propertyList = prepareDocuWareProperties();
     ExecutionResult result = bpmClient.start().subProcess(testeeUpdate)
         .withParam("documentId", String.valueOf(DOCUMENT_ID)).withParam("indexFields", propertyList).execute();
     UpdateServiceData data = result.data().last();
@@ -44,9 +42,8 @@ public class TestUpdateService extends TestDocuWareConnector {
   @TestTemplate
   public void updateDocumentWithEndpointConfiguration(BpmClient bpmClient, ExtensionContext context)
       throws IOException {
-    boolean isRealCall = context.getDisplayName().equals(DocuwareTestConstants.REAL_CALL_CONTEXT_DISPLAY_NAME);
-    List<DocuWareProperty> propertyList = DocuwareTestUtils.prepareDocuWareProperties();
-    DocuWareEndpointConfiguration configuration = DocuwareTestUtils.prepareDocuWareEndpointConfiguration();
+    List<DocuWareProperty> propertyList = prepareDocuWareProperties();
+    DocuWareEndpointConfiguration configuration = prepareDocuWareEndpointConfiguration();
     ExecutionResult result =
         bpmClient.start().subProcess(testeeUpdate_2).withParam("documentId", String.valueOf(DOCUMENT_ID))
             .withParam("indexFields", propertyList).withParam("configuration", configuration).execute();

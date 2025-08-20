@@ -28,7 +28,6 @@ public class TestDownloadService extends TestDocuWareConnector {
 
   @TestTemplate
   public void downloadDocument(BpmClient bpmClient, ExtensionContext context) throws IOException {
-    boolean isRealCall = context.getDisplayName().equals(DocuwareTestConstants.REAL_CALL_CONTEXT_DISPLAY_NAME);
     ExecutionResult result = bpmClient.start().subProcess(testeeDownload)
         .withParam("documentId", String.valueOf(Constants.EXPECTED_DOCUMENT_ID)).execute();
     DownloadServiceData data = result.data().last();
@@ -44,7 +43,6 @@ public class TestDownloadService extends TestDocuWareConnector {
   @TestTemplate
   public void downloadDocumentWithEndpointConfiguration(BpmClient bpmClient, ExtensionContext context)
       throws IOException {
-    boolean isRealCall = context.getDisplayName().equals(DocuwareTestConstants.REAL_CALL_CONTEXT_DISPLAY_NAME);
     ExecutionResult result = bpmClient.start().subProcess(testeeDownload_2)
         .withParam("documentId", String.valueOf(Constants.EXPECTED_DOCUMENT_ID)).execute();
     DownloadServiceData data = result.data().last();
@@ -59,7 +57,6 @@ public class TestDownloadService extends TestDocuWareConnector {
 
   @TestTemplate
   public void downloadFile(BpmClient bpmClient, ExtensionContext context) throws IOException {
-    boolean isRealCall = context.getDisplayName().equals(DocuwareTestConstants.REAL_CALL_CONTEXT_DISPLAY_NAME);
     DocuWareEndpointConfiguration configuration = new DocuWareEndpointConfiguration();
     ExecutionResult result = bpmClient.start().subProcess(testeeDownload_3)
         .withParam("documentId", String.valueOf(Constants.EXPECTED_DOCUMENT_ID))
@@ -76,7 +73,6 @@ public class TestDownloadService extends TestDocuWareConnector {
 
   @TestTemplate
   public void downloadFileWithEndpointConfiguration(BpmClient bpmClient, ExtensionContext context) throws IOException {
-    boolean isRealCall = context.getDisplayName().equals(DocuwareTestConstants.REAL_CALL_CONTEXT_DISPLAY_NAME);
     DocuWareEndpointConfiguration configuration = new DocuWareEndpointConfiguration();
     ExecutionResult result = bpmClient.start().subProcess(testeeDownload_4)
         .withParam("documentId", String.valueOf(Constants.EXPECTED_DOCUMENT_ID))
