@@ -36,6 +36,11 @@
   </repositories>
   <dependencies>
     <dependency>
+      <groupId>com.axonivy.utils.e2etest</groupId>
+      <artifactId>e2e-test-utils</artifactId>
+      <version>[1.0.0,)</version>
+    </dependency>
+    <dependency>
       <groupId>com.axonivy.ivy.test</groupId>
       <artifactId>unit-tester</artifactId>
       <version>${tester.version}</version>
@@ -85,7 +90,8 @@
             <filecabinetid>${docuware.filecabinetid}</filecabinetid>
             <testEnvironment>${testEnvironment}</testEnvironment>
           </systemPropertyVariables>
-          <statelessTestsetReporter implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5Xml30StatelessReporter">
+          <statelessTestsetReporter
+            implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5Xml30StatelessReporter">
             <disable>false</disable>
             <usePhrasedFileName>false</usePhrasedFileName>
             <usePhrasedTestSuiteClassName>true</usePhrasedTestSuiteClassName>
