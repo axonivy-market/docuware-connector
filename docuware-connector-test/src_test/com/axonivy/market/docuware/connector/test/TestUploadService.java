@@ -15,8 +15,6 @@ import com.axonivy.connector.docuware.connector.DocuWareProperty;
 import com.axonivy.connector.docuware.connector.demo.service.DocuWareDemoService;
 import com.axonivy.market.docuware.connector.DeleteServiceData;
 import com.axonivy.market.docuware.connector.UploadServiceData;
-import com.axonivy.market.docuware.connector.constants.DocuwareTestConstants;
-import com.axonivy.market.docuware.connector.utils.DocuwareTestUtils;
 import ch.ivyteam.ivy.bpm.engine.client.BpmClient;
 import ch.ivyteam.ivy.bpm.engine.client.ExecutionResult;
 import ch.ivyteam.ivy.bpm.engine.client.element.BpmElement;
@@ -26,7 +24,7 @@ import ch.ivyteam.ivy.environment.AppFixture;
 import ch.ivyteam.ivy.scripting.objects.List;
 
 @IvyProcessTest(enableWebServer = true)
-public class TestUploadService extends TestDocuWareConnector{
+public class TestUploadService extends TestDocuWareConnector {
 
   private static final BpmElement testeeUploadFile_1 =
       BpmProcess.path("UploadService").elementName("uploadFileWithIndexFields(File,List<DocuWareProperty>)");
@@ -41,8 +39,7 @@ public class TestUploadService extends TestDocuWareConnector{
 
   @TestTemplate
   public void uploadFile(BpmClient bpmClient, ExtensionContext context) throws IOException {
-    boolean isRealCall = context.getDisplayName().equals(DocuwareTestConstants.REAL_CALL_CONTEXT_DISPLAY_NAME);
-    List<DocuWareProperty> propertyList = DocuwareTestUtils.prepareDocuWareProperties();
+    List<DocuWareProperty> propertyList = prepareDocuWareProperties();
     File pdf = DocuWareDemoService.exportFromCMS("/Files/uploadSample", "pdf");
     ExecutionResult result = bpmClient.start().subProcess(testeeUploadFile_1).withParam("indexFields", propertyList)
         .withParam("file", pdf).execute();
@@ -57,9 +54,8 @@ public class TestUploadService extends TestDocuWareConnector{
 
   @TestTemplate
   public void uploadFileWithEndpointConfiguration(BpmClient bpmClient, ExtensionContext context) throws IOException {
-    boolean isRealCall = context.getDisplayName().equals(DocuwareTestConstants.REAL_CALL_CONTEXT_DISPLAY_NAME);
-    List<DocuWareProperty> propertyList = DocuwareTestUtils.prepareDocuWareProperties();
-    DocuWareEndpointConfiguration configuration = DocuwareTestUtils.prepareDocuWareEndpointConfiguration();
+    List<DocuWareProperty> propertyList = prepareDocuWareProperties();
+    DocuWareEndpointConfiguration configuration = prepareDocuWareEndpointConfiguration();
     File pdf = DocuWareDemoService.exportFromCMS("/Files/uploadSample", "pdf");
     ExecutionResult result = bpmClient.start().subProcess(testeeUploadFile_2).withParam("indexFields", propertyList)
         .withParam("file", pdf).withParam("configuration", configuration).execute();
@@ -75,9 +71,8 @@ public class TestUploadService extends TestDocuWareConnector{
   @TestTemplate
   public void uploadFileWithEndpointConfigurationWithStoreDialogFromVariable(BpmClient bpmClient,
       ExtensionContext context, AppFixture fixture) throws IOException {
-    boolean isRealCall = context.getDisplayName().equals(DocuwareTestConstants.REAL_CALL_CONTEXT_DISPLAY_NAME);
-    List<DocuWareProperty> propertyList = DocuwareTestUtils.prepareDocuWareProperties();
-    DocuWareEndpointConfiguration configuration = DocuwareTestUtils.prepareDocuWareEndpointConfiguration();
+    List<DocuWareProperty> propertyList = prepareDocuWareProperties();
+    DocuWareEndpointConfiguration configuration = prepareDocuWareEndpointConfiguration();
     if (!isRealCall) {
       fixture.var("docuwareConnector.storedialogid", "" + Constants.EXPECTED_DOCUMENT_ID_FOR_STORE_DIALOG_1);
       configuration.setStoreDialogId("" + Constants.EXPECTED_DOCUMENT_ID_FOR_STORE_DIALOG_1);
@@ -97,9 +92,8 @@ public class TestUploadService extends TestDocuWareConnector{
   @TestTemplate
   public void uploadFileWithEndpointConfigurationWithCustomStoreDialog(BpmClient bpmClient, ExtensionContext context)
       throws IOException {
-    boolean isRealCall = context.getDisplayName().equals(DocuwareTestConstants.REAL_CALL_CONTEXT_DISPLAY_NAME);
-    List<DocuWareProperty> propertyList = DocuwareTestUtils.prepareDocuWareProperties();
-    DocuWareEndpointConfiguration configuration = DocuwareTestUtils.prepareDocuWareEndpointConfiguration();
+    List<DocuWareProperty> propertyList = prepareDocuWareProperties();
+    DocuWareEndpointConfiguration configuration = prepareDocuWareEndpointConfiguration();
     if (!isRealCall) {
       configuration.setStoreDialogId("" + Constants.EXPECTED_DOCUMENT_ID_FOR_STORE_DIALOG_2);
     }
@@ -117,8 +111,7 @@ public class TestUploadService extends TestDocuWareConnector{
 
   @TestTemplate
   public void uploadFileStream(BpmClient bpmClient, ExtensionContext context) throws IOException {
-    boolean isRealCall = context.getDisplayName().equals(DocuwareTestConstants.REAL_CALL_CONTEXT_DISPLAY_NAME);
-    List<DocuWareProperty> propertyList = DocuwareTestUtils.prepareDocuWareProperties();
+    List<DocuWareProperty> propertyList = prepareDocuWareProperties();
     File pdf = DocuWareDemoService.exportFromCMS("/Files/uploadSample", "pdf");
     byte[] bytes = Files.readAllBytes(pdf.toPath());
     java.util.List<Byte> byteList = Arrays.asList(ArrayUtils.toObject(bytes));
@@ -138,9 +131,8 @@ public class TestUploadService extends TestDocuWareConnector{
   @TestTemplate
   public void uploadFileStreamWithEndpointConfiguration(BpmClient bpmClient, ExtensionContext context)
       throws IOException {
-    boolean isRealCall = context.getDisplayName().equals(DocuwareTestConstants.REAL_CALL_CONTEXT_DISPLAY_NAME);
-    List<DocuWareProperty> propertyList = DocuwareTestUtils.prepareDocuWareProperties();
-    DocuWareEndpointConfiguration configuration = DocuwareTestUtils.prepareDocuWareEndpointConfiguration();
+    List<DocuWareProperty> propertyList = prepareDocuWareProperties();
+    DocuWareEndpointConfiguration configuration = prepareDocuWareEndpointConfiguration();
     File pdf = DocuWareDemoService.exportFromCMS("/Files/uploadSample", "pdf");
     byte[] bytes = Files.readAllBytes(pdf.toPath());
     java.util.List<Byte> byteList = Arrays.asList(ArrayUtils.toObject(bytes));
