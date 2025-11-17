@@ -1,79 +1,114 @@
-# DocuWare Connector
+# DocuWare Anschluss
 
-[DocuWare](https://start.docuware.com/) bietet cloudbasierte Dokumentenverwaltung und Workflow-Automatisierungssoftware. Es kann verwendet werden, um alle Geschäftsdokumente revisionssicher zu digitalisieren, zu archivieren und zu verarbeiten, um die Kernprozesse Ihres Unternehmens zu optimieren.
+[DocuWare](https://start.docuware.com/) bietet an Wolke-basisbezogenes Dokument
+Management und workflow Automatisierung Software. Es kann sein benutzt zu
+digitalisieren, Archiv und verarbeiten irgendwelche dienstlichen Dokumente in
+einem Audit-Beweis Art zu optimieren euren GesellschaftInnenteil Arbeitsgänge.
 
-Der Axon Ivy DocuWare-Connector ermöglicht eine effiziente Integration von DocuWare-Funktionalitäten in deine Axon Ivy Prozessanwendungen.
+Der #Axon Efeu DocuWare Anschluss aktiviert leistungsstarke Integration von
+DocuWare Funktionalitäten hinein euren #Axon Efeu verarbeitet Anträge
 
-Dieser Connector:
+Dieser Anschluss:
 
-- minimiert den Integrationsaufwand: Verwende die Demo-Version, die Beispiele für API-Aufrufe enthält.
-- basiert auf REST-Webdienst-Technologien.
-- gibt dir Zugriff auf grundlegende DocuWare-Funktionen.
+- Minimiert eure Integration Anstrengung: Benutz die Demo Version, #welche
+  zügelt Beispiele von die API Anrufe.
+- Ist gegründet auf REST Web Bedienung Technologien.
+- Gibt du greifst zu zu einfach DocuWare Aufgaben.
 
 ## Demo
 
-### Funktionen
+### Charakterzüge
 
-1. **Abruf von Organisationen**  
-   Klicke auf die Schaltfläche **Organisationen**, um die Organisations-ID abzurufen. Das System fügt diese ID automatisch in nachfolgende Anfragen ein.
+1. **Organisation Rettung**\
+   Klickt die **Organisationen** #zuknöpfen zu #wiedergewinnen die Organisation
+   ID. Das System will automatisch einschließen dies ID in folgend Bitten.
 
-    ![organization-result](images/get-organization-result.png)
+   ![Organisation-resultier](images/get-organization-result.png)
 
-2. **Abruf von Dateiablagen**  
-    Klicke auf die Schaltfläche **Dateiablagen**, um die Ablagen-ID der ausgewählten Organisation abzurufen. Die Ablagen-ID bestimmt, wohin die Datei hochgeladen wird.
+2. **Datei Kabinette Rettung**\
+   Klickt die **Datei Kabinette** #zuknöpfen zu holen das Kabinett Id von der
+   exklusiven Organisation. Das Kabinett Id ermittelt #wo will die Datei sein
+   #hochladen.
 
-    ![file-cabinet-result](images/get-file-cabinet-result.png)
+   ![Datei-Kabinett-resultier](images/get-file-cabinet-result.png)
 
-3. **Hochladen von Dokumenten**  
-    Wähle eine Datei aus, die in die ausgewählte DocuWare-Dateiablage hochgeladen werden soll. Du kannst die hochgeladene Datei auf dem DocuWare-Dashboard überprüfen.
+3. **Dokument #Hochladen**\
+   Wählt aus eine Datei zu #hochladen zu das auserwähltes DocuWare Datei
+   Kabinett. Du kannst überprüfen das #hochladen weiter Datei die DocuWare
+   Armaturenbrett.
 
-    ![upload-document](images/upload-document-result.png)
+   ![#Hochladen-dokumentier](images/upload-document-result.png)
 
-4. **Abruf von Dokumenten**  
-   Dokumente werden automatisch abgerufen, indem die vordefinierten Felder **organization** und **fileCabinetId** aus der Datei `variables.yaml` verwendet werden.
+4. **Dokument Rettung**\
+   Automatisch holen Dokumente benutzend das #vordefiniert **Organisation** und
+   **fileCabinetId** Felder von die `Variablen.yaml` Datei.
 
-   ![fetch-documents](images/fetch-documents.png)
+   Du kannst auch wechseln das **Organisation** und **fileCabinet** mal wechseln
+   die **Filter**. Es unterstützt multi-Auslese für beide Felder.
 
-5. **Anzeigen von Dokumenten**  
-   Dokumente können direkt in der Benutzeroberfläche mithilfe des DocuWare-Dokumentenbetrachters angezeigt werden.
+   ![Holen-Dokumente](images/fetch-documents.png)
 
-   ![view-document](images/view-document.png)
+5. **Dokument Besichtigungstermin**\
+   Ausblick Dokumente direkt benutzend innerhalb die Schnittstelle DocuWares
+   Dokument Beschauer.
 
-6. **Bearbeiten von Dokumenteigenschaften**  
-   Ändere die Dokumenteigenschaften, einschließlich Metadaten und benutzerdefinierter Felder.
+   ![Ausblick-dokumentier](images/view-document.png)
 
-   ![edit-document-properties](images/edit-document-properties.png)
+6. **Dokument #Besitz Bearbeitend**\
+   Modifizieren Dokument #Besitz, einschließlich #Metadaten und
+   #benutzerdefiniert Felder.
 
-7. **Löschen von Dokumenten**  
-   Lösche die Dokumente aus der Dateiablage.
+   ![Bearbeitung-Dokument-#Besitz](images/edit-document-properties.png)
 
-   ![delete-document](images/delete-document.png)
+7. **Dokument Löschung**\
+   Streicht Dokumente von das Datei Kabinett.
 
-Um Dokumente anzuzeigen und deren Eigenschaften zu bearbeiten, starte den Prozess mit dem Namen **DocuWare View/Edit Document**.
+   ![Streichen-dokumentier](images/delete-document.png)
 
-Um Dokumente hochzuladen und Aktionen wie Abruf von Organisationen, Abruf von Dateiablagen und Hochladen von Dokumenten auszuführen, starte den Prozess mit dem Namen **Start some DocuWare calls**.
+Zu anschauen und Bearbeitung Dokumente und ihre #Besitz, rennt den Arbeitsgang
+geheißen **DocuWare Ausblick/Bearbeitung Dokument**.
 
-## Setup
+Zu #hochladen dokumentiert und aufführen Aktionen mögen #wiedergewinnen
+Organisationen, bekommend Datei Kabinette, und #hochladen Dokumente, rennt den
+Arbeitsgang geheißen **Startet #welche DocuWare Anrufe**.
 
-Bevor eine Interaktion zwischen der Axon Ivy Engine und den DocuWare-Diensten ausgeführt werden kann, müssen diese mit einander verknüpft werden. Dies kann wie folgt durchgeführt werden:
+## Einrichtung
 
-1. Erstelle ein DocuWare-Konto und nutze den DocuWare-Cloud-`host`, `user-name` und das `password`.
+Vor irgendwelche Interaktionen zwischen den #Axon Efeu Motor und DocuWare
+Bedienungen können sein gerannt, sie müssen sein introducted zu #jede #andere.
+Dies kann sein getan folgendermaßen:
 
-2. Überschreibe die globalen Variablen für `host`, `username` und `password` im Demo-Projekt wie im folgenden Beispiel gezeigt:
+1. Bekomm ein DocuWare Konto und das DocuWare Wolke `Gastgeber`, `Nutzer-Name`,
+   und `Passwort` zu benutzen.
 
-   ```yaml
-   @variables.yaml@
-   
-3. DocuWare unterstützt 3 Methoden, um ein Zugriffstoken vom Identitätsdienst zu generieren:
+2. Überbrückung die globalen Variablen für `Gastgeber`, `Benutzername`, und
+   `Passwort` in das Demo Projekt gezeigt da in dem Beispiel unten.
 
-    3.a Zugriffstoken per Benutzername und Passwort anfordern - GrantType ist `password`
-    
-    3.b Zugriffstoken mit einem DocuWare-Token anfordern - GrantType ist `dwtoken`
-    
-    3.c Zugriffstoken per Benutzername und Passwort (Trusted User) anfordern - GrantType ist `trusted`
+```
+@variables.yaml@
+```
 
-4. Für GrantType `dwtoken` muss ein LoginToken generiert werden. Starte den Prozess `startRequestALoginToken.ivp` und folge der Anleitung, um ein neues LoginToken zu erstellen.
+3. DocuWare Unterstützt 3 Wege zu generieren eine Zugang Automatenmünze von die
+   Identität Bedienung:
 
-Wenn deine REST-URL nicht dem vordefinierten REST-URL-Muster dieses Connectors entspricht, kannst du die URL im Engine Cockpit ändern. Um die URL im Designer zu ändern, musst du das Connector-Projekt entpacken und dort ändern.
+   3.Eine Bitte Automatenmünze bei Benutzername & Passwort - GrantType ist
+   `Passwort`
 
-Starte `start.ivp` des DocuWareDemo-Demoprozesses, um deine Einrichtung zu testen.
+   3.b Bitte Automatenmünze mal eine DocuWare Automatenmünze - GrantType ist
+   `dwtoken`
+
+   3.c Bitte Automatenmünze bei Benutzername & Passwort (#Bewährt Nutzer) -
+   GrantType ist `gehofft`
+
+4. Für GrantType ist `dwtoken`, wir müssen bekommen ein LoginToken. Bitte
+   #starten den Arbeitsgang startRequestALoginToken.ivp Und folgen den
+   Fremdenführer zu generieren ein neues LoginToken
+
+Ob eure REST URL folgt nicht den #vordefiniert REST URL Muster von diesem
+Anschluss, du kannst wechseln dem URL in die Motor Pilotenkabine. Zu wechseln
+das URL in dem Designer, du müssen das Anschluss Projekt auspacken und wechseln
+ihm dort.
+
+Lauf `Start.ivp` Von das DocuWareDemo Demo Arbeitsgang zu testen eure
+Einrichtung.
+
