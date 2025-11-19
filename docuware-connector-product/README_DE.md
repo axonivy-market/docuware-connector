@@ -1,114 +1,110 @@
-# DocuWare Anschluss
+# DocuWare Connector
 
-[DocuWare](https://start.docuware.com/) bietet an Wolke-basisbezogenes Dokument
-Management und workflow Automatisierung Software. Es kann sein benutzt zu
-digitalisieren, Archiv und verarbeiten irgendwelche dienstlichen Dokumente in
-einem Audit-Beweis Art zu optimieren euren GesellschaftInnenteil Arbeitsgänge.
+[DocuWare](https://start.docuware.com/) bietet cloudbasierte Software für
+Dokumentenmanagement und Workflow-Automatisierung. Damit lassen sich alle
+Geschäftsdokumente revisionssicher digitalisieren, archivieren und verarbeiten,
+um die Kernprozesse Ihres Unternehmens zu optimieren.
 
-Der #Axon Efeu DocuWare Anschluss aktiviert leistungsstarke Integration von
-DocuWare Funktionalitäten hinein euren #Axon Efeu verarbeitet Anträge
+Der Axon Ivy DocuWare-Konnektor ermöglicht die effiziente Integration von
+DocuWare-Funktionen in Ihre Axon Ivy-Prozessanwendungen.
 
-Dieser Anschluss:
+Dieser Konnektor:
 
-- Minimiert eure Integration Anstrengung: Benutz die Demo Version, #welche
-  zügelt Beispiele von die API Anrufe.
-- Ist gegründet auf REST Web Bedienung Technologien.
-- Gibt du greifst zu zu einfach DocuWare Aufgaben.
+- Minimiert Ihren Integrationsaufwand: Verwenden Sie die Demoversion, die
+  Beispiele für die API-Aufrufe enthält.
+- basiert auf REST-Webdiensttechnologien.
+- gibt Ihnen Zugriff auf grundlegende DocuWare-Funktionen.
 
 ## Demo
 
-### Charakterzüge
+### Funktionen
 
-1. **Organisation Rettung**\
-   Klickt die **Organisationen** #zuknöpfen zu #wiedergewinnen die Organisation
-   ID. Das System will automatisch einschließen dies ID in folgend Bitten.
+1. **Abrufen der Organisations-**Klicken Sie auf die Schaltfläche „
+   **Organizations** ” (Organisations-ID abrufen), um die Organisations-ID
+   abzurufen. Das System fügt diese ID automatisch in nachfolgende Anfragen ein.
 
-   ![Organisation-resultier](images/get-organization-result.png)
+   ![organization-result](images/get-organization-result.png)
 
-2. **Datei Kabinette Rettung**\
-   Klickt die **Datei Kabinette** #zuknöpfen zu holen das Kabinett Id von der
-   exklusiven Organisation. Das Kabinett Id ermittelt #wo will die Datei sein
-   #hochladen.
+2. **Abruf von Dateischränken**\
+   Klicken Sie auf die Schaltfläche „ **“ (Dateischränke abrufen)**, um die
+   Schrank-ID der ausgewählten Organisation abzurufen. Die Schrank-ID bestimmt,
+   wohin die Datei hochgeladen wird.
 
-   ![Datei-Kabinett-resultier](images/get-file-cabinet-result.png)
+   ![file-cabinet-result](images/get-file-cabinet-result.png)
 
-3. **Dokument #Hochladen**\
-   Wählt aus eine Datei zu #hochladen zu das auserwähltes DocuWare Datei
-   Kabinett. Du kannst überprüfen das #hochladen weiter Datei die DocuWare
-   Armaturenbrett.
+3. **Dokument-Upload-**Wählen Sie eine Datei aus, die Sie in den ausgewählten
+   DocuWare-Aktenschrank hochladen möchten. Sie können die hochgeladene Datei
+   auf dem DocuWare-Dashboard überprüfen.
 
-   ![#Hochladen-dokumentier](images/upload-document-result.png)
+   ![upload-document](images/upload-document-result.png)
 
-4. **Dokument Rettung**\
-   Automatisch holen Dokumente benutzend das #vordefiniert **Organisation** und
-   **fileCabinetId** Felder von die `Variablen.yaml` Datei.
+4. **Dokumentabruf**\
+   Rufen Sie Dokumente automatisch ab, indem Sie die vordefinierten Felder „
+   **“, „organization“** und „ **“ fileCabinetId** aus der Datei „
+   `variables.yaml“` verwenden.
 
-   Du kannst auch wechseln das **Organisation** und **fileCabinet** mal wechseln
-   die **Filter**. Es unterstützt multi-Auslese für beide Felder.
+   Sie können auch die Organisation „ **“** und „ **“ fileCabinet** ändern,
+   indem Sie den Filter „ **“** ändern. Beide Felder unterstützen die
+   Mehrfachauswahl.
 
-   ![Holen-Dokumente](images/fetch-documents.png)
+   ![fetch-documents](images/fetch-documents.png)
 
-5. **Dokument Besichtigungstermin**\
-   Ausblick Dokumente direkt benutzend innerhalb die Schnittstelle DocuWares
-   Dokument Beschauer.
+5. **Dokumentenanzeige-**Zeigen Sie Dokumente direkt in der Benutzeroberfläche
+   mit dem Dokumentenbetrachter von DocuWare an.
 
-   ![Ausblick-dokumentier](images/view-document.png)
+   ![view-document](images/view-document.png)
 
-6. **Dokument #Besitz Bearbeitend**\
-   Modifizieren Dokument #Besitz, einschließlich #Metadaten und
-   #benutzerdefiniert Felder.
+6. **Bearbeiten von Dokumenteigenschaften**Ändern Sie Dokumenteigenschaften,
+   einschließlich Metadaten und benutzerdefinierter Felder.
 
-   ![Bearbeitung-Dokument-#Besitz](images/edit-document-properties.png)
+   ![edit-document-properties](images/edit-document-properties.png)
 
-7. **Dokument Löschung**\
-   Streicht Dokumente von das Datei Kabinett.
+7. **Dokumententfernung**Löschen Sie Dokumente aus dem Aktenschrank.
 
-   ![Streichen-dokumentier](images/delete-document.png)
+   ![delete-document](images/delete-document.png)
 
-Zu anschauen und Bearbeitung Dokumente und ihre #Besitz, rennt den Arbeitsgang
-geheißen **DocuWare Ausblick/Bearbeitung Dokument**.
+Um Dokumente und deren Eigenschaften anzuzeigen und zu bearbeiten, führen Sie
+den Prozess „ **“ aus. DocuWare-Dokument anzeigen/bearbeiten**.
 
-Zu #hochladen dokumentiert und aufführen Aktionen mögen #wiedergewinnen
-Organisationen, bekommend Datei Kabinette, und #hochladen Dokumente, rennt den
-Arbeitsgang geheißen **Startet #welche DocuWare Anrufe**.
+Um Dokumente hochzuladen und Aktionen wie das Abrufen von Organisationen, das
+Abrufen von Aktenschränken und das Hochladen von Dokumenten durchzuführen,
+führen Sie den Prozess „ **” aus. Starten Sie einige DocuWare-Aufrufe „** ”.
 
 ## Einrichtung
 
-Vor irgendwelche Interaktionen zwischen den #Axon Efeu Motor und DocuWare
-Bedienungen können sein gerannt, sie müssen sein introducted zu #jede #andere.
-Dies kann sein getan folgendermaßen:
+Bevor Interaktionen zwischen der Axon Ivy Engine und den DocuWare-Diensten
+ausgeführt werden können, müssen diese einander vorgestellt werden. Dies kann
+wie folgt erfolgen:
 
-1. Bekomm ein DocuWare Konto und das DocuWare Wolke `Gastgeber`, `Nutzer-Name`,
-   und `Passwort` zu benutzen.
+1. `Erstellen Sie ein DocuWare-Konto und nutzen Sie den DocuWare-Cloud-Host `,
+   `, Benutzername` und `, Passwort`.
 
-2. Überbrückung die globalen Variablen für `Gastgeber`, `Benutzername`, und
-   `Passwort` in das Demo Projekt gezeigt da in dem Beispiel unten.
+2. Überschreiben Sie die globalen Variablen für `host`, `username` und
+   `password` im Demo-Projekt, wie im folgenden Beispiel gezeigt.
 
 ```
 @variables.yaml@
 ```
 
-3. DocuWare Unterstützt 3 Wege zu generieren eine Zugang Automatenmünze von die
-   Identität Bedienung:
+3. DocuWare unterstützt drei Möglichkeiten, um einen Zugriffstoken aus dem
+   Identitätsdienst zu generieren:
 
-   3.Eine Bitte Automatenmünze bei Benutzername & Passwort - GrantType ist
-   `Passwort`
+   3.a Token per Benutzername und Passwort anfordern – GrantType ist „
+   `password“`
 
-   3.b Bitte Automatenmünze mal eine DocuWare Automatenmünze - GrantType ist
-   `dwtoken`
+   3.b Token über einen DocuWare-Token anfordern – GrantType ist `dwtoken`
 
-   3.c Bitte Automatenmünze bei Benutzername & Passwort (#Bewährt Nutzer) -
-   GrantType ist `gehofft`
+   3.c Token per Benutzername und Passwort anfordern (vertrauenswürdiger
+   Benutzer) – GrantType ist „ `trusted”`
 
-4. Für GrantType ist `dwtoken`, wir müssen bekommen ein LoginToken. Bitte
-   #starten den Arbeitsgang startRequestALoginToken.ivp Und folgen den
-   Fremdenführer zu generieren ein neues LoginToken
+4. Für GrantType ist `dwtoken`, wir müssen ein LoginToken erhalten. Bitte
+   starten Sie den Prozess startRequestALoginToken.ivp und folgen Sie der
+   Anleitung, um ein neues LoginToken zu generieren.
 
-Ob eure REST URL folgt nicht den #vordefiniert REST URL Muster von diesem
-Anschluss, du kannst wechseln dem URL in die Motor Pilotenkabine. Zu wechseln
-das URL in dem Designer, du müssen das Anschluss Projekt auspacken und wechseln
-ihm dort.
+Wenn Ihre REST-URL nicht dem vordefinierten REST-URL-Muster dieses Konnektors
+entspricht, können Sie die URL im Engine Cockpit ändern. Um die URL im Designer
+zu ändern, müssen Sie das Konnektorprojekt entpacken und dort ändern.
 
-Lauf `Start.ivp` Von das DocuWareDemo Demo Arbeitsgang zu testen eure
-Einrichtung.
+Führen Sie „ `“ und „start.ivp“ aus, um „` “ des DocuWareDemo-Demo-Prozesses zu
+testen und Ihre Einrichtung zu überprüfen.
 
