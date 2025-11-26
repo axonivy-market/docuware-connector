@@ -70,7 +70,7 @@ Um Dokumente hochzuladen und Aktionen wie das Abrufen von Organisationen, das
 Abrufen von Aktenschränken und das Hochladen von Dokumenten durchzuführen,
 führen Sie den Prozess „ **” aus. Starten Sie einige DocuWare-Aufrufe „** ”.
 
-## Einrichtung
+## Setup
 
 Bevor Interaktionen zwischen der Axon Ivy Engine und den DocuWare-Diensten
 ausgeführt werden können, müssen diese einander vorgestellt werden. Dies kann
