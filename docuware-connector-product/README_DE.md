@@ -1,79 +1,110 @@
 # DocuWare Connector
 
-[DocuWare](https://start.docuware.com/) bietet cloudbasierte Dokumentenverwaltung und Workflow-Automatisierungssoftware. Es kann verwendet werden, um alle Geschäftsdokumente revisionssicher zu digitalisieren, zu archivieren und zu verarbeiten, um die Kernprozesse Ihres Unternehmens zu optimieren.
+[DocuWare](https://start.docuware.com/) bietet cloudbasierte Software für
+Dokumentenmanagement und Workflow-Automatisierung. Damit lassen sich alle
+Geschäftsdokumente revisionssicher digitalisieren, archivieren und verarbeiten,
+um die Kernprozesse Ihres Unternehmens zu optimieren.
 
-Der Axon Ivy DocuWare-Connector ermöglicht eine effiziente Integration von DocuWare-Funktionalitäten in deine Axon Ivy Prozessanwendungen.
+Der Axon Ivy DocuWare-Konnektor ermöglicht die effiziente Integration von
+DocuWare-Funktionen in Ihre Axon Ivy-Prozessanwendungen.
 
-Dieser Connector:
+Dieser Konnektor:
 
-- minimiert den Integrationsaufwand: Verwende die Demo-Version, die Beispiele für API-Aufrufe enthält.
-- basiert auf REST-Webdienst-Technologien.
-- gibt dir Zugriff auf grundlegende DocuWare-Funktionen.
+- Minimiert Ihren Integrationsaufwand: Verwenden Sie die Demoversion, die
+  Beispiele für die API-Aufrufe enthält.
+- basiert auf REST-Webdiensttechnologien.
+- gibt Ihnen Zugriff auf grundlegende DocuWare-Funktionen.
 
 ## Demo
 
 ### Funktionen
 
-1. **Abruf von Organisationen**  
-   Klicke auf die Schaltfläche **Organisationen**, um die Organisations-ID abzurufen. Das System fügt diese ID automatisch in nachfolgende Anfragen ein.
+1. **Abrufen der Organisations-**Klicken Sie auf die Schaltfläche „
+   **Organizations** ” (Organisations-ID abrufen), um die Organisations-ID
+   abzurufen. Das System fügt diese ID automatisch in nachfolgende Anfragen ein.
 
-    ![organization-result](images/get-organization-result.png)
+   ![organization-result](images/get-organization-result.png)
 
-2. **Abruf von Dateiablagen**  
-    Klicke auf die Schaltfläche **Dateiablagen**, um die Ablagen-ID der ausgewählten Organisation abzurufen. Die Ablagen-ID bestimmt, wohin die Datei hochgeladen wird.
+2. **Abruf von Dateischränken**\
+   Klicken Sie auf die Schaltfläche „ **“ (Dateischränke abrufen)**, um die
+   Schrank-ID der ausgewählten Organisation abzurufen. Die Schrank-ID bestimmt,
+   wohin die Datei hochgeladen wird.
 
-    ![file-cabinet-result](images/get-file-cabinet-result.png)
+   ![file-cabinet-result](images/get-file-cabinet-result.png)
 
-3. **Hochladen von Dokumenten**  
-    Wähle eine Datei aus, die in die ausgewählte DocuWare-Dateiablage hochgeladen werden soll. Du kannst die hochgeladene Datei auf dem DocuWare-Dashboard überprüfen.
+3. **Dokument-Upload-**Wählen Sie eine Datei aus, die Sie in den ausgewählten
+   DocuWare-Aktenschrank hochladen möchten. Sie können die hochgeladene Datei
+   auf dem DocuWare-Dashboard überprüfen.
 
-    ![upload-document](images/upload-document-result.png)
+   ![upload-document](images/upload-document-result.png)
 
-4. **Abruf von Dokumenten**  
-   Dokumente werden automatisch abgerufen, indem die vordefinierten Felder **organization** und **fileCabinetId** aus der Datei `variables.yaml` verwendet werden.
+4. **Dokumentabruf**\
+   Rufen Sie Dokumente automatisch ab, indem Sie die vordefinierten Felder „
+   **“, „organization“** und „ **“ fileCabinetId** aus der Datei „
+   `variables.yaml“` verwenden.
+
+   Sie können auch die Organisation „ **“** und „ **“ fileCabinet** ändern,
+   indem Sie den Filter „ **“** ändern. Beide Felder unterstützen die
+   Mehrfachauswahl.
 
    ![fetch-documents](images/fetch-documents.png)
 
-5. **Anzeigen von Dokumenten**  
-   Dokumente können direkt in der Benutzeroberfläche mithilfe des DocuWare-Dokumentenbetrachters angezeigt werden.
+5. **Dokumentenanzeige-**Zeigen Sie Dokumente direkt in der Benutzeroberfläche
+   mit dem Dokumentenbetrachter von DocuWare an.
 
    ![view-document](images/view-document.png)
 
-6. **Bearbeiten von Dokumenteigenschaften**  
-   Ändere die Dokumenteigenschaften, einschließlich Metadaten und benutzerdefinierter Felder.
+6. **Bearbeiten von Dokumenteigenschaften**Ändern Sie Dokumenteigenschaften,
+   einschließlich Metadaten und benutzerdefinierter Felder.
 
    ![edit-document-properties](images/edit-document-properties.png)
 
-7. **Löschen von Dokumenten**  
-   Lösche die Dokumente aus der Dateiablage.
+7. **Dokumententfernung**Löschen Sie Dokumente aus dem Aktenschrank.
 
    ![delete-document](images/delete-document.png)
 
-Um Dokumente anzuzeigen und deren Eigenschaften zu bearbeiten, starte den Prozess mit dem Namen **DocuWare View/Edit Document**.
+Um Dokumente und deren Eigenschaften anzuzeigen und zu bearbeiten, führen Sie
+den Prozess „ **“ aus. DocuWare-Dokument anzeigen/bearbeiten**.
 
-Um Dokumente hochzuladen und Aktionen wie Abruf von Organisationen, Abruf von Dateiablagen und Hochladen von Dokumenten auszuführen, starte den Prozess mit dem Namen **Start some DocuWare calls**.
+Um Dokumente hochzuladen und Aktionen wie das Abrufen von Organisationen, das
+Abrufen von Aktenschränken und das Hochladen von Dokumenten durchzuführen,
+führen Sie den Prozess „ **” aus. Starten Sie einige DocuWare-Aufrufe „** ”.
 
 ## Setup
 
-Bevor eine Interaktion zwischen der Axon Ivy Engine und den DocuWare-Diensten ausgeführt werden kann, müssen diese mit einander verknüpft werden. Dies kann wie folgt durchgeführt werden:
+Bevor Interaktionen zwischen der Axon Ivy Engine und den DocuWare-Diensten
+ausgeführt werden können, müssen diese einander vorgestellt werden. Dies kann
+wie folgt erfolgen:
 
-1. Erstelle ein DocuWare-Konto und nutze den DocuWare-Cloud-`host`, `user-name` und das `password`.
+1. `Erstellen Sie ein DocuWare-Konto und nutzen Sie den DocuWare-Cloud-Host `,
+   `, Benutzername` und `, Passwort`.
 
-2. Überschreibe die globalen Variablen für `host`, `username` und `password` im Demo-Projekt wie im folgenden Beispiel gezeigt:
+2. Überschreiben Sie die globalen Variablen für `host`, `username` und
+   `password` im Demo-Projekt, wie im folgenden Beispiel gezeigt.
 
-   ```yaml
-   @variables.yaml@
-   
-3. DocuWare unterstützt 3 Methoden, um ein Zugriffstoken vom Identitätsdienst zu generieren:
+```
+@variables.yaml@
+```
 
-    3.a Zugriffstoken per Benutzername und Passwort anfordern - GrantType ist `password`
-    
-    3.b Zugriffstoken mit einem DocuWare-Token anfordern - GrantType ist `dwtoken`
-    
-    3.c Zugriffstoken per Benutzername und Passwort (Trusted User) anfordern - GrantType ist `trusted`
+3. DocuWare unterstützt drei Möglichkeiten, um einen Zugriffstoken aus dem
+   Identitätsdienst zu generieren:
 
-4. Für GrantType `dwtoken` muss ein LoginToken generiert werden. Starte den Prozess `startRequestALoginToken.ivp` und folge der Anleitung, um ein neues LoginToken zu erstellen.
+   3.a Token per Benutzername und Passwort anfordern – GrantType ist „
+   `password“`
 
-Wenn deine REST-URL nicht dem vordefinierten REST-URL-Muster dieses Connectors entspricht, kannst du die URL im Engine Cockpit ändern. Um die URL im Designer zu ändern, musst du das Connector-Projekt entpacken und dort ändern.
+   3.b Token über einen DocuWare-Token anfordern – GrantType ist `dwtoken`
 
-Starte `start.ivp` des DocuWareDemo-Demoprozesses, um deine Einrichtung zu testen.
+   3.c Token per Benutzername und Passwort anfordern (vertrauenswürdiger
+   Benutzer) – GrantType ist „ `trusted”`
+
+4. Für GrantType ist `dwtoken`, wir müssen ein LoginToken erhalten. Bitte
+   starten Sie den Prozess startRequestALoginToken.ivp und folgen Sie der
+   Anleitung, um ein neues LoginToken zu generieren.
+
+Wenn Ihre REST-URL nicht dem vordefinierten REST-URL-Muster dieses Konnektors
+entspricht, können Sie die URL im Engine Cockpit ändern. Um die URL im Designer
+zu ändern, müssen Sie das Konnektorprojekt entpacken und dort ändern.
+
+Führen Sie „ `“ und „start.ivp“ aus, um „` “ des DocuWareDemo-Demo-Prozesses zu
+testen und Ihre Einrichtung zu überprüfen.
+
