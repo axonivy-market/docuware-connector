@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/process/13.1.2/process.json",
+  "$schema" : "https://json-schema.axonivy.com/process/13.2.0/process.json",
   "id" : "195889DD980E769D",
   "kind" : "CALLABLE_SUB",
   "config" : {
@@ -32,7 +32,7 @@
       },
       "visual" : {
         "at" : { "x" : 152, "y" : 288 },
-        "icon" : "res:/webContent/icons/docuware.png?small"
+        "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
         { "id" : "f33", "to" : "f29" }
@@ -134,7 +134,7 @@
       "type" : "CallSubEnd",
       "visual" : {
         "at" : { "x" : 912, "y" : 288 },
-        "icon" : "res:/webContent/icons/docuware.png?small"
+        "icon" : "res:/webContent/icons/docuware.png"
       }
     }, {
       "id" : "f3",
@@ -232,7 +232,7 @@
       },
       "visual" : {
         "at" : { "x" : 152, "y" : 448 },
-        "icon" : "res:/webContent/icons/docuware.png?small"
+        "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
         { "id" : "f2", "to" : "f13" }
@@ -243,7 +243,7 @@
       "visual" : {
         "at" : { "x" : 448, "y" : 448 },
         "labelOffset" : { "x" : 13, "y" : 33 },
-        "icon" : "res:/webContent/icons/docuware.png?small"
+        "icon" : "res:/webContent/icons/docuware.png"
       }
     }, {
       "id" : "f13",
@@ -297,7 +297,7 @@
       },
       "visual" : {
         "at" : { "x" : 152, "y" : 664 },
-        "icon" : "res:/webContent/icons/docuware.png?small"
+        "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
         { "id" : "f23", "to" : "f25" }
@@ -333,7 +333,7 @@
       "visual" : {
         "at" : { "x" : 800, "y" : 664 },
         "labelOffset" : { "x" : 13, "y" : 33 },
-        "icon" : "res:/webContent/icons/docuware.png?small"
+        "icon" : "res:/webContent/icons/docuware.png"
       }
     }, {
       "id" : "f25",
