@@ -21,14 +21,13 @@ import com.axonivy.connector.docuware.connector.DocuWareService;
 import com.axonivy.connector.docuware.connector.auth.oauth.OAuth2TokenRequester.AuthContext;
 import com.axonivy.connector.docuware.connector.enums.DocuWareVariable;
 import com.axonivy.connector.docuware.connector.enums.GrantType;
+import com.axonivy.connector.docuware.connector.exception.DocuWareException;
 import com.axonivy.connector.docuware.connector.utils.DocuWareUtils;
 
 import ch.ivyteam.ivy.bpm.error.BpmError;
 import ch.ivyteam.ivy.bpm.error.BpmPublicErrorBuilder;
 import ch.ivyteam.ivy.rest.client.FeatureConfig;
-import ch.ivyteam.ivy.rest.client.internal.oauth2.RedirectToIdentityProvider;
 
-@SuppressWarnings("restriction")
 public class OAuth2BearerFilter implements javax.ws.rs.client.ClientRequestFilter {
   public static final String AUTHORIZATION = "Authorization";
   public static final String BEARER = "Bearer ";
@@ -121,6 +120,6 @@ public class OAuth2BearerFilter implements javax.ws.rs.client.ClientRequestFilte
   }
 
   private static BpmPublicErrorBuilder authError() {
-    return BpmError.create(RedirectToIdentityProvider.OAUTH2_ERROR_CODE);
+    return BpmError.create(DocuWareException.OAUTH2_ERROR_CODE);
   }
 }
