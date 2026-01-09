@@ -7,15 +7,15 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>${project.name}-openapi</module>
-    <module>${project.name}</module>
-    <module>${project.name}-demo</module>
-    <module>${project.name}-test</module>
-    <module>${project.name}-product</module>
+    <module>docuware-connector-openapi</module>
+    <module>docuware-connector</module>
+    <module>docuware-connector-demo</module>
+    <module>docuware-connector-test</module>
+    <module>docuware-connector-product</module>
   </modules>
 
   <scm>
-    <developerConnection>scm:git:https://github.com/axonivy-market/${project.name}.git</developerConnection>
+    <developerConnection>scm:git:https://github.com/axonivy-market/docuware-connector.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
