@@ -6,21 +6,17 @@
     <groupId>com.axonivy.ivy.api</groupId>
     <artifactId>ivy-project-parent</artifactId>
     <version>13.2.0</version>
-    <relativePath></relativePath>
+    <relativePath />
   </parent>
   <groupId>com.axonivy.connector.docuware</groupId>
   <artifactId>docuware-connector-test</artifactId>
-  <version>12.1.1-SNAPSHOT</version>
+  <version>13.2.1-SNAPSHOT</version>
   <packaging>iar</packaging>
-  <properties>
-    <tester.version>12.0.1</tester.version>
-    <project.build.plugin.version>12.0.0</project.build.plugin.version>
-  </properties>
   <dependencies>
     <dependency>
       <groupId>com.axonivy.utils.e2etest</groupId>
       <artifactId>e2e-test-utils</artifactId>
-      <version>[1.0.0,)</version>
+      <version>1.0.1</version>
     </dependency>
     <dependency>
       <groupId>com.axonivy.ivy.api.test</groupId>
