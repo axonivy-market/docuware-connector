@@ -5,16 +5,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.Collection;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.regex.Pattern;
@@ -28,11 +25,11 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status.Family;
+import javax.ws.rs.core.UriBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.http.client.utils.URIBuilder;
 import org.glassfish.jersey.media.multipart.ContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataMultiPart;
 import org.glassfish.jersey.media.multipart.file.StreamDataBodyPart;
@@ -135,7 +132,7 @@ public class DocuWareService {
 
 		var ep = dwEncrypt(configKey, clear);
 
-		url.addParameter("ep", ep);
+		url.queryParam("ep", ep);
 
 		return url.toString();
 	}
@@ -147,7 +144,7 @@ public class DocuWareService {
 	 * @param organizationGuid 
 	 * @return
 	 */
-	public URIBuilder getIntegrationUrl(String configKey, String organizationGuid) {
+	public UriBuilder getIntegrationUrl(String configKey, String organizationGuid) {
 		return createUriBuilder(configKey, "WebClient", organizationGuid, "Integration");
 	}
 
@@ -159,13 +156,13 @@ public class DocuWareService {
 	 * @param pathSegments
 	 * @return
 	 */
-	public URIBuilder createUriBuilder(String configKey, String...pathSegments) {
+	public UriBuilder createUriBuilder(String configKey, String...pathSegments) {
 		var cfg = Configuration.getKnownConfigurationOrDefault(configKey);
 		try {
-			var builder = new URIBuilder(cfg.getUrl());
+			var builder = UriBuilder.fromPath(cfg.getUrl());
 			addPathSegments(builder, pathSegments);
 			return builder;
-		} catch (URISyntaxException e) {
+		} catch (Exception e) {
 			throw BpmError
 			.create(DOCUWARE_ERROR + "invalidurlformat")
 			.withCause(e)
@@ -182,17 +179,12 @@ public class DocuWareService {
 	 * @param pathSegments
 	 * @return
 	 */
-	protected URIBuilder addPathSegments(URIBuilder builder, String...pathSegments) {
-		List<String> segs = new ArrayList<>(builder.getPathSegments());
-
+	protected UriBuilder addPathSegments(UriBuilder builder, String...pathSegments) {
 		for (String pathSegment : pathSegments) {
 			if(StringUtils.isNotBlank(pathSegment)) {
-				segs.add(pathSegment);
+				builder.path(pathSegment);
 			}
 		}
-
-		builder.setPathSegments(segs);
-
 		return builder;
 	}
 
@@ -642,7 +634,7 @@ public class DocuWareService {
 
 		var ep = dwEncrypt(configKey, clear);
 
-		url.addParameter("ep", ep);
+		url.queryParam("ep", ep);
 
 		return url.toString();
 	}

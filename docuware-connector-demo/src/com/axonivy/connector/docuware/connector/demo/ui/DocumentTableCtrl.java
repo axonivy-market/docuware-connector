@@ -41,9 +41,9 @@ public class DocumentTableCtrl implements Serializable {
 		var token = DocuWareService.get().getLoginTokenString(null);
 		documentUrl =
 				DocuWareService.get().createUriBuilder(null, WEB_CLIENT, CLIENT, DOCUMENT)
-				.addParameter(DOCUMENT_ID_PARAM, documentId)
-				.addParameter(FILE_CABINET_ID_PARAM, fileCabinetId)
-				.addParameter(TOKEN_PARAM, token)
+				.queryParam(DOCUMENT_ID_PARAM, documentId)
+				.queryParam(FILE_CABINET_ID_PARAM, fileCabinetId)
+				.queryParam(TOKEN_PARAM, token)
 				.build()
 				.toString();
 		Ivy.log().info("Created document URL: {0}", documentUrl);
