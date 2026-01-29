@@ -6,9 +6,9 @@ Der Axon Ivy DocuWare-Connector ermöglicht eine effiziente Integration von Docu
 
 Dieser Connector:
 
-- minimiert den Integrationsaufwand: Verwende die Demo-Version, die Beispiele für API-Aufrufe enthält.
-- basiert auf REST-Webdienst-Technologien.
-- gibt dir Zugriff auf grundlegende DocuWare-Funktionen.
+- Minimiert den Integrationsaufwand: Verwende die Demo-Version, die Beispiele für API-Aufrufe enthält.
+- Basiert auf REST-Webdienst-Technologien.
+- Gibt dir Zugriff auf grundlegende DocuWare-Funktionen.
 
 ## Demo
 

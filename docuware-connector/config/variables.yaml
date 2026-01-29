@@ -57,7 +57,7 @@ Variables:
       configId: "1"
       inherit: defaultConfig
       grantType: "trusted"
-      username: "REMOVED"
+      username: ""
       #[password]
       password: ${decrypt:}
       impersonateUser: ^ivy:system=admin,anonymous=admin

@@ -2,48 +2,42 @@
 
 [DocuWare](https://start.docuware.com/) offers cloud-based document management and workflow automation software. It can be used to digitize, archive and process any business documents in an audit-proof manner to optimize your company's core processes.
 
-The Axon Ivy DocuWare connector enables efficient integration of DocuWare functionalities into your Axon Ivy process applications
+The Axon Ivy DocuWare connector enables efficient integration of DocuWare functionalities into your Axon Ivy process applications.
 
-This connector:
+This connector:  
 
-- minimizes your integration effort: use the demo to see examples of API calls.
-- is based on REST web service technologies.
-- gives you access to the DocuWare REST API.
+- Minimizes your integration effort: use the demo to see examples of API calls.
+- Is based on REST web service technologies.
+- Provides access to the DocuWare REST API.
+- A GUI to navigate to one or more DocuWare instances.
+- A GUI to view and edit document properties of the default DocuWare instance.
+- Some log-file-based example workflows.
 
-## Demo
-
-The demo offers
-- a GUI to navigate to one or more DocuWare instances
-- a GUI to view and edit document properties of the default DocuWare instance
-- some log-file-based example workflows
-
-Before you start the demo, unpackit and provide at least one configuration for a DocuWare instance in global variables.
+Before you start the demo, unpack it and provide at least one configuration for a DocuWare instance in the global variables.
 
 ### Docuware Demo
 
-DocuWare Demo provides a complex GUI to play around with some DocuWare functions and one or more DocuWare configurations. Not all features will be available at all times. To use all demo features, you should provide multiple configurations with all different grant types. Most buttons have a validation check and will only be visible when they are also usable, e.g. when a cabinet id is available. In some situations it might be necessary to use the refresh button. The following functions can be tested:
+DocuWare Demo provides a complex GUI to play around with some DocuWare functions and one or more DocuWare configurations. Not all features will be available at all times. To use all demo features, you should provide multiple configurations with different grant types. Most buttons have a validation check and will only be visible when they are usable, e.g. when a cabinet id is available. In some situations, it might be necessary to use the refresh button. The following functions can be tested:
 
-- using the default or any other configuration
-- using configuration of grant type `dwtoken` with a provided or generated login token
-- fetching organizations
-- fetching cabinets
-- fetching documents
-- get document fields
-- download of a document
-- creating a new version of a document
-- attaching a document to an Ivy case
-- uploading a document
-- uploading a document with index fields
-- viewing files with the embedded DocuWare viewer (if the configuration has an `integrationPassphrase` set and your DocuWare installation allows embedding in a frame - check your DocuWare#s content security policy!)
-- encrypting and decrypting parameters for embedding
+- Using the default or any other configuration
+- Using configuration of grant type `dwtoken` with a provided or generated login token
+- Fetching organizations
+- Fetching cabinets
+- Fetching documents
+- Getting document fields
+- Downloading a document
+- Creating a new version of a document
+- Attaching a document to an Ivy case
+- Uploading a document
+- Uploading a document with index fields
+- Viewing files with the embedded DocuWare viewer (if the configuration has an `integrationPassphrase` set and your DocuWare installation allows embedding in a frame - check your DocuWare's content security policy!)
+- Encrypting and decrypting parameters for embedding
 
 ![docuwaredemo](images/docuwaredemo.png)
 
 ### Document Table
 
-Start **Document Table** to get basic viewer showing how to add, change, view and delete documents. Note, that viewing of documents might require additional setup of your DocuWare installation's content security
-policy  to allow embedding
-of DocuWare frames into your AxonIvy frames.
+Start **Document Table** to get a basic viewer showing how to add, change, view and delete documents. Note that viewing documents might require additional setup of your DocuWare installation's content security policy to allow embedding of DocuWare frames into your AxonIvy frames.
 
    ![view-document](images/view-document.png)
 
@@ -63,13 +57,13 @@ Other process starts show examples of DocuWare usage.
 
 ## Setup
 
-Before any interactions between the Axon Ivy Engine and DocuWare services can be run, they have to be introducted to each other. This connector offers _multi-instance_ support, i.e. it allows to work with multiple DocuWare instances in parallel. Instance configurations are stored in global variables in named _blocks_ of configuration variables below the `docuwareConnector` section. The configuration named `defaultConfig` is predefined in the connector so you only have to set specific values for your installation. Additionally, configurations can configure the `inherit` attribute to take over all non-empty values of the named configuration.
+Before any interactions between the Axon Ivy Engine and DocuWare services can be run, they have to be introduced to each other. This connector offers _multi-instance_ support, i.e. it allows you to work with multiple DocuWare instances in parallel. Instance configurations are stored in global variables in named _blocks_ of configuration variables below the `docuwareConnector` section. The configuration named `defaultConfig` is predefined in the connector so you only have to set specific values for your installation. Additionally, configurations can configure the `inherit` attribute to take over all non-empty values of the named configuration.
 
-Please see the provided `variables.yaml` file for the list and meaning of global variables. The most important will be shortly described here.
+Please see the provided `variables.yaml` file for the list and meaning of global variables. The most important ones will be briefly described here.
 
 ### `configId`
 
-Any value that identifies this version of the configuration. If the value changes, the cached configuration will be re-read next time needed. It might be a good idea to put there a timestamp and the username doing the change.
+Any value that identifies this version of the configuration. If the value changes, the cached configuration will be re-read the next time it is needed. It might be a good idea to include a timestamp and the username of the person making the change.
 
 ### `inherit`
 
@@ -77,21 +71,21 @@ Any value which is **non-existent, empty or blank** in the current configuration
 
 ### `grantType`
 
-This is the grant-type of your configuration. Possible values are `password`, `trusted`, `dwtoken`
+This is the grant-type of your configuration. Possible values are `password`, `trusted`, and `dwtoken`.
 
 #### `password`
 
-Grant type `password` uses a fixed `username` and `password` to connect to your DocuWare instance. This means, that all operations will be performed by this user. Also all history entries will be show this user. It is a simple setup for a _technical user_ to connect to a cloud or on-premise instance of DocuWare.
+Grant type `password` uses a fixed `username` and `password` to connect to your DocuWare instance. This means that all operations will be performed by this user. Also, all history entries will show this user. It is a simple setup for a _technical user_ to connect to a cloud or on-premise instance of DocuWare.
 
 #### `trusted`
 
-Grant type `trusted` uses a `username` and `password` to connect as a trusted user to your DocuWare instance.Currently, DocuWare supports trusted users only for on-premise installations. The trusted user is not used directly, but impersonates another user. Which user to impersonate can be configured in the global variable `impersonateUser`.
+Grant type `trusted` uses a `username` and `password` to connect as a trusted user to your DocuWare instance. Currently, DocuWare supports trusted users only for on-premise installations. The trusted user is not used directly, but impersonates another user. Which user to impersonate can be configured in the global variable `impersonateUser`.
 
-`impersonateUser` implements a special syntax to define which user to use for accesses by anonymous Ivy user, accesses by the system Ivy user and accesses by other Ivy users.
+`impersonateUser` implements a special syntax to define which user to use for accesses by anonymous Ivy user, accesses by the system Ivy user and accesses by other Ivy users:
 
-- use a constant username for all situations
-- use constant user names for anonymous and system, but use the Ivy username for others
-- set the username to use in the user's session before any calls and use this name
+- Using a constant username for all situations
+- Using constant usernames for anonymous and system, but using the Ivy username for others
+- Setting the username to use in the user's session before any calls and using this name
 
 Please see the documentation in the `variables.yaml` file.
 
@@ -113,7 +107,7 @@ If you only work with one instance you should name it `defaultConfig` and it wil
 
 ### Using multiple DocuWare instances simultaneously
 
-If you work with multiple instances, every call must know which instance to use. Therefore all instance-specific sub processes offered by this connector offer an additonal `configKey` parameter which must be set to the name of the configuration to use in this sub-process. If the `configKey` is empty, the `defaultConfig` will be used automatically.
+If you work with multiple instances, every call must know which instance to use. Therefore, all instance-specific sub processes offered by this connector offer an additional `configKey` parameter which must be set to the name of the configuration to use in this sub-process. If the `configKey` is empty, the `defaultConfig` will be used automatically.
 
 If you want to use REST calls of this connector directly, you can use the call's property `configKey` in the same way. Have a look at the instance-aware sub-processes to see how this is done!
 
@@ -125,5 +119,5 @@ If you want to use REST calls of this connector directly, you can use the call's
 
 ### Missing something?
 
-If the connector misses features that you need, you can unpack it to your project and extend it there. In this case consider to propose/offer your change to the Axon Ivy market.
+If the connector is missing features that you need, you can unpack it to your project and extend it there. In this case, consider proposing/offering your change to the Axon Ivy market.
 
