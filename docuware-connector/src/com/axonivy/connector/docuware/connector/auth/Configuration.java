@@ -196,87 +196,115 @@ public abstract class Configuration {
 	public String getConfigKey() {
 		return configKey;
 	}
+
 	public void setConfigKey(String key) {
 		this.configKey = key;
 	}
+
 	public String getConfigId() {
 		return get(c -> c.configId);
 	}
+
 	public void setConfigId(String configId) {
 		this.configId = configId;
 	}
+
 	public String getInherit() {
 		return inherit;
 	}
+
 	public void setInherit(String inherit) {
 		this.inherit = inherit;
 	}
+
 	public String getUrl() {
 		return get(c -> c.url);
 	}
+
 	public void setUrl(String url) {
 		this.url = url;
 	}
+
 	public GrantType getGrantType() {
 		return get(c -> c.grantType);
 	}
+
 	public void setGrantType(GrantType grantType) {
 		this.grantType = grantType;
 	}
+
 	public String getUsername() {
 		return get(c -> c.username);
 	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
 	public String getPassword() {
 		return get(c -> c.password);
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public ImpersonateStrategy getImpersonateStrategy() {
 		return get(c -> c.impersonateStrategy);
 	}
+
 	public void setImpersonateStrategy(ImpersonateStrategy impersonateStrategy) {
 		this.impersonateStrategy = impersonateStrategy;
 	}
+
 	public DwTokenStrategy getDwTokenStrategy() {
 		return get(c -> c.dwTokenStrategy);
 	}
+
 	public void setDwTokenStrategy(DwTokenStrategy dwTokenStrategy) {
 		this.dwTokenStrategy = dwTokenStrategy;
 	}
+
 	public String getIntegrationPassphrase() {
 		return get(c -> c.integrationPassphrase);
 	}
+
 	public void setIntegrationPassphrase(String integrationPassphrase) {
 		this.integrationPassphrase = integrationPassphrase;
 	}
+
 	public Long getConnectTimeout() {
 		return get(c -> c.connectTimeout);
 	}
+
 	public void setConnectTimeout(Long connectTimeout) {
 		this.connectTimeout = connectTimeout;
 	}
+
 	public Long getReadTimeout() {
 		return get(c -> c.readTimeout);
 	}
+
 	public void setReadTimeout(Long readTimeout) {
 		this.readTimeout = readTimeout;
 	}
+
 	public Long getLoggingEntityMaxSize() {
 		return get(c -> c.loggingEntityMaxSize);
 	}
+
 	public void setLoggingEntityMaxSize(Long loggingEntityMaxSize) {
 		this.loggingEntityMaxSize = loggingEntityMaxSize;
 	}
+
 	public String getTokenEndpoint() {
 		return tokenEndpoint;
 	}
+
 	public void setTokenEndpoint(String tokenEndpoint) {
 		this.tokenEndpoint = tokenEndpoint;
 	}
+
 	public boolean hasTokenEndpoint() {
 		return tokenEndpoint != null;
 	}
