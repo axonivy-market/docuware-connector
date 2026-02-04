@@ -2,82 +2,122 @@
 
 [DocuWare](https://start.docuware.com/) offers cloud-based document management and workflow automation software. It can be used to digitize, archive and process any business documents in an audit-proof manner to optimize your company's core processes.
 
-The Axon Ivy DocuWare connector enables efficient integration of DocuWare functionalities into your Axon Ivy process applications
+The Axon Ivy DocuWare connector enables efficient integration of DocuWare functionalities into your Axon Ivy process applications.
 
-This connector:
+This connector:  
 
-- minimizes your integration effort: use the demo version, which contains examples of the API calls.
-- is based on REST web service technologies.
-- gives you access to basic DocuWare functions.
+- Minimizes your integration effort: use the demo to see examples of API calls.
+- Is based on REST web service technologies.
+- Provides access to the DocuWare REST API.
+- A GUI to navigate to one or more DocuWare instances.
+- A GUI to view and edit document properties of the default DocuWare instance.
+- Some log-file-based example workflows.
 
-## Demo
+Before you start the demo, unpack it and provide at least one configuration for a DocuWare instance in the global variables.
 
-### Features
+### Docuware Demo
 
-1. **Organization Retrieval**  
-   Click the **Organizations** button to retrieve the organization ID. The system will automatically include this ID in subsequent requests.
+DocuWare Demo provides a complex GUI to play around with some DocuWare functions and one or more DocuWare configurations. Not all features will be available at all times. To use all demo features, you should provide multiple configurations with different grant types. Most buttons have a validation check and will only be visible when they are usable, e.g. when a cabinet id is available. In some situations, it might be necessary to use the refresh button. The following functions can be tested:
 
-    ![organization-result](images/get-organization-result.png)
+- Using the default or any other configuration
+- Using configuration of grant type `dwtoken` with a provided or generated login token
+- Fetching organizations
+- Fetching cabinets
+- Fetching documents
+- Getting document fields
+- Downloading a document
+- Creating a new version of a document
+- Attaching a document to an Ivy case
+- Uploading a document
+- Uploading a document with index fields
+- Viewing files with the embedded DocuWare viewer (if the configuration has an `integrationPassphrase` set and your DocuWare installation allows embedding in a frame - check your DocuWare's content security policy!)
+- Encrypting and decrypting parameters for embedding
 
-2. **File Cabinets Retrieval**  
-    Click the **File Cabinets** button to fetch the cabinet Id of the selected organization. The cabinet Id determines where the file will be uploaded.
+![docuwaredemo](images/docuwaredemo.png)
 
-    ![file-cabinet-result](images/get-file-cabinet-result.png)
+### Document Table
 
-3. **Document Uploading**  
-    Select a file to upload to the chosen DocuWare file cabinet. You can verify the uploaded file on the DocuWare dashboard.
-
-    ![upload-document](images/upload-document-result.png)
-
-4. **Document Retrieval**  
-   Automatically fetch documents using the predefined **organization** and **fileCabinetId** fields from the `variables.yaml` file.
-
-   You also can change the **organization** and **fileCabinet** by changing the **Filter**. It supports multi-selection for both fields.
-
-   ![fetch-documents](images/fetch-documents.png)
-
-5. **Document Viewing**  
-   View documents directly within the interface using DocuWare’s document viewer.
+Start **Document Table** to get a basic viewer showing how to add, change, view and delete documents. Note that viewing documents might require additional setup of your DocuWare installation's content security policy to allow embedding of DocuWare frames into your AxonIvy frames.
 
    ![view-document](images/view-document.png)
 
-6. **Document Properties Editing**  
-   Modify document properties, including metadata and custom fields.
+**Document Properties Editing**  
+Modify document properties, including metadata and custom fields.
 
    ![edit-document-properties](images/edit-document-properties.png)
 
-7. **Document Deletion**  
-   Delete documents from the file cabinet.
+**Document Deletion**  
+Delete documents from the file cabinet.
 
    ![delete-document](images/delete-document.png)
 
-To view and edit documents and their properties, run the process named **DocuWare View/Edit Document**.
+### Other demos
 
-To upload documents and perform actions like retrieving organizations, getting file cabinets, and uploading documents, run the process named **Start some DocuWare calls**.
+Other process starts show examples of DocuWare usage.
 
 ## Setup
 
-Before any interactions between the Axon Ivy Engine and DocuWare services can be run, they have to be introducted to each other. This can be done as follows:
+Before any interactions between the Axon Ivy Engine and DocuWare services can be run, they have to be introduced to each other. This connector offers _multi-instance_ support, i.e. it allows you to work with multiple DocuWare instances in parallel. Instance configurations are stored in global variables in named _blocks_ of configuration variables below the `docuwareConnector` section. The configuration named `defaultConfig` is predefined in the connector so you only have to set specific values for your installation. Additionally, configurations can configure the `inherit` attribute to take over all non-empty values of the named configuration.
 
-1. Get a DocuWare account and the DocuWare cloud `host`, `user-name`, and `password` to use.
+Please see the provided `variables.yaml` file for the list and meaning of global variables. The most important ones will be briefly described here.
 
-2. Override the global variables for `host`, `username`, and `password` in the demo project as shown in the example below.
+### `configId`
+
+Any value that identifies this version of the configuration. If the value changes, the cached configuration will be re-read the next time it is needed. It might be a good idea to include a timestamp and the username of the person making the change.
+
+### `inherit`
+
+Any value which is **non-existent, empty or blank** in the current configuration will be looked up in the configuration mentioned in this variable. The lookup will be done recursively.
+
+### `grantType`
+
+This is the grant-type of your configuration. Possible values are `password`, `trusted`, and `dwtoken`.
+
+#### `password`
+
+Grant type `password` uses a fixed `username` and `password` to connect to your DocuWare instance. This means that all operations will be performed by this user. Also, all history entries will show this user. It is a simple setup for a _technical user_ to connect to a cloud or on-premise instance of DocuWare.
+
+#### `trusted`
+
+Grant type `trusted` uses a `username` and `password` to connect as a trusted user to your DocuWare instance. Currently, DocuWare supports trusted users only for on-premise installations. The trusted user is not used directly, but impersonates another user. Which user to impersonate can be configured in the global variable `impersonateUser`.
+
+`impersonateUser` implements a special syntax to define which user to use for accesses by anonymous Ivy user, accesses by the system Ivy user and accesses by other Ivy users:
+
+- Using a constant username for all situations
+- Using constant usernames for anonymous and system, but using the Ivy username for others
+- Setting the username to use in the user's session before any calls and using this name
+
+Please see the documentation in the `variables.yaml` file.
+
+#### `dwtoken`
+
+The token is generated by using an existing token of DocuWare. Note: This use-case is probably not fully supported. Which token to use is configured in `dwToken`. Currently, the existing token can only be loaded from the session.
+
+### Other configuration variables
+
+Other configuration variables are documented directly in the variables supported by the connector. Please see there for a description and copy it to your project, if you are using it, so that it will be visible in the Engine cockpit for your application.
 
 ```
 @variables.yaml@
 ```
 
-3. DocuWare supports 3 ways to generate an Access Token from the Identity Service:
+### Using a single DocuWare instance
 
-    3.a Request Token by Username & Password - GrantType is `password`
-    
-    3.b Request Token by a DocuWare Token - GrantType is `dwtoken`
-    
-    3.c Request Token by Username & Password (Trusted User) - GrantType is `trusted`
+If you only work with one instance you should name it `defaultConfig` and it will be used automatically without any additional considerations.
 
-4. For GrantType is `dwtoken`, we must get a LoginToken. Please start the process startRequestALoginToken.ivp and follow the guide to generate a new LoginToken
+### Using multiple DocuWare instances simultaneously
 
-If your REST URL does not follow the predefined REST URL pattern of this connector, you can change the URL in the Engine Cockpit. To change the URL in the Designer, you have to unpack the connector project and change it there.
+If you work with multiple instances, every call must know which instance to use. Therefore, all instance-specific sub processes offered by this connector offer an additional `configKey` parameter which must be set to the name of the configuration to use in this sub-process. If the `configKey` is empty, the `defaultConfig` will be used automatically.
 
-Run `start.ivp` of the DocuWareDemo demo process to test your setup.
+If you want to use REST calls of this connector directly, you can use the call's property `configKey` in the same way. Have a look at the instance-aware sub-processes to see how this is done!
+
+### Breaking changes in this version
+
+* Global variables configuration changed to support multiple instances.
+* It is no longer possible to define a file cabinet id or other defaults for DocuWare items in the global variables of a configuration. If needed, please move these global variables to your project.
+* Error handling was changed to standard AxonIvy error handling, i.e. sub-processes no longer return an error object, but rather throw exceptions in the case of errors.
+
+### Missing something?
+
+If the connector is missing features that you need, you can unpack it to your project and extend it there. In this case, consider proposing/offering your change to the Axon Ivy market.
 
