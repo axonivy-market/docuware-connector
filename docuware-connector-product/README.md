@@ -9,29 +9,33 @@ This connector:
 - Minimizes your integration effort: use the demo to see examples of API calls.
 - Is based on REST web service technologies.
 - Provides access to the DocuWare REST API.
-- A GUI to navigate to one or more DocuWare instances.
-- A GUI to view and edit document properties of the default DocuWare instance.
-- Some log-file-based example workflows.
+- Provides a GUI to navigate to one or more DocuWare instances.
+- Provides a GUI to view and edit document properties of the default DocuWare instance.
+- Provides log-file-based example workflows.
 
-Before you start the demo, unpack it and provide at least one configuration for a DocuWare instance in the global variables.
+Before starting the demo, unpack it and configure at least one DocuWare instance in the global variables.
 
-### Docuware Demo
+### Demo
 
-DocuWare Demo provides a complex GUI to play around with some DocuWare functions and one or more DocuWare configurations. Not all features will be available at all times. To use all demo features, you should provide multiple configurations with different grant types. Most buttons have a validation check and will only be visible when they are usable, e.g. when a cabinet id is available. In some situations, it might be necessary to use the refresh button. The following functions can be tested:
+This demo provides a comprehensive GUI to explore various DocuWare functions using one or more DocuWare configurations.
+Not all features are available at all times. To access all demo features, you must define multiple configurations with different grant types.
+Most buttons include validation checks and are only visible when they are usable, for example when a cabinet ID is available.
+In some situations, using the refresh button may be required.
+The following functions can be tested:
 
-- Using the default or any other configuration
-- Using configuration of grant type `dwtoken` with a provided or generated login token
-- Fetching organizations
-- Fetching cabinets
 - Fetching documents
-- Getting document fields
 - Downloading a document
+- Getting document fields
 - Creating a new version of a document
 - Attaching a document to an Ivy case
 - Uploading a document
 - Uploading a document with index fields
+- Fetching organizations
+- Fetching cabinets
 - Viewing files with the embedded DocuWare viewer (if the configuration has an `integrationPassphrase` set and your DocuWare installation allows embedding in a frame - check your DocuWare's content security policy!)
 - Encrypting and decrypting parameters for embedding
+- Using the default or any other configuration
+- Using configuration of grant type `dwtoken` with a provided or generated login token
 
 ![docuwaredemo](images/docuwaredemo.png)
 
@@ -51,9 +55,6 @@ Delete documents from the file cabinet.
 
    ![delete-document](images/delete-document.png)
 
-### Other demos
-
-Other process starts show examples of DocuWare usage.
 
 ## Setup
 
