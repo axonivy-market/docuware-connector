@@ -112,11 +112,157 @@ If you work with multiple instances, every call must know which instance to use.
 
 If you want to use REST calls of this connector directly, you can use the call's property `configKey` in the same way. Have a look at the instance-aware sub-processes to see how this is done!
 
-### Breaking changes in this version
+### ⚠️ Breaking Change - Variable Structure Changes  
+We've significantly improved the variable structure to provide better flexibility and multi-tenant support.  
 
 * Global variables configuration changed to support multiple instances.
 * It is no longer possible to define a file cabinet id or other defaults for DocuWare items in the global variables of a configuration. If needed, please move these global variables to your project.
 * Error handling was changed to standard AxonIvy error handling, i.e. sub-processes no longer return an error object, but rather throw exceptions in the case of errors.
+
+#### Removed Concepts
+- **`defaultInstance`**: No longer needed - replaced by `defaultConfig`
+- **`instances` hierarchy**: The nested structure with `instances.primary` has been removed
+- **Root-level `connectTimeout`**: Moved into configuration objects for better organization
+- **Root-level `host`**: Please note that the `host` property is now part of a complete `url`, including the platform path.
+
+#### Migration Steps
+
+#### Step 1: Replace `instances.primary` with `defaultConfig`
+**Before:**
+```yaml
+instances:
+  primary:
+    host: "acme.docuware.cloud"
+    grantType: "password"
+    username: "myuser"
+    password: ${decrypt:xyz}
+```
+
+**After:**
+```yaml
+defaultConfig:
+  configId: "1"
+  url: "https://acme.docuware.cloud/DocuWare/Platform"
+  grantType: "password"
+  username: "myuser"
+  password: ${decrypt:xyz}
+```
+
+#### Step 2: Move Timeouts into Configuration
+**Before:**
+```yaml
+connectTimeout: "30000"
+instances:
+  primary:
+    host: "..."
+```
+
+**After:**
+```yaml
+defaultConfig:
+  url: "..."
+  connectTimeout: "30000"
+  readTimeout: "0"
+```
+
+#### Step 3: Migrate Trusted User Configuration
+**Before:**
+```yaml
+instances:
+  primary:
+    grantType: trusted
+    trustedUserName: "admin"
+    trustedUserPassword: ${decrypt:xyz}
+```
+
+**After:**
+```yaml
+trustedUser:
+  configId: "1"
+  inherit: defaultConfig
+  grantType: "trusted"
+  username: "admin"
+  password: ${decrypt:xyz}
+  impersonateUser: ^ivy:system=admin,anonymous=admin
+```
+
+#### Step 4: Migrate DW Token Configuration
+**Before:**
+```yaml
+instances:
+  primary:
+    grantType: dwtoken
+    loginToken: ${decrypt:xyz}
+```
+
+**After:**
+```yaml
+dwToken:
+  configId: "1"
+  inherit: defaultConfig
+  grantType: "dwtoken"
+  dwToken: "^session"
+```
+
+#### Step 5: Remove Obsolete Properties
+Delete these properties that are no longer used:
+- `defaultInstance`
+- `host` (at root level)
+- `connectTimeout` (at root level)
+- `trustedUserName` (now just `username`)
+- `trustedUserPassword` (now just `password`)
+- `loginToken` (now `dwToken`)
+- `organization` (handled differently)
+- `filecabinetid` (handled differently)
+
+#### Old Configuration Format (deprecated)
+```yaml
+# yaml-language-server: $schema=https://json-schema.axonivy.com/app/12.0.0/variables.json
+# == Variables ==
+#
+# You can define here your project Variables.
+# If you want to define/override a Variable for a specific Environment, 
+# add an additional ‘variables.yaml’ file in a subdirectory in the ‘Config’ folder: 
+# '<project>/Config/_<environment>/variables.yaml
+#
+Variables:
+  docuwareConnector:
+    # The default active host. Managed by the system, should not manually modify.
+    host: ""
+    # The default active connection timeout. Managed by the system, should not manually modify.
+    connectTimeout: "0"
+    # The default active instance, it should be match with one of the instances in the configured  instance
+    # [enum: primary]
+    defaultInstance: ""
+    instances:
+      primary:
+        # Your docuware instance: e.g. 'acme.docuware.cloud'
+        host: ""
+        # The type of authorization grant to provide.
+        # [enum: password, trusted, dwtoken]
+        grantType: password
+        # The username used for authenticating to DocuWare.
+        username: ""
+        # The password used for authenticating to DocuWare.
+        #[password]
+        password: ${decrypt:}
+        # The Trusted username used for authenticating to DocuWare when GrantType is trusted.
+        trustedUserName: ""
+        # The password used for authenticating to DocuWare  when GrantType is trusted.
+        #[password]
+        trustedUserPassword: ${decrypt:}
+        # Use for getting a new DocuWare token by GrantType is dwtoken
+        # Please start process startRequestALoginToken.ivp to generate a new LoginToken
+        #[password]
+        loginToken: ${decrypt:}
+        # Your organization name
+        organization: ""
+        # The file cabinet Id, it must belong to provided organization
+        filecabinetid: ""
+        # This property sets the maximum time (in milliseconds) that the client will wait when attempting to establish a connection with the server.
+        # The value MUST be an instance convertible to Integer. A value of zero (0) is equivalent to an interval of infinity.
+        connectTimeout: "0"
+```
 
 ### Missing something?
 
