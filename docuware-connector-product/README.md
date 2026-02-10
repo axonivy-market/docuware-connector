@@ -15,7 +15,7 @@ This connector:
 
 Before starting the demo, unpack it and configure at least one DocuWare instance in the global variables.
 
-### Demo
+## Demo
 
 This demo provides a comprehensive GUI to explore various DocuWare functions using one or more DocuWare configurations.
 Not all features are available at all times. To access all demo features, you must define multiple configurations with different grant types.
@@ -115,9 +115,9 @@ If you want to use REST calls of this connector directly, you can use the call's
 ### ⚠️ Breaking Change - Variable Structure Changes  
 We've significantly improved the variable structure to provide better flexibility and multi-tenant support.  
 
-* Global variables configuration changed to support multiple instances.
-* It is no longer possible to define a file cabinet id or other defaults for DocuWare items in the global variables of a configuration. If needed, please move these global variables to your project.
-* Error handling was changed to standard AxonIvy error handling, i.e. sub-processes no longer return an error object, but rather throw exceptions in the case of errors.
+* The global variables configuration has changed to support multiple instances.
+* It is no longer possible to define a file cabinet ID or other defaults for DocuWare items in the global variables of a configuration. If needed, please move these variables to your project.
+* Error handling has been aligned with standard Axon Ivy error handling, i.e. sub-processes no longer return an error object but instead throw exceptions in case of errors.
 
 #### Removed Concepts
 - **`defaultInstance`**: No longer needed - replaced by `defaultConfig`
@@ -217,6 +217,9 @@ Delete these properties that are no longer used:
 
 #### Old Configuration Format (deprecated)
 ```yaml
+# Dear Bug Hunter,
+# This credential is intentionally included for educational purposes only and does not provide access to any production systems.
+# Please do not submit it as part of our bug bounty program.
 # yaml-language-server: $schema=https://json-schema.axonivy.com/app/12.0.0/variables.json
 # == Variables ==
 #
