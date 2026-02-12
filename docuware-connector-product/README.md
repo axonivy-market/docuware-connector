@@ -58,6 +58,12 @@ Delete documents from the file cabinet.
 
 ## Setup
 
+<!--
+Dear Bug Hunter,
+This credential is intentionally included for educational purposes only and does not provide access to any production systems.
+Please do not submit it as part of our bug bounty program.
+-->
+
 Before any interactions between the Axon Ivy Engine and DocuWare services can be run, they have to be introduced to each other. This connector offers _multi-instance_ support, i.e. it allows you to work with multiple DocuWare instances in parallel. Instance configurations are stored in global variables in named _blocks_ of configuration variables below the `docuwareConnector` section. The configuration named `defaultConfig` is predefined in the connector so you only have to set specific values for your installation. Additionally, configurations can configure the `inherit` attribute to take over all non-empty values of the named configuration.
 
 Please see the provided `variables.yaml` file for the list and meaning of global variables. The most important ones will be briefly described here.
@@ -217,9 +223,6 @@ Delete these properties that are no longer used:
 
 #### Old Configuration Format (deprecated)
 ```yaml
-# Dear Bug Hunter,
-# This credential is intentionally included for educational purposes only and does not provide access to any production systems.
-# Please do not submit it as part of our bug bounty program.
 # yaml-language-server: $schema=https://json-schema.axonivy.com/app/12.0.0/variables.json
 # == Variables ==
 #
