@@ -9,29 +9,33 @@ This connector:
 - Minimizes your integration effort: use the demo to see examples of API calls.
 - Is based on REST web service technologies.
 - Provides access to the DocuWare REST API.
-- A GUI to navigate to one or more DocuWare instances.
-- A GUI to view and edit document properties of the default DocuWare instance.
-- Some log-file-based example workflows.
+- Provides a GUI to navigate to one or more DocuWare instances.
+- Provides a GUI to view and edit document properties of the default DocuWare instance.
+- Provides log-file-based example workflows.
 
-Before you start the demo, unpack it and provide at least one configuration for a DocuWare instance in the global variables.
+Before starting the demo, unpack it and configure at least one DocuWare instance in the global variables.
 
-### Docuware Demo
+## Demo
 
-DocuWare Demo provides a complex GUI to play around with some DocuWare functions and one or more DocuWare configurations. Not all features will be available at all times. To use all demo features, you should provide multiple configurations with different grant types. Most buttons have a validation check and will only be visible when they are usable, e.g. when a cabinet id is available. In some situations, it might be necessary to use the refresh button. The following functions can be tested:
+This demo provides a comprehensive GUI to explore various DocuWare functions using one or more DocuWare configurations.
+Not all features are available at all times. To access all demo features, you must define multiple configurations with different grant types.
+Most buttons include validation checks and are only visible when they are usable, for example when a cabinet ID is available.
+In some situations, using the refresh button may be required.
+The following functions can be tested:
 
-- Using the default or any other configuration
-- Using configuration of grant type `dwtoken` with a provided or generated login token
-- Fetching organizations
-- Fetching cabinets
 - Fetching documents
-- Getting document fields
 - Downloading a document
+- Getting document fields
 - Creating a new version of a document
 - Attaching a document to an Ivy case
 - Uploading a document
 - Uploading a document with index fields
+- Fetching organizations
+- Fetching cabinets
 - Viewing files with the embedded DocuWare viewer (if the configuration has an `integrationPassphrase` set and your DocuWare installation allows embedding in a frame - check your DocuWare's content security policy!)
 - Encrypting and decrypting parameters for embedding
+- Using the default or any other configuration
+- Using configuration of grant type `dwtoken` with a provided or generated login token
 
 ![docuwaredemo](images/docuwaredemo.png)
 
@@ -51,11 +55,14 @@ Delete documents from the file cabinet.
 
    ![delete-document](images/delete-document.png)
 
-### Other demos
-
-Other process starts show examples of DocuWare usage.
 
 ## Setup
+
+<!--
+Dear Bug Hunter,
+This credential is intentionally included for educational purposes only and does not provide access to any production systems.
+Please do not submit it as part of our bug bounty program.
+-->
 
 Before any interactions between the Axon Ivy Engine and DocuWare services can be run, they have to be introduced to each other. This connector offers _multi-instance_ support, i.e. it allows you to work with multiple DocuWare instances in parallel. Instance configurations are stored in global variables in named _blocks_ of configuration variables below the `docuwareConnector` section. The configuration named `defaultConfig` is predefined in the connector so you only have to set specific values for your installation. Additionally, configurations can configure the `inherit` attribute to take over all non-empty values of the named configuration.
 
@@ -111,11 +118,157 @@ If you work with multiple instances, every call must know which instance to use.
 
 If you want to use REST calls of this connector directly, you can use the call's property `configKey` in the same way. Have a look at the instance-aware sub-processes to see how this is done!
 
-### Breaking changes in this version
+### ⚠️ Breaking Change - Variable Structure Changes  
+We've significantly improved the variable structure to provide better flexibility and multi-tenant support.  
 
-* Global variables configuration changed to support multiple instances.
-* It is no longer possible to define a file cabinet id or other defaults for DocuWare items in the global variables of a configuration. If needed, please move these global variables to your project.
-* Error handling was changed to standard AxonIvy error handling, i.e. sub-processes no longer return an error object, but rather throw exceptions in the case of errors.
+* The global variables configuration has changed to support multiple instances.
+* It is no longer possible to define a file cabinet ID or other defaults for DocuWare items in the global variables of a configuration. If needed, please move these variables to your project.
+* Error handling has been aligned with standard Axon Ivy error handling, i.e. sub-processes no longer return an error object but instead throw exceptions in case of errors.
+
+#### Removed Concepts
+- **`defaultInstance`**: No longer needed - replaced by `defaultConfig`
+- **`instances` hierarchy**: The nested structure with `instances.primary` has been removed
+- **Root-level `connectTimeout`**: Moved into configuration objects for better organization
+- **Root-level `host`**: Please note that the `host` property is now part of a complete `url`, including the platform path.
+
+#### Migration Steps
+
+#### Step 1: Replace `instances.primary` with `defaultConfig`
+**Before:**
+```yaml
+instances:
+  primary:
+    host: "acme.docuware.cloud"
+    grantType: "password"
+    username: "myuser"
+    password: ${decrypt:xyz}
+```
+
+**After:**
+```yaml
+defaultConfig:
+  configId: "1"
+  url: "https://acme.docuware.cloud/DocuWare/Platform"
+  grantType: "password"
+  username: "myuser"
+  password: ${decrypt:xyz}
+```
+
+#### Step 2: Move Timeouts into Configuration
+**Before:**
+```yaml
+connectTimeout: "30000"
+instances:
+  primary:
+    host: "..."
+```
+
+**After:**
+```yaml
+defaultConfig:
+  url: "..."
+  connectTimeout: "30000"
+  readTimeout: "0"
+```
+
+#### Step 3: Migrate Trusted User Configuration
+**Before:**
+```yaml
+instances:
+  primary:
+    grantType: trusted
+    trustedUserName: "admin"
+    trustedUserPassword: ${decrypt:xyz}
+```
+
+**After:**
+```yaml
+trustedUser:
+  configId: "1"
+  inherit: defaultConfig
+  grantType: "trusted"
+  username: "admin"
+  password: ${decrypt:xyz}
+  impersonateUser: ^ivy:system=admin,anonymous=admin
+```
+
+#### Step 4: Migrate DW Token Configuration
+**Before:**
+```yaml
+instances:
+  primary:
+    grantType: dwtoken
+    loginToken: ${decrypt:xyz}
+```
+
+**After:**
+```yaml
+dwToken:
+  configId: "1"
+  inherit: defaultConfig
+  grantType: "dwtoken"
+  dwToken: "^session"
+```
+
+#### Step 5: Remove Obsolete Properties
+Delete these properties that are no longer used:
+- `defaultInstance`
+- `host` (at root level)
+- `connectTimeout` (at root level)
+- `trustedUserName` (now just `username`)
+- `trustedUserPassword` (now just `password`)
+- `loginToken` (now `dwToken`)
+- `organization` (handled differently)
+- `filecabinetid` (handled differently)
+
+#### Old Configuration Format (deprecated)
+```yaml
+# yaml-language-server: $schema=https://json-schema.axonivy.com/app/12.0.0/variables.json
+# == Variables ==
+#
+# You can define here your project Variables.
+# If you want to define/override a Variable for a specific Environment, 
+# add an additional ‘variables.yaml’ file in a subdirectory in the ‘Config’ folder: 
+# '<project>/Config/_<environment>/variables.yaml
+#
+Variables:
+  docuwareConnector:
+    # The default active host. Managed by the system, should not manually modify.
+    host: ""
+    # The default active connection timeout. Managed by the system, should not manually modify.
+    connectTimeout: "0"
+    # The default active instance, it should be match with one of the instances in the configured  instance
+    # [enum: primary]
+    defaultInstance: ""
+    instances:
+      primary:
+        # Your docuware instance: e.g. 'acme.docuware.cloud'
+        host: ""
+        # The type of authorization grant to provide.
+        # [enum: password, trusted, dwtoken]
+        grantType: password
+        # The username used for authenticating to DocuWare.
+        username: ""
+        # The password used for authenticating to DocuWare.
+        #[password]
+        password: ${decrypt:}
+        # The Trusted username used for authenticating to DocuWare when GrantType is trusted.
+        trustedUserName: ""
+        # The password used for authenticating to DocuWare  when GrantType is trusted.
+        #[password]
+        trustedUserPassword: ${decrypt:}
+        # Use for getting a new DocuWare token by GrantType is dwtoken
+        # Please start process startRequestALoginToken.ivp to generate a new LoginToken
+        #[password]
+        loginToken: ${decrypt:}
+        # Your organization name
+        organization: ""
+        # The file cabinet Id, it must belong to provided organization
+        filecabinetid: ""
+        # This property sets the maximum time (in milliseconds) that the client will wait when attempting to establish a connection with the server.
+        # The value MUST be an instance convertible to Integer. A value of zero (0) is equivalent to an interval of infinity.
+        connectTimeout: "0"
+```
 
 ### Missing something?
 
