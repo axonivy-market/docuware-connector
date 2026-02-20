@@ -56,10 +56,13 @@ Delete documents from the file cabinet.
 Other process starts show examples of DocuWare usage.
 
 ## Setup
+Please copy  `variables.yaml` into your project.
 
-Before any interactions between the Axon Ivy Engine and DocuWare services can be run, they have to be introduced to each other. This connector offers _multi-instance_ support, i.e. it allows you to work with multiple DocuWare instances in parallel. Instance configurations are stored in global variables in named _blocks_ of configuration variables below the `docuwareConnector` section. The configuration named `defaultConfig` is predefined in the connector so you only have to set specific values for your installation. Additionally, configurations can configure the `inherit` attribute to take over all non-empty values of the named configuration.
+```
+@variables.yaml@
+```
 
-Please see the provided `variables.yaml` file for the list and meaning of global variables. The most important ones will be briefly described here.
+At least `url`, `username` and `password` must be provided. For an initial configuration delete 
 
 ### `configId`
 
