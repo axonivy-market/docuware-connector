@@ -17,9 +17,16 @@ Before you start the demo, unpack it and provide at least one configuration for 
 
 ### Docuware Demo
 
-DocuWare Demo provides a complex GUI to play around with some DocuWare functions and one or more DocuWare configurations. Not all features will be available at all times. To use all demo features, you should provide multiple configurations with different grant types. Most buttons have a validation check and will only be visible when they are usable, e.g. when a cabinet id is available. In some situations, it might be necessary to use the refresh button. The following functions can be tested:
+The DocuWare Demo provides a complex GUI to test different DocuWare configurations.  
+Not all features are available at all times.
 
-- Using the default or any other configuration
+To use all demo features, multiple configurations with different grant types should be provided.
+
+Most buttons include validation checks and are only visible when they can be used, e.g., when a cabinet ID is available. In some situations, it may be necessary to use the **Refresh** button.
+
+The following functions can be tested:
+
+- Using different configurations
 - Using configuration of grant type `dwtoken` with a provided or generated login token
 - Fetching organizations
 - Fetching cabinets
