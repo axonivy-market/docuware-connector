@@ -28,7 +28,7 @@ This connector minimizes your integration effort by:
 
 The DocuWare Demo provides a GUI to test different DocuWare configurations. To use all demo features, multiple configurations with different grant types must be provided in `variables.yaml`. **For a basic demo (username & password based) - just provide a defaultConfig**.
 
-#### Fetch Organizations" 
+#### Fetch Organizations 
 ![fetch-organiziation](images/2-fetchorgas.png)
 
 If everything went well you will see `Response: Status: OK` in the textfield below the buttons. It may look like:
@@ -68,6 +68,7 @@ Choose one File Cabinet you would like to inspect further and copy the ID into t
 
 #### Fetch & download Documents
 ![fetch-cabinets](images/4-downloaddocument.png)
+
 For fetching and downloading a document click "Fetch Documents" (1) to get a list of the available documents in the logviewer. You will get a list that look like this:
 
 ```
@@ -78,7 +79,7 @@ Id: 10 - 'Bla'
 Id: 7 - 'Umlaut.äöüÄÖÜß'
 Id: 6 - 'Bla'
 ```
-Note the Id you would like to inspect further and type it into the UI (2). With "Download Document" (3) you can now download the document related to this ID.
+Remeber  the Id of the document you would like to inspect further and type it into the UI (2). With "Download Document" (3) you can now download the document related to this ID.
 
 #### Further Features
 - Using different configurations, i.e. for different grant types
@@ -108,7 +109,9 @@ A user friendly UI will open:
 
 ![tabledemo](images/6-tabledemo.png)
 
-Note that viewing documents might require additional setup of your DocuWare installation's content security policy to allow embedding of DocuWare frames into your AxonIvy frames.
+**Document Preview**
+
+Note that previewing documents might require additional setup of your DocuWare installation's content security policy to allow embedding of DocuWare frames into your AxonIvy frames.
 
 ![view-document](images/view-document.png)
 
