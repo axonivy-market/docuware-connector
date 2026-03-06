@@ -122,9 +122,10 @@ Delete documents from the file cabinet.
 
    ![delete-document](images/delete-document.png)
 
-### Other demos
 
-Other process starts show examples of DocuWare usage.
+
+
+
 
 ## Setup
 Please copy  `variables.yaml` into your project.
@@ -133,23 +134,23 @@ Please copy  `variables.yaml` into your project.
 @variables.yaml@
 ```
 
-At least `url`, `username` and `password` must be provided. For an initial configuration delete 
+At least `url`, `username` and `password` must be provided.
 
 ### `configId`
 
-Any value that identifies this version of the configuration. If the value changes, the cached configuration will be re-read the next time it is needed. It might be a good idea to include a timestamp and the username of the person making the change.
+Any value that identifies this version of the configuration. 
 
 ### `inherit`
 
-Any value which is **non-existent, empty or blank** in the current configuration will be looked up in the configuration mentioned in this variable. The lookup will be done recursively.
+Any value that is non-existent, empty, or blank in the current configuration will be looked up in the configuration referenced by this variable. The lookup is performed recursively.
 
 ### `grantType`
 
-This is the grant-type of your configuration. Possible values are `password`, `trusted`, and `dwtoken`.
+This is the grant-type for your configuration. Possible values are `password`, `trusted`, and `dwtoken`.
 
 #### `password`
 
-Grant type `password` uses a fixed `username` and `password` to connect to your DocuWare instance. This means that all operations will be performed by this user. Also, all history entries will show this user. It is a simple setup for a _technical user_ to connect to a cloud or on-premise instance of DocuWare.
+Grant type `password` uses a fixed `username` and `password` to connect to your DocuWare instance. All operations are performed using this user account, and all history entries will show this user. It is a simple setup using a _technical user_ to connect to a cloud or on-premise DocuWare instance.
 
 #### `trusted`
 
@@ -157,11 +158,11 @@ Grant type `trusted` uses a `username` and `password` to connect as a trusted us
 
 `impersonateUser` implements a special syntax to define which user to use for accesses by anonymous Ivy user, accesses by the system Ivy user and accesses by other Ivy users:
 
-- Using a constant username for all situations
-- Using constant usernames for anonymous and system, but using the Ivy username for others
-- Setting the username to use in the user's session before any calls and using this name
+- Use a constant username in all situations
+- Use constant usernames for anonymous and system users, but the Ivy username for others
+- Set the username in the user's session before making any calls and use this name
 
-Please see the documentation in the `variables.yaml` file.
+There is additional documentation in the `variables.yaml` file.
 
 #### `dwtoken`
 
@@ -191,7 +192,5 @@ If you want to use REST calls of this connector directly, you can use the call's
 * It is no longer possible to define a file cabinet id or other defaults for DocuWare items in the global variables of a configuration. If needed, please move these global variables to your project.
 * Error handling was changed to standard AxonIvy error handling, i.e. sub-processes no longer return an error object, but rather throw exceptions in the case of errors.
 
-### Missing something?
 
-If the connector is missing features that you need, you can unpack it to your project and extend it there. In this case, consider proposing/offering your change to the Axon Ivy market.
 
