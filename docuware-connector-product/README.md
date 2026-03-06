@@ -2,27 +2,54 @@
 
 [DocuWare](https://start.docuware.com/) offers cloud-based document management and workflow automation software. It can be used to digitize, archive and process any business documents in an audit-proof manner to optimize your company's core processes.
 
-The Axon Ivy DocuWare connector enables efficient integration of DocuWare functionalities into your Axon Ivy process applications.
+**DocuWare Organization**  
+A *DocuWare Organization* is the top-level tenant in DocuWare. It represents an isolated environment that contains users, roles, configurations, and all document repositories.
 
-This connector:  
+**File Cabinet**  
+A *File Cabinet* is a document repository within an organization. It stores documents together with their indexed metadata (fields such as invoice number, date, supplier) and enables searching, storing, and retrieving documents.
 
-- Minimizes your integration effort: use the demo to see examples of API calls.
-- Is based on REST web service technologies.
-- Provides access to the DocuWare REST API.
-- A GUI to navigate to one or more DocuWare instances.
-- A GUI to view and edit document properties of the default DocuWare instance.
-- Some log-file-based example workflows.
+**Connector Capability**  
+This connector allows you to connect **multiple DocuWare organizations**, each containing **multiple file cabinets**, within a single configuration. This makes it possible to access and manage documents across several DocuWare environments. It enables efficient integration of DocuWare functionalities into your **Axon Ivy process applications**.
 
-Before you start the demo, unpack it and provide at least one configuration for a DocuWare instance in the global variables.
+This connector minimizes your integration effort by:
+
+- Using REST web service technologies
+- Fetching one or multiple DocuWare organizations
+- Fetching file cabinets
+- Providing a GUI to view and edit document properties of the default DocuWare instance
+- Providing configurations to test several authentication methods
 
 ### Docuware Demo
+1. Start the DocuWare Demo Process:
+   
+![start-demo-process](images/1-startdemo.png)
 
-The DocuWare Demo provides a complex GUI to test different DocuWare configurations.  
-Not all features are available at all times.
+The DocuWare Demo provides a GUI to test different DocuWare configurations. To use all demo features, multiple configurations with different grant types must be provided in `variables.yaml`. **For a basic demo (username & password based - just provide a defaultConfig**).
 
-To use all demo features, multiple configurations with different grant types should be provided.
+Click "Fech Organizations": 
+![fetch-organiziation](images/2-fetchorgas.png)
 
-Most buttons include validation checks and are only visible when they can be used, e.g., when a cabinet ID is available. In some situations, it may be necessary to use the **Refresh** button.
+If everything went well you will see `Response: Status: OK` in the textfield below the buttons. It may look like:
+```
+Response: Status: OK
+
+Headers
+=======
+Content-Type: application/xml; charset=utf-8
+Date: Fri, 06 Mar 2026 03:57:13 GMT
+Cache-Control: max-age=0, private
+Set-Cookie: dwingressplatform=1772769434.007.32.96427|a8466521666073443d68d0f15f64584f; Path=/; Secure; HttpOnly
+Transfer-Encoding: chunked
+Vary: Cookie,Accept,Accept-Encoding
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+Server-Timing: proxy-start;dur=1.5
+
+```
+
+When clicking "Fetch FileCabinets" a couple of more buttons (features) are available - now you can also fetch documents:
+
+![fetch-cabinets](images/3-fetchcabinets.png)
+
 
 The following functions can be tested:
 
