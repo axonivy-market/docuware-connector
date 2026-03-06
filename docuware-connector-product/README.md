@@ -19,14 +19,16 @@ This connector minimizes your integration effort by:
 - Providing a GUI to view and edit document properties of the default DocuWare instance
 - Providing configurations to test several authentication methods
 
-### Docuware Demo
+## Demo
+### Docuware Basic Demo: Fetching Organiziation, File Cabinets and Documents
+
 1. Start the DocuWare Demo Process:
    
 ![start-demo-process](images/1-startdemo.png)
 
-The DocuWare Demo provides a GUI to test different DocuWare configurations. To use all demo features, multiple configurations with different grant types must be provided in `variables.yaml`. **For a basic demo (username & password based - just provide a defaultConfig**).
+The DocuWare Demo provides a GUI to test different DocuWare configurations. To use all demo features, multiple configurations with different grant types must be provided in `variables.yaml`. **For a basic demo (username & password based) - just provide a defaultConfig**.
 
-Click "Fech Organizations": 
+#### Fetch Organizations" 
 ![fetch-organiziation](images/2-fetchorgas.png)
 
 If everything went well you will see `Response: Status: OK` in the textfield below the buttons. It may look like:
@@ -45,19 +47,41 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 Server-Timing: proxy-start;dur=1.5
 
 ```
-
-When clicking "Fetch FileCabinets" a couple of more buttons (features) are available - now you can also fetch documents:
+#### Fetch File Cabinets
+When clicking "Fetch FileCabinets" a couple of more buttons (features) are available.
 
 ![fetch-cabinets](images/3-fetchcabinets.png)
 
+In particular you will get a list of available filecabinets at the bottom of your logfile, it might look like: 
+```
+File Cabinets:
+Size: 5
+Id: 4b4be7af-629f-4340-82cb-126d249d2b95 - 'Awesome Filecabinet'
+Id: 90b4f666-b79f-4d26-97f7-7786d8fbe4c2 - 'TEST Filecabinet'
+Id: 94532ab8-a22f-4b70-a15d-ba44d916bd45 - 'Archive Cabinet'
+Id: wdss996-b61c-4b4b-88fd-e506a58156278 - 'Src'
+Id: 43sfsdfb137-c5a8-4ab-ae73-715e7c360f - 'Not important'
+```
 
-The following functions can be tested:
+Choose one File Cabinet you would like to inspect further and copy the ID into the UI:
+![fetch-cabinets](images/7-filecabinet.png)
 
-- Using different configurations
-- Using configuration of grant type `dwtoken` with a provided or generated login token
-- Fetching organizations
-- Fetching cabinets
-- Fetching documents
+#### Fetch & download Documents
+![fetch-cabinets](images/4-downloaddocument.png)
+For fetching and downloading a document click "Fetch Documents" (1) to get a list of the available documents in the logviewer. You will get a list that look like this:
+
+```
+Documents:
+Size: 4
+Id: 11 - 'Hello World'
+Id: 10 - 'Bla'
+Id: 7 - 'Umlaut.äöüÄÖÜß'
+Id: 6 - 'Bla'
+```
+Note the Id you would like to inspect further and type it into the UI (2). With "Download Document" (3) you can now download the document related to this ID.
+
+#### Further Features
+- Using different configurations, i.e. for different grant types
 - Getting document fields
 - Downloading a document
 - Creating a new version of a document
@@ -67,13 +91,26 @@ The following functions can be tested:
 - Viewing files with the embedded DocuWare viewer (if the configuration has an `integrationPassphrase` set and your DocuWare installation allows embedding in a frame - check your DocuWare's content security policy!)
 - Encrypting and decrypting parameters for embedding
 
-![docuwaredemo](images/docuwaredemo.png)
 
-### Document Table
+### Second Demo: Document Table
 
-Start **Document Table** to get a basic viewer showing how to add, change, view and delete documents. Note that viewing documents might require additional setup of your DocuWare installation's content security policy to allow embedding of DocuWare frames into your AxonIvy frames.
+Make sure you have configured a File Cabinet ID in variables.yaml. Remember that you can fetch available File Cabinets with the First Demo Process (see above).
+```
+  # Variables used by the demo.
+  docuwareWorkflow:
+    fileCabinetId: ""
+```
 
-   ![view-document](images/view-document.png)
+Start **Document Table** to get a basic viewer showing how to add, change, view and delete documents. 
+![seconddemo](images/5-startseconddemo.png)
+
+A user friendly UI will open:
+
+![tabledemo](images/6-tabledemo.png)
+
+Note that viewing documents might require additional setup of your DocuWare installation's content security policy to allow embedding of DocuWare frames into your AxonIvy frames.
+
+![view-document](images/view-document.png)
 
 **Document Properties Editing**  
 Modify document properties, including metadata and custom fields.
