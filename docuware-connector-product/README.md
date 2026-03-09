@@ -1,9 +1,9 @@
 # DocuWare Connector
 
-[DocuWare](https://start.docuware.com/) offers cloud-based document management and workflow automation software. It can be used to digitize, archive and process any business documents in an audit-proof manner to optimize your company's core processes.
+[DocuWare](https://start.docuware.com/) offers cloud-based document management and workflow automation software. It can be used to digitize, archive, and process any business documents in an audit-proof manner to optimize your company's core processes.
 
 **DocuWare Organization**  
-A *DocuWare Organization* is the top-level tenant in DocuWare. It represents an isolated environment that contains users, roles, configurations, and all document repositories.
+A *DocuWare Organization* is the top-level tenant in DocuWare. It represents an isolated environment that contains users, roles, configurations, and all document repositories of the organization.
 
 **File Cabinet**  
 A *File Cabinet* is a document repository within an organization. It stores documents together with their indexed metadata (fields such as invoice number, date, supplier) and enables searching, storing, and retrieving documents.
@@ -14,19 +14,19 @@ This connector allows you to connect **multiple DocuWare organizations**, each c
 This connector minimizes your integration effort by:
 
 - Using REST web service technologies
-- Fetching one or multiple DocuWare organizations
+- Fetching one or more DocuWare organizations
 - Fetching file cabinets
 - Providing a GUI to view and edit document properties of the default DocuWare instance
 - Providing configurations to test several authentication methods
 
 ## Demo
-### Docuware Basic Demo: Fetching Organiziation, File Cabinets and Documents
+### DocuWare Basic Demo: Fetching Organizations, File Cabinets and Documents
 
 1. Start the DocuWare Demo Process:
    
 ![start-demo-process](images/1-startdemo.png)
 
-The DocuWare Demo provides a GUI to test different DocuWare configurations. To use all demo features, multiple configurations with different grant types must be provided in `variables.yaml`. **For a basic demo (username & password based) - just provide a defaultConfig**.
+The DocuWare Demo provides a GUI to test different DocuWare configurations. To use all demo features, multiple configurations with different grant types must be provided in `variables.yaml`. **For a basic demo (username and password based): - just provide a defaultConfig**.
 
 #### Fetch Organizations 
 ![fetch-organiziation](images/2-fetchorgas.png)
@@ -48,11 +48,12 @@ Server-Timing: proxy-start;dur=1.5
 
 ```
 #### Fetch File Cabinets
-When clicking "Fetch FileCabinets" a couple of more buttons (features) are available.
+When clicking "Fetch File Cabinets", several additional buttons (features) become available.
 
 ![fetch-cabinets](images/3-fetchcabinets.png)
 
-In particular you will get a list of available filecabinets at the bottom of your logfile, it might look like: 
+In particular, you will get a list of available file cabinets at the bottom of your log file. It might look like this:
+
 ```
 File Cabinets:
 Size: 5
@@ -63,13 +64,14 @@ Id: wdss996-b61c-4b4b-88fd-e506a58156278 - 'Src'
 Id: 43sfsdfb137-c5a8-4ab-ae73-715e7c360f - 'Not important'
 ```
 
-Choose one File Cabinet you would like to inspect further and copy the ID into the UI:
+Choose a File Cabinet you would like to inspect further and copy its ID into the UI.
+
 ![fetch-cabinets](images/7-filecabinet.png)
 
 #### Fetch & download Documents
 ![fetch-cabinets](images/4-downloaddocument.png)
 
-For fetching and downloading a document click "Fetch Documents" (1) to get a list of the available documents in the logviewer. You will get a list that look like this:
+For fetching and downloading a document, click "Fetch Documents" (1) to get a list of available documents in the log viewer. You will get a list that looks like this:
 
 ```
 Documents:
@@ -79,7 +81,7 @@ Id: 10 - 'Bla'
 Id: 7 - 'Umlaut.äöüÄÖÜß'
 Id: 6 - 'Bla'
 ```
-Remeber  the Id of the document you would like to inspect further and type it into the UI (2). With "Download Document" (3) you can now download the document related to this ID.
+Remember the ID of the document you would like to inspect further and enter it into the UI (2). With "Download Document" (3), you can then download the document associated with this ID.
 
 #### Further Features
 - Using different configurations, i.e. for different grant types
@@ -95,23 +97,25 @@ Remeber  the Id of the document you would like to inspect further and type it in
 
 ### Second Demo: Document Table
 
-Make sure you have configured a File Cabinet ID in variables.yaml. Remember that you can fetch available File Cabinets with the First Demo Process (see above).
+Make sure you have configured a File Cabinet ID in `variables.yaml`. Remember that you can fetch available File Cabinets using the first demo process (see above).
+
 ```
   # Variables used by the demo.
   docuwareWorkflow:
     fileCabinetId: ""
 ```
 
-Start **Document Table** to get a basic viewer showing how to add, change, view and delete documents. 
+Start the  process **Document Table** to get a basic viewer showing how to add, change, view and delete documents. 
+
 ![seconddemo](images/5-startseconddemo.png)
 
-A user friendly UI will open:
+A user-friendly UI will open:
 
 ![tabledemo](images/6-tabledemo.png)
 
 **Document Preview**
 
-Note that previewing documents might require additional setup of your DocuWare installation's content security policy to allow embedding of DocuWare frames into your AxonIvy frames.
+Note that previewing documents might require additional configuration of your DocuWare installation’s Content Security Policy (CSP) to allow embedding DocuWare frames into your Axon Ivy frames.
 
 ![view-document](images/view-document.png)
 
