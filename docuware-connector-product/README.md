@@ -2,48 +2,118 @@
 
 [DocuWare](https://start.docuware.com/) offers cloud-based document management and workflow automation software. It can be used to digitize, archive and process any business documents in an audit-proof manner to optimize your company's core processes.
 
-The Axon Ivy DocuWare connector enables efficient integration of DocuWare functionalities into your Axon Ivy process applications.
+**DocuWare Organization**  
+A *DocuWare Organization* is the top-level tenant in DocuWare. It represents an isolated environment that contains users, roles, configurations, and all document repositories.
 
-This connector:  
+**File Cabinet**  
+A *File Cabinet* is a document repository within an organization. It stores documents together with their indexed metadata (fields such as invoice number, date, supplier) and enables searching, storing, and retrieving documents.
 
-- Minimizes your integration effort: use the demo to see examples of API calls.
-- Is based on REST web service technologies.
-- Provides access to the DocuWare REST API.
-- Provides a GUI to navigate to one or more DocuWare instances.
-- Provides a GUI to view and edit document properties of the default DocuWare instance.
-- Provides log-file-based example workflows.
+**Connector Capability**  
+This connector allows you to connect **multiple DocuWare organizations**, each containing **multiple file cabinets**, within a single configuration. This makes it possible to access and manage documents across several DocuWare environments. It enables efficient integration of DocuWare functionalities into your **Axon Ivy process applications**.
 
-Before starting the demo, unpack it and configure at least one DocuWare instance in the global variables.
+This connector minimizes your integration effort by:
+
+- Using REST web service technologies
+- Fetching one or multiple DocuWare organizations
+- Fetching file cabinets
+- Providing a GUI to view and edit document properties of the default DocuWare instance
+- Providing configurations to test several authentication methods
 
 ## Demo
+### Docuware Basic Demo: Fetching Organiziation, File Cabinets and Documents
 
-This demo provides a comprehensive GUI to explore various DocuWare functions using one or more DocuWare configurations.
-Not all features are available at all times. To access all demo features, you must define multiple configurations with different grant types.
-Most buttons include validation checks and are only visible when they are usable, for example when a cabinet ID is available.
-In some situations, using the refresh button may be required.
-The following functions can be tested:
+1. Start the DocuWare Demo Process:
+   
+![start-demo-process](images/1-startdemo.png)
 
-- Fetching documents
-- Downloading a document
+The DocuWare Demo provides a GUI to test different DocuWare configurations. To use all demo features, multiple configurations with different grant types must be provided in `variables.yaml`. **For a basic demo (username & password based) - just provide a defaultConfig**.
+
+#### Fetch Organizations 
+![fetch-organiziation](images/2-fetchorgas.png)
+
+If everything went well you will see `Response: Status: OK` in the textfield below the buttons. It may look like:
+```
+Response: Status: OK
+
+Headers
+=======
+Content-Type: application/xml; charset=utf-8
+Date: Fri, 06 Mar 2026 03:57:13 GMT
+Cache-Control: max-age=0, private
+Set-Cookie: dwingressplatform=1772769434.007.32.96427|a8466521666073443d68d0f15f64584f; Path=/; Secure; HttpOnly
+Transfer-Encoding: chunked
+Vary: Cookie,Accept,Accept-Encoding
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+Server-Timing: proxy-start;dur=1.5
+
+```
+#### Fetch File Cabinets
+When clicking "Fetch FileCabinets" a couple of more buttons (features) are available.
+
+![fetch-cabinets](images/3-fetchcabinets.png)
+
+In particular you will get a list of available filecabinets at the bottom of your logfile, it might look like: 
+```
+File Cabinets:
+Size: 5
+Id: 4b4be7af-629f-4340-82cb-126d249d2b95 - 'Awesome Filecabinet'
+Id: 90b4f666-b79f-4d26-97f7-7786d8fbe4c2 - 'TEST Filecabinet'
+Id: 94532ab8-a22f-4b70-a15d-ba44d916bd45 - 'Archive Cabinet'
+Id: wdss996-b61c-4b4b-88fd-e506a58156278 - 'Src'
+Id: 43sfsdfb137-c5a8-4ab-ae73-715e7c360f - 'Not important'
+```
+
+Choose one File Cabinet you would like to inspect further and copy the ID into the UI:
+![fetch-cabinets](images/7-filecabinet.png)
+
+#### Fetch & download Documents
+![fetch-cabinets](images/4-downloaddocument.png)
+
+For fetching and downloading a document click "Fetch Documents" (1) to get a list of the available documents in the logviewer. You will get a list that look like this:
+
+```
+Documents:
+Size: 4
+Id: 11 - 'Hello World'
+Id: 10 - 'Bla'
+Id: 7 - 'Umlaut.äöüÄÖÜß'
+Id: 6 - 'Bla'
+```
+Remeber  the Id of the document you would like to inspect further and type it into the UI (2). With "Download Document" (3) you can now download the document related to this ID.
+
+#### Further Features
+- Using different configurations, i.e. for different grant types
 - Getting document fields
+- Downloading a document
 - Creating a new version of a document
 - Attaching a document to an Ivy case
 - Uploading a document
 - Uploading a document with index fields
-- Fetching organizations
-- Fetching cabinets
 - Viewing files with the embedded DocuWare viewer (if the configuration has an `integrationPassphrase` set and your DocuWare installation allows embedding in a frame - check your DocuWare's content security policy!)
 - Encrypting and decrypting parameters for embedding
-- Using the default or any other configuration
-- Using configuration of grant type `dwtoken` with a provided or generated login token
 
-![docuwaredemo](images/docuwaredemo.png)
 
-### Document Table
+### Second Demo: Document Table
 
-Start **Document Table** to get a basic viewer showing how to add, change, view and delete documents. Note that viewing documents might require additional setup of your DocuWare installation's content security policy to allow embedding of DocuWare frames into your AxonIvy frames.
+Make sure you have configured a File Cabinet ID in variables.yaml. Remember that you can fetch available File Cabinets with the First Demo Process (see above).
+```
+  # Variables used by the demo.
+  docuwareWorkflow:
+    fileCabinetId: ""
+```
 
-   ![view-document](images/view-document.png)
+Start **Document Table** to get a basic viewer showing how to add, change, view and delete documents. 
+![seconddemo](images/5-startseconddemo.png)
+
+A user friendly UI will open:
+
+![tabledemo](images/6-tabledemo.png)
+
+**Document Preview**
+
+Note that previewing documents might require additional setup of your DocuWare installation's content security policy to allow embedding of DocuWare frames into your AxonIvy frames.
+
+![view-document](images/view-document.png)
 
 **Document Properties Editing**  
 Modify document properties, including metadata and custom fields.
@@ -56,33 +126,34 @@ Delete documents from the file cabinet.
    ![delete-document](images/delete-document.png)
 
 
+
+
+
+
 ## Setup
+Please copy  `variables.yaml` into your project.
 
-<!--
-Dear Bug Hunter,
-This credential is intentionally included for educational purposes only and does not provide access to any production systems.
-Please do not submit it as part of our bug bounty program.
--->
+```
+@variables.yaml@
+```
 
-Before any interactions between the Axon Ivy Engine and DocuWare services can be run, they have to be introduced to each other. This connector offers _multi-instance_ support, i.e. it allows you to work with multiple DocuWare instances in parallel. Instance configurations are stored in global variables in named _blocks_ of configuration variables below the `docuwareConnector` section. The configuration named `defaultConfig` is predefined in the connector so you only have to set specific values for your installation. Additionally, configurations can configure the `inherit` attribute to take over all non-empty values of the named configuration.
-
-Please see the provided `variables.yaml` file for the list and meaning of global variables. The most important ones will be briefly described here.
+At least `url`, `username` and `password` must be provided.
 
 ### `configId`
 
-Any value that identifies this version of the configuration. If the value changes, the cached configuration will be re-read the next time it is needed. It might be a good idea to include a timestamp and the username of the person making the change.
+Any value that identifies this version of the configuration. 
 
 ### `inherit`
 
-Any value which is **non-existent, empty or blank** in the current configuration will be looked up in the configuration mentioned in this variable. The lookup will be done recursively.
+Any value that is non-existent, empty, or blank in the current configuration will be looked up in the configuration referenced by this variable. The lookup is performed recursively.
 
 ### `grantType`
 
-This is the grant-type of your configuration. Possible values are `password`, `trusted`, and `dwtoken`.
+This is the grant-type for your configuration. Possible values are `password`, `trusted`, and `dwtoken`.
 
 #### `password`
 
-Grant type `password` uses a fixed `username` and `password` to connect to your DocuWare instance. This means that all operations will be performed by this user. Also, all history entries will show this user. It is a simple setup for a _technical user_ to connect to a cloud or on-premise instance of DocuWare.
+Grant type `password` uses a fixed `username` and `password` to connect to your DocuWare instance. All operations are performed using this user account, and all history entries will show this user. It is a simple setup using a _technical user_ to connect to a cloud or on-premise DocuWare instance.
 
 #### `trusted`
 
@@ -90,11 +161,11 @@ Grant type `trusted` uses a `username` and `password` to connect as a trusted us
 
 `impersonateUser` implements a special syntax to define which user to use for accesses by anonymous Ivy user, accesses by the system Ivy user and accesses by other Ivy users:
 
-- Using a constant username for all situations
-- Using constant usernames for anonymous and system, but using the Ivy username for others
-- Setting the username to use in the user's session before any calls and using this name
+- Use a constant username in all situations
+- Use constant usernames for anonymous and system users, but the Ivy username for others
+- Set the username in the user's session before making any calls and use this name
 
-Please see the documentation in the `variables.yaml` file.
+There is additional documentation in the `variables.yaml` file.
 
 #### `dwtoken`
 
@@ -118,159 +189,11 @@ If you work with multiple instances, every call must know which instance to use.
 
 If you want to use REST calls of this connector directly, you can use the call's property `configKey` in the same way. Have a look at the instance-aware sub-processes to see how this is done!
 
-### ⚠️ Breaking Change - Variable Structure Changes  
-We've significantly improved the variable structure to provide better flexibility and multi-tenant support.  
+### Breaking changes in this version
 
-* The global variables configuration has changed to support multiple instances.
-* It is no longer possible to define a file cabinet ID or other defaults for DocuWare items in the global variables of a configuration. If needed, please move these variables to your project.
-* Error handling has been aligned with standard Axon Ivy error handling, i.e. sub-processes no longer return an error object but instead throw exceptions in case of errors.
+* Global variables configuration changed to support multiple instances.
+* It is no longer possible to define a file cabinet id or other defaults for DocuWare items in the global variables of a configuration. If needed, please move these global variables to your project.
+* Error handling was changed to standard AxonIvy error handling, i.e. sub-processes no longer return an error object, but rather throw exceptions in the case of errors.
 
-#### Removed Concepts
-- **`defaultInstance`**: No longer needed - replaced by `defaultConfig`
-- **`instances` hierarchy**: The nested structure with `instances.primary` has been removed
-- **Root-level `connectTimeout`**: Moved into configuration objects for better organization
-- **Root-level `host`**: Please note that the `host` property is now part of a complete `url`, including the platform path.
 
-#### Migration Steps
-
-#### Step 1: Replace `instances.primary` with `defaultConfig`
-**Before:**
-```yaml
-instances:
-  primary:
-    host: "acme.docuware.cloud"
-    grantType: "password"
-    username: "myuser"
-    password: ${decrypt:xyz}
-```
-
-**After:**
-```yaml
-defaultConfig:
-  configId: "1"
-  url: "https://acme.docuware.cloud/DocuWare/Platform"
-  grantType: "password"
-  username: "myuser"
-  password: ${decrypt:xyz}
-```
-
-#### Step 2: Move Timeouts into Configuration
-**Before:**
-```yaml
-connectTimeout: "30000"
-instances:
-  primary:
-    host: "..."
-```
-
-**After:**
-```yaml
-defaultConfig:
-  url: "..."
-  connectTimeout: "30000"
-  readTimeout: "0"
-```
-
-#### Step 3: Migrate Trusted User Configuration
-**Before:**
-```yaml
-instances:
-  primary:
-    grantType: trusted
-    trustedUserName: "admin"
-    trustedUserPassword: ${decrypt:xyz}
-```
-
-**After:**
-```yaml
-trustedUser:
-  configId: "1"
-  inherit: defaultConfig
-  grantType: "trusted"
-  username: "admin"
-  password: ${decrypt:xyz}
-  impersonateUser: ^ivy:system=admin,anonymous=admin
-```
-
-#### Step 4: Migrate DW Token Configuration
-**Before:**
-```yaml
-instances:
-  primary:
-    grantType: dwtoken
-    loginToken: ${decrypt:xyz}
-```
-
-**After:**
-```yaml
-dwToken:
-  configId: "1"
-  inherit: defaultConfig
-  grantType: "dwtoken"
-  dwToken: "^session"
-```
-
-#### Step 5: Remove Obsolete Properties
-Delete these properties that are no longer used:
-- `defaultInstance`
-- `host` (at root level)
-- `connectTimeout` (at root level)
-- `trustedUserName` (now just `username`)
-- `trustedUserPassword` (now just `password`)
-- `loginToken` (now `dwToken`)
-- `organization` (handled differently)
-- `filecabinetid` (handled differently)
-
-#### Old Configuration Format (deprecated)
-```yaml
-# yaml-language-server: $schema=https://json-schema.axonivy.com/app/12.0.0/variables.json
-# == Variables ==
-#
-# You can define here your project Variables.
-# If you want to define/override a Variable for a specific Environment, 
-# add an additional ‘variables.yaml’ file in a subdirectory in the ‘Config’ folder: 
-# '<project>/Config/_<environment>/variables.yaml
-#
-Variables:
-  docuwareConnector:
-    # The default active host. Managed by the system, should not manually modify.
-    host: ""
-    # The default active connection timeout. Managed by the system, should not manually modify.
-    connectTimeout: "0"
-    # The default active instance, it should be match with one of the instances in the configured  instance
-    # [enum: primary]
-    defaultInstance: ""
-    instances:
-      primary:
-        # Your docuware instance: e.g. 'acme.docuware.cloud'
-        host: ""
-        # The type of authorization grant to provide.
-        # [enum: password, trusted, dwtoken]
-        grantType: password
-        # The username used for authenticating to DocuWare.
-        username: ""
-        # The password used for authenticating to DocuWare.
-        #[password]
-        password: ${decrypt:}
-        # The Trusted username used for authenticating to DocuWare when GrantType is trusted.
-        trustedUserName: ""
-        # The password used for authenticating to DocuWare  when GrantType is trusted.
-        #[password]
-        trustedUserPassword: ${decrypt:}
-        # Use for getting a new DocuWare token by GrantType is dwtoken
-        # Please start process startRequestALoginToken.ivp to generate a new LoginToken
-        #[password]
-        loginToken: ${decrypt:}
-        # Your organization name
-        organization: ""
-        # The file cabinet Id, it must belong to provided organization
-        filecabinetid: ""
-        # This property sets the maximum time (in milliseconds) that the client will wait when attempting to establish a connection with the server.
-        # The value MUST be an instance convertible to Integer. A value of zero (0) is equivalent to an interval of infinity.
-        connectTimeout: "0"
-```
-
-### Missing something?
-
-If the connector is missing features that you need, you can unpack it to your project and extend it there. In this case, consider proposing/offering your change to the Axon Ivy market.
 
