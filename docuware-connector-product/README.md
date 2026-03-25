@@ -29,7 +29,7 @@ This connector minimizes your integration effort by:
 The DocuWare Demo provides a GUI to test different DocuWare configurations. To use all demo features, multiple configurations with different grant types must be provided in `variables.yaml`. **For a basic demo (username and password based): - just provide a defaultConfig**.
 
 #### Fetch Organizations 
-![fetch-organiziation](images/2-fetchorgas.png)
+![fetch-organization](images/2-fetchorgas.png)
 
 If everything went well you will see `Response: Status: OK` in the textfield below the buttons. It may look like:
 ```
@@ -107,11 +107,11 @@ Make sure you have configured a File Cabinet ID in `variables.yaml`. Remember th
 
 Start the  process **Document Table** to get a basic viewer showing how to add, change, view and delete documents. 
 
-![seconddemo](images/5-startseconddemo.png)
+![second-demo](images/5-startseconddemo.png)
 
 A user-friendly UI will open:
 
-![tabledemo](images/6-tabledemo.png)
+![table-demo](images/6-tabledemo.png)
 
 **Document Preview**
 
