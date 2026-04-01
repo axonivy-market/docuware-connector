@@ -57,6 +57,7 @@ public class DocuWareConnectorTest {
 		fix.var("docuwareConnector.test.grantType", "password");
 		fix.var("docuwareConnector.test.username", "testuser");
 		fix.var("docuwareConnector.test.password", "testpassword");
+		fix.var("docuwareConnector.test.integrationPassphrase", "unit-test-secret-passphrase");
 
 		fix.var("docuwareConnector.passwordtest.url", docuWareMockUrl);
 		fix.var("docuwareConnector.passwordtest.grantType", "password");

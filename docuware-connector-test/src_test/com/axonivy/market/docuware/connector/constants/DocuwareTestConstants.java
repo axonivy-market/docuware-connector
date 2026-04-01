@@ -11,4 +11,5 @@ public class DocuwareTestConstants {
   public static final String INSTANCE_TRUSTED_USERNAME = "instanceTrustedUserName";
   public static final String INSTANCE_TRUSTED_USER_PASSWORD = "instanceTrustedUserPassword";
   public static final String FILE_CABINET_ID = "filecabinetid";
+  public static final String CONFIG_KEY_TEST = "test";
 }

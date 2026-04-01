@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import javax.crypto.Cipher;
-import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
@@ -265,7 +265,7 @@ public class DocuWareService {
 		}
 
 		try {
-			cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+			cipher = Cipher.getInstance("AES/GCM/NoPadding");
 			var md = MessageDigest.getInstance("SHA-512");
 			md.reset();
 
@@ -273,14 +273,14 @@ public class DocuWareService {
 
 			// Split Hash into key and iv
 			int keySize = 256 / 8;
-			int ivSize = 128 / 8;
+			int ivSize = 96 / 8; // 96-bit IV for GCM
 			byte[] key = Arrays.copyOfRange(passphraseSHA512, 0, keySize);
 			byte[] iv = Arrays.copyOfRange(passphraseSHA512, keySize, keySize + ivSize);
 
 			var secretKeySpec = new SecretKeySpec(key, "AES");
-			var ivParameter = new IvParameterSpec(iv);
+			var gcmParameterSpec = new GCMParameterSpec(128, iv); // 128-bit authentication tag length
 
-			cipher.init(mode, secretKeySpec, ivParameter);
+			cipher.init(mode, secretKeySpec, gcmParameterSpec);
 		} catch (Exception e) {
 			BpmError
 			.create(DOCUWARE_ERROR + "ciphercreationerror")
