@@ -10,6 +10,14 @@ Dieser Connector:
 - Basiert auf REST-Webdienst-Technologien.
 - Gibt dir Zugriff auf grundlegende DocuWare-Funktionen.
 
+### Wichtigste Funktionen
+
+- Verbinden und Verwalten mehrerer DocuWare-Organisationen und File Cabinets über einen einzigen Connector.
+- Dokumente direkt aus Ihren Axon Ivy-Prozessen hochladen, herunterladen und versionieren.
+- Dokument-Metadaten bearbeiten und Dokumente mit einem Klick an Axon Ivy-Fälle anhängen.
+- Flexible Authentifizierung: unterstützt Passwort, Trusted Users und DocuWare-Tokens.
+- Enthält sofort lauffähige Demo-UIs und Beispiel-Workflows zur schnellen Validierung der Integration.
+
 ## Demo
 
 ### Funktionen

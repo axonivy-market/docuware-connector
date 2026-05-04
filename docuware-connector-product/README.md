@@ -19,7 +19,18 @@ This connector minimizes your integration effort by:
 - Providing a GUI to view and edit document properties of the default DocuWare instance
 - Providing configurations to test several authentication methods
 
+### Key features
+
+- Connect and manage multiple DocuWare organizations and file cabinets from a single connector.
+- Upload, download, and version documents directly from your Axon Ivy processes.
+- Edit document metadata and attach documents to Axon Ivy cases with one click.
+- Flexible authentication: works with password, trusted users and DocuWare tokens.
+- Includes ready-to-run demo UIs and example workflows to validate integration fast.
+
 ## Demo
+
+![docuwaredemo](images/docuwaredemo.png)
+
 ### DocuWare Basic Demo: Fetching Organizations, File Cabinets and Documents
 
 1. Start the DocuWare Demo Process:
@@ -47,6 +58,8 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 Server-Timing: proxy-start;dur=1.5
 
 ```
+
+![organization-result](images/get-organization-result.png)
 #### Fetch File Cabinets
 When clicking "Fetch File Cabinets", several additional buttons (features) become available.
 
@@ -63,6 +76,8 @@ Id: 94532ab8-a22f-4b70-a15d-ba44d916bd45 - 'Archive Cabinet'
 Id: wdss996-b61c-4b4b-88fd-e506a58156278 - 'Src'
 Id: 43sfsdfb137-c5a8-4ab-ae73-715e7c360f - 'Not important'
 ```
+
+![file-cabinet-result](images/get-file-cabinet-result.png)
 
 Choose a File Cabinet you would like to inspect further and copy its ID into the UI.
 
@@ -81,6 +96,8 @@ Id: 10 - 'Bla'
 Id: 7 - 'Umlaut.äöüÄÖÜß'
 Id: 6 - 'Bla'
 ```
+
+![fetch-documents](images/fetch-documents.png)
 Remember the ID of the document you would like to inspect further and enter it into the UI (2). With "Download Document" (3), you can then download the document associated with this ID.
 
 #### Further Features
@@ -94,6 +111,9 @@ Remember the ID of the document you would like to inspect further and enter it i
 - Viewing files with the embedded DocuWare viewer (if the configuration has an `integrationPassphrase` set and your DocuWare installation allows embedding in a frame - check your DocuWare's content security policy!)
 - Encrypting and decrypting parameters for embedding
 
+#### Upload Example
+
+![upload-document](images/upload-document-result.png)
 
 ### Second Demo: Document Table
 
@@ -195,9 +215,48 @@ If you want to use REST calls of this connector directly, you can use the call's
 
 ### Breaking changes in this version
 
+
 * Global variables configuration changed to support multiple instances.
 * It is no longer possible to define a file cabinet id or other defaults for DocuWare items in the global variables of a configuration. If needed, please move these global variables to your project.
 * Error handling was changed to standard AxonIvy error handling, i.e. sub-processes no longer return an error object, but rather throw exceptions in the case of errors.
+
+## Components
+
+### Callable Sub-processes
+
+- `CheckinService` — Check-in / Check-out helpers exposed as callable sub-processes:
+   - `checkOutToFileSystem(configKey, documentId, fileCabinetId)` — checks out a document to the file system.
+   - `checkOutToFileSystemAsStream(configKey, documentId, fileCabinetId)` — checks out a document as a stream.
+   - `checkInFromFileSystem(configKey, documentId, fileCabinetId, checkInParameters, file)` — check in from file system.
+   - `checkInFromFileSystem(configKey, documentId, fileCabinetId, fileName, InputStream, checkInParameters)` — check in from stream.
+
+- `UploadService` — Upload documents (with optional index fields):
+   - `uploadFileWithIndexFields(configKey, fileCabinetId, file, indexFields, storeDialogId)`
+   - `uploadFileWithIndexFields(configKey, fileCabinetId, fileStream, fileName, indexFields, storeDialogId)`
+
+- `UpdateService` — Update document index fields:
+   - `updateDocument(configKey, documentId, fileCabinetId, indexFields)`
+
+- `DeleteService` — Delete documents:
+   - `deleteDocument(configKey, documentId, fileCabinetId)`
+
+- `DownloadService` — Retrieve metadata and download files:
+   - `getDocument(configKey, documentId, fileCabinetId)` — returns document metadata.
+   - `downloadFile(configKey, documentId, fileCabinetId)` — downloads the document file to the engine.
+
+### Form Components
+
+- `RequestLoginToken` — Dialog to request a DocuWare login token (UI at `src_hd/com/axonivy/market/docuware/connector/RequestLoginToken/RequestLoginToken.xhtml`). It supports username/password input and displays the returned token.
+
+### Maven Artifacts
+
+The product references the following artifacts (from `product.json`):
+
+- `com.axonivy.connector.docuware:docuware-connector:${version}:iar`
+- `com.axonivy.connector.docuware:docuware-connector-demo:${version}:iar` (demo import)
+
+For embedding the connector into a project, add the `docuware-connector` IAR as a dependency or import the product's artifacts described in `product.json`.
+
 
 
 
