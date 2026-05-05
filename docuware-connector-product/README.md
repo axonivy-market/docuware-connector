@@ -11,21 +11,13 @@ A *File Cabinet* is a document repository within an organization. It stores docu
 **Connector Capability**  
 This connector allows you to connect **multiple DocuWare organizations**, each containing **multiple file cabinets**, within a single configuration. This makes it possible to access and manage documents across several DocuWare environments. It enables efficient integration of DocuWare functionalities into your **Axon Ivy process applications**.
 
-This connector minimizes your integration effort by:
-
-- Using REST web service technologies
-- Fetching one or more DocuWare organizations
-- Fetching file cabinets
-- Providing a GUI to view and edit document properties of the default DocuWare instance
-- Providing configurations to test several authentication methods
-
 ### Key features
 
-- Connect and manage multiple DocuWare organizations and file cabinets from a single connector.
-- Upload, download, and version documents directly from your Axon Ivy processes.
-- Edit document metadata and attach documents to Axon Ivy cases with one click.
-- Flexible authentication: works with password, trusted users and DocuWare tokens.
-- Includes ready-to-run demo UIs and example workflows to validate integration fast.
+- Connect multiple DocuWare organizations and file cabinets from a single Axon Ivy application.
+- Search, view, download, upload, and manage documents, versions, and metadata with ready-made callable subs.
+- Embed DocuWare's document viewer securely for in-app previews.
+- Support flexible authentication (password, trusted on-premise logins, and DocuWare tokens) including user impersonation.
+- Attach documents to Ivy cases and index them using optional index fields.
 
 ## Demo
 
@@ -76,8 +68,6 @@ Id: 94532ab8-a22f-4b70-a15d-ba44d916bd45 - 'Archive Cabinet'
 Id: wdss996-b61c-4b4b-88fd-e506a58156278 - 'Src'
 Id: 43sfsdfb137-c5a8-4ab-ae73-715e7c360f - 'Not important'
 ```
-
-![file-cabinet-result](images/get-file-cabinet-result.png)
 
 Choose a File Cabinet you would like to inspect further and copy its ID into the UI.
 
@@ -150,10 +140,6 @@ Delete documents from the file cabinet.
    ![delete-document](images/delete-document.png)
 
 
-
-
-
-
 ## Setup
 Please copy  `variables.yaml` into your project.
 
@@ -215,48 +201,146 @@ If you want to use REST calls of this connector directly, you can use the call's
 
 ### Breaking changes in this version
 
-
 * Global variables configuration changed to support multiple instances.
 * It is no longer possible to define a file cabinet id or other defaults for DocuWare items in the global variables of a configuration. If needed, please move these global variables to your project.
 * Error handling was changed to standard AxonIvy error handling, i.e. sub-processes no longer return an error object, but rather throw exceptions in the case of errors.
 
 ## Components
 
-### Callable Sub-processes
+### Callable Sub Processes
 
-- `CheckinService` — Check-in / Check-out helpers exposed as callable sub-processes:
-   - `checkOutToFileSystem(configKey, documentId, fileCabinetId)` — checks out a document to the file system.
-   - `checkOutToFileSystemAsStream(configKey, documentId, fileCabinetId)` — checks out a document as a stream.
-   - `checkInFromFileSystem(configKey, documentId, fileCabinetId, checkInParameters, file)` — check in from file system.
-   - `checkInFromFileSystem(configKey, documentId, fileCabinetId, fileName, InputStream, checkInParameters)` — check in from stream.
+#### CheckinService.p.json
 
-- `UploadService` — Upload documents (with optional index fields):
-   - `uploadFileWithIndexFields(configKey, fileCabinetId, file, indexFields, storeDialogId)`
-   - `uploadFileWithIndexFields(configKey, fileCabinetId, fileStream, fileName, indexFields, storeDialogId)`
+- `checkOutToFileSystem(String, String, String)`
+   - Input:
+      - `configKey` — String
+      - `documentId` — String
+      - `fileCabinetId` — String
+   - Result:
+      - `file` — File
+      - `error` — ch.ivyteam.ivy.bpm.error.BpmError
 
-- `UpdateService` — Update document index fields:
-   - `updateDocument(configKey, documentId, fileCabinetId, indexFields)`
+- `checkInFromFileSystem(String, String, DocuWareCheckInActionParameters, String, File)`
+   - Input:
+      - `configKey` — String
+      - `documentId` — String
+      - `fileCabinetId` — String
+      - `checkInParameters` — com.axonivy.connector.docuware.connector.DocuWareCheckInActionParameters
+      - `file` — File
+   - Result:
+      - `document` — com.docuware.dev.schema._public.services.platform.Document
+      - `error` — ch.ivyteam.ivy.bpm.error.BpmError
 
-- `DeleteService` — Delete documents:
-   - `deleteDocument(configKey, documentId, fileCabinetId)`
+- `checkOutToFileSystemAsStream(String, String, String)`
+   - Input:
+      - `configKey` — String
+      - `documentId` — String
+      - `fileCabinetId` — String
+   - Result:
+      - `stream` — java.io.InputStream
+      - `error` — ch.ivyteam.ivy.bpm.error.BpmError
+      - `fileName` — String
 
-- `DownloadService` — Retrieve metadata and download files:
-   - `getDocument(configKey, documentId, fileCabinetId)` — returns document metadata.
-   - `downloadFile(configKey, documentId, fileCabinetId)` — downloads the document file to the engine.
+- `checkInFromFileSystem(String, String, String, String, InputStream, DocuWareCheckInActionParameters)`
+   - Input:
+      - `configKey` — String
+      - `documentId` — String
+      - `fileCabinetId` — String
+      - `fileName` — String
+      - `stream` — java.io.InputStream
+      - `checkInParameters` — com.axonivy.connector.docuware.connector.DocuWareCheckInActionParameters
+   - Result:
+      - `document` — com.docuware.dev.schema._public.services.platform.Document
+      - `error` — ch.ivyteam.ivy.bpm.error.BpmError
+
+#### UploadService.p.json
+
+- `uploadFileWithIndexFields(String, String, File, List<DocuWareProperty>, String)`
+   - Input:
+      - `configKey` — String
+      - `fileCabinetId` — String
+      - `file` — File
+      - `indexFields` — List<com.axonivy.connector.docuware.connector.DocuWareProperty>
+      - `storeDialogId` — String
+   - Result:
+      - `document` — com.docuware.dev.schema._public.services.platform.Document
+
+- `uploadFileWithIndexFields(String, String, InputStream, String, List<DocuWareProperty>, String)`
+   - Input:
+      - `configKey` — String
+      - `fileCabinetId` — String
+      - `fileStream` — java.io.InputStream
+      - `fileName` — String
+      - `indexFields` — List<com.axonivy.connector.docuware.connector.DocuWareProperty>
+      - `storeDialogId` — String
+   - Result:
+      - `document` — com.docuware.dev.schema._public.services.platform.Document
+
+#### DownloadService.p.json
+
+- `getDocument(String, String, String)`
+   - Input:
+      - `configKey` — String
+      - `documentId` — String
+      - `fileCabinetId` — String
+   - Result:
+      - `document` — com.docuware.dev.schema._public.services.platform.Document
+
+- `downloadFile(String, String, String)`
+   - Input:
+      - `configKey` — String
+      - `documentId` — String
+      - `fileCabinetId` — String
+   - Result:
+      - `file` — File
+
+#### UpdateService.p.json
+
+- `updateDocument(String, String, String, List<DocuWareProperty>)`
+   - Input:
+      - `configKey` — String
+      - `documentId` — String
+      - `fileCabinetId` — String
+      - `indexFields` — List<com.axonivy.connector.docuware.connector.DocuWareProperty>
+   - Result:
+      - `documentIndexFields` — com.docuware.dev.schema._public.services.platform.DocumentIndexFields
+
+#### DeleteService.p.json
+
+- `deleteDocument(String, String, String)`
+   - Input:
+      - `configKey` — String
+      - `documentId` — String
+      - `fileCabinetId` — String
+   - Result:
+      - none
 
 ### Form Components
 
-- `RequestLoginToken` — Dialog to request a DocuWare login token (UI at `src_hd/com/axonivy/market/docuware/connector/RequestLoginToken/RequestLoginToken.xhtml`). It supports username/password input and displays the returned token.
+#### RequestLoginToken (Dialog)
 
-### Maven Artifacts
-
-The product references the following artifacts (from `product.json`):
-
-- `com.axonivy.connector.docuware:docuware-connector:${version}:iar`
-- `com.axonivy.connector.docuware:docuware-connector-demo:${version}:iar` (demo import)
-
-For embedding the connector into a project, add the `docuware-connector` IAR as a dependency or import the product's artifacts described in `product.json`.
+- Path: src_hd/com/axonivy/market/docuware/connector/RequestLoginToken/RequestLoginToken.xhtml
+- Description: Dialog to request a DocuWare login token. Fields: `username`, `password`; displays `loginToken`; action button to request a token and update variables.
 
 
+## Artifacts
 
+1. docuware-connector
 
+```xml
+<dependency>
+   <groupId>com.axonivy.connector.docuware</groupId>
+   <artifactId>docuware-connector</artifactId>
+   <type>iar</type>
+</dependency>
+```
+
+2. docuware-connector-demo
+
+```xml
+<dependency>
+   <groupId>com.axonivy.connector.docuware</groupId>
+   <artifactId>docuware-connector-demo</artifactId>
+   <type>iar</type>
+</dependency>
+```
