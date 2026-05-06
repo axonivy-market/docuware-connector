@@ -260,15 +260,19 @@ UI dialog name: RequestLoginToken
 ### Maven artifacts
 
 1.docuware-connector
+xml```
 <dependency>
   <groupId>com.axonivy.connector.docuware</groupId>
   <artifactId>docuware-connector</artifactId>
   <type>iar</type>
 </dependency>
+```
 
 2.docuware-connector-demo
+xml```
 <dependency>
   <groupId>com.axonivy.connector.docuware</groupId>
   <artifactId>docuware-connector-demo</artifactId>
   <type>iar</type>
 </dependency>
+```
