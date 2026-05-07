@@ -1,6 +1,6 @@
 # DocuWare Connector
 
-[DocuWare](https://start.docuware.com/) offers cloud-based document management and workflow automation software. It can be used to digitize, archive, and process any business documents in an audit-proof manner to optimize your company's core processes.
+DocuWare is a cloud and on-premises document management platform used to digitize, archive, and process business documents. This connector integrates DocuWare with Axon Ivy process applications, enabling browsing, viewing, downloading, uploading and indexing documents directly from your processes.
 
 **DocuWare Organization**  
 A *DocuWare Organization* is the top-level tenant in DocuWare. It represents an isolated environment that contains users, roles, configurations, and all document repositories of the organization.
@@ -11,13 +11,12 @@ A *File Cabinet* is a document repository within an organization. It stores docu
 **Connector Capability**  
 This connector allows you to connect **multiple DocuWare organizations**, each containing **multiple file cabinets**, within a single configuration. This makes it possible to access and manage documents across several DocuWare environments. It enables efficient integration of DocuWare functionalities into your **Axon Ivy process applications**.
 
-This connector minimizes your integration effort by:
-
-- Using REST web service technologies
-- Fetching one or more DocuWare organizations
-- Fetching file cabinets
-- Providing a GUI to view and edit document properties of the default DocuWare instance
-- Providing configurations to test several authentication methods
+### Key features
+- Connect multiple DocuWare organizations and file cabinets from a single Axon Ivy application.
+- Browse, search, preview and download documents using built-in REST integrations and an embedded viewer.
+- Upload and check-in documents, including support for index fields and creating new document versions.
+- Support for several authentication modes (username/password, trusted, token) and secure embedding using configurable passphrases and tokens.
+- Helper utilities for parameter encryption, cache management, and convenient JSON mapping of DocuWare objects.
 
 ## Demo
 ### DocuWare Basic Demo: Fetching Organizations, File Cabinets and Documents
@@ -129,13 +128,8 @@ Delete documents from the file cabinet.
 
    ![delete-document](images/delete-document.png)
 
-
-
-
-
-
 ## Setup
-Please copy  `variables.yaml` into your project.
+Copy  `variables.yaml` into your project.
 
 ```
 @variables.yaml@
@@ -195,9 +189,90 @@ If you want to use REST calls of this connector directly, you can use the call's
 
 ### Breaking changes in this version
 
-* Global variables configuration changed to support multiple instances.
-* It is no longer possible to define a file cabinet id or other defaults for DocuWare items in the global variables of a configuration. If needed, please move these global variables to your project.
-* Error handling was changed to standard AxonIvy error handling, i.e. sub-processes no longer return an error object, but rather throw exceptions in the case of errors.
+- Global variable configuration changed to support multiple instances.
+- File-cabinet defaults in global variables were removed; move such defaults into your project if needed.
+- Error handling now throws standard AxonIvy exceptions instead of returning error objects.
+
+## Components
+
+### Exposed CALLABLE_SUB processes
+
+#### docuware-connector/processes/CheckinService.p.json
+- Signature: checkOutToFileSystem
+  Input: configKey: String, documentId: String, fileCabinetId: String
+  Result: file: File, error: ch.ivyteam.ivy.bpm.error.BpmError
+
+- Signature: checkInFromFileSystem
+  Input: configKey: String, documentId: String, fileCabinetId: String, checkInParameters: com.axonivy.connector.docuware.connector.DocuWareCheckInActionParameters, file: File
+  Result: document: com.docuware.dev.schema._public.services.platform.Document, error: ch.ivyteam.ivy.bpm.error.BpmError
+
+- Signature: checkOutToFileSystemAsStream
+  Input: configKey: String, documentId: String, fileCabinetId: String
+  Result: stream: java.io.InputStream, error: ch.ivyteam.ivy.bpm.error.BpmError, fileName: String
+
+- Signature: checkInFromFileSystem
+  Input: configKey: String, documentId: String, fileCabinetId: String, fileName: String, stream: java.io.InputStream, checkInParameters: com.axonivy.connector.docuware.connector.DocuWareCheckInActionParameters
+  Result: document: com.docuware.dev.schema._public.services.platform.Document, error: ch.ivyteam.ivy.bpm.error.BpmError
 
 
+#### docuware-connector/processes/DeleteService.p.json
+- Signature: deleteDocument
+  Input: configKey: String, documentId: String, fileCabinetId: String
+  Result: none
 
+
+#### docuware-connector/processes/DownloadService.p.json
+- Signature: getDocument
+  Input: configKey: String, documentId: String, fileCabinetId: String
+  Result: document: com.docuware.dev.schema._public.services.platform.Document
+
+- Signature: downloadFile
+  Input: configKey: String, documentId: String, fileCabinetId: String
+  Result: file: File
+
+
+#### docuware-connector/processes/UpdateService.p.json
+- Signature: updateDocument
+  Input: configKey: String, documentId: String, fileCabinetId: String, indexFields: List<com.axonivy.connector.docuware.connector.DocuWareProperty>
+  Result: documentIndexFields: com.docuware.dev.schema._public.services.platform.DocumentIndexFields
+
+
+#### docuware-connector/processes/UploadService.p.json
+- Signature: uploadFileWithIndexFields
+  Input: configKey: String, fileCabinetId: String, file: File, indexFields: List<com.axonivy.connector.docuware.connector.DocuWareProperty>, storeDialogId: String
+  Result: document: com.docuware.dev.schema._public.services.platform.Document
+
+- Signature: uploadFileWithIndexFields
+  Input: configKey: String, fileCabinetId: String, fileStream: java.io.InputStream, fileName: String, indexFields: List<com.axonivy.connector.docuware.connector.DocuWareProperty>, storeDialogId: String
+  Result: document: com.docuware.dev.schema._public.services.platform.Document
+
+### Form components
+
+UI dialog name: RequestLoginToken
+- namespace: com.axonivy.market.docuware.connector.RequestLoginToken
+- start parameter: start()
+- main feature/logic: Requests a DocuWare LoginToken using username and password; displays the token for copy/backup and updates an Ivy variable on success.
+
+### Open API resources
+
+- No public OpenAPI specs are available for this product.
+
+### Maven artifacts
+
+1.docuware-connector
+xml```
+<dependency>
+  <groupId>com.axonivy.connector.docuware</groupId>
+  <artifactId>docuware-connector</artifactId>
+  <type>iar</type>
+</dependency>
+```
+
+2.docuware-connector-demo
+xml```
+<dependency>
+  <groupId>com.axonivy.connector.docuware</groupId>
+  <artifactId>docuware-connector-demo</artifactId>
+  <type>iar</type>
+</dependency>
+```
