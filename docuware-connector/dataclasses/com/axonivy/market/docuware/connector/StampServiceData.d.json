@@ -1,0 +1,52 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/data-class.json",
+  "simpleName" : "StampServiceData",
+  "namespace" : "com.axonivy.market.docuware.connector",
+  "isBusinessCaseData" : false,
+  "fields" : [ {
+    "name" : "configKey",
+    "modifiers" : [ ]
+  }, {
+    "name" : "documentId",
+    "modifiers" : [ ]
+  }, {
+    "name" : "fileCabinetId",
+    "modifiers" : [ ]
+  }, {
+    "name" : "stampId",
+    "modifiers" : [ ]
+  }, {
+    "name" : "stampFieldValues",
+    "type" : "List<String>"
+  }, {
+    "name" : "stampPassword",
+    "modifiers" : [ ],
+    "comment" : "Optional stamp password; null if the stamp is not password-protected."
+  }, {
+    "name" : "error",
+    "type" : "ch.ivyteam.ivy.bpm.error.BpmError",
+    "modifiers" : [ ]
+  }, {
+    "name" : "requestJson",
+    "modifiers" : [ ]
+  }, {
+    "name" : "annotations",
+    "type" : "com.docuware.dev.schema._public.services.platform.DocumentAnnotations",
+    "modifiers" : [ ]
+  }, {
+    "name" : "pageNumber",
+    "type" : "int",
+    "comment" : " Zero-based index of the page within the section to stamp (0 = first page).",
+    "modifiers" : [ ]
+  }, {
+    "name" : "sectionNumber",
+    "type" : "int",
+    "comment" : "Zero-based index of the document section to stamp (0 = first section; a document may have multiple sections).",
+    "modifiers" : [ ]  
+  }, {
+    "name" : "layer",
+    "type" : "int",
+    "comment" : "Annotation layer the stamp is written to, 1–5 (DocuWare provides five independent layers).",
+    "modifiers" : [ ]
+  } ]
+}
