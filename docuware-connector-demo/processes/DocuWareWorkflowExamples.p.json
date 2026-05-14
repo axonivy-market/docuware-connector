@@ -589,5 +589,177 @@
         "at" : { "x" : 1237, "y" : 149 },
         "size" : { "width" : 134, "height" : 166 }
       }
+    }, {
+      "id" : "f4",
+      "type" : "RequestStart",
+      "name" : "stamp.ivp",
+      "config" : {
+        "signature" : "stamp",
+        "request" : {
+          "name" : "Example: Work with stamp",
+          "description" : "Watch the log-files to see results."
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 416 }
+      },
+      "connect" : [
+        { "id" : "f6", "to" : "f75" }
+      ]
+    }, {
+      "id" : "f5",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 1072, "y" : 416 },
+        "labelOffset" : { "x" : 13, "y" : 33 }
+      }
+    }, {
+      "id" : "f7",
+      "type" : "SubProcessCall",
+      "name" : "Upload File from CMS",
+      "config" : {
+        "processCall" : "UploadService:uploadFileWithIndexFields(String,String,java.io.InputStream,String,List<com.axonivy.connector.docuware.connector.DocuWareProperty>,String)",
+        "call" : {
+          "map" : {
+            "param.fileCabinetId" : "ivy.var.docuwareWorkflow_fileCabinetId"
+          },
+          "code" : [
+            "import java.time.LocalDateTime;",
+            "import ch.ivyteam.ivy.cm.ContentObject;",
+            "import com.axonivy.connector.docuware.connector.DocuWareProperty;",
+            "",
+            "param.fileStream = (ivy.cms.get(\"/Files/uploadSample\").get() as ContentObject).value().get().read().inputStream();",
+            "param.fileName = \"UploadSample-%tY%<tm%<td%<tH%<tM%<tS.pdf\".formatted(LocalDateTime.now());",
+            "",
+            "//Note IndexFields are individual for each docuware instance. This is just an example",
+            "DocuWareProperty dp = new DocuWareProperty();",
+            "dp.setFieldName(\"VENDOR_NAME\");",
+            "dp.setItem(\"DUMMY INC.\");",
+            "dp.setItemElementName(\"String\");",
+            "param.indexFields.add(dp);"
+          ]
+        },
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.document" : "result.#document"
+          },
+          "code" : [
+            "ivy.log.info(\"***DocuWareDemo-Stamp Upload status\");",
+            "if(result.#document is initialized) {",
+            "  ivy.log.info(\"-New uploaded file has document id: {0}\", result.document.id);",
+            "}"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 416, "y" : 416 },
+        "icon" : "res:/webContent/icons/docuware.png"
+      },
+      "connect" : [
+        { "id" : "f8", "to" : "f9", "color" : "default" }
+      ]
+    }, {
+      "id" : "f9",
+      "type" : "SubProcessCall",
+      "name" : "Add Stamp",
+      "config" : {
+        "processCall" : "StampService:addStamp(String,String,String,String,List<String>)",
+        "call" : {
+          "map" : {
+            "param.documentId" : "String.valueOf(in.document.id)",
+            "param.fileCabinetId" : "ivy.var.docuwareWorkflow_fileCabinetId",
+            "param.stampId" : "in.stamps.getStamp().get(0).id"
+          },
+          "code" : [
+            "",
+            "param.stampFieldValues.add(\"EXAMPLE\\nVENDOR NAME\");"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 592, "y" : 416 },
+        "icon" : "res:/webContent/icons/docuware.png"
+      },
+      "connect" : [
+        { "id" : "f10", "to" : "f17", "color" : "default" }
+      ]
+    }, {
+      "id" : "f75",
+      "type" : "RestClientCall",
+      "name" : "Get Stamps",
+      "config" : {
+        "target" : {
+          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "path" : "/FileCabinets/{FileCabinetId}/Stamps",
+          "templateParams" : {
+            "FileCabinetId" : "ivy.var.docuwareWorkflow_fileCabinetId"
+          }
+        },
+        "response" : {
+          "entity" : {
+            "code" : [
+              "import com.docuware.dev.schema._public.services.platform.Stamps;",
+              "",
+              "in.stamps = response.readEntity(Stamps.class) as Stamps;",
+              "",
+              "ivy.log.info(\"Stamp {0}, id={1}\", in.stamps.getStamp().get(0).name, in.stamps.getStamp().get(0).id);"
+            ]
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 240, "y" : 416 }
+      },
+      "connect" : [
+        { "id" : "f11", "to" : "f7" }
+      ]
+    }, {
+      "id" : "f16",
+      "type" : "Script",
+      "name" : "Write to case",
+      "config" : {
+        "output" : {
+          "code" : [
+            "ivy.case.name = \"Download doc from Docuware\";",
+            "ivy.case.createNote(ivy.session, \"Added doc \" + in.file.getName() + \"to case\");",
+            "ivy.case.documents().add(in.file.getName()).write().withContentFrom(in.file);",
+            "ivy.log.info(\"-Doc was attached to case {0}({1})\", ivy.case.name, ivy.case.getId());"
+          ]
+        },
+        "sudo" : true
+      },
+      "visual" : {
+        "at" : { "x" : 944, "y" : 416 }
+      },
+      "connect" : [
+        { "id" : "f19", "to" : "f5" }
+      ]
+    }, {
+      "id" : "f17",
+      "type" : "SubProcessCall",
+      "name" : "Download File With Stamp",
+      "config" : {
+        "processCall" : "DownloadService:downloadFileWithAllAnnotations(String,String,String)",
+        "call" : {
+          "map" : {
+            "param.documentId" : "String.valueOf(in.document.id)",
+            "param.fileCabinetId" : "ivy.var.docuwareWorkflow_fileCabinetId"
+          }
+        },
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.file" : "result.#file"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 768, "y" : 416 },
+        "icon" : "res:/webContent/icons/docuware.png"
+      },
+      "connect" : [
+        { "id" : "f18", "to" : "f16" }
+      ]
     } ]
 }

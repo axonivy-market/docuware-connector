@@ -1,0 +1,116 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
+  "id" : "19E20C3FD22354CF",
+  "kind" : "CALLABLE_SUB",
+  "config" : {
+    "data" : "com.axonivy.market.docuware.connector.StampServiceData"
+  },
+  "elements" : [ {
+      "id" : "f9",
+      "type" : "CallSubStart",
+      "name" : "addStamp(String, String, String, List<String>)",
+      "config" : {
+        "signature" : "addStamp",
+        "input" : {
+          "params" : [
+            { "name" : "configKey", "type" : "String", "desc" : "" },
+            { "name" : "documentId", "type" : "String", "desc" : "" },
+            { "name" : "fileCabinetId", "type" : "String", "desc" : "" },
+            { "name" : "stampId", "type" : "String", "desc" : "" },
+            { "name" : "stampFieldValues", "type" : "List<String>", "desc" : "stamp field values" }
+          ],
+          "map" : {
+            "out.configKey" : "param.#configKey",
+            "out.documentId" : "param.#documentId",
+            "out.fileCabinetId" : "param.#fileCabinetId",
+            "out.stampFieldValues" : "param.#stampFieldValues",
+            "out.stampId" : "param.#stampId"
+          }
+        },
+        "result" : {
+          "params" : [
+            { "name" : "annotations", "type" : "com.docuware.dev.schema._public.services.platform.DocumentAnnotations", "desc" : "" }
+          ],
+          "map" : {
+            "result.annotations" : "in.annotations"
+          }
+        }
+      },
+      "tags" : [
+        "connector"
+      ],
+      "visual" : {
+        "at" : { "x" : 88, "y" : 96 },
+        "labelOffset" : { "x" : 113, "y" : -47 },
+        "icon" : "res:/webContent/icons/docuware.png?small"
+      },
+      "connect" : [
+        { "id" : "f11", "to" : "f3" }
+      ]
+    }, {
+      "id" : "f3",
+      "type" : "Script",
+      "name" : "prepare stamp json",
+      "config" : {
+        "output" : {
+          "code" : [
+            "import com.axonivy.connector.docuware.connector.DocuWareAnnotationService;",
+            "",
+            "in.requestJson = DocuWareAnnotationService.get().stampRequestBody(in.stampId, in.stampFieldValues);"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 208, "y" : 96 }
+      },
+      "connect" : [
+        { "id" : "f7", "to" : "f5" }
+      ]
+    }, {
+      "id" : "f5",
+      "type" : "RestClientCall",
+      "name" : "add stamp",
+      "config" : {
+        "method" : "POST",
+        "target" : {
+          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "path" : "/FileCabinets/{FileCabinetId}/Documents/{DocumentId}/Annotation",
+          "templateParams" : {
+            "FileCabinetId" : "in.#fileCabinetId",
+            "DocumentId" : "in.#documentId"
+          },
+          "properties" : {
+            "configKey" : "in.#configKey"
+          }
+        },
+        "body" : {
+          "type" : "RAW",
+          "raw" : "<%=in.requestJson%>",
+          "entity" : {
+            "type" : "com.docuware.dev.schema._public.services.platform.DocumentAnnotations"
+          }
+        },
+        "response" : {
+          "entity" : {
+            "type" : "com.docuware.dev.schema._public.services.platform.DocumentAnnotations",
+            "map" : {
+              "out.annotations" : "result"
+            }
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 368, "y" : 96 },
+        "icon" : "res:/webContent/icons/docuware.png"
+      },
+      "connect" : [
+        { "id" : "f6", "to" : "f4" }
+      ]
+    }, {
+      "id" : "f4",
+      "type" : "CallSubEnd",
+      "visual" : {
+        "at" : { "x" : 496, "y" : 96 }
+      }
+    } ]
+}
