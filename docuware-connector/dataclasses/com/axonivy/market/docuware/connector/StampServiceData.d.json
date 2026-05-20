@@ -1,0 +1,31 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "simpleName" : "StampServiceData",
+  "namespace" : "com.axonivy.market.docuware.connector",
+  "isBusinessCaseData" : false,
+  "fields" : [ {
+    "name" : "configKey",
+    "type" : "String"
+  }, {
+    "name" : "documentId",
+    "type" : "String"
+  }, {
+    "name" : "fileCabinetId",
+    "type" : "String"
+  }, {
+    "name" : "stampId",
+    "type" : "String"
+  }, {
+    "name" : "stampFieldValues",
+    "type" : "List<String>"
+  }, {
+    "name" : "error",
+    "type" : "ch.ivyteam.ivy.bpm.error.BpmError"
+  }, {
+    "name" : "requestJson",
+    "type" : "String"
+  }, {
+    "name" : "annotations",
+    "type" : "com.docuware.dev.schema._public.services.platform.DocumentAnnotations"
+  } ]
+}

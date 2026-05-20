@@ -15,5 +15,14 @@
   }, {
     "name" : "dialog",
     "type" : "com.docuware.dev.schema._public.services.platform.Dialog"
+  }, {
+    "name" : "stamps",
+    "type" : "com.docuware.dev.schema._public.services.platform.Stamps"
+  }, {
+    "name" : "annotations",
+    "type" : "com.docuware.dev.schema._public.services.platform.DocumentAnnotations"
+  }, {
+    "name" : "docQueryResult",
+    "type" : "com.docuware.dev.schema._public.services.platform.DocumentsQueryResult"
   } ]
 }

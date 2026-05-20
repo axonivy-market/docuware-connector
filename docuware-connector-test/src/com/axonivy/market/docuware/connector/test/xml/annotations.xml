@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="/DocuWare/Platform/Content/standard.xslt"?>
+<DocumentAnnotations xmlns:s="http://dev.docuware.com/schema/public/services"
+	xmlns="http://dev.docuware.com/schema/public/services/platform">
+	<Annotations SectionNumber="0" PageNumber="0">
+		<Annotation>
+			<Layer Id="1">
+				<TextStamp Color="#FF0000" Transparent="true"
+					Id="bb88ee88-afb4-46f3-abfa-71f810baf489" ShowUser="false">
+					<Created User="service-axonivy"
+						Time="2026-05-20T06:46:22.6600000Z" />
+					<Location Left="1192" Top="4766" Width="2078" Height="996" />
+					<HeadFont FontName="Arial" FontSize="220" />
+					<Font FontName="Arial" FontSize="220" />
+					<Value>EXAMPLE VENDOR NAME</Value>
+				</TextStamp>
+			</Layer>
+		</Annotation>
+	</Annotations>
+</DocumentAnnotations>
