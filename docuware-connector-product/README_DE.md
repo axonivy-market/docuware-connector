@@ -1,269 +1,305 @@
 # DocuWare Connector
 
-DocuWare ist eine cloud- und On-Premises-Dokumentenmanagement-Plattform, mit der du Geschäftsdokumente digitalisierst, archivierst und verarbeitest. Dieser Connector integriert DocuWare in Axon Ivy-Prozessanwendungen und ermöglicht dir, Dokumente direkt aus deinen Prozessen zu durchsuchen, anzusehen, herunterzuladen, hochzuladen und zu indexieren.
+Der DocuWare Connector integriert Axon Ivy mit DocuWare. Du kannst Dokumente hochladen, herunterladen, Metadaten aktualisieren und löschen sowie direkt aus deinen Prozessen mit DocuWare-File-Cabinets interagieren.
 
-**DocuWare-Organisation**  
-Eine *DocuWare-Organisation* ist der oberste Mandant in DocuWare. Sie stellt eine isolierte Umgebung dar, die Benutzer, Rollen, Konfigurationen und alle Dokumentenablagen der Organisation enthält.
+## Wichtigste Funktionen
 
-**Dateiablage**  
-Eine *Dateiablage* ist ein Dokumenten-Repository innerhalb einer Organisation. Sie speichert Dokumente zusammen mit ihren indexierten Metadaten (Felder wie Rechnungsnummer, Datum, Lieferant) und ermöglicht das Suchen, Speichern und Abrufen von Dokumenten.
-
-**Funktionen des Connectors**  
-Dieser Connector ermöglicht es dir, **mehrere DocuWare-Organisationen**, die jeweils **mehrere Dateiablagen** enthalten, in einer einzigen Konfiguration zu verbinden. So kannst du Dokumente über mehrere DocuWare-Umgebungen hinweg zugreifen und verwalten. Er erlaubt die effiziente Integration von DocuWare-Funktionen in deine **Axon Ivy Prozessanwendungen**.
-
-### Wichtigste Funktionen
-- Verbinde mehrere DocuWare-Organisationen und Dateiablagen aus einer einzigen Axon Ivy-Anwendung.
-- Durchsuche, finde, zeige eine Vorschau an und lade Dokumente herunter über integrierte REST-Integrationen und einen eingebetteten Viewer.
-- Lade Dokumente hoch und checke sie ein; unterstützt Indexfelder und das Erstellen neuer Dokumentversionen.
-- Unterstützt verschiedene Authentifizierungsmodi (username/password, trusted, token) sowie sicheres Einbetten mittels konfigurierbarer Passphrasen und Tokens.
-- Bietet Hilfsfunktionen für Parameter-Verschlüsselung, Cache-Management und bequeme JSON-Abbildung von DocuWare-Objekten.
+- Dokumente hochladen und indexieren direkt aus Axon Ivy-Prozessen, dabei Metadaten und Dateiinhalte erhalten.
+- Dokumente herunterladen und in prozessgesteuerte Dateiabläufe einbinden, inklusive Dateinamens-Extraktion und Binär-Download.
+- Indexfelder und Metadaten von Dokumenten aktualisieren, um Datensätze mit Geschäftsprozessen synchron zu halten.
+- Dokumente sicher aus konfigurierten File Cabinets entfernen, inklusive Berechtigungsprüfungen.
+- Dokumente ein- und auschecken, um externe Verarbeitung zu ermöglichen und später wieder hochzuladen.
+- Unterstützung für mehrere DocuWare-Instanzen über die konfigurierbare `docuwareConnector.defaultConfig`.
 
 ## Demo
-### DocuWare-Grunddemo: Abrufen von Organisationen, Dateiablagen und Dokumenten
 
-1. Starte den DocuWare-Demo-Prozess:
-   
-![Demo-Prozess starten](images/1-startdemo.png)
+Sieh dir die bereitgestellten Demos an: DocuWare Demo und Document Table. Die Demos zeigen typische Dokumentenoperationen wie das Durchsuchen von File Cabinets, Anzeigen von Dokumenten, Hochladen und Bearbeiten von Metadaten.
 
-Die DocuWare-Demo stellt eine GUI bereit, mit der du verschiedene DocuWare-Konfigurationen testen kannst. Um alle Demo-Funktionen zu nutzen, müssen mehrere Konfigurationen mit unterschiedlichen Grant-Types in `variables.yaml` hinterlegt sein. **Für eine einfache Demo (Benutzername und Passwort): gib einfach eine defaultConfig an**.
+### Demo-Workflows
 
-#### Organisationen abrufen
-![Organisationen abrufen](images/2-fetchorgas.png)
+#### docuware-connector-demo (docuware-connector-demo)
 
-Wenn alles geklappt hat, siehst du `Response: Status: OK` im Textfeld unter den Buttons. Es könnte so aussehen:
-```
-Response: Status: OK
+##### DocuWare Demo
+1. Starte die DocuWare Demo aus dem Demo-Menü.
+2. Du siehst eine UI, die Organisationen und File Cabinets lädt; wähle eines aus, um fortzufahren.
 
-Headers
-=======
-Content-Type: application/xml; charset=utf-8
-Date: Fri, 06 Mar 2026 03:57:13 GMT
-Cache-Control: max-age=0, private
-Set-Cookie: dwingressplatform=1772769434.007.32.96427|a8466521666073443d68d0f15f64584f; Path=/; Secure; HttpOnly
-Transfer-Encoding: chunked
-Vary: Cookie,Accept,Accept-Encoding
-Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-Server-Timing: proxy-start;dur=1.5
+![Organisationen laden](images/2-fetchorgas.png)
 
-```
-#### Dateiablagen abrufen
-Wenn du auf "Fetch File Cabinets" klickst, werden mehrere zusätzliche Schaltflächen (Features) verfügbar.
+3. Öffne Dokumente in der Document Table, um Details anzuzeigen oder Metadaten zu bearbeiten.
+4. Nutze die bereitgestellten Aktionen zum Hochladen, Bearbeiten von Eigenschaften oder Löschen von Dokumenten.
+5. Optional: Wenn eine Docker-Bereitstellung konfiguriert ist, kannst du die Demo lokal ausführen.
 
-![Dateiablagen abrufen](images/3-fetchcabinets.png)
+##### Document Table
+1. Starte die Document Table Demo aus dem Demo-Menü.
+2. Wähle ein File Cabinet aus, um Dokumente zu laden.
 
-Du erhältst am Ende deines Log-Fensters eine Liste verfügbarer Dateiablagen. Sie könnte so aussehen:
+![Dokumente laden](images/fetch-documents.png)
 
-```
-File Cabinets:
-Size: 5
-Id: 4b4be7af-629f-4340-82cb-126d249d2b95 - 'Awesome Filecabinet'
-Id: 90b4f666-b79f-4d26-97f7-7786d8fbe4c2 - 'TEST Filecabinet'
-Id: 94532ab8-a22f-4b70-a15d-ba44d916bd45 - 'Archive Cabinet'
-Id: wdss996-b61c-4b4b-88fd-e506a58156278 - 'Src'
-Id: 43sfsdfb137-c5a8-4ab-ae73-715e7c360f - 'Not important'
-```
+3. Überprüfe die Liste und klicke ein Dokument an, um Details anzuzeigen oder Metadaten zu bearbeiten.
+4. Verwende die Filter, um Ergebnisse zu durchsuchen und zu aktualisieren.
+5. Optional: Für große Datensätze konfiguriere die Download-Einstellungen.
 
-Wähle eine Dateiablage aus, die du näher untersuchen möchtest, und kopiere ihre ID in die Oberfläche.
+##### Beispiel: Mit Dokumentabschnitten arbeiten
+1. Starte den Workflow „Example: Work with document sections“ aus dem Demo-Menü.
+2. Der Workflow zeigt Listing, Lesen, Herunterladen und Hochladen von Dokumentabschnitten.
+3. Beobachte die Logdateien, um die Ergebnisse zu sehen und angehängte Dateien zu prüfen.
 
-![Dateiablage auswählen](images/7-filecabinet.png)
+##### Beispiel: Mit Dialogen arbeiten
+1. Starte den Workflow „Example: Work with dialogs“ aus dem Demo-Menü.
+2. Der Workflow demonstriert das Abfragen von Dialogausdrücken und das Lesen der Ergebnisse.
+3. Beobachte die Logs und die Dialog-UI.
 
-#### Dokumente abrufen & herunterladen
-![Dokument herunterladen](images/4-downloaddocument.png)
-
-Um ein Dokument abzurufen und herunterzuladen, klicke auf "Fetch Documents" (1), um eine Liste verfügbarer Dokumente im Log-Viewer zu erhalten. Du bekommst eine Liste, die so aussehen kann:
-
-```
-Documents:
-Size: 4
-Id: 11 - 'Hello World'
-Id: 10 - 'Bla'
-Id: 7 - 'Umlaut.äöüÄÖÜß'
-Id: 6 - 'Bla'
-```
-Merke dir die ID des Dokuments, das du näher betrachten möchtest, und gib sie in die UI ein (2). Mit "Download Document" (3) kannst du dann das zu dieser ID gehörende Dokument herunterladen.
-
-#### Weitere Funktionen
-- Unterstütze verschiedene Konfigurationen, z. B. für unterschiedliche Grant-Types
-- Rufe Dokumentenfelder ab
-- Lade ein Dokument herunter
-- Erstelle eine neue Dokumentversion
-- Hänge ein Dokument an einen Ivy-Fall an
-- Lade ein Dokument hoch
-- Lade ein Dokument mit Indexfeldern hoch
-- Zeige Dateien im eingebetteten DocuWare-Viewer an (falls die Konfiguration `integrationPassphrase` gesetzt ist und deine DocuWare-Installation das Einbetten in ein Frame erlaubt – prüfe die Content-Security-Policy deiner DocuWare!)
-- Verschlüssele und entschlüssele Parameter für das Einbetten
-
-
-### Zweite Demo: Dokumententabelle
-
-Stelle sicher, dass du in `variables.yaml` eine Dateiablage-ID konfiguriert hast. Du kannst verfügbare Dateiablagen mit dem ersten Demo-Prozess abrufen (siehe oben).
-
-```
-  # Variables used by the demo.
-  docuwareWorkflow:
-    fileCabinetId: ""
-```
-
-Starte den Prozess **Document Table**, um einen einfachen Viewer zu öffnen, der zeigt, wie du Dokumente hinzufügst, änderst, ansiehst und löschst.
-
-![Zweite Demo starten](images/5-startseconddemo.png)
-
-Eine benutzerfreundliche Oberfläche öffnet sich:
-
-![Tabellen-Viewer](images/6-tabledemo.png)
-
-**Dokumentvorschau**
-
-Beachte, dass die Vorschau von Dokumenten zusätzliche Konfiguration der Content-Security-Policy (CSP) deiner DocuWare-Installation erfordern kann, damit DocuWare-Frames in Axon Ivy-Frames eingebettet werden dürfen.
-
-![Dokument ansehen](images/view-document.png)
-
-**Bearbeiten von Dokumenteigenschaften**  
-Ändere Dokumenteigenschaften, einschließlich Metadaten und benutzerdefinierter Felder.
-
-   ![Dokumenteigenschaften bearbeiten](images/edit-document-properties.png)
-
-**Dokument löschen**  
-Lösche Dokumente aus der Dateiablage.
-
-   ![Dokument löschen](images/delete-document.png)
+##### Beispiel: Mit Index-Feldern arbeiten
+1. Starte den Workflow „Example: Work with index fields“ aus dem Demo-Menü.
+2. Der Workflow zeigt, wie Indexfeldwerte vorbereitet und hochgeladen werden.
+3. Prüfe anschließend die Indexfelder des hochgeladenen Dokuments in der Document Table.
 
 ## Einrichtung
-Kopiere `variables.yaml` in dein Projekt.
 
+- **Rollen:** Everybody (konfiguriert in config/roles.xml)
+- **OpenAPI:** Keine öffentlichen OpenAPI-Spezifikationen wurden von dieser Extension bereitgestellt.
+
+### Variablen
+
+```yaml
+# yaml-language-server: $schema=https://json-schema.axonivy.com/app/12.0.0/variables.json
+# == Variables ==
+#
+# You can define here your project Variables.
+# If you want to define/override a Variable for a specific Environment, 
+# add an additional ‘variables.yaml’ file in a subdirectory in the ‘Config’ folder: 
+# '<project>/Config/_<environment>/variables.yaml
+#
+Variables:
+  docuwareConnector:
+    # The DocuWare default configuration.
+    defaultConfig:
+      # The Id of this configuration. It is only used to invalidate any cached connection based on this (and inherited) configuration.
+      configId: "1"
+      # The URL of the server, including the platform part (compare to Postman collection), eg. https://acme.docuware.cloud/DocuWare/Platform
+      url: ""
+      # The type of authorization grant to provide.
+      # [enum: password, trusted, dwtoken]
+      grantType: "password"
+      # The username used for authenticating to DocuWare.
+      username: ""
+      # The password used for authenticating to DocuWare.
+      #[password]
+      password: ${decrypt:}
+      # Impersonate a specific DocuWare user (only used for granttype trusted).
+      #
+      # DW name is constant
+      # <dwuser>
+      #
+      # DW names are fixed for system (developer), anonymous and user
+      # ^fixed:system=<dwuser>,anonymous=<dwuser>,user=<dwuser>
+      #
+      # DW names are fixed for system (developer) and anonymous but current ivy user name for other users
+      # ^ivy:system=<dwuser>,anonymous=<dwuser>
+      # 
+      # DW name is taken from an attribute of the current session (needs to be set by a service function)
+      # ^session
+      impersonateUser: ""
+      # Where to find the DW token (only used for granttype dwtoken).
+      #
+      # DW token is taken from an attribute of the current session (needs to be set by a service function)
+      # ^session
+      dwToken: ""
+      # This property sets the maximum time (in milliseconds) that the client will wait when attempting to establish a connection with the server.
+      # The value MUST be an instance convertible to Integer. A value of zero (0) is equivalent to an interval of infinity.
+      connectTimeout: "0"
+      # This property sets the maximum time (in milliseconds) that the client will wait when attempting to establish a connection with the server.
+      # The value MUST be an instance convertible to Integer. A value of zero (0) is equivalent to an interval of infinity.
+      readTimeout: "0"
+      # This property defines the maximum number of characters of an entity that will be logged.
+      loggingEntityMaxSize: "8192"
+      # The password used for encrypting parameters of embedded urls (set in Configurations/Organization Settings/Security)
+      #[password]
+      integrationPassphrase: ""
 ```
-@variables.yaml@
-```
 
-Mindestens `url`, `username` und `password` müssen gesetzt sein.
+### Authentifizierung
 
-### `configId`
-Jeder Wert, der diese Version der Konfiguration identifiziert.
-
-### `inherit`
-Jeder Wert, der in der aktuellen Konfiguration nicht existiert, leer oder blank ist, wird in der durch diese Variable referenzierten Konfiguration nachgeschlagen. Der Nachschlag erfolgt rekursiv.
-
-### `grantType`
-Das ist der Grant-Type für deine Konfiguration. Mögliche Werte sind `password`, `trusted` und `dwtoken`.
-
-#### `password`
-Der Grant-Type `password` verwendet einen festen `username` und `password`, um sich mit deiner DocuWare-Instanz zu verbinden. Alle Operationen werden mit diesem Benutzerkonto ausgeführt, und alle Historieneinträge zeigen diesen Benutzer. Es ist eine einfache Einrichtung, die einen _technischen Benutzer_ nutzt, um sich mit einer Cloud- oder On-Premise-DocuWare-Instanz zu verbinden.
-
-#### `trusted`
-Der Grant-Type `trusted` verwendet `username` und `password`, um sich als vertrauenswürdiger Benutzer mit deiner DocuWare-Instanz zu verbinden. Derzeit unterstützt DocuWare vertrauenswürdige Benutzer nur für On-Premise-Installationen. Der vertrauenswürdige Benutzer wird nicht direkt verwendet, sondern impersoniert einen anderen Benutzer. Welcher Benutzer impersoniert werden soll, lässt sich über die globale Variable `impersonateUser` konfigurieren.
-
-`impersonateUser` implementiert eine spezielle Syntax, mit der definiert wird, welcher Benutzer für Zugriffe durch den anonymen Ivy-Benutzer, den System-Ivy-Benutzer und andere Ivy-Benutzer verwendet werden soll:
-
-- Verwende in allen Situationen einen konstanten Benutzernamen
-- Verwende konstante Benutzernamen für anonyme und System-Benutzer, aber den Ivy-Benutzernamen für andere
-- Setze den Benutzernamen in der Session des Benutzers, bevor du Aufrufe machst, und verwende diesen Namen
-
-Weitere Dokumentation findest du in der Datei `variables.yaml`.
-
-#### `dwtoken`
-Das Token wird aus einem vorhandenen DocuWare-Token erzeugt. Hinweis: Dieser Anwendungsfall ist wahrscheinlich nicht vollständig unterstützt. Welches Token verwendet werden soll, wird in `dwToken` konfiguriert. Derzeit kann das vorhandene Token nur aus der Session geladen werden.
-
-### Weitere Konfigurationsvariablen
-Andere Konfigurationsvariablen sind direkt in den vom Connector unterstützten Variablen dokumentiert. Sieh dort nach für eine Beschreibung und kopiere sie in dein Projekt, falls du sie verwendest, damit sie im Engine-Cockpit deiner Anwendung sichtbar sind.
-
-```
-@variables.yaml@
-```
-
-### Verwendung einer einzelnen DocuWare-Instanz
-Wenn du nur mit einer Instanz arbeitest, solltest du sie `defaultConfig` nennen; sie wird dann automatisch ohne weitere Einstellungen verwendet.
-
-### Gleichzeitige Nutzung mehrerer DocuWare-Instanzen
-Wenn du mit mehreren Instanzen arbeitest, muss jeder Aufruf wissen, welche Instanz verwendet werden soll. Daher bieten alle instanzspezifischen Subprozesse dieses Connectors einen zusätzlichen `configKey`-Parameter, der auf den Namen der zu verwendenden Konfiguration gesetzt werden muss. Ist `configKey` leer, wird automatisch `defaultConfig` verwendet.
-
-Wenn du REST-Aufrufe dieses Connectors direkt verwenden möchtest, kannst du die Eigenschaft `configKey` des Aufrufs auf dieselbe Weise nutzen. Schau dir die instanzbewussten Subprozesse an, um zu sehen, wie das gemacht wird!
-
-### Wesentliche Änderungen in dieser Version
-
-- Die globale Variablenkonfiguration wurde geändert, um mehrere Instanzen zu unterstützen.
-- Standardwerte für Dateiablagen in den globalen Variablen wurden entfernt; verschiebe solche Defaults bei Bedarf in dein Projekt.
-- Die Fehlerbehandlung wirft jetzt standardmäßige AxonIvy-Ausnahmen anstatt Fehlerobjekte zurückzugeben.
+- Keine Informationen wurden für diesen Abschnitt geliefert.
 
 ## Komponenten
 
-### Verfügbare CALLABLE_SUB-Prozesse
+### Connector-Prozesse
 
-#### docuware-connector/processes/CheckinService.p.json
-- Signatur: checkOutToFileSystem
-  Eingabe: configKey: String, documentId: String, fileCabinetId: String
-  Ergebnis: file: File, error: ch.ivyteam.ivy.bpm.error.BpmError
+#### CheckinService.p.json
 
-- Signatur: checkInFromFileSystem
-  Eingabe: configKey: String, documentId: String, fileCabinetId: String, checkInParameters: com.axonivy.connector.docuware.connector.DocuWareCheckInActionParameters, file: File
-  Ergebnis: document: com.docuware.dev.schema._public.services.platform.Document, error: ch.ivyteam.ivy.bpm.error.BpmError
+- **checkOutToFileSystem(String configKey, String documentId, String fileCabinetId) -> file: File, error: ch.ivyteam.ivy.bpm.error.BpmError**
+    - Eingabe:
+        - `configKey` (String)
+        - `documentId` (String)
+        - `fileCabinetId` (String)
+    - Ergebnis:
+        - `file` (File)
+        - `error` (ch.ivyteam.ivy.bpm.error.BpmError)
 
-- Signatur: checkOutToFileSystemAsStream
-  Eingabe: configKey: String, documentId: String, fileCabinetId: String
-  Ergebnis: stream: java.io.InputStream, error: ch.ivyteam.ivy.bpm.error.BpmError, fileName: String
+- **checkInFromFileSystem(String configKey, String documentId, String fileCabinetId, String fileName, InputStream stream, com.axonivy.connector.docuware.connector.DocuWareCheckInActionParameters checkInParameters) -> document: com.docuware.dev.schema._public.services.platform.Document, error: ch.ivyteam.ivy.bpm.error.BpmError**
+    - Eingabe:
+        - `configKey` (String)
+        - `documentId` (String)
+        - `fileCabinetId` (String)
+        - `fileName` (String)
+        - `stream` (java.io.InputStream)
+        - `checkInParameters` (com.axonivy.connector.docuware.connector.DocuWareCheckInActionParameters)
+    - Ergebnis:
+        - `document` (com.docuware.dev.schema._public.services.platform.Document)
+        - `error` (ch.ivyteam.ivy.bpm.error.BpmError)
 
-- Signatur: checkInFromFileSystem
-  Eingabe: configKey: String, documentId: String, fileCabinetId: String, fileName: String, stream: java.io.InputStream, checkInParameters: com.axonivy.connector.docuware.connector.DocuWareCheckInActionParameters
-  Ergebnis: document: com.docuware.dev.schema._public.services.platform.Document, error: ch.ivyteam.ivy.bpm.error.BpmError
+- **checkOutToFileSystemAsStream(String configKey, String documentId, String fileCabinetId) -> stream: java.io.InputStream, error: ch.ivyteam.ivy.bpm.error.BpmError, fileName: String**
+    - Eingabe:
+        - `configKey` (String)
+        - `documentId` (String)
+        - `fileCabinetId` (String)
+    - Ergebnis:
+        - `stream` (java.io.InputStream)
+        - `error` (ch.ivyteam.ivy.bpm.error.BpmError)
+        - `fileName` (String)
 
+- **checkInFromFileSystem(String configKey, String documentId, String fileCabinetId) -> document: com.docuware.dev.schema._public.services.platform.Document**
+    - Eingabe:
+        - `configKey` (String)
+        - `documentId` (String)
+        - `fileCabinetId` (String)
+    - Ergebnis:
+        - `document` (com.docuware.dev.schema._public.services.platform.Document)
 
-#### docuware-connector/processes/DeleteService.p.json
-- Signatur: deleteDocument
-  Eingabe: configKey: String, documentId: String, fileCabinetId: String
-  Ergebnis: none
+#### DeleteService.p.json
 
+- **deleteDocument(String configKey, String documentId, String fileCabinetId) -> (none)**
+    - Eingabe:
+        - `configKey` (String)
+        - `documentId` (String)
+        - `fileCabinetId` (String)
+    - Ergebnis: (none)
 
-#### docuware-connector/processes/DownloadService.p.json
-- Signatur: getDocument
-  Eingabe: configKey: String, documentId: String, fileCabinetId: String
-  Ergebnis: document: com.docuware.dev.schema._public.services.platform.Document
+#### DownloadService.p.json
 
-- Signatur: downloadFile
-  Eingabe: configKey: String, documentId: String, fileCabinetId: String
-  Ergebnis: file: File
+- **getDocument(String configKey, String documentId, String fileCabinetId) -> document: com.docuware.dev.schema._public.services.platform.Document**
+    - Eingabe:
+        - `configKey` (String)
+        - `documentId` (String)
+        - `fileCabinetId` (String)
+    - Ergebnis:
+        - `document` (com.docuware.dev.schema._public.services.platform.Document)
 
+- **downloadFile(String configKey, String documentId, String fileCabinetId) -> file: File**
+    - Eingabe:
+        - `configKey` (String)
+        - `documentId` (String)
+        - `fileCabinetId` (String)
+    - Ergebnis:
+        - `file` (File)
 
-#### docuware-connector/processes/UpdateService.p.json
-- Signatur: updateDocument
-  Eingabe: configKey: String, documentId: String, fileCabinetId: String, indexFields: List<com.axonivy.connector.docuware.connector.DocuWareProperty>
-  Ergebnis: documentIndexFields: com.docuware.dev.schema._public.services.platform.DocumentIndexFields
+#### UpdateService.p.json
 
+- **updateDocument(String configKey, String documentId, String fileCabinetId, List<com.axonivy.connector.docuware.connector.DocuWareProperty> indexFields) -> documentIndexFields: com.docuware.dev.schema._public.services.platform.DocumentIndexFields**
+    - Eingabe:
+        - `configKey` (String)
+        - `documentId` (String)
+        - `fileCabinetId` (String)
+        - `indexFields` (List<com.axonivy.connector.docuware.connector.DocuWareProperty>)
+    - Ergebnis:
+        - `documentIndexFields` (com.docuware.dev.schema._public.services.platform.DocumentIndexFields)
 
-#### docuware-connector/processes/UploadService.p.json
-- Signatur: uploadFileWithIndexFields
-  Eingabe: configKey: String, fileCabinetId: String, file: File, indexFields: List<com.axonivy.connector.docuware.connector.DocuWareProperty>, storeDialogId: String
-  Ergebnis: document: com.docuware.dev.schema._public.services.platform.Document
+#### UploadService.p.json
 
-- Signatur: uploadFileWithIndexFields
-  Eingabe: configKey: String, fileCabinetId: String, fileStream: java.io.InputStream, fileName: String, indexFields: List<com.axonivy.connector.docuware.connector.DocuWareProperty>, storeDialogId: String
-  Ergebnis: document: com.docuware.dev.schema._public.services.platform.Document
+- **uploadFileWithIndexFields(String configKey, String fileCabinetId, File file, List<com.axonivy.connector.docuware.connector.DocuWareProperty> indexFields, String storeDialogId) -> document: com.docuware.dev.schema._public.services.platform.Document**
+    - Eingabe:
+        - `configKey` (String)
+        - `fileCabinetId` (String)
+        - `file` (File)
+        - `indexFields` (List<com.axonivy.connector.docuware.connector.DocuWareProperty>)
+        - `storeDialogId` (String)
+    - Ergebnis:
+        - `document` (com.docuware.dev.schema._public.services.platform.Document)
+
+- **uploadFileWithIndexFields(String configKey, String fileCabinetId, java.io.InputStream fileStream, String fileName, List<com.axonivy.connector.docuware.connector.DocuWareProperty> indexFields, String storeDialogId) -> document: com.docuware.dev.schema._public.services.platform.Document**
+    - Eingabe:
+        - `configKey` (String)
+        - `fileCabinetId` (String)
+        - `fileStream` (java.io.InputStream)
+        - `fileName` (String)
+        - `indexFields` (List<com.axonivy.connector.docuware.connector.DocuWareProperty>)
+        - `storeDialogId` (String)
+    - Ergebnis:
+        - `document` (com.docuware.dev.schema._public.services.platform.Document)
 
 ### Formular-Komponenten
 
-UI-Dialogname: RequestLoginToken
-- namespace: com.axonivy.market.docuware.connector.RequestLoginToken
-- Start-Parameter: start()
-- Hauptfunktion/-logik: Fordere einen DocuWare-LoginToken mit Benutzername und Passwort an; zeige das Token zur Kopie/Sicherung an und aktualisiere bei Erfolg eine Ivy-Variable.
+#### UploadServiceData — Data class for upload operations
+- **Namespace:** com.axonivy.market.docuware.connector
+- **Component type:** Data Class
+- **Fields:**
+   - `configKey` (String)
+   - `fileCabinetId` (String)
+   - `storeDialogId` (String)
+   - `uploadFile` (File)
+   - `properties` (com.axonivy.connector.docuware.connector.DocuWareProperties)
+   - `document` (com.docuware.dev.schema._public.services.platform.Document)
+   - `fileStream` (java.io.InputStream)
+   - `fileName` (String)
+   - `file` (List<java.lang.Byte>)
+- **Where used:** UploadService.p.json
 
-### OpenAPI-Ressourcen
+#### UpdateServiceData — Data class for update operations
+- **Namespace:** com.axonivy.market.docuware.connector
+- **Component type:** Data Class
+- **Fields:**
+   - `configKey` (String)
+   - `documentId` (String)
+   - `fileCabinetId` (String)
+   - `indexFields` (List<com.axonivy.connector.docuware.connector.DocuWareProperty>)
+   - `document` (com.docuware.dev.schema._public.services.platform.Document)
+   - `error` (ch.ivyteam.ivy.bpm.error.BpmError)
+   - `propertiesJson` (String)
+   - `documentIndexFields` (com.docuware.dev.schema._public.services.platform.DocumentIndexFields)
+- **Where used:** UpdateService.p.json
 
-- Es sind keine öffentlichen OpenAPI-Spezifikationen für dieses Produkt verfügbar.
+#### DownloadServiceData — Data class for download operations
+- **Namespace:** com.axonivy.market.docuware.connector
+- **Component type:** Data Class
+- **Fields:**
+   - `configKey` (String)
+   - `documentId` (String)
+   - `fileCabinetId` (String)
+   - `document` (com.docuware.dev.schema._public.services.platform.Document)
+   - `file` (File)
+   - `downloadFolder` (String)
+- **Where used:** DownloadService.p.json
+
+#### DeleteServiceData — Data class for delete operations
+- **Namespace:** com.axonivy.market.docuware.connector
+- **Component type:** Data Class
+- **Fields:**
+   - `configKey` (String)
+   - `documentId` (String)
+   - `fileCabinetId` (String)
+- **Where used:** DeleteService.p.json
 
 ### Maven-Artefakte
 
-1.docuware-connector
-xml```
+1. docuware-connector
+
+```xml
 <dependency>
   <groupId>com.axonivy.connector.docuware</groupId>
   <artifactId>docuware-connector</artifactId>
+  <version>@version@</version>
   <type>iar</type>
 </dependency>
 ```
 
-2.docuware-connector-demo
-xml```
+2. docuware-connector-demo *(optional)*
+
+```xml
 <dependency>
   <groupId>com.axonivy.connector.docuware</groupId>
   <artifactId>docuware-connector-demo</artifactId>
+  <version>@version@</version>
   <type>iar</type>
 </dependency>
 ```
