@@ -13,7 +13,6 @@ import java.util.Base64;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.UUID;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -53,7 +52,6 @@ import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.security.exec.Sudo;
 
 public class DocuWareService {
-	public static final UUID CLIENT_ID = UUID.fromString("02d1eec1-32e9-4316-afc3-793448486203");
 	public static final String CLIENT_NAME = "DocuWare";
 	public static final String CONFIG_KEY_PROPERTY = "configKey";
 	public static final String X_REQUESTED_BY = "X-Requested-By";
@@ -646,7 +644,7 @@ public class DocuWareService {
 	 * @return
 	 */
 	public WebTarget getClient(String configKey) {
-		return Ivy.rest().client(CLIENT_ID).property(CONFIG_KEY_PROPERTY, Configuration.knownOrDefaultKey(configKey));
+		return Ivy.rest().client(CLIENT_NAME).property(CONFIG_KEY_PROPERTY, Configuration.knownOrDefaultKey(configKey));
 	}
 
 	/**
