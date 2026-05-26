@@ -27,9 +27,7 @@ public class StampServiceTest extends DocuWareConnectorTest {
 				.withParam("documentId", Constants.DOCUMENT_ID_OK).withParam("stampId", "xxx")
 				.withParam("stampFieldValues", values).execute();
 		StampServiceData data = result.data().last();
-		data.getAnnotations();
-		assertThat(data.getAnnotations()).isNotNull();
-		assertThat(data.getAnnotations().getAnnotations().size() > 0);
+		assertThat(data.getAnnotations().getAnnotations()).isNotEmpty();
 	}
 
 }

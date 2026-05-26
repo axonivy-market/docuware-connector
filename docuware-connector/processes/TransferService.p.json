@@ -34,9 +34,12 @@
           }
         }
       },
+      "tags" : [
+        "connector"
+      ],
       "visual" : {
         "at" : { "x" : 136, "y" : 144 },
-        "labelOffset" : { "x" : 25, "y" : -39 }
+        "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
         { "id" : "f2", "to" : "f4" }

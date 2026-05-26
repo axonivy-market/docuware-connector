@@ -1,6 +1,5 @@
 package com.axonivy.connector.docuware.connector;
 
-import com.docuware.dev.schema._public.services.platform.DocumentsQueryResult;
 import com.docuware.dev.schema._public.services.platform.FileCabinetTransferInfo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
