@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/process/13.2.0/process.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/process.json",
   "id" : "1993402433175A6F",
   "config" : {
     "data" : "com.axonivy.market.docuware.connector.demo.DocuWareWorkflowExamplesData"
@@ -73,7 +73,7 @@
       "config" : {
         "method" : "POST",
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}/Query/DialogExpressionLink",
           "templateParams" : {
             "FileCabinetId" : "ivy.var.docuwareWorkflow_fileCabinetId"
@@ -118,7 +118,7 @@
       "config" : {
         "method" : "POST",
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}/Query/DialogExpression",
           "templateParams" : {
             "FileCabinetId" : "ivy.var.docuwareWorkflow_fileCabinetId"
@@ -196,7 +196,7 @@
       ],
       "config" : {
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}/Dialogs/{SearchDialogId}",
           "templateParams" : {
             "FileCabinetId" : "ivy.var.docuwareWorkflow_fileCabinetId",
@@ -297,7 +297,7 @@
       ],
       "config" : {
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}/Sections",
           "templateParams" : {
             "FileCabinetId" : "ivy.var.docuwareWorkflow_fileCabinetId"
@@ -338,7 +338,7 @@
       ],
       "config" : {
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}/Sections/{Section}",
           "templateParams" : {
             "FileCabinetId" : "ivy.var.docuwareWorkflow_fileCabinetId",
@@ -370,7 +370,7 @@
       ],
       "config" : {
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}/Sections/{Section}/Data",
           "templateParams" : {
             "FileCabinetId" : "ivy.var.docuwareWorkflow_fileCabinetId",
@@ -409,7 +409,7 @@
       "config" : {
         "method" : "POST",
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}/Sections",
           "templateParams" : {
             "FileCabinetId" : "ivy.var.docuwareWorkflow_fileCabinetId",
@@ -451,7 +451,7 @@
       ],
       "config" : {
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}/Dialogs",
           "templateParams" : {
             "FileCabinetId" : "ivy.var.docuwareWorkflow_fileCabinetId"
@@ -492,7 +492,7 @@
       ],
       "config" : {
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}/Documents",
           "templateParams" : {
             "FileCabinetId" : "ivy.var.docuwareWorkflow_fileCabinetId"

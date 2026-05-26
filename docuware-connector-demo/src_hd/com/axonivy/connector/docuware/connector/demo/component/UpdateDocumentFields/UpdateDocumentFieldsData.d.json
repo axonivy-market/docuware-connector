@@ -1,36 +1,30 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/data-class.json",
   "simpleName" : "UpdateDocumentFieldsData",
   "namespace" : "com.axonivy.connector.docuware.connector.demo.component.UpdateDocumentFields",
-  "isBusinessCaseData" : false,
   "fields" : [ {
     "name" : "propertiesUpdate",
-    "type" : "com.axonivy.connector.docuware.connector.DocuWarePropertiesUpdate"
+    "type" : "com.axonivy.connector.docuware.connector.DocuWarePropertiesUpdate",
+    "modifiers" : [ ]
   }, {
-    "name" : "documentId",
-    "type" : "String",
-    "modifiers" : [ "PERSISTENT" ]
+    "name" : "documentId"
   }, {
-    "name" : "fileCabinetId",
-    "type" : "String",
-    "modifiers" : [ "PERSISTENT" ]
+    "name" : "fileCabinetId"
   }, {
     "name" : "error",
-    "type" : "ch.ivyteam.ivy.bpm.error.BpmError"
+    "type" : "ch.ivyteam.ivy.bpm.error.BpmError",
+    "modifiers" : [ ]
   }, {
     "name" : "property",
-    "type" : "com.axonivy.connector.docuware.connector.DocuWareProperty"
+    "type" : "com.axonivy.connector.docuware.connector.DocuWareProperty",
+    "modifiers" : [ ]
   }, {
-    "name" : "propertiesJson",
-    "type" : "String",
-    "modifiers" : [ "PERSISTENT" ]
+    "name" : "propertiesJson"
   }, {
     "name" : "isUpdateSuccess",
-    "type" : "Boolean",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "Boolean"
   }, {
     "name" : "ctrl",
-    "type" : "com.axonivy.connector.docuware.connector.demo.ui.DocumentTableCtrl",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "com.axonivy.connector.docuware.connector.demo.ui.DocumentTableCtrl"
   } ]
 }

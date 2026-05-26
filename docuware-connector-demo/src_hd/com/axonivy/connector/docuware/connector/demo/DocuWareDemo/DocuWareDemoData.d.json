@@ -1,15 +1,12 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/data-class.json",
   "simpleName" : "DocuWareDemoData",
   "namespace" : "com.axonivy.connector.docuware.connector.demo.DocuWareDemo",
-  "isBusinessCaseData" : false,
   "fields" : [ {
     "name" : "file",
-    "type" : "File",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "File"
   }, {
     "name" : "ctrl",
-    "type" : "com.axonivy.connector.docuware.connector.demo.ui.DocuWareDemoCtrl",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "com.axonivy.connector.docuware.connector.demo.ui.DocuWareDemoCtrl"
   } ]
 }

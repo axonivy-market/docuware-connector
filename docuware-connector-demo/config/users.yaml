@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://json-schema.axonivy.com/14.0-dev/config/users.json
+Users:
+  - Name: Brian.Ford
+    Password: password
+  - Name: Elizabeth.Cash
+    Password: password
+  - Name: Fred.Winner
+    Password: password
+  - Name: Peggy.Jenkins
+    Password: password
+  - Name: Peter.King
+    Password: password
+  - Name: Peter.Sanders
+    Password: password
+  - Name: Simon.Stone
+    Password: password

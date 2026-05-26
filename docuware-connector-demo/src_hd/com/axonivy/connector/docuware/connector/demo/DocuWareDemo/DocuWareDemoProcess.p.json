@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/process/13.2.0/process.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/process.json",
   "id" : "1811FCF74A58FA0C",
   "kind" : "HTML_DIALOG",
   "config" : {
@@ -126,7 +126,7 @@
       "name" : "Organizations",
       "config" : {
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/Organizations",
           "headers" : {
             "Accept" : "application/xml"
@@ -163,7 +163,7 @@
       "name" : "File Cabinets",
       "config" : {
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets",
           "queryParams" : {
             "orgid" : "in.ctrl.organizationId"
@@ -204,7 +204,7 @@
       "config" : {
         "method" : "POST",
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}/Documents",
           "templateParams" : {
             "FileCabinetId" : "in.ctrl.fileCabinetId",
@@ -383,7 +383,7 @@
       "name" : "Documents",
       "config" : {
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}/Documents",
           "templateParams" : {
             "FileCabinetId" : "in.ctrl.fileCabinetId"
@@ -449,7 +449,7 @@
       "name" : "Download",
       "config" : {
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}/Documents/{DocumentId}/FileDownload",
           "templateParams" : {
             "FileCabinetId" : "in.ctrl.fileCabinetId",
@@ -522,7 +522,7 @@
       "name" : "Download",
       "config" : {
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}/Documents/{DocumentId}/FileDownload",
           "templateParams" : {
             "FileCabinetId" : "in.ctrl.fileCabinetId",
@@ -726,7 +726,7 @@
       "name" : "Get document",
       "config" : {
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}/Documents/{DocumentId}",
           "templateParams" : {
             "FileCabinetId" : "in.ctrl.fileCabinetId",
@@ -908,7 +908,7 @@
       "name" : "Get document",
       "config" : {
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}/Documents/{DocumentId}",
           "templateParams" : {
             "FileCabinetId" : "in.ctrl.fileCabinetId",

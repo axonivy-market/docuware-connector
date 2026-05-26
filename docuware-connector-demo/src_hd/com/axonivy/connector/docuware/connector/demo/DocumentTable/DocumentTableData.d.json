@@ -1,14 +1,13 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/data-class.json",
   "simpleName" : "DocumentTableData",
   "namespace" : "com.axonivy.connector.docuware.connector.demo.DocumentTable",
-  "isBusinessCaseData" : false,
   "fields" : [ {
     "name" : "error",
-    "type" : "ch.ivyteam.ivy.bpm.error.BpmError"
+    "type" : "ch.ivyteam.ivy.bpm.error.BpmError",
+    "modifiers" : [ ]
   }, {
     "name" : "ctrl",
-    "type" : "com.axonivy.connector.docuware.connector.demo.ui.DocumentTableCtrl",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "com.axonivy.connector.docuware.connector.demo.ui.DocumentTableCtrl"
   } ]
 }

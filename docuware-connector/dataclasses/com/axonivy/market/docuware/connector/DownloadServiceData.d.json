@@ -1,25 +1,26 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/data-class.json",
   "simpleName" : "DownloadServiceData",
   "namespace" : "com.axonivy.market.docuware.connector",
-  "isBusinessCaseData" : false,
   "fields" : [ {
     "name" : "configKey",
-    "type" : "String"
+    "modifiers" : [ ]
   }, {
     "name" : "documentId",
-    "type" : "String"
+    "modifiers" : [ ]
   }, {
     "name" : "fileCabinetId",
-    "type" : "String"
+    "modifiers" : [ ]
   }, {
     "name" : "document",
-    "type" : "com.docuware.dev.schema._public.services.platform.Document"
+    "type" : "com.docuware.dev.schema._public.services.platform.Document",
+    "modifiers" : [ ]
   }, {
     "name" : "file",
-    "type" : "File"
+    "type" : "File",
+    "modifiers" : [ ]
   }, {
     "name" : "downloadFolder",
-    "type" : "String"
+    "modifiers" : [ ]
   } ]
 }
