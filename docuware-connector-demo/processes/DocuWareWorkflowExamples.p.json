@@ -669,7 +669,7 @@
           "map" : {
             "param.documentId" : "String.valueOf(in.document.id)",
             "param.fileCabinetId" : "ivy.var.docuwareWorkflow_fileCabinetId",
-            "param.stampId" : "in.stamps.getStamp().get(0).id"
+            "param.stampId" : "in.stampId"
           },
           "code" : [
             "",
@@ -699,11 +699,23 @@
         "response" : {
           "entity" : {
             "code" : [
+              "import ch.ivyteam.ivy.bpm.error.BpmError;",
+              "import com.docuware.dev.schema._public.services.platform.Stamp;",
               "import com.docuware.dev.schema._public.services.platform.Stamps;",
               "",
               "in.stamps = response.readEntity(Stamps.class) as Stamps;",
               "",
-              "ivy.log.info(\"Stamp {0}, id={1}\", in.stamps.getStamp().get(0).name, in.stamps.getStamp().get(0).id);"
+              "if (in.stamps.getStamp().size() == 0) {",
+              "  ivy.log.warn(\"***DocuWareDemo-Stamp STOP: No Stamps found.\");",
+              "  BpmError.create(\"DocuWareDemo:Stamp:NoStampFound\").throwError();",
+              "} ",
+              "",
+              "ivy.log.info(\"***DocuWareDemo-Stamp - Found Stamps: {0}\", in.stamps.getStamp().size());",
+              "for (Stamp stamp : in.stamps.getStamp()) {",
+              "  ivy.log.info(\"Stamp id={0}, name={1}\", stamp.id, stamp.name);",
+              "}",
+              "// get the first stampId for usage in next steps",
+              "in.stampId = in.stamps.getStamp().get(0).id;"
             ]
           }
         }

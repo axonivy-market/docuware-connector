@@ -19,6 +19,9 @@
     "name" : "stamps",
     "type" : "com.docuware.dev.schema._public.services.platform.Stamps"
   }, {
+    "name" : "stampId",
+    "type" : "String"
+  }, {
     "name" : "annotations",
     "type" : "com.docuware.dev.schema._public.services.platform.DocumentAnnotations"
   }, {
