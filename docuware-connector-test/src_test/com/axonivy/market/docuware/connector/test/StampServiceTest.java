@@ -17,10 +17,12 @@ import ch.ivyteam.ivy.scripting.objects.List;
 @IvyProcessTest(enableWebServer = true)
 public class StampServiceTest extends DocuWareConnectorTest {
 	private static final BpmElement ADD_STAMP_SP = BpmProcess.path("StampService")
-			.elementName("addStamp(String, String, String, List<String>)");
-
+			.elementName("addStamp(String, String, String, List<String>, String)");
+	private static final BpmElement ADD_STAMP_POSITION_SP = BpmProcess.path("StampService")
+			.elementName("addStamp(String,String,String,String,List<String>,String,int,int,int)");
+	
 	@Test
-	public void uploadFile(BpmClient bpmClient) throws IOException {
+	public void addStamp(BpmClient bpmClient) throws IOException {
 		List<String> values = List.create(String.class, new String[] { "EXAMPLE VENDOR NAME" });
 		var result = bpmClient.start().subProcess(ADD_STAMP_SP).withParam("configKey", Constants.CONFIG_KEY)
 				.withParam("fileCabinetId", Constants.FILE_CABINET_ID_OK)
@@ -30,4 +32,40 @@ public class StampServiceTest extends DocuWareConnectorTest {
 		assertThat(data.getAnnotations().getAnnotations()).isNotEmpty();
 	}
 
+	@Test
+	public void addStampWithPassword(BpmClient bpmClient) throws IOException {
+		List<String> values = List.create(String.class, new String[] { "EXAMPLE VENDOR NAME" });
+		var result = bpmClient.start().subProcess(ADD_STAMP_SP).withParam("configKey", Constants.CONFIG_KEY)
+				.withParam("fileCabinetId", Constants.FILE_CABINET_ID_OK)
+				.withParam("documentId", Constants.DOCUMENT_ID_OK).withParam("stampId", "xxx")
+				.withParam("stampFieldValues", values)
+				.withParam("stampPassword", "xxx")
+				.execute();
+				
+		StampServiceData data = result.data().last();
+		assertThat(data.getAnnotations().getAnnotations()).isNotEmpty();
+	}
+	
+	@Test
+	public void addStampAtPage(BpmClient bpmClient) throws IOException {
+		List<String> values = List.create(String.class, new String[] { "EXAMPLE VENDOR NAME" });
+		var result = bpmClient.start().subProcess(ADD_STAMP_POSITION_SP).withParam("configKey", Constants.CONFIG_KEY)
+				.withParam("fileCabinetId", Constants.FILE_CABINET_ID_OK)
+				.withParam("documentId", Constants.DOCUMENT_ID_OK).withParam("stampId", "xxx")
+				.withParam("stampFieldValues", values).execute();
+		StampServiceData data = result.data().last();
+		assertThat(data.getAnnotations().getAnnotations()).isNotEmpty();
+	}
+	
+	@Test
+	public void addStampAtPageWithPassword(BpmClient bpmClient) throws IOException {
+		List<String> values = List.create(String.class, new String[] { "EXAMPLE VENDOR NAME" });
+		var result = bpmClient.start().subProcess(ADD_STAMP_POSITION_SP).withParam("configKey", Constants.CONFIG_KEY)
+				.withParam("fileCabinetId", Constants.FILE_CABINET_ID_OK)
+				.withParam("documentId", Constants.DOCUMENT_ID_OK).withParam("stampId", "xxx")
+				.withParam("stampFieldValues", values)
+				.withParam("stampPassword", "xxx").execute();
+		StampServiceData data = result.data().last();
+		assertThat(data.getAnnotations().getAnnotations()).isNotEmpty();
+	}
 }

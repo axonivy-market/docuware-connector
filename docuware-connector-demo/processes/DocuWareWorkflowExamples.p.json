@@ -664,7 +664,7 @@
       "type" : "SubProcessCall",
       "name" : "Add Stamp",
       "config" : {
-        "processCall" : "StampService:addStamp(String,String,String,String,List<String>)",
+        "processCall" : "StampService:addStamp(String,String,String,String,List<String>,String)",
         "call" : {
           "map" : {
             "param.documentId" : "String.valueOf(in.document.id)",

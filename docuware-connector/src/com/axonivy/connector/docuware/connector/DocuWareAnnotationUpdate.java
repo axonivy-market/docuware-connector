@@ -5,7 +5,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Properties class to match the JSON format used by the Docuware rest services
+ * Properties class to match the JSON format used by the Docuware REST services
  * for updating annotations
  *
  */
@@ -33,11 +33,16 @@ public class DocuWareAnnotationUpdate {
 
 	public static DocuWareAnnotationUpdate ofStamp(int pageNumber, int sectionNumber, String stampId, int layer,
 			String... fieldValues) {
+		return ofStamp(pageNumber, sectionNumber, stampId, layer, null, fieldValues);
+	}
+
+	public static DocuWareAnnotationUpdate ofStamp(int pageNumber, int sectionNumber, String stampId, int layer,
+			String stampPassword, String... fieldValues) {
 		StampField[] fields = new StampField[fieldValues.length];
 		for (int i = 0; i < fieldValues.length; i++) {
 			fields[i] = StampField.ofIndex(i + 1, fieldValues[i]);
 		}
-		StampPlacement stamp = StampPlacement.of(stampId, layer, fields);
+		StampPlacement stamp = StampPlacement.of(stampId, layer, stampPassword, fields);
 		AnnotationsPlacement placement = AnnotationsPlacement.of(stamp);
 		Annotation annotation = Annotation.of(pageNumber, sectionNumber, placement);
 
@@ -112,6 +117,8 @@ public class DocuWareAnnotationUpdate {
 		@JsonProperty("$type")
 		private String type = "StampPlacement";
 
+		/** Coordinates are not provided; the stamp is placed automatically by DocuWare
+		 *  at the stamp's configured position on the page. */
 		@JsonProperty("Location")
 		private Location location;
 
@@ -176,9 +183,14 @@ public class DocuWareAnnotationUpdate {
 		}
 
 		public static StampPlacement of(String stampId, int layer, StampField... fields) {
+			return of(stampId, layer, null, fields);
+		}
+
+		public static StampPlacement of(String stampId, int layer, String stampPassword, StampField... fields) {
 			StampPlacement s = new StampPlacement();
 			s.stampId = stampId;
 			s.layer = layer;
+			s.password = stampPassword;
 			s.field = List.of(fields);
 			return s;
 		}

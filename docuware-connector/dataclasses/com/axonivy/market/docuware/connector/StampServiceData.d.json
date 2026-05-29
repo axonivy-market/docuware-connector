@@ -19,6 +19,10 @@
     "name" : "stampFieldValues",
     "type" : "List<String>"
   }, {
+    "name" : "stampPassword",
+    "type" : "String",
+    "comment" : "Optional stamp password; null if the stamp is not password-protected."
+  }, {
     "name" : "error",
     "type" : "ch.ivyteam.ivy.bpm.error.BpmError"
   }, {
@@ -27,5 +31,17 @@
   }, {
     "name" : "annotations",
     "type" : "com.docuware.dev.schema._public.services.platform.DocumentAnnotations"
+  }, {
+    "name" : "pageNumber",
+    "type" : "int",
+    "comment" : " Zero-based index of the page within the section to stamp (0 = first page)."
+  }, {
+    "name" : "sectionNumber",
+    "type" : "int",
+    "comment" : "Zero-based index of the document section to stamp (0 = first section; a document may have multiple sections)."
+  }, {
+    "name" : "layer",
+    "type" : "int",
+    "comment" : "Annotation layer the stamp is written to, 1–5 (DocuWare provides five independent layers)."
   } ]
 }
