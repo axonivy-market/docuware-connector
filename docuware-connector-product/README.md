@@ -95,22 +95,22 @@ Check the demo implementations provided: DocuWare Demo and Document Table. These
 
 - **Signature**: downloadFile(String configKey, String documentId, String fileCabinetId) -> file: File
     - Input:
-        - `configKey` (String) - 
-        - `documentId` (String) - 
-        - `fileCabinetId` (String) - 
+        - `configKey` (String)
+        - `documentId` (String)
+        - `fileCabinetId` (String)
     - Result:
-        - `file` (File) - 
+        - `file` (File)
 
 #### UpdateService.p.json
 
 - **Signature**: updateDocument(String configKey, String documentId, String fileCabinetId, List<com.axonivy.connector.docuware.connector.DocuWareProperty> indexFields) -> documentIndexFields: com.docuware.dev.schema._public.services.platform.DocumentIndexFields
     - Input:
-        - `configKey` (String) - 
-        - `documentId` (String) - 
-        - `fileCabinetId` (String) - 
-        - `indexFields` (List<com.axonivy.connector.docuware.connector.DocuWareProperty>) - 
+        - `configKey` (String)
+        - `documentId` (String)
+        - `fileCabinetId` (String)
+        - `indexFields` (List<com.axonivy.connector.docuware.connector.DocuWareProperty>)
     - Result:
-        - `documentIndexFields` (com.docuware.dev.schema._public.services.platform.DocumentIndexFields) - 
+        - `documentIndexFields` (com.docuware.dev.schema._public.services.platform.DocumentIndexFields)
 
 #### UploadService.p.json
 
