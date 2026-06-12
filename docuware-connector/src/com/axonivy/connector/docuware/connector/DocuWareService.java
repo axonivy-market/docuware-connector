@@ -39,12 +39,8 @@ import com.axonivy.connector.docuware.connector.auth.GlobalVarConfiguration;
 import com.axonivy.connector.docuware.connector.auth.Token;
 import com.docuware.dev.schema._public.services.platform.CheckInReturnDocument;
 import com.docuware.dev.schema._public.services.platform.Document;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import ch.ivyteam.ivy.application.IApplication;
 import ch.ivyteam.ivy.bpm.error.BpmError;
@@ -655,7 +651,7 @@ public class DocuWareService {
 	 * @throws JsonProcessingException
 	 */
 	public String serializeProperties(DocuWareProperties properties) throws JsonProcessingException {
-		return getObjectMapper().setSerializationInclusion(Include.NON_NULL).writeValueAsString(properties);
+		return JsonUtils.getObjectMapper().writeValueAsString(properties);
 	}
 
 	/**
@@ -666,7 +662,7 @@ public class DocuWareService {
 	 * @throws JsonProcessingException
 	 */
 	public String serializeProperties(DocuWarePropertiesUpdate properties) throws JsonProcessingException {
-		return getObjectMapper().setSerializationInclusion(Include.NON_NULL).writeValueAsString(properties);
+		return JsonUtils.getObjectMapper().writeValueAsString(properties);
 	}
 
 	/**
@@ -676,27 +672,12 @@ public class DocuWareService {
 	 */
 	public byte[] writeObjectAsJsonBytes(Object entity) {
 		try {
-			return getObjectMapper().writeValueAsBytes(entity);
+			return JsonUtils.getObjectMapper().writeValueAsBytes(entity);
 		} catch (JsonProcessingException e) {
 			Ivy.log().warn(e.getMessage());
 		}
 		return null;
 	}
 
-	/**
-	 * Get an object mapper to convert JSON parts.
-	 * 
-	 * @return
-	 */
-	public ObjectMapper getObjectMapper() {
-		if (objectMapper == null) {
-			objectMapper = new ObjectMapper()
-					.registerModule(new JavaTimeModule())
-					.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-					.configure(DeserializationFeature.READ_DATE_TIMESTAMPS_AS_NANOSECONDS, false)
-					.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false)
-					.setSerializationInclusion(Include.NON_NULL);
-		}
-		return objectMapper;
-	}
+	
 }
