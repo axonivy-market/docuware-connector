@@ -11,6 +11,7 @@ import com.axonivy.connector.docuware.connector.enums.GrantType;
 
 import ch.ivyteam.ivy.application.IApplication;
 import ch.ivyteam.ivy.bpm.error.BpmError;
+import ch.ivyteam.ivy.data.cache.IDataCache;
 import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.security.ISecurityConstants;
 import ch.ivyteam.ivy.security.exec.Sudo;
@@ -57,7 +58,8 @@ public abstract class Configuration {
 	public static void putKnownConfiguration(Configuration configuration) {
 		var key = configuration.getConfigKey();
 		try {
-			Sudo.call(() -> IApplication.current().setAttribute(configurationCacheKey(key), configuration));
+			Sudo.call(() -> IDataCache.of(IApplication.current())
+					.setEntry(APP_ATT_CONFIG_PREFIX, configurationCacheKey(key), configuration));
 		} catch (Exception e) {
 			BpmError.create(DocuWareService.DOCUWARE_ERROR + "putconfig")
 			.withMessage("Could not put configuration '%s'.".formatted(key))
@@ -69,7 +71,11 @@ public abstract class Configuration {
 	public static Configuration getKnownConfiguration(String configKey) {
 		Configuration configuration = null;
 		try {
-			configuration = Sudo.call(() -> (Configuration)IApplication.current().getAttribute(configurationCacheKey(configKey)));
+			configuration = Sudo.call(() -> {
+				var entry = IDataCache.of(IApplication.current())
+						.getEntry(APP_ATT_CONFIG_PREFIX, configurationCacheKey(configKey));
+				return entry == null ? null : (Configuration) entry.getValue();
+			});
 		} catch (ClassCastException e) {
 			Ivy.log().error("Cache contained an old version of the configuration class, ignoring it.");
 		} catch (Exception e) {
