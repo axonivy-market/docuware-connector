@@ -28,6 +28,7 @@ Variables:
       #[password]
       password: ${decrypt:}
       impersonateUser: ^ivy:system=admin,anonymous=admin
+      url: https://put.here.your.url/DocuWare/Platform
     # Work with a DW Token (remove this section if you do not have access to an instance supporting this).
     dwToken:
       configId: "1"
