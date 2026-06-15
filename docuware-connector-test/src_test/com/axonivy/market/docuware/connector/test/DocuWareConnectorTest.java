@@ -56,7 +56,7 @@ public class DocuWareConnectorTest {
 		DocuWareService.get().clearCaches();
 		
 		// The URL of the local DocuWare mock service.
-		var docuWareMockUrl = "%s/%s/docuWareMock".formatted(EngineUriResolver.instance().local(), app.getContextPath());
+		var docuWareMockUrl = "%s/%s/api/docuWareMock".formatted(EngineUriResolver.instance().local(), app.getContextPath());
 
 		fix.var("docuwareConnector.test.url", docuWareMockUrl);
 		fix.var("docuwareConnector.test.grantType", "password");
