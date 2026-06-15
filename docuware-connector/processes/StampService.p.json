@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/process/13.2.0/process.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/process.json",
   "id" : "19E20C3FD22354CF",
   "kind" : "CALLABLE_SUB",
   "config" : {
@@ -79,7 +79,7 @@
       "config" : {
         "method" : "POST",
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}/Documents/{DocumentId}/Annotation",
           "templateParams" : {
             "FileCabinetId" : "in.#fileCabinetId",
@@ -195,7 +195,7 @@
       "config" : {
         "method" : "POST",
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}/Documents/{DocumentId}/Annotation",
           "templateParams" : {
             "FileCabinetId" : "in.#fileCabinetId",

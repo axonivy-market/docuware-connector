@@ -13,8 +13,10 @@ import java.util.Base64;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.GCMParameterSpec;
@@ -44,6 +46,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ch.ivyteam.ivy.application.IApplication;
 import ch.ivyteam.ivy.bpm.error.BpmError;
+import ch.ivyteam.ivy.data.cache.IDataCache;
+import ch.ivyteam.ivy.data.cache.IDataCacheEntry;
 import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.security.exec.Sudo;
 
@@ -343,16 +347,19 @@ public class DocuWareService {
 	public String clearCaches() {
 		try (var sw = new StringWriter();
 				var pw = new PrintWriter(sw)) {
-			var cachedNames = IApplication.current().getAttributeNames().stream()
-					.filter(n -> n.startsWith(Configuration.APP_ATT_CONFIG_PREFIX) || n.startsWith(Configuration.APP_ATT_TOKEN_PREFIX))
-					.sorted()
-					.toList();
+			var cache = IDataCache.of(IApplication.current());
 
 			pw.println("Removing caches:");
-			for (var name : cachedNames) {
-				IApplication.current().removeAttribute(name);
-				pw.println(name);
-			}
+			Stream.of(Configuration.APP_ATT_CONFIG_PREFIX, Configuration.APP_ATT_TOKEN_PREFIX)
+					.map(cache::getGroup)
+					.filter(Objects::nonNull)
+					.forEach(group -> {
+						group.getEntries().stream()
+								.map(IDataCacheEntry::getIdentifier)
+								.sorted()
+								.forEach(pw::println);
+						cache.invalidateGroup(group);
+					});
 
 			return sw.toString();
 		} catch (IOException e) {
@@ -366,9 +373,12 @@ public class DocuWareService {
 	 * @return
 	 */
 	public Map<String, Object> getCaches() {
-		return IApplication.current().getAttributeNames().stream()
-				.filter(n -> n.startsWith(Configuration.APP_ATT_CONFIG_PREFIX) || n.startsWith(Configuration.APP_ATT_TOKEN_PREFIX))
-				.collect(Collectors.toMap(n -> n, n -> IApplication.current().getAttribute(n)));
+		var cache = IDataCache.of(IApplication.current());
+		return Stream.of(Configuration.APP_ATT_CONFIG_PREFIX, Configuration.APP_ATT_TOKEN_PREFIX)
+				.map(cache::getGroup)
+				.filter(Objects::nonNull)
+				.flatMap(g -> g.getEntries().stream())
+				.collect(Collectors.toMap(IDataCacheEntry::getIdentifier, IDataCacheEntry::getValue));
 	}
 
 	/**
@@ -393,7 +403,10 @@ public class DocuWareService {
 	public Token getCachedToken(String cacheKey) {
 		Token token = null;
 		try {
-			token = Sudo.call(() -> (Token)IApplication.current().getAttribute(cacheKey));
+			token = Sudo.call(() -> {
+				var entry = IDataCache.of(IApplication.current()).getEntry(Configuration.APP_ATT_TOKEN_PREFIX, cacheKey);
+				return entry == null ? null : (Token) entry.getValue();
+			});
 		} catch (ClassCastException e) {
 			Ivy.log().error("Cache contained an old version of the token class, ignoring it.");
 		} catch (Exception e) {
@@ -413,7 +426,8 @@ public class DocuWareService {
 	 */
 	public void setCachedToken(Configuration cfg, Token token) {
 		try {
-			Sudo.call(() -> IApplication.current().setAttribute(cfg.tokenCacheKey(), token));
+			Sudo.call(() -> IDataCache.of(IApplication.current())
+					.setEntry(Configuration.APP_ATT_TOKEN_PREFIX, cfg.tokenCacheKey(), token));
 		} catch (Exception e) {
 			BpmError.create(DocuWareService.DOCUWARE_ERROR + "putconfig")
 			.withMessage("Could not set token '%s'.".formatted(cfg.tokenCacheKey()))

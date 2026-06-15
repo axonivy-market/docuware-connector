@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/process/13.2.0/process.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/process.json",
   "id" : "1851611E5B63DEE0",
   "kind" : "CALLABLE_SUB",
   "config" : {
@@ -17,7 +17,7 @@
       "name" : "get document",
       "config" : {
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}/Documents/{DocumentId}",
           "templateParams" : {
             "FileCabinetId" : "in.#fileCabinetId",
@@ -55,7 +55,7 @@
       "name" : "download file",
       "config" : {
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}/Documents/{DocumentId}/FileDownload",
           "templateParams" : {
             "FileCabinetId" : "in.#fileCabinetId",
@@ -210,7 +210,7 @@
       "visual" : {
         "at" : { "x" : 96, "y" : 376 },
         "labelOffset" : { "x" : 81, "y" : -39 },
-        "icon" : "res:/webContent/icons/docuware.png?small"
+        "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
         { "id" : "f6", "to" : "f3" }
@@ -221,7 +221,7 @@
       "name" : "download file",
       "config" : {
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}/Documents/{DocumentId}/FileDownload",
           "templateParams" : {
             "FileCabinetId" : "in.#fileCabinetId",
@@ -307,7 +307,7 @@
         "at" : { "x" : 96, "y" : 560 },
         "labelOffset" : { "x" : 81, "y" : -39 },
         "description" : "download file with target type as PDF",
-        "icon" : "res:/webContent/icons/docuware.png?small"
+        "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
         { "id" : "f15", "to" : "f9" }
@@ -318,7 +318,7 @@
       "name" : "download file",
       "config" : {
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}/Documents/{DocumentId}/FileDownload",
           "templateParams" : {
             "FileCabinetId" : "in.#fileCabinetId",

@@ -1,47 +1,52 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/data-class.json",
   "simpleName" : "StampServiceData",
   "namespace" : "com.axonivy.market.docuware.connector",
   "isBusinessCaseData" : false,
   "fields" : [ {
     "name" : "configKey",
-    "type" : "String"
+    "modifiers" : [ ]
   }, {
     "name" : "documentId",
-    "type" : "String"
+    "modifiers" : [ ]
   }, {
     "name" : "fileCabinetId",
-    "type" : "String"
+    "modifiers" : [ ]
   }, {
     "name" : "stampId",
-    "type" : "String"
+    "modifiers" : [ ]
   }, {
     "name" : "stampFieldValues",
     "type" : "List<String>"
   }, {
     "name" : "stampPassword",
-    "type" : "String",
+    "modifiers" : [ ],
     "comment" : "Optional stamp password; null if the stamp is not password-protected."
   }, {
     "name" : "error",
-    "type" : "ch.ivyteam.ivy.bpm.error.BpmError"
+    "type" : "ch.ivyteam.ivy.bpm.error.BpmError",
+    "modifiers" : [ ]
   }, {
     "name" : "requestJson",
-    "type" : "String"
+    "modifiers" : [ ]
   }, {
     "name" : "annotations",
-    "type" : "com.docuware.dev.schema._public.services.platform.DocumentAnnotations"
+    "type" : "com.docuware.dev.schema._public.services.platform.DocumentAnnotations",
+    "modifiers" : [ ]
   }, {
     "name" : "pageNumber",
     "type" : "int",
-    "comment" : " Zero-based index of the page within the section to stamp (0 = first page)."
+    "comment" : " Zero-based index of the page within the section to stamp (0 = first page).",
+    "modifiers" : [ ]
   }, {
     "name" : "sectionNumber",
     "type" : "int",
-    "comment" : "Zero-based index of the document section to stamp (0 = first section; a document may have multiple sections)."
+    "comment" : "Zero-based index of the document section to stamp (0 = first section; a document may have multiple sections).",
+    "modifiers" : [ ]  
   }, {
     "name" : "layer",
     "type" : "int",
-    "comment" : "Annotation layer the stamp is written to, 1–5 (DocuWare provides five independent layers)."
+    "comment" : "Annotation layer the stamp is written to, 1–5 (DocuWare provides five independent layers).",
+    "modifiers" : [ ]
   } ]
 }

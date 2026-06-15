@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/process/13.2.0/process.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/process.json",
   "id" : "193491716B13EC6A",
   "kind" : "HTML_DIALOG",
   "config" : {
@@ -83,7 +83,7 @@
       "config" : {
         "method" : "DELETE",
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}/Documents/{DocumentId}",
           "templateParams" : {
             "FileCabinetId" : "in.ctrl.fileCabinet.getId()",
@@ -106,7 +106,7 @@
       "name" : "Query Documents",
       "config" : {
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}/Documents",
           "templateParams" : {
             "FileCabinetId" : "in.ctrl.fileCabinet.getId()"
@@ -169,7 +169,7 @@
       "name" : "Fetch Document Properties",
       "config" : {
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}/Documents/{DocumentId}",
           "templateParams" : {
             "FileCabinetId" : "in.ctrl.fileCabinet.id",

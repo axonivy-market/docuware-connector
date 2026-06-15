@@ -1,31 +1,34 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/data-class.json",
   "simpleName" : "UpdateServiceData",
   "namespace" : "com.axonivy.market.docuware.connector",
-  "isBusinessCaseData" : false,
   "fields" : [ {
     "name" : "configKey",
-    "type" : "String"
+    "modifiers" : [ ]
   }, {
     "name" : "documentId",
-    "type" : "String"
+    "modifiers" : [ ]
   }, {
     "name" : "fileCabinetId",
-    "type" : "String"
+    "modifiers" : [ ]
   }, {
     "name" : "indexFields",
-    "type" : "List<com.axonivy.connector.docuware.connector.DocuWareProperty>"
+    "type" : "List<com.axonivy.connector.docuware.connector.DocuWareProperty>",
+    "modifiers" : [ ]
   }, {
     "name" : "document",
-    "type" : "com.docuware.dev.schema._public.services.platform.Document"
+    "type" : "com.docuware.dev.schema._public.services.platform.Document",
+    "modifiers" : [ ]
   }, {
     "name" : "error",
-    "type" : "ch.ivyteam.ivy.bpm.error.BpmError"
+    "type" : "ch.ivyteam.ivy.bpm.error.BpmError",
+    "modifiers" : [ ]
   }, {
     "name" : "propertiesJson",
-    "type" : "String"
+    "modifiers" : [ ]
   }, {
     "name" : "documentIndexFields",
-    "type" : "com.docuware.dev.schema._public.services.platform.DocumentIndexFields"
+    "type" : "com.docuware.dev.schema._public.services.platform.DocumentIndexFields",
+    "modifiers" : [ ]
   } ]
 }

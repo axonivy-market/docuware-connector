@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/process/13.2.0/process.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/process.json",
   "id" : "1811FD33E36CAB39",
   "config" : {
     "data" : "com.axonivy.market.docuware.connector.demo.DocuWareGuiDemosData"
@@ -90,7 +90,7 @@
       ],
       "config" : {
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/Organizations"
         },
         "response" : {
@@ -114,7 +114,7 @@
       "name" : "Get FileCabinets By Org",
       "config" : {
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets",
           "queryParams" : {
             "orgid" : "in.organizationId"
@@ -144,7 +144,7 @@
       ],
       "config" : {
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}/Documents",
           "templateParams" : {
             "FileCabinetId" : "in.fileCabinetId"
@@ -220,7 +220,7 @@
       "name" : "Read Cabinet",
       "config" : {
         "target" : {
-          "clientId" : "02d1eec1-32e9-4316-afc3-793448486203",
+          "clientId" : "DocuWare",
           "path" : "/FileCabinets/{FileCabinetId}",
           "templateParams" : {
             "FileCabinetId" : "in.fileCabinetId"
