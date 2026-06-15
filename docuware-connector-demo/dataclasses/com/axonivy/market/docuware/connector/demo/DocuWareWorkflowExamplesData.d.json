@@ -18,5 +18,21 @@
     "name" : "dialog",
     "type" : "com.docuware.dev.schema._public.services.platform.Dialog",
     "modifiers" : [ ]
+  }, {
+    "name" : "stamps",
+    "type" : "com.docuware.dev.schema._public.services.platform.Stamps",
+    "modifiers" : [ ]
+  }, {
+    "name" : "stampId",
+    "type" : "String",
+    "modifiers" : [ ]
+  }, {
+    "name" : "annotations",
+    "type" : "com.docuware.dev.schema._public.services.platform.DocumentAnnotations",
+    "modifiers" : [ ]
+  }, {
+    "name" : "docQueryResult",
+    "type" : "com.docuware.dev.schema._public.services.platform.DocumentsQueryResult",
+    "modifiers" : [ ]
   } ]
 }
