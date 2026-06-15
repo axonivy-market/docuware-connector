@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import com.axonivy.connector.docuware.connector.DocuWareFieldTableItem;
 import com.axonivy.connector.docuware.connector.DocuWareKeywordsField;
 import com.axonivy.connector.docuware.connector.DocuWareProperty;
+import com.axonivy.connector.docuware.connector.DocuWareService;
 import com.axonivy.connector.docuware.connector.auth.DocuWareAuthFeature;
 import com.axonivy.market.docuware.connector.test.BearerDisableFilter.BearerDisableFeature;
 
@@ -50,8 +51,12 @@ public class DocuWareConnectorTest {
 
 	@BeforeEach
 	public void prepareConfigurations(AppFixture fix, IApplication app) {
+		// Clear caches to ensure test isolation (configurations and tokens are cached
+		// in the application-scoped IDataCache, not test-scoped)
+		DocuWareService.get().clearCaches();
+		
 		// The URL of the local DocuWare mock service.
-		var docuWareMockUrl = "%s/%s/api/docuWareMock".formatted(EngineUriResolver.instance().local(), app.getContextPath());
+		var docuWareMockUrl = "%s/%s/docuWareMock".formatted(EngineUriResolver.instance().local(), app.getContextPath());
 
 		fix.var("docuwareConnector.test.url", docuWareMockUrl);
 		fix.var("docuwareConnector.test.grantType", "password");

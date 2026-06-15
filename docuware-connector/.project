@@ -6,17 +6,17 @@
 	</projects>
 	<buildSpec>
 		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
 			<name>ch.ivyteam.ivy.designer.dataClasses.ui.ivyDataClassBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
 		<buildCommand>
 			<name>ch.ivyteam.ivy.designer.process.ui.ivyWebServiceProcessClassBuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
-		<buildCommand>
-			<name>org.eclipse.jdt.core.javabuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -42,10 +42,10 @@
 		</buildCommand>
 	</buildSpec>
 	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>ch.ivyteam.ivy.project.IvyProjectNature</nature>
 		<nature>org.eclipse.wst.common.modulecore.ModuleCoreNature</nature>
 		<nature>org.eclipse.jem.workbench.JavaEMFNature</nature>
-		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.m2e.core.maven2Nature</nature>
 		<nature>org.eclipse.jem.beaninfo.BeanInfoNature</nature>
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
