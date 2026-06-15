@@ -189,6 +189,20 @@ public class DocuWareServiceMock {
 		}
 	}
 
+	@POST
+	@Produces(MediaType.APPLICATION_XML)
+	@Path("FileCabinets/{FileCabinetId}/Documents/{DocumentId}/Annotation")
+	public Response annotations(@Context HttpServletRequest req, @PathParam(value = "FileCabinetId") String fileCabinetId,
+			@PathParam(value = "DocumentId") String documentId) {
+		if (!isAuthenticated(req)) {
+			// note: the real service would send details
+			return Response.status(401).build();
+		} else {
+			String path = "xml/annotations.xml";
+			return Response.ok(load(path)).type(MediaType.APPLICATION_XML).build();
+		}
+	}
+	
 	private boolean isAuthenticated(HttpServletRequest req) {
 		return StringUtils.isNoneBlank(req.getHeader(DocuWareAuthFeature.AUTHORIZATION));
 	}

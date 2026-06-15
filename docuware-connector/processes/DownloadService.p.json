@@ -177,5 +177,198 @@
       "connect" : [
         { "id" : "f24", "to" : "f17" }
       ]
+    }, {
+      "id" : "f0",
+      "type" : "CallSubStart",
+      "name" : "downloadFileWithAllAnnotations(String,String,String)",
+      "config" : {
+        "signature" : "downloadFileWithAllAnnotations",
+        "input" : {
+          "params" : [
+            { "name" : "configKey", "type" : "String", "desc" : "" },
+            { "name" : "documentId", "type" : "String", "desc" : "" },
+            { "name" : "fileCabinetId", "type" : "String", "desc" : "" }
+          ],
+          "map" : {
+            "out.configKey" : "param.#configKey",
+            "out.documentId" : "param.#documentId",
+            "out.fileCabinetId" : "param.#fileCabinetId"
+          }
+        },
+        "result" : {
+          "params" : [
+            { "name" : "file", "type" : "File", "desc" : "" }
+          ],
+          "map" : {
+            "result.file" : "in.#file"
+          }
+        }
+      },
+      "tags" : [
+        "connector"
+      ],
+      "visual" : {
+        "at" : { "x" : 96, "y" : 376 },
+        "labelOffset" : { "x" : 81, "y" : -39 },
+        "icon" : "res:/webContent/icons/docuware.png"
+      },
+      "connect" : [
+        { "id" : "f6", "to" : "f3" }
+      ]
+    }, {
+      "id" : "f3",
+      "type" : "RestClientCall",
+      "name" : "download file",
+      "config" : {
+        "target" : {
+          "clientId" : "DocuWare",
+          "path" : "/FileCabinets/{FileCabinetId}/Documents/{DocumentId}/FileDownload",
+          "templateParams" : {
+            "FileCabinetId" : "in.#fileCabinetId",
+            "DocumentId" : "in.#documentId"
+          },
+          "queryParams" : {
+            "targetFileType" : "\"PDF\"",
+            "keepAnnotations" : "true"
+          },
+          "properties" : {
+            "configKey" : "in.#configKey"
+          }
+        },
+        "response" : {
+          "entity" : {
+            "type" : "[B",
+            "code" : [
+              "import com.axonivy.connector.docuware.connector.DocuWareService;",
+              "",
+              "String filename = DocuWareService.get().getFilenameFromResponseHeader(response);",
+              "",
+              "in.file = new File(filename, true);",
+              "in.file.createNewFile();",
+              "in.file.writeBinary(result);"
+            ]
+          }
+        },
+        "code" : [
+          "import com.axonivy.connector.docuware.connector.DocuWareService;",
+          "import com.axonivy.connector.docuware.connector.DocuWareDownloadResult;",
+          "",
+          "",
+          "DocuWareDownloadResult result = DocuWareService.get().downloadFile(client, in.configuration, in.downloadFolder);",
+          "",
+          "in.file = result.#file;",
+          "in.error = result.#error;"
+        ]
+      },
+      "visual" : {
+        "at" : { "x" : 240, "y" : 376 },
+        "icon" : "res:/webContent/icons/docuware.png"
+      },
+      "connect" : [
+        { "id" : "f7", "to" : "f4" }
+      ]
+    }, {
+      "id" : "f4",
+      "type" : "CallSubEnd",
+      "visual" : {
+        "at" : { "x" : 384, "y" : 376 }
+      }
+    }, {
+      "id" : "f8",
+      "type" : "CallSubStart",
+      "name" : "downloadFileAsPDF(String,String,String)",
+      "config" : {
+        "signature" : "downloadFileAsPDF",
+        "input" : {
+          "params" : [
+            { "name" : "configKey", "type" : "String", "desc" : "" },
+            { "name" : "documentId", "type" : "String", "desc" : "" },
+            { "name" : "fileCabinetId", "type" : "String", "desc" : "" }
+          ],
+          "map" : {
+            "out.configKey" : "param.#configKey",
+            "out.documentId" : "param.#documentId",
+            "out.fileCabinetId" : "param.#fileCabinetId"
+          }
+        },
+        "result" : {
+          "params" : [
+            { "name" : "file", "type" : "File", "desc" : "" }
+          ],
+          "map" : {
+            "result.file" : "in.#file"
+          }
+        }
+      },
+      "tags" : [
+        "connector"
+      ],
+      "visual" : {
+        "at" : { "x" : 96, "y" : 560 },
+        "labelOffset" : { "x" : 81, "y" : -39 },
+        "description" : "download file with target type as PDF",
+        "icon" : "res:/webContent/icons/docuware.png"
+      },
+      "connect" : [
+        { "id" : "f15", "to" : "f9" }
+      ]
+    }, {
+      "id" : "f9",
+      "type" : "RestClientCall",
+      "name" : "download file",
+      "config" : {
+        "target" : {
+          "clientId" : "DocuWare",
+          "path" : "/FileCabinets/{FileCabinetId}/Documents/{DocumentId}/FileDownload",
+          "templateParams" : {
+            "FileCabinetId" : "in.#fileCabinetId",
+            "DocumentId" : "in.#documentId"
+          },
+          "queryParams" : {
+            "targetFileType" : "\"PDF\"",
+            "keepAnnotations" : ""
+          },
+          "properties" : {
+            "configKey" : "in.#configKey"
+          }
+        },
+        "response" : {
+          "entity" : {
+            "type" : "[B",
+            "code" : [
+              "import com.axonivy.connector.docuware.connector.DocuWareService;",
+              "",
+              "String filename = DocuWareService.get().getFilenameFromResponseHeader(response);",
+              "",
+              "in.file = new File(filename, true);",
+              "in.file.createNewFile();",
+              "in.file.writeBinary(result);"
+            ]
+          }
+        },
+        "code" : [
+          "import com.axonivy.connector.docuware.connector.DocuWareService;",
+          "import com.axonivy.connector.docuware.connector.DocuWareDownloadResult;",
+          "",
+          "",
+          "DocuWareDownloadResult result = DocuWareService.get().downloadFile(client, in.configuration, in.downloadFolder);",
+          "",
+          "in.file = result.#file;",
+          "in.error = result.#error;"
+        ]
+      },
+      "visual" : {
+        "at" : { "x" : 240, "y" : 560 },
+        "icon" : "res:/webContent/icons/docuware.png"
+      },
+      "connect" : [
+        { "id" : "f14", "to" : "f13" }
+      ]
+    }, {
+      "id" : "f13",
+      "type" : "CallSubEnd",
+      "visual" : {
+        "at" : { "x" : 384, "y" : 560 }
+      }
     } ]
 }

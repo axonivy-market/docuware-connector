@@ -119,16 +119,39 @@ Note that previewing documents might require additional configuration of your Do
 
 ![view-document](images/view-document.png)
 
-**Document Properties Editing**  
+**Document Properties Editing**
 Modify document properties, including metadata and custom fields.
 
    ![edit-document-properties](images/edit-document-properties.png)
 
-**Document Deletion**  
+**Document Deletion**
 Delete documents from the file cabinet.
 
    ![delete-document](images/delete-document.png)
 
+### Stamp Demo
+
+Start the **Stamp** demo from its process start link.
+
+   ![stamp-demo-start](images/stamp_demo_start.png)
+
+1. The demo fetches the stamp templates that the current account is allowed to use. The result is printed to the log, for example:
+
+```
+***DocuWareDemo-Stamp - Found Stamps: 3
+Stamp id=xxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, name=ABC-AP1
+Stamp id=yyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy, name=ABC-AP2
+Stamp id=zzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz, name=ABC-AP3
+```
+
+2. The demo uploads a document and applies a stamp on it using the first stamp template.
+3. Finally, the stamped document is downloaded and attached to the Ivy case.
+
+   ![stamped-document](images/stamped_document.png)
+
+### Other demos
+
+Other process starts show examples of DocuWare usage.
 
 
 
