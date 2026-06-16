@@ -8,7 +8,7 @@
   "elements" : [ {
       "id" : "f9",
       "type" : "CallSubStart",
-      "name" : "addStamp(String, String, String, List<String>, String)",
+      "name" : "addStamp(String, String, String, String, List<String>, String)",
       "config" : {
         "signature" : "addStamp",
         "input" : {
