@@ -1,5 +1,6 @@
 package com.axonivy.connector.docuware.connector.auth;
 
+import java.net.URI;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Function;
@@ -156,12 +157,18 @@ public abstract class Configuration {
 	public void refresh() {
 		tokenEndpoint = null;
 
-		if(StringUtils.isBlank(url)) {
+		if (StringUtils.isBlank(url)) {
 			BpmError.create(CONFIG_ERROR + "nourl")
 			.withMessage("The url is not set for config '%s'".formatted(configKey))
 			.throwError();
 		}
-		if(grantType == null) {
+		var uri = URI.create(url);
+		if (!uri.isAbsolute()) {
+			BpmError.create(CONFIG_ERROR + "urinotabsolute")
+			.withMessage("URI is not absolute")
+			.throwError();
+		}
+		if (grantType == null) {
 			BpmError.create(CONFIG_ERROR + "nogranttype")
 			.withMessage("The grantType is not set for config '%s'".formatted(configKey))
 			.throwError();
