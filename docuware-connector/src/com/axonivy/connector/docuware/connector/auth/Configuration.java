@@ -162,15 +162,15 @@ public abstract class Configuration {
 			.withMessage("The url is not set for config '%s'".formatted(configKey))
 			.throwError();
 		}
+		if (grantType == null) {
+			BpmError.create(CONFIG_ERROR + "nogranttype")
+			.withMessage("The grantType is not set for config '%s'".formatted(configKey))
+			.throwError();
+		}
 		var uri = URI.create(url);
 		if (!uri.isAbsolute()) {
 			BpmError.create(CONFIG_ERROR + "urinotabsolute")
 			.withMessage("URI is not absolute")
-			.throwError();
-		}
-		if (grantType == null) {
-			BpmError.create(CONFIG_ERROR + "nogranttype")
-			.withMessage("The grantType is not set for config '%s'".formatted(configKey))
 			.throwError();
 		}
 	}
