@@ -87,6 +87,8 @@
           <arguments>
             <argument>-XautoNameResolution</argument>
           </arguments>
+          <noGeneratedHeaderComments>true</noGeneratedHeaderComments>
+          <generateEpisode>false</generateEpisode>
           <outputDirectory>${basedir}/src_generated/rest/DocuWare</outputDirectory>
           <clearOutputDir>false</clearOutputDir>
         </configuration>
