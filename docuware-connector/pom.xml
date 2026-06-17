@@ -53,14 +53,14 @@
     </pluginRepository>
   </pluginRepositories>
   <build>
-    <resources>
+    <!-- <resources>
       <resource>
-        <directory>${basedir}/src/generated</directory>
+        <directory>${basedir}/src_generated/rest/DocuWare</directory>
       </resource>
       <resource>
         <directory>${basedir}/src/main/resources</directory>
       </resource>
-    </resources>
+    </resources> -->
     <plugins>
       <plugin>
         <groupId>com.axonivy.ivy.ci</groupId>
@@ -87,7 +87,7 @@
           <arguments>
             <argument>-XautoNameResolution</argument>
           </arguments>
-          <outputDirectory>src/generated</outputDirectory>
+          <outputDirectory>${basedir}/src_generated/rest/DocuWare</outputDirectory>
           <clearOutputDir>false</clearOutputDir>
         </configuration>
       </plugin>
