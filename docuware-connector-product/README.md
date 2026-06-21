@@ -1,226 +1,209 @@
 # DocuWare Connector
 
-[DocuWare](https://start.docuware.com/) offers cloud-based document management and workflow automation software. It can be used to digitize, archive, and process any business documents in an audit-proof manner to optimize your company's core processes.
+The DocuWare Connector integrates DocuWare document management with Axon Ivy, enabling seamless document workflows directly from your Axon Ivy processes.
 
-**DocuWare Organization**  
-A *DocuWare Organization* is the top-level tenant in DocuWare. It represents an isolated environment that contains users, roles, configurations, and all document repositories of the organization.
+![DocuWare Demo](images/docuwaredemo.png)
 
-**File Cabinet**  
-A *File Cabinet* is a document repository within an organization. It stores documents together with their indexed metadata (fields such as invoice number, date, supplier) and enables searching, storing, and retrieving documents.
+With this connector, you can manage your documents and document workflows programmatically—upload files with metadata, download documents, query file cabinets, apply stamps and signatures, and transfer documents between cabinets—all with simple callable subprocesses that integrate natively into your Ivy applications.
 
-**Connector Capability**  
-This connector allows you to connect **multiple DocuWare organizations**, each containing **multiple file cabinets**, within a single configuration. This makes it possible to access and manage documents across several DocuWare environments. It enables efficient integration of DocuWare functionalities into your **Axon Ivy process applications**.
+**Key features**
 
-This connector minimizes your integration effort by:
-
-- Using REST web service technologies
-- Fetching one or more DocuWare organizations
-- Fetching file cabinets
-- Providing a GUI to view and edit document properties of the default DocuWare instance
-- Providing configurations to test several authentication methods
+- **Document Management** — Upload files with index field metadata and manage documents programmatically
+- **Document Retrieval** — Download documents and check them out from DocuWare file cabinets on demand
+- **Metadata Operations** — Query and update document properties and index fields in DocuWare
+- **Document Organization** — Transfer documents between file cabinets and delete unwanted documents
+- **Stamp & Signature** — Apply predefined stamps and annotations to documents programmatically
+- **Configuration Flexibility** — Support for multiple DocuWare server configurations with flexible authentication (password, trusted, token-based)
 
 ## Demo
-### DocuWare Basic Demo: Fetching Organizations, File Cabinets and Documents
 
-1. Start the DocuWare Demo Process:
-   
-![start-demo-process](images/1-startdemo.png)
+The DocuWare Connector includes two demo workflows that showcase common document management scenarios. Launch the demo to see how to integrate DocuWare document operations into your Ivy processes.
 
-The DocuWare Demo provides a GUI to test different DocuWare configurations. To use all demo features, multiple configurations with different grant types must be provided in `variables.yaml`. **For a basic demo (username and password based): - just provide a defaultConfig**.
+![Demo start screen](images/1-startdemo.png)
 
-#### Fetch Organizations 
-![fetch-organization](images/2-fetchorgas.png)
+### Demo Workflows
 
-If everything went well you will see `Response: Status: OK` in the textfield below the buttons. It may look like:
-```
-Response: Status: OK
+##### DocuWare Demo
 
-Headers
-=======
-Content-Type: application/xml; charset=utf-8
-Date: Fri, 06 Mar 2026 03:57:13 GMT
-Cache-Control: max-age=0, private
-Set-Cookie: dwingressplatform=1772769434.007.32.96427|a8466521666073443d68d0f15f64584f; Path=/; Secure; HttpOnly
-Transfer-Encoding: chunked
-Vary: Cookie,Accept,Accept-Encoding
-Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-Server-Timing: proxy-start;dur=1.5
+1. Launch the DocuWare Demo process from the demo menu
+2. You'll see a UI dialog that demonstrates basic document management operations
 
-```
-#### Fetch File Cabinets
-When clicking "Fetch File Cabinets", several additional buttons (features) become available.
+![DocuWare UI](images/2-fetchorgas.png)
 
-![fetch-cabinets](images/3-fetchcabinets.png)
+3. The demo loads organizations and file cabinets from your configured DocuWare server
+4. Perform actions such as querying documents or viewing available file cabinets
+5. Review the results and observe how the connector executes REST API calls to DocuWare
 
-In particular, you will get a list of available file cabinets at the bottom of your log file. It might look like this:
+##### Document Table
 
-```
-File Cabinets:
-Size: 5
-Id: 4b4be7af-629f-4340-82cb-126d249d2b95 - 'Awesome Filecabinet'
-Id: 90b4f666-b79f-4d26-97f7-7786d8fbe4c2 - 'TEST Filecabinet'
-Id: 94532ab8-a22f-4b70-a15d-ba44d916bd45 - 'Archive Cabinet'
-Id: wdss996-b61c-4b4b-88fd-e506a58156278 - 'Src'
-Id: 43sfsdfb137-c5a8-4ab-ae73-715e7c360f - 'Not important'
-```
+1. Start the Document Table demo from the demo menu
+2. You'll see a table interface showing documents from your DocuWare file cabinet
 
-Choose a File Cabinet you would like to inspect further and copy its ID into the UI.
+![Document Table Demo](images/6-tabledemo.png)
 
-![fetch-cabinets](images/7-filecabinet.png)
+3. Select a document to view its properties and metadata
+4. Perform operations such as downloading the document or editing its index fields
+5. Review changes and confirm successful document operations
 
-#### Fetch & download Documents
-![fetch-cabinets](images/4-downloaddocument.png)
+##### Download Workflow Example
 
-For fetching and downloading a document, click "Fetch Documents" (1) to get a list of available documents in the log viewer. You will get a list that looks like this:
+1. Launch the Download Workflow Example from the demo menu
+2. Specify the document ID and file cabinet ID
 
-```
-Documents:
-Size: 4
-Id: 11 - 'Hello World'
-Id: 10 - 'Bla'
-Id: 7 - 'Umlaut.äöüÄÖÜß'
-Id: 6 - 'Bla'
-```
-Remember the ID of the document you would like to inspect further and enter it into the UI (2). With "Download Document" (3), you can then download the document associated with this ID.
+![Download Document](images/4-downloaddocument.png)
 
-#### Further Features
-- Using different configurations, i.e. for different grant types
-- Getting document fields
-- Downloading a document
-- Creating a new version of a document
-- Attaching a document to an Ivy case
-- Uploading a document
-- Uploading a document with index fields
-- Viewing files with the embedded DocuWare viewer (if the configuration has an `integrationPassphrase` set and your DocuWare installation allows embedding in a frame - check your DocuWare's content security policy!)
-- Encrypting and decrypting parameters for embedding
-
-
-### Second Demo: Document Table
-
-Make sure you have configured a File Cabinet ID in `variables.yaml`. Remember that you can fetch available File Cabinets using the first demo process (see above).
-
-```
-  # Variables used by the demo.
-  docuwareWorkflow:
-    fileCabinetId: ""
-```
-
-Start the  process **Document Table** to get a basic viewer showing how to add, change, view and delete documents. 
-
-![second-demo](images/5-startseconddemo.png)
-
-A user-friendly UI will open:
-
-![table-demo](images/6-tabledemo.png)
-
-**Document Preview**
-
-Note that previewing documents might require additional configuration of your DocuWare installation’s Content Security Policy (CSP) to allow embedding DocuWare frames into your Axon Ivy frames.
-
-![view-document](images/view-document.png)
-
-**Document Properties Editing**
-Modify document properties, including metadata and custom fields.
-
-   ![edit-document-properties](images/edit-document-properties.png)
-
-**Document Deletion**
-Delete documents from the file cabinet.
-
-   ![delete-document](images/delete-document.png)
-
-### Stamp Demo
-
-Start the **Stamp** demo from its process start link.
-
-   ![stamp-demo-start](images/stamp_demo_start.png)
-
-1. The demo fetches the stamp templates that the current account is allowed to use. The result is printed to the log, for example:
-
-```
-***DocuWareDemo-Stamp - Found Stamps: 3
-Stamp id=xxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, name=ABC-AP1
-Stamp id=yyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy, name=ABC-AP2
-Stamp id=zzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz, name=ABC-AP3
-```
-
-2. The demo uploads a document and applies a stamp on it using the first stamp template.
-3. Finally, the stamped document is downloaded and attached to the Ivy case.
-
-   ![stamped-document](images/stamped_document.png)
-
-### Other demos
-
-Other process starts show examples of DocuWare usage.
-
-
-
-
+3. The workflow retrieves the document from DocuWare and attaches it to an Ivy case
+4. You'll see a confirmation message with the document name
+5. Access the attached document from the case document management interface
 
 ## Setup
-Please copy  `variables.yaml` into your project.
+
+- **Roles:** Everybody (configured in config/roles.xml)
+- **OpenAPI:** Spec URL
+- **REST Client Configuration:** The connector uses the DocuWare REST API (OpenAPI specification) defined in the rest-clients.yaml configuration
+
+1. **Install the connector** — Add the docuware-connector artifact to your Ivy project via Maven
+2. **Configure DocuWare connection** — Edit `config/rest-clients.yaml` and set the DocuWare server URL and API credentials in the `DocuWare` rest client configuration
+3. **Set authentication** — Choose your preferred authentication method (password, trusted, or token-based) by configuring the `grantType` variable in `config/variables.yaml`
+4. **Provide credentials** — Store your DocuWare username and password (or token) in the configuration, encrypted for security
+5. **Optional: Multi-environment setup** — Create environment-specific `variables.yaml` files in subdirectories if you need different configurations for development, staging, and production
+6. **Verify connection** — Run one of the demo workflows to confirm your DocuWare server connection is working correctly
+7. **Integrate callable subs** — Call the DocuWare connector callable subprocesses from your own processes to upload, download, query, or update documents
+
+### Variables
 
 ```
 @variables.yaml@
 ```
 
-At least `url`, `username` and `password` must be provided.
+## Components
 
-### `configId`
+### Callable Subprocesses
 
-Any value that identifies this version of the configuration. 
+#### CheckinService.p.json
 
-### `inherit`
+- **Signature**: checkOutToFileSystem(String, String, String) -> file: File
+    - Input:
+        - `configKey` (String) - REST client configuration key identifying the DocuWare connection from rest-clients.yaml
+        - `documentId` (String) - The unique identifier of the document to download
+        - `fileCabinetId` (String) - The unique identifier of the file cabinet containing the document
+    - Result:
+        - `file` (File) - Local file downloaded from DocuWare
 
-Any value that is non-existent, empty, or blank in the current configuration will be looked up in the configuration referenced by this variable. The lookup is performed recursively.
+- **Signature**: checkOutToFileSystem(String, String, String, Boolean) -> file: File
+    - Input:
+        - `configKey` (String) - REST client configuration key identifying the DocuWare connection from rest-clients.yaml
+        - `documentId` (String) - The unique identifier of the document to download
+        - `fileCabinetId` (String) - The unique identifier of the file cabinet containing the document
+        - `checkOutAsStream` (Boolean) - Flag to determine whether to checkout as stream or file
+    - Result:
+        - `file` (File) - Local file downloaded from DocuWare
 
-### `grantType`
+#### DeleteService.p.json
 
-This is the grant-type for your configuration. Possible values are `password`, `trusted`, and `dwtoken`.
+- **Signature**: deleteDocument(String, String, String) -> (none)
+    - Input:
+        - `configKey` (String) - REST client configuration key identifying the DocuWare connection from rest-clients.yaml
+        - `documentId` (String) - The unique identifier of the document to delete
+        - `fileCabinetId` (String) - The unique identifier of the file cabinet containing the document
+    - Result: (none)
 
-#### `password`
+#### DownloadService.p.json
 
-Grant type `password` uses a fixed `username` and `password` to connect to your DocuWare instance. All operations are performed using this user account, and all history entries will show this user. It is a simple setup using a _technical user_ to connect to a cloud or on-premise DocuWare instance.
+- **Signature**: downloadFile(String, String, String) -> file: File
+    - Input:
+        - `configKey` (String) - REST client configuration key identifying the DocuWare connection from rest-clients.yaml
+        - `documentId` (String) - The unique identifier of the document to download
+        - `fileCabinetId` (String) - The unique identifier of the file cabinet containing the document
+    - Result:
+        - `file` (File) - Local file downloaded from DocuWare
 
-#### `trusted`
+#### StampService.p.json
 
-Grant type `trusted` uses a `username` and `password` to connect as a trusted user to your DocuWare instance. Currently, DocuWare supports trusted users only for on-premise installations. The trusted user is not used directly, but impersonates another user. Which user to impersonate can be configured in the global variable `impersonateUser`.
+- **Signature**: addStamp(String, String, String, List<String>, String) -> annotations: com.docuware.dev.schema._public.services.platform.DocumentAnnotations
+    - Input:
+        - `configKey` (String) - REST client configuration key to identify the DocuWare server connection from rest-clients.yaml
+        - `documentId` (String) - The unique identifier of the document where the stamp will be applied
+        - `fileCabinetId` (String) - The unique identifier of the file cabinet where the document resides
+        - `stampFieldValues` (List<String>) - Dynamic text values for stamp form fields (e.g., signer name, date, etc.)
+        - `stampPassword` (String) - Optional password required to apply password-protected stamps
+    - Result:
+        - `annotations` (com.docuware.dev.schema._public.services.platform.DocumentAnnotations) - Document annotations after stamp application
 
-`impersonateUser` implements a special syntax to define which user to use for accesses by anonymous Ivy user, accesses by the system Ivy user and accesses by other Ivy users:
+#### TransferService.p.json
 
-- Use a constant username in all situations
-- Use constant usernames for anonymous and system users, but the Ivy username for others
-- Set the username in the user's session before making any calls and use this name
+- **Signature**: moveDocument(String, String, String, String) -> result: com.docuware.dev.schema._public.services.platform.DocumentsQueryResult
+    - Input:
+        - `configKey` (String) - REST client configuration key identifying the DocuWare connection from rest-clients.yaml
+        - `documentId` (String) - The unique identifier of the document to move
+        - `sourceFileCabinetId` (String) - The unique identifier of the source file cabinet containing the document
+        - `targetFileCabinetId` (String) - The unique identifier of the target file cabinet to move the document into
+    - Result:
+        - `result` (com.docuware.dev.schema._public.services.platform.DocumentsQueryResult) - Result object containing the document query response
 
-There is additional documentation in the `variables.yaml` file.
+#### UpdateService.p.json
 
-#### `dwtoken`
+- **Signature**: updateDocumentIndexFields(String, String, String, List<com.axonivy.connector.docuware.connector.DocuWareProperty>) -> (none)
+    - Input:
+        - `configKey` (String) - REST client configuration key identifying the DocuWare connection from rest-clients.yaml
+        - `documentId` (String) - The unique identifier of the document to update
+        - `fileCabinetId` (String) - The unique identifier of the file cabinet containing the document
+        - `indexFields` (List<com.axonivy.connector.docuware.connector.DocuWareProperty>) - List of DocuWare index field assignments to update
+    - Result: (none)
 
-The token is generated by using an existing token of DocuWare. Note: This use-case is probably not fully supported. Which token to use is configured in `dwToken`. Currently, the existing token can only be loaded from the session.
+#### UploadService.p.json
 
-### Other configuration variables
+- **Signature**: uploadFileWithIndexFields(String, String, File, List<com.axonivy.connector.docuware.connector.DocuWareProperty>, String) -> document: com.docuware.dev.schema._public.services.platform.Document
+    - Input:
+        - `configKey` (String) - REST client configuration key identifying the DocuWare connection from rest-clients.yaml
+        - `fileCabinetId` (String) - The unique identifier of the file cabinet where the document should be uploaded
+        - `file` (File) - Local file object whose content is uploaded to the selected DocuWare file cabinet
+        - `indexFields` (List<com.axonivy.connector.docuware.connector.DocuWareProperty>) - List of DocuWare index field assignments
+        - `storeDialogId` (String) - Optional store dialog identifier used by DocuWare when storing the document
+    - Result:
+        - `document` (com.docuware.dev.schema._public.services.platform.Document) - Created DocuWare document metadata
 
-Other configuration variables are documented directly in the variables supported by the connector. Please see there for a description and copy it to your project, if you are using it, so that it will be visible in the Engine cockpit for your application.
+- **Signature**: uploadFileWithIndexFields(String, String, InputStream, String, List<com.axonivy.connector.docuware.connector.DocuWareProperty>, String) -> document: com.docuware.dev.schema._public.services.platform.Document
+    - Input:
+        - `configKey` (String) - REST client configuration key identifying the DocuWare connection from rest-clients.yaml
+        - `fileCabinetId` (String) - The unique identifier of the file cabinet where the document should be uploaded
+        - `fileStream` (java.io.InputStream) - Input stream containing the binary file data to upload
+        - `fileName` (String) - Filename to assign to the uploaded document
+        - `indexFields` (List<com.axonivy.connector.docuware.connector.DocuWareProperty>) - List of DocuWare index field assignments
+        - `storeDialogId` (String) - Optional store dialog identifier used by DocuWare
+    - Result:
+        - `document` (com.docuware.dev.schema._public.services.platform.Document) - Created DocuWare document metadata
 
+### Dialog Components
+
+- For this market extension we do not provide any Dialog Components.
+
+### Rest Clients
+
+- **OpenAPI:** [DocuWare API specification](file:///X:/AxonIvy/marketplace/docuware/openapi-handmade.json)
+
+### Web Services
+
+- For this market extension we do not provide any Web Services.
+
+### Maven Artifacts
+
+1. docuware-connector
+
+```xml
+<dependency>
+    <groupId>com.axonivy.connector.docuware</groupId>
+    <artifactId>docuware-connector</artifactId>
+    <type>iar</type>
+</dependency>
 ```
-@variables.yaml@
+
+2. docuware-connector-demo *(optional)*
+
+```xml
+<dependency>
+    <groupId>com.axonivy.connector.docuware</groupId>
+    <artifactId>docuware-connector-demo</artifactId>
+    <type>iar</type>
+</dependency>
 ```
-
-### Using a single DocuWare instance
-
-If you only work with one instance you should name it `defaultConfig` and it will be used automatically without any additional considerations.
-
-### Using multiple DocuWare instances simultaneously
-
-If you work with multiple instances, every call must know which instance to use. Therefore, all instance-specific sub processes offered by this connector offer an additional `configKey` parameter which must be set to the name of the configuration to use in this sub-process. If the `configKey` is empty, the `defaultConfig` will be used automatically.
-
-If you want to use REST calls of this connector directly, you can use the call's property `configKey` in the same way. Have a look at the instance-aware sub-processes to see how this is done!
-
-### Breaking changes in this version
-
-* Global variables configuration changed to support multiple instances.
-* It is no longer possible to define a file cabinet id or other defaults for DocuWare items in the global variables of a configuration. If needed, please move these global variables to your project.
-* Error handling was changed to standard AxonIvy error handling, i.e. sub-processes no longer return an error object, but rather throw exceptions in the case of errors.
-
-
-

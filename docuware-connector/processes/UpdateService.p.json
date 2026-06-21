@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/process/13.2.0/process.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/process.json",
   "id" : "185160FC199C1871",
   "kind" : "CALLABLE_SUB",
   "config" : {
@@ -9,7 +9,7 @@
       "id" : "f1",
       "type" : "CallSubEnd",
       "visual" : {
-        "at" : { "x" : 496, "y" : 64 }
+        "at" : { "x" : 1120, "y" : 528 }
       }
     }, {
       "id" : "f3",
@@ -27,7 +27,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 208, "y" : 64 }
+        "at" : { "x" : 832, "y" : 528 }
       },
       "connect" : [
         { "id" : "f6", "to" : "f5" }
@@ -70,7 +70,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 368, "y" : 64 },
+        "at" : { "x" : 992, "y" : 528 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -84,10 +84,10 @@
         "signature" : "updateDocument",
         "input" : {
           "params" : [
-            { "name" : "configKey", "type" : "String", "desc" : "" },
-            { "name" : "documentId", "type" : "String", "desc" : "" },
-            { "name" : "fileCabinetId", "type" : "String", "desc" : "" },
-            { "name" : "indexFields", "type" : "List<com.axonivy.connector.docuware.connector.DocuWareProperty>", "desc" : "" }
+            { "name" : "configKey", "type" : "String", "desc" : "REST client configuration key identifying the DocuWare connection from rest-clients.yaml" },
+            { "name" : "documentId", "type" : "String", "desc" : "The unique identifier of the document whose index fields will be updated" },
+            { "name" : "fileCabinetId", "type" : "String", "desc" : "The unique identifier of the file cabinet containing the document" },
+            { "name" : "indexFields", "type" : "List<com.axonivy.connector.docuware.connector.DocuWareProperty>", "desc" : "Index field values to update on the target DocuWare document" }
           ],
           "map" : {
             "out.configKey" : "param.#configKey",
@@ -98,7 +98,7 @@
         },
         "result" : {
           "params" : [
-            { "name" : "documentIndexFields", "type" : "com.docuware.dev.schema._public.services.platform.DocumentIndexFields", "desc" : "" }
+            { "name" : "documentIndexFields", "type" : "com.docuware.dev.schema._public.services.platform.DocumentIndexFields", "desc" : "Updated document index fields returned by DocuWare after the update operation" }
           ],
           "map" : {
             "result.documentIndexFields" : "in.#documentIndexFields"
@@ -109,12 +109,133 @@
         "connector"
       ],
       "visual" : {
-        "at" : { "x" : 88, "y" : 64 },
+        "at" : { "x" : 712, "y" : 528 },
         "labelOffset" : { "x" : 169, "y" : 65 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
         { "id" : "f11", "to" : "f3" }
+      ]
+    }, {
+      "id" : "f12",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**Description",
+        "This API endpoint allows you to update the fields of a specific document in a file cabinet."
+      ],
+      "visual" : {
+        "at" : { "x" : 368, "y" : 384 },
+        "size" : { "width" : 520, "height" : 74 }
+      }
+    }, {
+      "id" : "f13",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**Integration",
+        "uploadFileWithIndexFields(String,String,File,List<DocuWareProperty>,String)",
+        "",
+        "- Updates index fields for a specific DocuWare document.",
+        "- Calls REST endpoint /FileCabinets/{FileCabinetId}/Documents/{DocumentId}/Fields via the update document RestClientCall in UpdateService.p.json.",
+        "- Prepares the request body by converting indexFields into propertiesJson with:",
+        "+ new DocuWarePropertiesUpdate(in.indexFields)",
+        "+ DocuWareService.get().serializeProperties(properties)",
+        "- Sends the resulting raw JSON as DocumentIndexFields in the PUT body.",
+        "- Returns the updated DocuWare DocumentIndexFields object.",
+        "",
+        "Parameters:",
+        "- configKey (String): REST client configuration key to identify the DocuWare server connection from rest-clients.yaml",
+        "- fileCabinetId (String): The unique identifier of the file cabinet where the document resides",
+        "- documentId (String): The unique identifier of the document whose index fields will be updated",
+        "- indexFields (List<DocuWareProperty>): Index field values to update on the target DocuWare document",
+        "",
+        "- Default / Return: Returns a DocuWare DocumentIndexFields object representing the updated document fields returned by the update operation."
+      ],
+      "visual" : {
+        "at" : { "x" : 376, "y" : 663 },
+        "size" : { "width" : 540, "height" : 421 },
+        "color" : "NodeStyle4"
+      },
+      "connect" : [
+        { "id" : "f19", "to" : "f9" }
+      ]
+    }, {
+      "id" : "f14",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**How to integrate",
+        "- Add Call: Add a Call element to your process that invokes the UpdateService sub-process using signature updateDocument(String, String, String, List<DocuWareProperty>).",
+        "",
+        "- Prepare data: Populate the parameters before calling:",
+        "+ configKey: REST client configuration key matching the entry in config/rest-clients.yaml",
+        "documentId: ID of the document whose index fields will be updated",
+        "+ fileCabinetId: ID of the File Cabinet containing the document",
+        "+ indexFields: List<DocuWareProperty> with index metadata values to update on the document",
+        "",
+        "- Build request body: UpdateService.p.json prepares the raw JSON payload in the script step:",
+        "+ new DocuWarePropertiesUpdate(in.indexFields)",
+        "+ DocuWareService.get().serializeProperties(properties)",
+        "+ This produces in.propertiesJson",
+        "+ The update document RestClientCall sends that raw JSON as DocumentIndexFields in the PUT request body",
+        "",
+        "- Call REST API: The update document RestClientCall sends the update to:",
+        "+ PUT /FileCabinets/{FileCabinetId}/Documents/{DocumentId}/Fields",
+        "",
+        "- Return object: The call returns a com.docuware.dev.schema._public.services.platform.DocumentIndexFields",
+        "+ map the process result to result.documentIndexFields",
+        "+ use the returned value to verify which fields were updated",
+        "",
+        "- Post-success behavior: After success, the document’s index fields are updated in DocuWare",
+        "+ inspect documentIndexFields to confirm the updated metadata values",
+        "",
+        "- Example (conceptual):",
+        "+ Set variables:",
+        "configKey = \"02d1eec1-32e9-4316-afc3-793448486203\"",
+        "fileCabinetId = \"FC-123\"",
+        "documentId = \"DOC-456\"",
+        "indexFields = [DocuWareProperty(...), ...]",
+        "+ Call the UpdateService sub-process with the matching signature",
+        "+ After the Call returns, read documentIndexFields for confirmation",
+        "",
+        "- Notes & tips:",
+        "+ configKey must match the RestClients entry in rest-clients.yaml so URL and credentials are correct",
+        "+ indexFields must match the target file cabinet’s index schema",
+        "+ No file upload is needed for this operation; it only updates document metadata fields",
+        "+ Use the returned DocumentIndexFields to verify the update result",
+        "",
+        "Summary: Add a Call to UpdateService with updateDocument(String, String, String, List<DocuWareProperty>), set configKey, documentId, fileCabinetId, and indexFields, let the process serialize the update payload, call PUT /FileCabinets/{FileCabinetId}/Documents/{DocumentId}/Fields, and verify the returned DocumentIndexFields."
+      ],
+      "visual" : {
+        "at" : { "x" : 1543, "y" : 776 },
+        "size" : { "width" : 765, "height" : 826 },
+        "color" : "NodeStyle4"
+      }
+    }, {
+      "id" : "f15",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**Prepare request body",
+        "Prepare data request body to call Docuware APIs"
+      ],
+      "visual" : {
+        "at" : { "x" : 832, "y" : 399 },
+        "size" : { "width" : 276, "height" : 45 }
+      },
+      "connect" : [
+        { "id" : "f16", "to" : "f3" }
+      ]
+    }, {
+      "id" : "f17",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**update document",
+        "Call REST Client APIs from Docuware."
+      ],
+      "visual" : {
+        "at" : { "x" : 992, "y" : 663 },
+        "size" : { "width" : 276, "height" : 45 }
+      },
+      "connect" : [
+        { "id" : "f18", "to" : "f5" }
       ]
     } ]
 }
