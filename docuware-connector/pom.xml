@@ -22,9 +22,9 @@
       <artifactId>ivy-rest-jersey-spi</artifactId>
     </dependency>
     <dependency>
-      <groupId>jakarta.xml.bind</groupId>
-      <artifactId>jakarta.xml.bind-api</artifactId>
-      <version>4.0.4</version>
+      <groupId>javax.xml.bind</groupId>
+      <artifactId>jaxb-api</artifactId>
+      <version>2.4.0-b180830.0359</version>
     </dependency>
   </dependencies>
   <repositories>
@@ -62,7 +62,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jaxb2-maven-plugin</artifactId>
-        <version>4.1.0</version>
+        <version>2.5.0</version>
         <executions>
           <execution>
             <id>generate.docuware.pojos</id>
@@ -79,30 +79,8 @@
           <arguments>
             <argument>-XautoNameResolution</argument>
           </arguments>
-          <!-- <noGeneratedHeaderComments>true</noGeneratedHeaderComments>
-          <outputDirectory>${basedir}/src_generated/rest/DocuWare</outputDirectory>
-          <clearOutputDir>false</clearOutputDir> -->
         </configuration>
       </plugin>
-      <!-- <plugin>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>delete-jaxb-episode</id>
-            <phase>process-sources</phase>
-            <goals>
-              <goal>run</goal>
-            </goals>
-            <configuration>
-              <target>
-                <delete quiet="true" failonerror="false">
-                  <fileset dir="${basedir}/src_generated/rest/DocuWare/META-INF/JAXB" includes="episode*.xjb" />
-                </delete>
-              </target>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin> -->
     </plugins>
   </build>
 </project>
