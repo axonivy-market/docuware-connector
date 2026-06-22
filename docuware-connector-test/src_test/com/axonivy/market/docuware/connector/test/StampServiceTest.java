@@ -17,7 +17,7 @@ import ch.ivyteam.ivy.scripting.objects.List;
 @IvyProcessTest(enableWebServer = true)
 public class StampServiceTest extends DocuWareConnectorTest {
 	private static final BpmElement ADD_STAMP_SP = BpmProcess.path("StampService")
-			.elementName("addStamp(String, String, String, List<String>, String)");
+			.elementName("addStamp(String, String, String, String, List<String>, String)");
 	private static final BpmElement ADD_STAMP_POSITION_SP = BpmProcess.path("StampService")
 			.elementName("addStamp(String,String,String,String,List<String>,String,int,int,int)");
 	

@@ -7,7 +7,6 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>docuware-connector-openapi</module>
     <module>docuware-connector</module>
     <module>docuware-connector-demo</module>
     <module>docuware-connector-test</module>
