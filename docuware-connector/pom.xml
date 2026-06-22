@@ -79,12 +79,12 @@
           <arguments>
             <argument>-XautoNameResolution</argument>
           </arguments>
-          <noGeneratedHeaderComments>true</noGeneratedHeaderComments>
+          <!-- <noGeneratedHeaderComments>true</noGeneratedHeaderComments>
           <outputDirectory>${basedir}/src_generated/rest/DocuWare</outputDirectory>
-          <clearOutputDir>false</clearOutputDir>
+          <clearOutputDir>false</clearOutputDir> -->
         </configuration>
       </plugin>
-      <plugin>
+      <!-- <plugin>
         <artifactId>maven-antrun-plugin</artifactId>
         <executions>
           <execution>
@@ -102,7 +102,7 @@
             </configuration>
           </execution>
         </executions>
-      </plugin>
+      </plugin> -->
     </plugins>
   </build>
 </project>
