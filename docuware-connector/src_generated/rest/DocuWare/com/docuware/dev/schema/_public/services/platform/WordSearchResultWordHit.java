@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Define a word and specific location where it is found
  * 
- * <p>Java class for WordSearchResultWordHit complex type.
+ * &lt;p&gt;Java class for WordSearchResultWordHit complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="WordSearchResultWordHit"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -36,19 +36,39 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class WordSearchResultWordHit {
 
+    /**
+     * Contains the text matching the query.
+     * 
+     */
     @XmlElement(name = "Text", required = true)
     protected String text;
+    /**
+     * Left of rectangle.
+     * 
+     */
     @XmlAttribute(name = "L", required = true)
     protected int l;
+    /**
+     * Top of rectangle.
+     * 
+     */
     @XmlAttribute(name = "T", required = true)
     protected int t;
+    /**
+     * Width of rectangle.
+     * 
+     */
     @XmlAttribute(name = "W", required = true)
     protected int w;
+    /**
+     * Height of rectangle.
+     * 
+     */
     @XmlAttribute(name = "H", required = true)
     protected int h;
 
     /**
-     * Gets the value of the text property.
+     * Contains the text matching the query.
      * 
      * @return
      *     possible object is
@@ -66,13 +86,14 @@ public class WordSearchResultWordHit {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getText()
      */
     public void setText(String value) {
         this.text = value;
     }
 
     /**
-     * Gets the value of the l property.
+     * Left of rectangle.
      * 
      */
     public int getL() {
@@ -88,7 +109,7 @@ public class WordSearchResultWordHit {
     }
 
     /**
-     * Gets the value of the t property.
+     * Top of rectangle.
      * 
      */
     public int getT() {
@@ -104,7 +125,7 @@ public class WordSearchResultWordHit {
     }
 
     /**
-     * Gets the value of the w property.
+     * Width of rectangle.
      * 
      */
     public int getW() {
@@ -120,7 +141,7 @@ public class WordSearchResultWordHit {
     }
 
     /**
-     * Gets the value of the h property.
+     * Height of rectangle.
      * 
      */
     public int getH() {

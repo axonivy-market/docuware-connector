@@ -3,20 +3,20 @@ package com.docuware.dev.schema._public.services.platform;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Definition of a behavior for forms
  * 
- * <p>Java class for Behavior complex type.
+ * &lt;p&gt;Java class for Behavior complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="Behavior"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -62,28 +62,31 @@ public class Behavior {
     /**
      * Gets the value of the conditions property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the conditions property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the conditions property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getConditions().add(newItem);
+     * getConditions().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link BehaviorCondition }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the conditions property.
      */
     public List<BehaviorCondition> getConditions() {
         if (conditions == null) {
-            conditions = new ArrayList<BehaviorCondition>();
+            conditions = new ArrayList<>();
         }
         return this.conditions;
     }
@@ -163,28 +166,31 @@ public class Behavior {
     /**
      * Gets the value of the passActions property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the passActions property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the passActions property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getPassActions().add(newItem);
+     * getPassActions().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link BehaviorAction }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the passActions property.
      */
     public List<BehaviorAction> getPassActions() {
         if (passActions == null) {
-            passActions = new ArrayList<BehaviorAction>();
+            passActions = new ArrayList<>();
         }
         return this.passActions;
     }
@@ -192,28 +198,31 @@ public class Behavior {
     /**
      * Gets the value of the failActions property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the failActions property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the failActions property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getFailActions().add(newItem);
+     * getFailActions().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link BehaviorAction }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the failActions property.
      */
     public List<BehaviorAction> getFailActions() {
         if (failActions == null) {
-            failActions = new ArrayList<BehaviorAction>();
+            failActions = new ArrayList<>();
         }
         return this.failActions;
     }

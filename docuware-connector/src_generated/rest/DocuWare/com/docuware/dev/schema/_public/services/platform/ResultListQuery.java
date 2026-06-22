@@ -3,22 +3,22 @@ package com.docuware.dev.schema._public.services.platform;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Base query definition for a result list
  * 
- * <p>Java class for ResultListQuery complex type.
+ * &lt;p&gt;Java class for ResultListQuery complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="ResultListQuery"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -51,27 +51,71 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ResultListQuery {
 
+    /**
+     * Depending on the server's choice, there might be more fields included, like some system fields. If this field is 
+     * &lt;pre&gt;
+     * &amp;lt;?xml version="1.0" encoding="UTF-8"?&amp;gt;&amp;lt;c xmlns="http://dev.docuware.com/schema/public/services/platform" xmlns:ann="http://dev.docuware.com/schema/public/services/annotations" xmlns:xs="http://www.w3.org/2001/XMLSchema"&amp;gt;null&amp;lt;/c&amp;gt;
+     * &lt;/pre&gt;
+     *  then all fields are returned.
+     * 
+     */
     @XmlElement(name = "SortOrder")
     protected SortedFieldsList sortOrder;
+    /**
+     * Define addition result fields to retrieve
+     * 
+     */
     @XmlElement(name = "AdditionalResultFields")
     protected List<String> additionalResultFields;
+    /**
+     * Condition that filter documents by its flags
+     * 
+     */
     @XmlElement(name = "FlagConditions", required = true)
     protected FlagConditions flagConditions;
+    /**
+     * Start index of result document
+     * 
+     */
     @XmlAttribute(name = "Start")
     protected Integer start;
+    /**
+     * Number of result documents to be retrieved in one block
+     * 
+     */
     @XmlAttribute(name = "Count")
     protected Integer count;
+    /**
+     * Specifies whether the default system/additional fields should be returned.
+     * 
+     */
     @XmlAttribute(name = "ExcludeDefaultSystemFields")
     protected Boolean excludeDefaultSystemFields;
+    /**
+     * Specifies whether the links are filled in the result.
+     * 
+     */
     @XmlAttribute(name = "WithoutLinks")
     protected Boolean withoutLinks;
+    /**
+     * Gets or sets a value indicating whether Intellix suggestions to be included.
+     * 
+     */
     @XmlAttribute(name = "IncludeSuggestions")
     protected Boolean includeSuggestions;
+    /**
+     * Indicates if total count of the documents should be calculated. If it is false the return value will be the number of requested items + 1 if there are more items available.
+     * 
+     */
     @XmlAttribute(name = "CalculateTotalCount")
     protected Boolean calculateTotalCount;
 
     /**
-     * Gets the value of the sortOrder property.
+     * Depending on the server's choice, there might be more fields included, like some system fields. If this field is 
+     * &lt;pre&gt;
+     * &amp;lt;?xml version="1.0" encoding="UTF-8"?&amp;gt;&amp;lt;c xmlns="http://dev.docuware.com/schema/public/services/platform" xmlns:ann="http://dev.docuware.com/schema/public/services/annotations" xmlns:xs="http://www.w3.org/2001/XMLSchema"&amp;gt;null&amp;lt;/c&amp;gt;
+     * &lt;/pre&gt;
+     *  then all fields are returned.
      * 
      * @return
      *     possible object is
@@ -89,42 +133,48 @@ public class ResultListQuery {
      *     allowed object is
      *     {@link SortedFieldsList }
      *     
+     * @see #getSortOrder()
      */
     public void setSortOrder(SortedFieldsList value) {
         this.sortOrder = value;
     }
 
     /**
+     * Define addition result fields to retrieve
+     * 
      * Gets the value of the additionalResultFields property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the additionalResultFields property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the additionalResultFields property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getAdditionalResultFields().add(newItem);
+     * getAdditionalResultFields().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the additionalResultFields property.
      */
     public List<String> getAdditionalResultFields() {
         if (additionalResultFields == null) {
-            additionalResultFields = new ArrayList<String>();
+            additionalResultFields = new ArrayList<>();
         }
         return this.additionalResultFields;
     }
 
     /**
-     * Gets the value of the flagConditions property.
+     * Condition that filter documents by its flags
      * 
      * @return
      *     possible object is
@@ -142,13 +192,14 @@ public class ResultListQuery {
      *     allowed object is
      *     {@link FlagConditions }
      *     
+     * @see #getFlagConditions()
      */
     public void setFlagConditions(FlagConditions value) {
         this.flagConditions = value;
     }
 
     /**
-     * Gets the value of the start property.
+     * Start index of result document
      * 
      * @return
      *     possible object is
@@ -170,13 +221,14 @@ public class ResultListQuery {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getStart()
      */
     public void setStart(Integer value) {
         this.start = value;
     }
 
     /**
-     * Gets the value of the count property.
+     * Number of result documents to be retrieved in one block
      * 
      * @return
      *     possible object is
@@ -198,13 +250,14 @@ public class ResultListQuery {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getCount()
      */
     public void setCount(Integer value) {
         this.count = value;
     }
 
     /**
-     * Gets the value of the excludeDefaultSystemFields property.
+     * Specifies whether the default system/additional fields should be returned.
      * 
      * @return
      *     possible object is
@@ -226,13 +279,14 @@ public class ResultListQuery {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isExcludeDefaultSystemFields()
      */
     public void setExcludeDefaultSystemFields(Boolean value) {
         this.excludeDefaultSystemFields = value;
     }
 
     /**
-     * Gets the value of the withoutLinks property.
+     * Specifies whether the links are filled in the result.
      * 
      * @return
      *     possible object is
@@ -254,13 +308,14 @@ public class ResultListQuery {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isWithoutLinks()
      */
     public void setWithoutLinks(Boolean value) {
         this.withoutLinks = value;
     }
 
     /**
-     * Gets the value of the includeSuggestions property.
+     * Gets or sets a value indicating whether Intellix suggestions to be included.
      * 
      * @return
      *     possible object is
@@ -282,13 +337,14 @@ public class ResultListQuery {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isIncludeSuggestions()
      */
     public void setIncludeSuggestions(Boolean value) {
         this.includeSuggestions = value;
     }
 
     /**
-     * Gets the value of the calculateTotalCount property.
+     * Indicates if total count of the documents should be calculated. If it is false the return value will be the number of requested items + 1 if there are more items available.
      * 
      * @return
      *     possible object is
@@ -310,6 +366,7 @@ public class ResultListQuery {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isCalculateTotalCount()
      */
     public void setCalculateTotalCount(Boolean value) {
         this.calculateTotalCount = value;

@@ -1,25 +1,25 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementRef;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.settings.common.DWRectangle;
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Define a metadata for a page
  * 
- * <p>Java class for PageData complex type.
+ * &lt;p&gt;Java class for PageData complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="PageData"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -36,7 +36,7 @@ import com.docuware.dev.settings.common.DWRectangle;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -49,26 +49,63 @@ import com.docuware.dev.settings.common.DWRectangle;
 })
 public class PageData {
 
+    /**
+     * The low quality size is the size in pixels which a client can use for displaying a document before starting using the deep zoom control.
+     *             A client should not request any levels with less resolution than defined by this value because
+     *             the quality of the level defined by this value is the best also for lower levels.
+     * 
+     */
     @XmlElement(name = "LowQualitySize")
     protected int lowQualitySize;
+    /**
+     * If a client decides to display the rendered page as multi scale image (using the Deep Zoom technology)
+     *             this value gives a hint for the recommented size of the tiles.
+     * 
+     */
     @XmlElement(name = "TileSize")
     protected int tileSize;
+    /**
+     * Gets or sets the preferred format this page is rendered.
+     * 
+     */
     @XmlElement(name = "RenderedImageFormat", required = true)
     @XmlSchemaType(name = "string")
     protected PlatformImageFormat renderedImageFormat;
+    /**
+     * If this field is &lt;v&gt;null&lt;/v&gt; the server has not yet calculated the size of this page.
+     * 
+     */
     @XmlElementRef(name = "ContentArea", namespace = "http://dev.docuware.com/schema/public/services/platform", type = JAXBElement.class, required = false)
     protected JAXBElement<DWRectangle> contentArea;
+    /**
+     * Gets the horizontal resolution of a page image. In case of vector images this is the maximal resolution which can be rendered.
+     * 
+     */
     @XmlAttribute(name = "DpiX", required = true)
     protected int dpiX;
+    /**
+     * Gets the vertical resolution of a page image. In case of vector images this is the maximal resolution which can be rendered.
+     * 
+     */
     @XmlAttribute(name = "DpiY", required = true)
     protected int dpiY;
+    /**
+     * Gets the horizontal size of a page image in pixels. In case of vector images this is the maximal pixel width which can be rendered.
+     * 
+     */
     @XmlAttribute(name = "Width", required = true)
     protected int width;
+    /**
+     * Gets the vertical size of a page image in pixels. In case of vector images this is the maximal pixel height which can be rendered.
+     * 
+     */
     @XmlAttribute(name = "Height", required = true)
     protected int height;
 
     /**
-     * Gets the value of the lowQualitySize property.
+     * The low quality size is the size in pixels which a client can use for displaying a document before starting using the deep zoom control.
+     *             A client should not request any levels with less resolution than defined by this value because
+     *             the quality of the level defined by this value is the best also for lower levels.
      * 
      */
     public int getLowQualitySize() {
@@ -84,7 +121,8 @@ public class PageData {
     }
 
     /**
-     * Gets the value of the tileSize property.
+     * If a client decides to display the rendered page as multi scale image (using the Deep Zoom technology)
+     *             this value gives a hint for the recommented size of the tiles.
      * 
      */
     public int getTileSize() {
@@ -100,7 +138,7 @@ public class PageData {
     }
 
     /**
-     * Gets the value of the renderedImageFormat property.
+     * Gets or sets the preferred format this page is rendered.
      * 
      * @return
      *     possible object is
@@ -118,13 +156,14 @@ public class PageData {
      *     allowed object is
      *     {@link PlatformImageFormat }
      *     
+     * @see #getRenderedImageFormat()
      */
     public void setRenderedImageFormat(PlatformImageFormat value) {
         this.renderedImageFormat = value;
     }
 
     /**
-     * Gets the value of the contentArea property.
+     * If this field is &lt;v&gt;null&lt;/v&gt; the server has not yet calculated the size of this page.
      * 
      * @return
      *     possible object is
@@ -142,13 +181,14 @@ public class PageData {
      *     allowed object is
      *     {@link JAXBElement }{@code <}{@link DWRectangle }{@code >}
      *     
+     * @see #getContentArea()
      */
     public void setContentArea(JAXBElement<DWRectangle> value) {
         this.contentArea = value;
     }
 
     /**
-     * Gets the value of the dpiX property.
+     * Gets the horizontal resolution of a page image. In case of vector images this is the maximal resolution which can be rendered.
      * 
      */
     public int getDpiX() {
@@ -164,7 +204,7 @@ public class PageData {
     }
 
     /**
-     * Gets the value of the dpiY property.
+     * Gets the vertical resolution of a page image. In case of vector images this is the maximal resolution which can be rendered.
      * 
      */
     public int getDpiY() {
@@ -180,7 +220,7 @@ public class PageData {
     }
 
     /**
-     * Gets the value of the width property.
+     * Gets the horizontal size of a page image in pixels. In case of vector images this is the maximal pixel width which can be rendered.
      * 
      */
     public int getWidth() {
@@ -196,7 +236,7 @@ public class PageData {
     }
 
     /**
-     * Gets the value of the height property.
+     * Gets the vertical size of a page image in pixels. In case of vector images this is the maximal pixel height which can be rendered.
      * 
      */
     public int getHeight() {

@@ -3,24 +3,24 @@ package com.docuware.dev.schema._public.services.platform.workflow;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * A workflow\instance for the initiator of the request.
  * 
- * <p>Java class for OwnWorkflow complex type.
+ * &lt;p&gt;Java class for OwnWorkflow complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="OwnWorkflow"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -37,7 +37,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -50,19 +50,47 @@ public class OwnWorkflow {
 
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services", required = true)
     protected Links links;
+    /**
+     * List of confirmed requests.
+     * 
+     */
     @XmlElement(name = "TakenDecision")
     protected List<RequestDataDecision> takenDecision;
+    /**
+     * Identifier of the request (instance id) .
+     * 
+     */
     @XmlAttribute(name = "Id", required = true)
     protected String id;
+    /**
+     * Document id which is used for start of the request.
+     * 
+     */
     @XmlAttribute(name = "DocId", required = true)
     protected int docId;
+    /**
+     * File cabinet id of the document.
+     * 
+     */
     @XmlAttribute(name = "FcGuid", required = true)
     protected String fcGuid;
+    /**
+     * Creation date of the request.
+     * 
+     */
     @XmlAttribute(name = "CreateDate", required = true)
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar createDate;
+    /**
+     * Name of the request.
+     * 
+     */
     @XmlAttribute(name = "WorkflowName", required = true)
     protected String workflowName;
+    /**
+     * Name of the document.
+     * 
+     */
     @XmlAttribute(name = "DocumentName", required = true)
     protected String documentName;
 
@@ -91,36 +119,41 @@ public class OwnWorkflow {
     }
 
     /**
+     * List of confirmed requests.
+     * 
      * Gets the value of the takenDecision property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the takenDecision property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the takenDecision property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getTakenDecision().add(newItem);
+     * getTakenDecision().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link RequestDataDecision }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the takenDecision property.
      */
     public List<RequestDataDecision> getTakenDecision() {
         if (takenDecision == null) {
-            takenDecision = new ArrayList<RequestDataDecision>();
+            takenDecision = new ArrayList<>();
         }
         return this.takenDecision;
     }
 
     /**
-     * Gets the value of the id property.
+     * Identifier of the request (instance id) .
      * 
      * @return
      *     possible object is
@@ -138,13 +171,14 @@ public class OwnWorkflow {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getId()
      */
     public void setId(String value) {
         this.id = value;
     }
 
     /**
-     * Gets the value of the docId property.
+     * Document id which is used for start of the request.
      * 
      */
     public int getDocId() {
@@ -160,7 +194,7 @@ public class OwnWorkflow {
     }
 
     /**
-     * Gets the value of the fcGuid property.
+     * File cabinet id of the document.
      * 
      * @return
      *     possible object is
@@ -178,13 +212,14 @@ public class OwnWorkflow {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getFcGuid()
      */
     public void setFcGuid(String value) {
         this.fcGuid = value;
     }
 
     /**
-     * Gets the value of the createDate property.
+     * Creation date of the request.
      * 
      * @return
      *     possible object is
@@ -202,13 +237,14 @@ public class OwnWorkflow {
      *     allowed object is
      *     {@link XMLGregorianCalendar }
      *     
+     * @see #getCreateDate()
      */
     public void setCreateDate(XMLGregorianCalendar value) {
         this.createDate = value;
     }
 
     /**
-     * Gets the value of the workflowName property.
+     * Name of the request.
      * 
      * @return
      *     possible object is
@@ -226,13 +262,14 @@ public class OwnWorkflow {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getWorkflowName()
      */
     public void setWorkflowName(String value) {
         this.workflowName = value;
     }
 
     /**
-     * Gets the value of the documentName property.
+     * Name of the document.
      * 
      * @return
      *     possible object is
@@ -250,6 +287,7 @@ public class OwnWorkflow {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getDocumentName()
      */
     public void setDocumentName(String value) {
         this.documentName = value;

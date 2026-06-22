@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for UploadedFileChunk complex type.
+ * &lt;p&gt;Java class for UploadedFileChunk complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="UploadedFileChunk"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -27,7 +27,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -39,10 +39,22 @@ public class UploadedFileChunk {
 
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services", required = true)
     protected Links links;
+    /**
+     * Indicates that the last chunk has been uploaded.
+     * 
+     */
     @XmlAttribute(name = "Finished")
     protected Boolean finished;
+    /**
+     * The id of the last uploaded chunk.
+     * 
+     */
     @XmlAttribute(name = "LastChunkId")
     protected String lastChunkId;
+    /**
+     * The number of bytes written up to now.
+     * 
+     */
     @XmlAttribute(name = "BytesWritten")
     protected Long bytesWritten;
 
@@ -71,7 +83,7 @@ public class UploadedFileChunk {
     }
 
     /**
-     * Gets the value of the finished property.
+     * Indicates that the last chunk has been uploaded.
      * 
      * @return
      *     possible object is
@@ -93,13 +105,14 @@ public class UploadedFileChunk {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isFinished()
      */
     public void setFinished(Boolean value) {
         this.finished = value;
     }
 
     /**
-     * Gets the value of the lastChunkId property.
+     * The id of the last uploaded chunk.
      * 
      * @return
      *     possible object is
@@ -117,13 +130,14 @@ public class UploadedFileChunk {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getLastChunkId()
      */
     public void setLastChunkId(String value) {
         this.lastChunkId = value;
     }
 
     /**
-     * Gets the value of the bytesWritten property.
+     * The number of bytes written up to now.
      * 
      * @return
      *     possible object is
@@ -145,6 +159,7 @@ public class UploadedFileChunk {
      *     allowed object is
      *     {@link Long }
      *     
+     * @see #getBytesWritten()
      */
     public void setBytesWritten(Long value) {
         this.bytesWritten = value;

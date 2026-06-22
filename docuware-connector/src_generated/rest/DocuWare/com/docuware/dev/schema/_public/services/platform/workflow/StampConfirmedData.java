@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.platform.AnnotationPoint;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Data which is sent when a user confirm a task using a stamp.
  * 
- * <p>Java class for StampConfirmedData complex type.
+ * &lt;p&gt;Java class for StampConfirmedData complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="StampConfirmedData"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform/workflow}ConfirmedData"&gt;
@@ -28,7 +28,7 @@ import com.docuware.dev.schema._public.services.platform.AnnotationPoint;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -43,17 +43,33 @@ public class StampConfirmedData
     extends ConfirmedData
 {
 
+    /**
+     * Start point of the stamp.
+     * 
+     */
     @XmlElement(name = "Position")
     protected AnnotationPoint position;
+    /**
+     * Number of the section to set stamp.
+     * 
+     */
     @XmlElement(name = "Section")
     protected int section;
+    /**
+     * Number of the page to set stamp.
+     * 
+     */
     @XmlElement(name = "Page")
     protected int page;
+    /**
+     * Layer where the stamp have to be placed.
+     * 
+     */
     @XmlElement(name = "Layer")
     protected int layer;
 
     /**
-     * Gets the value of the position property.
+     * Start point of the stamp.
      * 
      * @return
      *     possible object is
@@ -71,13 +87,14 @@ public class StampConfirmedData
      *     allowed object is
      *     {@link AnnotationPoint }
      *     
+     * @see #getPosition()
      */
     public void setPosition(AnnotationPoint value) {
         this.position = value;
     }
 
     /**
-     * Gets the value of the section property.
+     * Number of the section to set stamp.
      * 
      */
     public int getSection() {
@@ -93,7 +110,7 @@ public class StampConfirmedData
     }
 
     /**
-     * Gets the value of the page property.
+     * Number of the page to set stamp.
      * 
      */
     public int getPage() {
@@ -109,7 +126,7 @@ public class StampConfirmedData
     }
 
     /**
-     * Gets the value of the layer property.
+     * Layer where the stamp have to be placed.
      * 
      */
     public int getLayer() {

@@ -4,20 +4,20 @@ package com.docuware.dev._public.intellix;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Candidate complex type.
+ * &lt;p&gt;Java class for Candidate complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="Candidate"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -44,7 +44,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -362,28 +362,31 @@ public class Candidate {
     /**
      * Gets the value of the foundWithLanguages property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the foundWithLanguages property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the foundWithLanguages property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getFoundWithLanguages().add(newItem);
+     * getFoundWithLanguages().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the foundWithLanguages property.
      */
     public List<String> getFoundWithLanguages() {
         if (foundWithLanguages == null) {
-            foundWithLanguages = new ArrayList<String>();
+            foundWithLanguages = new ArrayList<>();
         }
         return this.foundWithLanguages;
     }
@@ -391,28 +394,31 @@ public class Candidate {
     /**
      * Gets the value of the correctLanguageTo property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the correctLanguageTo property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the correctLanguageTo property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getCorrectLanguageTo().add(newItem);
+     * getCorrectLanguageTo().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the correctLanguageTo property.
      */
     public List<String> getCorrectLanguageTo() {
         if (correctLanguageTo == null) {
-            correctLanguageTo = new ArrayList<String>();
+            correctLanguageTo = new ArrayList<>();
         }
         return this.correctLanguageTo;
     }
@@ -420,28 +426,31 @@ public class Candidate {
     /**
      * Gets the value of the impliesCultures property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the impliesCultures property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the impliesCultures property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getImpliesCultures().add(newItem);
+     * getImpliesCultures().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the impliesCultures property.
      */
     public List<String> getImpliesCultures() {
         if (impliesCultures == null) {
-            impliesCultures = new ArrayList<String>();
+            impliesCultures = new ArrayList<>();
         }
         return this.impliesCultures;
     }

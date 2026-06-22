@@ -1,22 +1,22 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Parameters for CheckIn action
  * 
- * <p>Java class for CheckInActionParameters complex type.
+ * &lt;p&gt;Java class for CheckInActionParameters complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="CheckInActionParameters"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform}DocumentActionParameters"&gt;
@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -41,16 +41,28 @@ public class CheckInActionParameters
     extends DocumentActionParameters
 {
 
+    /**
+     * Check in version of the document
+     * 
+     */
     @XmlElement(name = "DocumentVersion", required = true)
     protected DocumentVersion documentVersion;
+    /**
+     * Defines which document to be returned.
+     * 
+     */
     @XmlElement(name = "CheckInReturnDocument", required = true, defaultValue = "Original")
     @XmlSchemaType(name = "string")
     protected CheckInReturnDocument checkInReturnDocument;
+    /**
+     * Minor version of the document.
+     * 
+     */
     @XmlAttribute(name = "Comments")
     protected String comments;
 
     /**
-     * Gets the value of the documentVersion property.
+     * Check in version of the document
      * 
      * @return
      *     possible object is
@@ -68,13 +80,14 @@ public class CheckInActionParameters
      *     allowed object is
      *     {@link DocumentVersion }
      *     
+     * @see #getDocumentVersion()
      */
     public void setDocumentVersion(DocumentVersion value) {
         this.documentVersion = value;
     }
 
     /**
-     * Gets the value of the checkInReturnDocument property.
+     * Defines which document to be returned.
      * 
      * @return
      *     possible object is
@@ -92,13 +105,14 @@ public class CheckInActionParameters
      *     allowed object is
      *     {@link CheckInReturnDocument }
      *     
+     * @see #getCheckInReturnDocument()
      */
     public void setCheckInReturnDocument(CheckInReturnDocument value) {
         this.checkInReturnDocument = value;
     }
 
     /**
-     * Gets the value of the comments property.
+     * Minor version of the document.
      * 
      * @return
      *     possible object is
@@ -116,6 +130,7 @@ public class CheckInActionParameters
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getComments()
      */
     public void setComments(String value) {
         this.comments = value;

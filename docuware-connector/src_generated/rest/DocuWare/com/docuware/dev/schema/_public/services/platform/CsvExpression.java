@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Query csv file.
  * 
- * <p>Java class for CsvExpression complex type.
+ * &lt;p&gt;Java class for CsvExpression complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="CsvExpression"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -37,15 +37,27 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class CsvExpression {
 
+    /**
+     * Gets or sets the conditions which are checked to obtain the search result.
+     * 
+     */
     @XmlElement(name = "DialogExpression")
     protected DialogExpression dialogExpression;
+    /**
+     * Specifies the delimiter for cvs' values.
+     * 
+     */
     @XmlAttribute(name = "Delimiter")
     protected String delimiter;
+    /**
+     * Specifies whether the time values to be in Utc or Local.
+     * 
+     */
     @XmlAttribute(name = "IsUtc")
     protected Boolean isUtc;
 
     /**
-     * Gets the value of the dialogExpression property.
+     * Gets or sets the conditions which are checked to obtain the search result.
      * 
      * @return
      *     possible object is
@@ -63,13 +75,14 @@ public class CsvExpression {
      *     allowed object is
      *     {@link DialogExpression }
      *     
+     * @see #getDialogExpression()
      */
     public void setDialogExpression(DialogExpression value) {
         this.dialogExpression = value;
     }
 
     /**
-     * Gets the value of the delimiter property.
+     * Specifies the delimiter for cvs' values.
      * 
      * @return
      *     possible object is
@@ -87,13 +100,14 @@ public class CsvExpression {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getDelimiter()
      */
     public void setDelimiter(String value) {
         this.delimiter = value;
     }
 
     /**
-     * Gets the value of the isUtc property.
+     * Specifies whether the time values to be in Utc or Local.
      * 
      * @return
      *     possible object is
@@ -115,6 +129,7 @@ public class CsvExpression {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isIsUtc()
      */
     public void setIsUtc(Boolean value) {
         this.isUtc = value;

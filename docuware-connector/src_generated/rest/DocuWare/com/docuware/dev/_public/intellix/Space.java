@@ -1,20 +1,20 @@
 
 package com.docuware.dev._public.intellix;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Denotes a space.
  * 
- * <p>Java class for Space complex type.
+ * &lt;p&gt;Java class for Space complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="Space"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -30,11 +30,15 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "Space")
 public class Space {
 
+    /**
+     * The width of the space.
+     * 
+     */
     @XmlAttribute(name = "W")
     protected Integer w;
 
     /**
-     * Gets the value of the w property.
+     * The width of the space.
      * 
      * @return
      *     possible object is
@@ -56,6 +60,7 @@ public class Space {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getW()
      */
     public void setW(Integer value) {
         this.w = value;

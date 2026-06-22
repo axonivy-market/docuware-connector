@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Define fields mapping between source and destination file cabinets.
  * 
- * <p>Java class for FieldMapping complex type.
+ * &lt;p&gt;Java class for FieldMapping complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="FieldMapping"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -31,13 +31,21 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "FieldMapping")
 public class FieldMapping {
 
+    /**
+     * Name of the source field.
+     * 
+     */
     @XmlAttribute(name = "Source", required = true)
     protected String source;
+    /**
+     * Name of the destination field.
+     * 
+     */
     @XmlAttribute(name = "Destination")
     protected String destination;
 
     /**
-     * Gets the value of the source property.
+     * Name of the source field.
      * 
      * @return
      *     possible object is
@@ -55,13 +63,14 @@ public class FieldMapping {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getSource()
      */
     public void setSource(String value) {
         this.source = value;
     }
 
     /**
-     * Gets the value of the destination property.
+     * Name of the destination field.
      * 
      * @return
      *     possible object is
@@ -79,6 +88,7 @@ public class FieldMapping {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getDestination()
      */
     public void setDestination(String value) {
         this.destination = value;

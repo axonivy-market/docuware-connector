@@ -3,22 +3,22 @@ package com.docuware.dev.schema._public.services.platform;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Define how a page of a document can be downloaded
  * 
- * <p>Java class for FileDownloadBase complex type.
+ * &lt;p&gt;Java class for FileDownloadBase complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="FileDownloadBase"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -43,42 +43,55 @@ import javax.xml.bind.annotation.XmlType;
 })
 public abstract class FileDownloadBase {
 
+    /**
+     * This flag applies only to the PDF target format.
+     * 
+     */
     @XmlElement(name = "Layers", type = Integer.class)
     protected List<Integer> layers;
+    /**
+     * This flag applies only to the PDF target format.
+     * 
+     */
     @XmlAttribute(name = "KeepAnnotations")
     protected Boolean keepAnnotations;
 
     /**
+     * This flag applies only to the PDF target format.
+     * 
      * Gets the value of the layers property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the layers property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the layers property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getLayers().add(newItem);
+     * getLayers().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link Integer }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the layers property.
      */
     public List<Integer> getLayers() {
         if (layers == null) {
-            layers = new ArrayList<Integer>();
+            layers = new ArrayList<>();
         }
         return this.layers;
     }
 
     /**
-     * Gets the value of the keepAnnotations property.
+     * This flag applies only to the PDF target format.
      * 
      * @return
      *     possible object is
@@ -100,6 +113,7 @@ public abstract class FileDownloadBase {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isKeepAnnotations()
      */
     public void setKeepAnnotations(Boolean value) {
         this.keepAnnotations = value;

@@ -3,23 +3,23 @@ package com.docuware.dev.schema._public.services.platform;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Result set of of item counts
  * 
- * <p>Java class for CountResult complex type.
+ * &lt;p&gt;Java class for CountResult complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="CountResult"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -30,7 +30,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -40,43 +40,56 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 public class CountResult {
 
+    /**
+     * Set of count results
+     * 
+     */
     @XmlElement(name = "Group", required = true)
     protected List<CountResultItem> group;
+    /**
+     * TimeStamp of the result
+     * 
+     */
     @XmlAttribute(name = "TimeStamp", required = true)
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar timeStamp;
 
     /**
+     * Set of count results
+     * 
      * Gets the value of the group property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the group property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the group property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getGroup().add(newItem);
+     * getGroup().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link CountResultItem }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the group property.
      */
     public List<CountResultItem> getGroup() {
         if (group == null) {
-            group = new ArrayList<CountResultItem>();
+            group = new ArrayList<>();
         }
         return this.group;
     }
 
     /**
-     * Gets the value of the timeStamp property.
+     * TimeStamp of the result
      * 
      * @return
      *     possible object is
@@ -94,6 +107,7 @@ public class CountResult {
      *     allowed object is
      *     {@link XMLGregorianCalendar }
      *     
+     * @see #getTimeStamp()
      */
     public void setTimeStamp(XMLGregorianCalendar value) {
         this.timeStamp = value;

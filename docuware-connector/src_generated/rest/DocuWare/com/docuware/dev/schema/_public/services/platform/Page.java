@@ -1,22 +1,22 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Gets information about specific page.
  * 
- * <p>Java class for Page complex type.
+ * &lt;p&gt;Java class for Page complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="Page"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -29,7 +29,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -44,8 +44,16 @@ public class Page {
     protected PageData data;
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services")
     protected Links links;
+    /**
+     * Zero based page number.
+     * 
+     */
     @XmlAttribute(name = "PageNum", required = true)
     protected int pageNum;
+    /**
+     * True if the page contains at least one annotation.
+     * 
+     */
     @XmlAttribute(name = "HasAnnotation")
     protected Boolean hasAnnotation;
 
@@ -98,7 +106,7 @@ public class Page {
     }
 
     /**
-     * Gets the value of the pageNum property.
+     * Zero based page number.
      * 
      */
     public int getPageNum() {
@@ -114,7 +122,7 @@ public class Page {
     }
 
     /**
-     * Gets the value of the hasAnnotation property.
+     * True if the page contains at least one annotation.
      * 
      * @return
      *     possible object is
@@ -136,6 +144,7 @@ public class Page {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isHasAnnotation()
      */
     public void setHasAnnotation(Boolean value) {
         this.hasAnnotation = value;

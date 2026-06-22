@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Dialog properties specific for Search Dialog
  * 
- * <p>Java class for DialogPropertiesSearch complex type.
+ * &lt;p&gt;Java class for DialogPropertiesSearch complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="DialogPropertiesSearch"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform}DialogProperties"&gt;
@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -36,11 +36,15 @@ public class DialogPropertiesSearch
     extends DialogProperties
 {
 
+    /**
+     * The logical operator used for the search conditions
+     * 
+     */
     @XmlElement(name = "LogicalOperator", required = true)
     protected LogicalOperator logicalOperator;
 
     /**
-     * Gets the value of the logicalOperator property.
+     * The logical operator used for the search conditions
      * 
      * @return
      *     possible object is
@@ -58,6 +62,7 @@ public class DialogPropertiesSearch
      *     allowed object is
      *     {@link LogicalOperator }
      *     
+     * @see #getLogicalOperator()
      */
     public void setLogicalOperator(LogicalOperator value) {
         this.logicalOperator = value;

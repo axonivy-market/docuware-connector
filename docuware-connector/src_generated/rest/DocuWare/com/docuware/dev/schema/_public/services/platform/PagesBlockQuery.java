@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * A query for requesting page blocks.
  * 
- * <p>Java class for PagesBlockQuery complex type.
+ * &lt;p&gt;Java class for PagesBlockQuery complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="PagesBlockQuery"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -31,13 +31,21 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "PagesBlockQuery")
 public class PagesBlockQuery {
 
+    /**
+     * The first page of the page block
+     * 
+     */
     @XmlAttribute(name = "FirstPage", required = true)
     protected int firstPage;
+    /**
+     * Total count of the pages in the page block
+     * 
+     */
     @XmlAttribute(name = "PageCount", required = true)
     protected int pageCount;
 
     /**
-     * Gets the value of the firstPage property.
+     * The first page of the page block
      * 
      */
     public int getFirstPage() {
@@ -53,7 +61,7 @@ public class PagesBlockQuery {
     }
 
     /**
-     * Gets the value of the pageCount property.
+     * Total count of the pages in the page block
      * 
      */
     public int getPageCount() {

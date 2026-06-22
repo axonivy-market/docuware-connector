@@ -3,20 +3,20 @@ package com.docuware.dev.schema._public.services.platform.workflow;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for CommonFormField complex type.
+ * &lt;p&gt;Java class for CommonFormField complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="CommonFormField"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform/workflow}BaseForm"&gt;
@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -54,29 +54,69 @@ public class CommonFormField
     extends BaseForm
 {
 
+    /**
+     * Default value of the form field.
+     * 
+     */
     @XmlElement(name = "PrefillValue", required = true)
     protected WFFormFieldValue prefillValue;
+    /**
+     * Multi column condition used to filter the select list
+     * 
+     */
     @XmlElement(name = "SelectListFilters")
     protected List<SelectListFilter> selectListFilters;
+    /**
+     * Determines whether the field can be empty.
+     * 
+     */
     @XmlAttribute(name = "Mandatory", required = true)
     protected boolean mandatory;
+    /**
+     * Description of the field.
+     * 
+     */
     @XmlAttribute(name = "Description", required = true)
     protected String description;
+    /**
+     * Determines whether the field value can be selected from a select list.
+     * 
+     */
     @XmlAttribute(name = "HasSelectList", required = true)
     protected boolean hasSelectList;
+    /**
+     * Determines whether the field is read only.
+     * 
+     */
     @XmlAttribute(name = "IsReadOnly", required = true)
     protected boolean isReadOnly;
+    /**
+     * If this flag is true, no one can allocate a new entry for this field when confirming a task, unless this is contained in a selection list or empty.
+     * 
+     */
     @XmlAttribute(name = "IsSelectListOnly", required = true)
     protected boolean isSelectListOnly;
+    /**
+     * Identifier of the select list.
+     * 
+     */
     @XmlAttribute(name = "SelectListGuid", required = true)
     protected String selectListGuid;
+    /**
+     * Identifier of the select list column that will be used to populate the form field.
+     * 
+     */
     @XmlAttribute(name = "SelectListColumn", required = true)
     protected String selectListColumn;
+    /**
+     * Determines whether the field can be showned in stamps.
+     * 
+     */
     @XmlAttribute(name = "IsHiddenInStamp", required = true)
     protected boolean isHiddenInStamp;
 
     /**
-     * Gets the value of the prefillValue property.
+     * Default value of the form field.
      * 
      * @return
      *     possible object is
@@ -94,42 +134,48 @@ public class CommonFormField
      *     allowed object is
      *     {@link WFFormFieldValue }
      *     
+     * @see #getPrefillValue()
      */
     public void setPrefillValue(WFFormFieldValue value) {
         this.prefillValue = value;
     }
 
     /**
+     * Multi column condition used to filter the select list
+     * 
      * Gets the value of the selectListFilters property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the selectListFilters property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the selectListFilters property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getSelectListFilters().add(newItem);
+     * getSelectListFilters().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link SelectListFilter }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the selectListFilters property.
      */
     public List<SelectListFilter> getSelectListFilters() {
         if (selectListFilters == null) {
-            selectListFilters = new ArrayList<SelectListFilter>();
+            selectListFilters = new ArrayList<>();
         }
         return this.selectListFilters;
     }
 
     /**
-     * Gets the value of the mandatory property.
+     * Determines whether the field can be empty.
      * 
      */
     public boolean isMandatory() {
@@ -145,7 +191,7 @@ public class CommonFormField
     }
 
     /**
-     * Gets the value of the description property.
+     * Description of the field.
      * 
      * @return
      *     possible object is
@@ -163,13 +209,14 @@ public class CommonFormField
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getDescription()
      */
     public void setDescription(String value) {
         this.description = value;
     }
 
     /**
-     * Gets the value of the hasSelectList property.
+     * Determines whether the field value can be selected from a select list.
      * 
      */
     public boolean isHasSelectList() {
@@ -185,7 +232,7 @@ public class CommonFormField
     }
 
     /**
-     * Gets the value of the isReadOnly property.
+     * Determines whether the field is read only.
      * 
      */
     public boolean isIsReadOnly() {
@@ -201,7 +248,7 @@ public class CommonFormField
     }
 
     /**
-     * Gets the value of the isSelectListOnly property.
+     * If this flag is true, no one can allocate a new entry for this field when confirming a task, unless this is contained in a selection list or empty.
      * 
      */
     public boolean isIsSelectListOnly() {
@@ -217,7 +264,7 @@ public class CommonFormField
     }
 
     /**
-     * Gets the value of the selectListGuid property.
+     * Identifier of the select list.
      * 
      * @return
      *     possible object is
@@ -235,13 +282,14 @@ public class CommonFormField
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getSelectListGuid()
      */
     public void setSelectListGuid(String value) {
         this.selectListGuid = value;
     }
 
     /**
-     * Gets the value of the selectListColumn property.
+     * Identifier of the select list column that will be used to populate the form field.
      * 
      * @return
      *     possible object is
@@ -259,13 +307,14 @@ public class CommonFormField
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getSelectListColumn()
      */
     public void setSelectListColumn(String value) {
         this.selectListColumn = value;
     }
 
     /**
-     * Gets the value of the isHiddenInStamp property.
+     * Determines whether the field can be showned in stamps.
      * 
      */
     public boolean isIsHiddenInStamp() {

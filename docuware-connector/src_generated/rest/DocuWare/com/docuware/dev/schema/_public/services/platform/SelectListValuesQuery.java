@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Query for select list values
  * 
- * <p>Java class for SelectListValuesQuery complex type.
+ * &lt;p&gt;Java class for SelectListValuesQuery complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="SelectListValuesQuery"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -37,17 +37,33 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class SelectListValuesQuery {
 
+    /**
+     * First result to return if block size is specified.
+     * 
+     */
     @XmlAttribute(name = "Start")
     protected Integer start;
+    /**
+     * Result will be returned on pages with that block size if specified.
+     * 
+     */
     @XmlAttribute(name = "Count")
     protected Integer count;
+    /**
+     * A possible prefix of value of the field to be filled.
+     * 
+     */
     @XmlAttribute(name = "ValuePrefix")
     protected String valuePrefix;
+    /**
+     * Return type of the result. Possible values are "String", "Decimal", "Date" and "DateTime". If ommited, each value is converted to a string using the agent's locale settings.
+     * 
+     */
     @XmlAttribute(name = "ReturnType")
     protected String returnType;
 
     /**
-     * Gets the value of the start property.
+     * First result to return if block size is specified.
      * 
      * @return
      *     possible object is
@@ -69,13 +85,14 @@ public class SelectListValuesQuery {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getStart()
      */
     public void setStart(Integer value) {
         this.start = value;
     }
 
     /**
-     * Gets the value of the count property.
+     * Result will be returned on pages with that block size if specified.
      * 
      * @return
      *     possible object is
@@ -97,13 +114,14 @@ public class SelectListValuesQuery {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getCount()
      */
     public void setCount(Integer value) {
         this.count = value;
     }
 
     /**
-     * Gets the value of the valuePrefix property.
+     * A possible prefix of value of the field to be filled.
      * 
      * @return
      *     possible object is
@@ -121,13 +139,14 @@ public class SelectListValuesQuery {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getValuePrefix()
      */
     public void setValuePrefix(String value) {
         this.valuePrefix = value;
     }
 
     /**
-     * Gets the value of the returnType property.
+     * Return type of the result. Possible values are "String", "Decimal", "Date" and "DateTime". If ommited, each value is converted to a string using the agent's locale settings.
      * 
      * @return
      *     possible object is
@@ -149,6 +168,7 @@ public class SelectListValuesQuery {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getReturnType()
      */
     public void setReturnType(String value) {
         this.returnType = value;

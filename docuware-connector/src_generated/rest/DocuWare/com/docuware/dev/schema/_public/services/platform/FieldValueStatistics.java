@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Value with statistics.
  * 
- * <p>Java class for FieldValueStatistics complex type.
+ * &lt;p&gt;Java class for FieldValueStatistics complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="FieldValueStatistics"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -36,13 +36,21 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class FieldValueStatistics {
 
+    /**
+     * The value.
+     * 
+     */
     @XmlElement(name = "Value", required = true)
     protected DocumentIndexFieldValue value;
+    /**
+     * The number of times the value occurs in the documents.
+     * 
+     */
     @XmlAttribute(name = "Count", required = true)
     protected long count;
 
     /**
-     * Gets the value of the value property.
+     * The value.
      * 
      * @return
      *     possible object is
@@ -60,13 +68,14 @@ public class FieldValueStatistics {
      *     allowed object is
      *     {@link DocumentIndexFieldValue }
      *     
+     * @see #getValue()
      */
     public void setValue(DocumentIndexFieldValue value) {
         this.value = value;
     }
 
     /**
-     * Gets the value of the count property.
+     * The number of times the value occurs in the documents.
      * 
      */
     public long getCount() {

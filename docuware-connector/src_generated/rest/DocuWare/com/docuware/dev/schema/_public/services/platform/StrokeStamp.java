@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Stamp that allows you to add a signature using an electronic pen.
  * 
- * <p>Java class for StrokeStamp complex type.
+ * &lt;p&gt;Java class for StrokeStamp complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="StrokeStamp"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -32,14 +32,22 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "StrokeStamp")
 public class StrokeStamp {
 
+    /**
+     * The line weight of the handwritten signature.
+     * 
+     */
     @XmlAttribute(name = "StrokeWidth", required = true)
     @XmlSchemaType(name = "unsignedInt")
     protected long strokeWidth;
+    /**
+     * Color of the line of the handwritten signature.
+     * 
+     */
     @XmlAttribute(name = "StrokeColor", required = true)
     protected String strokeColor;
 
     /**
-     * Gets the value of the strokeWidth property.
+     * The line weight of the handwritten signature.
      * 
      */
     public long getStrokeWidth() {
@@ -55,7 +63,7 @@ public class StrokeStamp {
     }
 
     /**
-     * Gets the value of the strokeColor property.
+     * Color of the line of the handwritten signature.
      * 
      * @return
      *     possible object is
@@ -73,6 +81,7 @@ public class StrokeStamp {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getStrokeColor()
      */
     public void setStrokeColor(String value) {
         this.strokeColor = value;

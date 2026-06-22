@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Define auditing information property
  * 
- * <p>Java class for DocumentAuditEvent complex type.
+ * &lt;p&gt;Java class for DocumentAuditEvent complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="DocumentAuditEvent"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -26,7 +26,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -37,13 +37,17 @@ import com.docuware.dev.schema._public.services.Links;
 })
 public class DocumentAuditEvent {
 
+    /**
+     * Define allowed operations when there is signature
+     * 
+     */
     @XmlElement(name = "AuditEvent", required = true)
     protected AuditEvent auditEvent;
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services", required = true)
     protected Links links;
 
     /**
-     * Gets the value of the auditEvent property.
+     * Define allowed operations when there is signature
      * 
      * @return
      *     possible object is
@@ -61,6 +65,7 @@ public class DocumentAuditEvent {
      *     allowed object is
      *     {@link AuditEvent }
      *     
+     * @see #getAuditEvent()
      */
     public void setAuditEvent(AuditEvent value) {
         this.auditEvent = value;

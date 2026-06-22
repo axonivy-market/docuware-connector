@@ -1,17 +1,18 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ChecksumStatusType.
+ * Define a result from a checksum
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
+ * &lt;p&gt;Java class for ChecksumStatusType&lt;/p&gt;.
+ * 
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
+ * &lt;pre&gt;{&#064;code
  * &lt;simpleType name="ChecksumStatusType"&gt;
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
  *     &lt;enumeration value="NotChecked"/&gt;
@@ -21,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="FailedToCheck"/&gt;
  *   &lt;/restriction&gt;
  * &lt;/simpleType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  */
 @XmlType(name = "ChecksumStatusType")
@@ -30,45 +31,35 @@ public enum ChecksumStatusType {
 
 
     /**
-     * 
-     *             The checksums is not checked.
-     *           
+     * The checksums is not checked.
      * 
      */
     @XmlEnumValue("NotChecked")
     NOT_CHECKED("NotChecked"),
 
     /**
-     * 
-     *             All checksums are correct.
-     *           
+     * All checksums are correct.
      * 
      */
     @XmlEnumValue("Ok")
     OK("Ok"),
 
     /**
-     * 
-     *             There are no checksums.
-     *           
+     * There are no checksums.
      * 
      */
     @XmlEnumValue("NoChecksum")
     NO_CHECKSUM("NoChecksum"),
 
     /**
-     * 
-     *             As least one of the checksum is wrong.
-     *           
+     * As least one of the checksum is wrong.
      * 
      */
     @XmlEnumValue("WrongChecksum")
     WRONG_CHECKSUM("WrongChecksum"),
 
     /**
-     * 
-     *             A problem has occurred while checking the checksum.
-     *           
+     * A problem has occurred while checking the checksum.
      * 
      */
     @XmlEnumValue("FailedToCheck")
@@ -79,10 +70,26 @@ public enum ChecksumStatusType {
         value = v;
     }
 
+    /**
+     * Gets the value associated to the enum constant.
+     * 
+     * @return
+     *     The value linked to the enum.
+     */
     public String value() {
         return value;
     }
 
+    /**
+     * Gets the enum associated to the value passed as parameter.
+     * 
+     * @param v
+     *     The value to get the enum from.
+     * @return
+     *     The enum which corresponds to the value, if it exists.
+     * @throws IllegalArgumentException
+     *     If no value matches in the enum declaration.
+     */
     public static ChecksumStatusType fromValue(String v) {
         for (ChecksumStatusType c: ChecksumStatusType.values()) {
             if (c.value.equals(v)) {

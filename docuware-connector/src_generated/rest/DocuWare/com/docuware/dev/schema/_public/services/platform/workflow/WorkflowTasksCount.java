@@ -1,22 +1,22 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Total tasks count in a workflow or requests
  * 
- * <p>Java class for WorkflowTasksCount complex type.
+ * &lt;p&gt;Java class for WorkflowTasksCount complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="WorkflowTasksCount"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -25,7 +25,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -33,14 +33,22 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "WorkflowTasksCount")
 public class WorkflowTasksCount {
 
+    /**
+     * Тhe total number of items.
+     * 
+     */
     @XmlAttribute(name = "Count", required = true)
     protected int count;
+    /**
+     * TimeStamp of the result.
+     * 
+     */
     @XmlAttribute(name = "TimeStamp", required = true)
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar timeStamp;
 
     /**
-     * Gets the value of the count property.
+     * Тhe total number of items.
      * 
      */
     public int getCount() {
@@ -56,7 +64,7 @@ public class WorkflowTasksCount {
     }
 
     /**
-     * Gets the value of the timeStamp property.
+     * TimeStamp of the result.
      * 
      * @return
      *     possible object is
@@ -74,6 +82,7 @@ public class WorkflowTasksCount {
      *     allowed object is
      *     {@link XMLGregorianCalendar }
      *     
+     * @see #getTimeStamp()
      */
     public void setTimeStamp(XMLGregorianCalendar value) {
         this.timeStamp = value;

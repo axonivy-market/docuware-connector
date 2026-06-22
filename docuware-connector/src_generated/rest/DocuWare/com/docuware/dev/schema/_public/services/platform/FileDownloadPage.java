@@ -1,18 +1,18 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for FileDownloadPage complex type.
+ * &lt;p&gt;Java class for FileDownloadPage complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="FileDownloadPage"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform}FileDownloadBase"&gt;
@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -31,13 +31,21 @@ public class FileDownloadPage
     extends FileDownloadBase
 {
 
+    /**
+     * This flag applies only to the PDF target format.
+     * 
+     */
     @XmlAttribute(name = "AutoPrint")
     protected Boolean autoPrint;
+    /**
+     * This flag applies only to the PDF target format.
+     * 
+     */
     @XmlAttribute(name = "SendByEmail")
     protected Boolean sendByEmail;
 
     /**
-     * Gets the value of the autoPrint property.
+     * This flag applies only to the PDF target format.
      * 
      * @return
      *     possible object is
@@ -59,13 +67,14 @@ public class FileDownloadPage
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isAutoPrint()
      */
     public void setAutoPrint(Boolean value) {
         this.autoPrint = value;
     }
 
     /**
-     * Gets the value of the sendByEmail property.
+     * This flag applies only to the PDF target format.
      * 
      * @return
      *     possible object is
@@ -87,6 +96,7 @@ public class FileDownloadPage
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isSendByEmail()
      */
     public void setSendByEmail(Boolean value) {
         this.sendByEmail = value;

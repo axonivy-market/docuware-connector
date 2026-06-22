@@ -1,20 +1,20 @@
 
 package com.docuware.dev._public.intellix;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Contains a word with its bounding box.
  * 
- * <p>Java class for Word complex type.
+ * &lt;p&gt;Java class for Word complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="Word"&gt;
  *   &lt;simpleContent&gt;
  *     &lt;extension base="&lt;http://dev.docuware.com/public/intellix&gt;SimpleWord"&gt;
@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/simpleContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -34,6 +34,10 @@ public class Word
 
     @XmlAttribute(name = "bold")
     protected Boolean bold;
+    /**
+     * The font size in twpis. E.g. a font of size 10pt has a value of 200.
+     * 
+     */
     @XmlAttribute(name = "fontSize")
     protected Integer fontSize;
 
@@ -62,7 +66,7 @@ public class Word
     }
 
     /**
-     * Gets the value of the fontSize property.
+     * The font size in twpis. E.g. a font of size 10pt has a value of 200.
      * 
      * @return
      *     possible object is
@@ -80,6 +84,7 @@ public class Word
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getFontSize()
      */
     public void setFontSize(Integer value) {
         this.fontSize = value;

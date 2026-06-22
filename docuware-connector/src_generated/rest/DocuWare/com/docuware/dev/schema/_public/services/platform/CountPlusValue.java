@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.XmlValue;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlValue;
 
 
 /**
  * Define unstrict count. If HasMore is true it is possible to have more items
  * 
- * <p>Java class for CountPlusValue complex type.
+ * &lt;p&gt;Java class for CountPlusValue complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="CountPlusValue"&gt;
  *   &lt;simpleContent&gt;
  *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema&gt;int"&gt;
@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlValue;
  *     &lt;/extension&gt;
  *   &lt;/simpleContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -36,6 +36,10 @@ public class CountPlusValue {
 
     @XmlValue
     protected int value;
+    /**
+     * If this flag is true then the real number of hits can be larger than specified by the value of this element.
+     * 
+     */
     @XmlAttribute(name = "HasMore")
     protected Boolean hasMore;
     @XmlAttribute(name = "ExceedLimit")
@@ -58,7 +62,7 @@ public class CountPlusValue {
     }
 
     /**
-     * Gets the value of the hasMore property.
+     * If this flag is true then the real number of hits can be larger than specified by the value of this element.
      * 
      * @return
      *     possible object is
@@ -80,6 +84,7 @@ public class CountPlusValue {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isHasMore()
      */
     public void setHasMore(Boolean value) {
         this.hasMore = value;

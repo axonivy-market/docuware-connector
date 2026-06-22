@@ -1,22 +1,22 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Main class for managing adhoc rendering file.
  * 
- * <p>Java class for AdhocRenderingFile complex type.
+ * &lt;p&gt;Java class for AdhocRenderingFile complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="AdhocRenderingFile"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -29,7 +29,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -40,12 +40,20 @@ import com.docuware.dev.schema._public.services.Links;
 })
 public class AdhocRenderingFile {
 
+    /**
+     * Gets the pages of this file up to a server defined limit.
+     * 
+     */
     @XmlElement(name = "Pages")
     protected Pages pages;
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services", required = true)
     protected Links links;
     @XmlAttribute(name = "Id", required = true)
     protected String id;
+    /**
+     * Gets the number of pages of this file.
+     * 
+     */
     @XmlAttribute(name = "PageCount", required = true)
     protected int pageCount;
 
@@ -68,6 +76,7 @@ public class AdhocRenderingFile {
      *     allowed object is
      *     {@link Pages }
      *     
+     * @see #getPages()
      */
     public void setPages(Pages value) {
         this.pages = value;
@@ -122,7 +131,7 @@ public class AdhocRenderingFile {
     }
 
     /**
-     * Gets the value of the pageCount property.
+     * Gets the number of pages of this file.
      * 
      */
     public int getPageCount() {

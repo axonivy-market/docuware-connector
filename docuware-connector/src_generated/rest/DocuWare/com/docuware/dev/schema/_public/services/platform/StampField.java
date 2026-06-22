@@ -1,19 +1,19 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for StampField complex type.
+ * &lt;p&gt;Java class for StampField complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="StampField"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -36,17 +36,33 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class StampField {
 
+    /**
+     * Get or sets the form field value casted to the index field type.
+     * 
+     */
     @XmlElement(name = "Value")
     protected DocumentIndexFieldValue value;
+    /**
+     * Name of the index field that will be changed by the stamp.
+     * 
+     */
     @XmlAttribute(name = "Name", required = true)
     protected String name;
+    /**
+     * Length of the index field that will be changed by the stamp.
+     * 
+     */
     @XmlAttribute(name = "Length", required = true)
     protected int length;
+    /**
+     * Determines whether the stamp field has defined fixed entry.
+     * 
+     */
     @XmlAttribute(name = "HasFixedEntry", required = true)
     protected boolean hasFixedEntry;
 
     /**
-     * Gets the value of the value property.
+     * Get or sets the form field value casted to the index field type.
      * 
      * @return
      *     possible object is
@@ -64,13 +80,14 @@ public class StampField {
      *     allowed object is
      *     {@link DocumentIndexFieldValue }
      *     
+     * @see #getValue()
      */
     public void setValue(DocumentIndexFieldValue value) {
         this.value = value;
     }
 
     /**
-     * Gets the value of the name property.
+     * Name of the index field that will be changed by the stamp.
      * 
      * @return
      *     possible object is
@@ -88,13 +105,14 @@ public class StampField {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getName()
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Gets the value of the length property.
+     * Length of the index field that will be changed by the stamp.
      * 
      */
     public int getLength() {
@@ -110,7 +128,7 @@ public class StampField {
     }
 
     /**
-     * Gets the value of the hasFixedEntry property.
+     * Determines whether the stamp field has defined fixed entry.
      * 
      */
     public boolean isHasFixedEntry() {

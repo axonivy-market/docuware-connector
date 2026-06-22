@@ -3,22 +3,22 @@ package com.docuware.dev.schema._public.services;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAnyElement;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAnyElement;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 import org.w3c.dom.Element;
 
 
 /**
- * <p>Java class for UriTemplateDescription complex type.
+ * &lt;p&gt;Java class for UriTemplateDescription complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="UriTemplateDescription"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -43,7 +43,7 @@ import org.w3c.dom.Element;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -59,12 +59,28 @@ public class UriTemplateDescription {
     protected List<UriTemplateParameter> parameter;
     @XmlElement(name = "Invoke", required = true)
     protected List<UriInvocation> invoke;
+    /**
+     * Describes the Uri.
+     * 
+     */
     @XmlElement(name = "HtmlDescription")
     protected UriTemplateDescription.HtmlDescription htmlDescription;
+    /**
+     * The name of this template.
+     * 
+     */
     @XmlAttribute(name = "Name")
     protected String name;
+    /**
+     * The URI template.
+     * 
+     */
     @XmlAttribute(name = "UriPattern")
     protected String uriPattern;
+    /**
+     * Gets a link for further readings.
+     * 
+     */
     @XmlAttribute(name = "FurtherReading")
     @XmlSchemaType(name = "anyURI")
     protected String furtherReading;
@@ -72,28 +88,31 @@ public class UriTemplateDescription {
     /**
      * Gets the value of the parameter property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the parameter property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the parameter property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getParameter().add(newItem);
+     * getParameter().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link UriTemplateParameter }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the parameter property.
      */
     public List<UriTemplateParameter> getParameter() {
         if (parameter == null) {
-            parameter = new ArrayList<UriTemplateParameter>();
+            parameter = new ArrayList<>();
         }
         return this.parameter;
     }
@@ -101,34 +120,37 @@ public class UriTemplateDescription {
     /**
      * Gets the value of the invoke property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the invoke property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the invoke property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getInvoke().add(newItem);
+     * getInvoke().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link UriInvocation }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the invoke property.
      */
     public List<UriInvocation> getInvoke() {
         if (invoke == null) {
-            invoke = new ArrayList<UriInvocation>();
+            invoke = new ArrayList<>();
         }
         return this.invoke;
     }
 
     /**
-     * Gets the value of the htmlDescription property.
+     * Describes the Uri.
      * 
      * @return
      *     possible object is
@@ -146,13 +168,14 @@ public class UriTemplateDescription {
      *     allowed object is
      *     {@link UriTemplateDescription.HtmlDescription }
      *     
+     * @see #getHtmlDescription()
      */
     public void setHtmlDescription(UriTemplateDescription.HtmlDescription value) {
         this.htmlDescription = value;
     }
 
     /**
-     * Gets the value of the name property.
+     * The name of this template.
      * 
      * @return
      *     possible object is
@@ -170,13 +193,14 @@ public class UriTemplateDescription {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getName()
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Gets the value of the uriPattern property.
+     * The URI template.
      * 
      * @return
      *     possible object is
@@ -194,13 +218,14 @@ public class UriTemplateDescription {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getUriPattern()
      */
     public void setUriPattern(String value) {
         this.uriPattern = value;
     }
 
     /**
-     * Gets the value of the furtherReading property.
+     * Gets a link for further readings.
      * 
      * @return
      *     possible object is
@@ -218,6 +243,7 @@ public class UriTemplateDescription {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getFurtherReading()
      */
     public void setFurtherReading(String value) {
         this.furtherReading = value;
@@ -225,11 +251,11 @@ public class UriTemplateDescription {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * &lt;p&gt;Java class for anonymous complex type&lt;/p&gt;.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
      * 
-     * <pre>
+     * &lt;pre&gt;{&#064;code
      * &lt;complexType&gt;
      *   &lt;complexContent&gt;
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -239,7 +265,7 @@ public class UriTemplateDescription {
      *     &lt;/restriction&gt;
      *   &lt;/complexContent&gt;
      * &lt;/complexType&gt;
-     * </pre>
+     * }&lt;/pre&gt;
      * 
      * 
      */

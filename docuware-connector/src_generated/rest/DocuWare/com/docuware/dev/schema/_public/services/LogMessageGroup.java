@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for LogMessageGroup complex type.
+ * &lt;p&gt;Java class for LogMessageGroup complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="LogMessageGroup"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -28,7 +28,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -38,6 +38,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 public class LogMessageGroup {
 
+    /**
+     * Something which identifies a group of log messages.
+     * 
+     */
     @XmlElement(name = "Group", required = true)
     protected String group;
     @XmlAttribute(name = "Level")
@@ -49,7 +53,7 @@ public class LogMessageGroup {
     protected XMLGregorianCalendar timeStamp;
 
     /**
-     * Gets the value of the group property.
+     * Something which identifies a group of log messages.
      * 
      * @return
      *     possible object is
@@ -67,6 +71,7 @@ public class LogMessageGroup {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getGroup()
      */
     public void setGroup(String value) {
         this.group = value;

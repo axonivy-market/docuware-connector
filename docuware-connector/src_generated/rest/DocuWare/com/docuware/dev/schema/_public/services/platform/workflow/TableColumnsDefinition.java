@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * A common column options for a table field.
  * 
- * <p>Java class for TableColumnsDefinition complex type.
+ * &lt;p&gt;Java class for TableColumnsDefinition complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="TableColumnsDefinition"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -39,19 +39,39 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class TableColumnsDefinition {
 
+    /**
+     * Additional options specific for column type.
+     * 
+     */
     @XmlElement(name = "ColumnOptions", required = true)
     protected TableColumnOptions columnOptions;
+    /**
+     * Label of the column.
+     * 
+     */
     @XmlAttribute(name = "Label", required = true)
     protected String label;
+    /**
+     * Identifier of the column.
+     * 
+     */
     @XmlAttribute(name = "Id", required = true)
     protected String id;
+    /**
+     * Type of the column.
+     * 
+     */
     @XmlAttribute(name = "ColumnValueType", required = true)
     protected TableColumnValueTypeEnum columnValueType;
+    /**
+     * Determines whether the column can be empty.
+     * 
+     */
     @XmlAttribute(name = "Mandatory", required = true)
     protected boolean mandatory;
 
     /**
-     * Gets the value of the columnOptions property.
+     * Additional options specific for column type.
      * 
      * @return
      *     possible object is
@@ -69,13 +89,14 @@ public class TableColumnsDefinition {
      *     allowed object is
      *     {@link TableColumnOptions }
      *     
+     * @see #getColumnOptions()
      */
     public void setColumnOptions(TableColumnOptions value) {
         this.columnOptions = value;
     }
 
     /**
-     * Gets the value of the label property.
+     * Label of the column.
      * 
      * @return
      *     possible object is
@@ -93,13 +114,14 @@ public class TableColumnsDefinition {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getLabel()
      */
     public void setLabel(String value) {
         this.label = value;
     }
 
     /**
-     * Gets the value of the id property.
+     * Identifier of the column.
      * 
      * @return
      *     possible object is
@@ -117,13 +139,14 @@ public class TableColumnsDefinition {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getId()
      */
     public void setId(String value) {
         this.id = value;
     }
 
     /**
-     * Gets the value of the columnValueType property.
+     * Type of the column.
      * 
      * @return
      *     possible object is
@@ -141,13 +164,14 @@ public class TableColumnsDefinition {
      *     allowed object is
      *     {@link TableColumnValueTypeEnum }
      *     
+     * @see #getColumnValueType()
      */
     public void setColumnValueType(TableColumnValueTypeEnum value) {
         this.columnValueType = value;
     }
 
     /**
-     * Gets the value of the mandatory property.
+     * Determines whether the column can be empty.
      * 
      */
     public boolean isMandatory() {

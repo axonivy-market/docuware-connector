@@ -3,22 +3,22 @@ package com.docuware.dev._public.intellix;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElements;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElements;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * A line is a sequence of words.
  * 
- * <p>Java class for Line complex type.
+ * &lt;p&gt;Java class for Line complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="Line"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/public/intellix}RectangleBase"&gt;
@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -54,22 +54,26 @@ public class Line
     protected Integer baseLine;
     @XmlAttribute(name = "bold")
     protected Boolean bold;
+    /**
+     * The font size in twpis. E.g. a font of size 10pt has a value of 200.
+     * 
+     */
     @XmlAttribute(name = "fontSize")
     protected Integer fontSize;
 
     /**
      * Gets the value of the spOrWd property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the spOrWd property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the spOrWd property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getSpOrWd().add(newItem);
+     * getSpOrWd().add(newItem);
      * </pre>
      * 
      * 
@@ -77,12 +81,15 @@ public class Line
      * Objects of the following type(s) are allowed in the list
      * {@link Space }
      * {@link Word }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the spOrWd property.
      */
     public List<Object> getSpOrWd() {
         if (spOrWd == null) {
-            spOrWd = new ArrayList<Object>();
+            spOrWd = new ArrayList<>();
         }
         return this.spOrWd;
     }
@@ -136,7 +143,7 @@ public class Line
     }
 
     /**
-     * Gets the value of the fontSize property.
+     * The font size in twpis. E.g. a font of size 10pt has a value of 200.
      * 
      * @return
      *     possible object is
@@ -154,6 +161,7 @@ public class Line
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getFontSize()
      */
     public void setFontSize(Integer value) {
         this.fontSize = value;

@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Defines a sort by a field.
  * 
- * <p>Java class for SortedField complex type.
+ * &lt;p&gt;Java class for SortedField complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="SortedField"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -31,13 +31,21 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "SortedField")
 public class SortedField {
 
+    /**
+     * Field name
+     * 
+     */
     @XmlAttribute(name = "Field", required = true)
     protected String field;
+    /**
+     * A sort direction
+     * 
+     */
     @XmlAttribute(name = "Direction")
     protected SortDirection direction;
 
     /**
-     * Gets the value of the field property.
+     * Field name
      * 
      * @return
      *     possible object is
@@ -55,13 +63,14 @@ public class SortedField {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getField()
      */
     public void setField(String value) {
         this.field = value;
     }
 
     /**
-     * Gets the value of the direction property.
+     * A sort direction
      * 
      * @return
      *     possible object is
@@ -83,6 +92,7 @@ public class SortedField {
      *     allowed object is
      *     {@link SortDirection }
      *     
+     * @see #getDirection()
      */
     public void setDirection(SortDirection value) {
         this.direction = value;

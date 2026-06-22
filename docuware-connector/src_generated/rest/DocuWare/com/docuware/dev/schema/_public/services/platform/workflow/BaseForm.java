@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * A base form.
  * 
- * <p>Java class for BaseForm complex type.
+ * &lt;p&gt;Java class for BaseForm complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="BaseForm"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -39,15 +39,27 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class BaseForm {
 
+    /**
+     * Type of the form field.
+     * 
+     */
     @XmlAttribute(name = "FormFieldType", required = true)
     protected FormTypeEnum formFieldType;
+    /**
+     * Label of the form field.
+     * 
+     */
     @XmlAttribute(name = "Label", required = true)
     protected String label;
+    /**
+     * Identifier of the form field.
+     * 
+     */
     @XmlAttribute(name = "Id", required = true)
     protected int id;
 
     /**
-     * Gets the value of the formFieldType property.
+     * Type of the form field.
      * 
      * @return
      *     possible object is
@@ -65,13 +77,14 @@ public class BaseForm {
      *     allowed object is
      *     {@link FormTypeEnum }
      *     
+     * @see #getFormFieldType()
      */
     public void setFormFieldType(FormTypeEnum value) {
         this.formFieldType = value;
     }
 
     /**
-     * Gets the value of the label property.
+     * Label of the form field.
      * 
      * @return
      *     possible object is
@@ -89,13 +102,14 @@ public class BaseForm {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getLabel()
      */
     public void setLabel(String value) {
         this.label = value;
     }
 
     /**
-     * Gets the value of the id property.
+     * Identifier of the form field.
      * 
      */
     public int getId() {

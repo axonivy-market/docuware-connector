@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * An assigned item.
  * 
- * <p>Java class for AssignedItem complex type.
+ * &lt;p&gt;Java class for AssignedItem complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="AssignedItem"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -31,13 +31,21 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "AssignedItem")
 public class AssignedItem {
 
+    /**
+     * User/role/substitution rule identifier.
+     * 
+     */
     @XmlAttribute(name = "Id", required = true)
     protected String id;
+    /**
+     * Type of id.
+     * 
+     */
     @XmlAttribute(name = "ItemType", required = true)
     protected AssignedItemTypeEnum itemType;
 
     /**
-     * Gets the value of the id property.
+     * User/role/substitution rule identifier.
      * 
      * @return
      *     possible object is
@@ -55,13 +63,14 @@ public class AssignedItem {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getId()
      */
     public void setId(String value) {
         this.id = value;
     }
 
     /**
-     * Gets the value of the itemType property.
+     * Type of id.
      * 
      * @return
      *     possible object is
@@ -79,6 +88,7 @@ public class AssignedItem {
      *     allowed object is
      *     {@link AssignedItemTypeEnum }
      *     
+     * @see #getItemType()
      */
     public void setItemType(AssignedItemTypeEnum value) {
         this.itemType = value;

@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * User details.
  * 
- * <p>Java class for NewUser complex type.
+ * &lt;p&gt;Java class for NewUser complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="NewUser"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -34,19 +34,39 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "NewUser")
 public class NewUser {
 
+    /**
+     * The Name of the user.
+     * 
+     */
     @XmlAttribute(name = "Name", required = true)
     protected String name;
+    /**
+     * The Database Name of the user.
+     * 
+     */
     @XmlAttribute(name = "DbName", required = true)
     protected String dbName;
+    /**
+     * The Email of the user.
+     * 
+     */
     @XmlAttribute(name = "Email")
     protected String email;
+    /**
+     * The NetworkId of the user.
+     * 
+     */
     @XmlAttribute(name = "NetworkId")
     protected String networkId;
+    /**
+     * The Password of the user.
+     * 
+     */
     @XmlAttribute(name = "Password", required = true)
     protected String password;
 
     /**
-     * Gets the value of the name property.
+     * The Name of the user.
      * 
      * @return
      *     possible object is
@@ -64,13 +84,14 @@ public class NewUser {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getName()
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Gets the value of the dbName property.
+     * The Database Name of the user.
      * 
      * @return
      *     possible object is
@@ -88,13 +109,14 @@ public class NewUser {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getDbName()
      */
     public void setDbName(String value) {
         this.dbName = value;
     }
 
     /**
-     * Gets the value of the email property.
+     * The Email of the user.
      * 
      * @return
      *     possible object is
@@ -112,13 +134,14 @@ public class NewUser {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getEmail()
      */
     public void setEmail(String value) {
         this.email = value;
     }
 
     /**
-     * Gets the value of the networkId property.
+     * The NetworkId of the user.
      * 
      * @return
      *     possible object is
@@ -136,13 +159,14 @@ public class NewUser {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getNetworkId()
      */
     public void setNetworkId(String value) {
         this.networkId = value;
     }
 
     /**
-     * Gets the value of the password property.
+     * The Password of the user.
      * 
      * @return
      *     possible object is
@@ -160,6 +184,7 @@ public class NewUser {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getPassword()
      */
     public void setPassword(String value) {
         this.password = value;

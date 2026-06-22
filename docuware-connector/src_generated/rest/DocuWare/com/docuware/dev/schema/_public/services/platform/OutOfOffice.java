@@ -1,22 +1,22 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Defines when a user is out of office
  * 
- * <p>Java class for OutOfOffice complex type.
+ * &lt;p&gt;Java class for OutOfOffice complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="OutOfOffice"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -26,7 +26,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -34,17 +34,29 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "OutOfOffice")
 public class OutOfOffice {
 
+    /**
+     * Flag which marks either user is in the office or not.
+     * 
+     */
     @XmlAttribute(name = "IsOutOfOffice", required = true)
     protected boolean isOutOfOffice;
+    /**
+     * Start datetime after which user will not be in the office.
+     * 
+     */
     @XmlAttribute(name = "StartDateTime")
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar startDateTime;
+    /**
+     * Ending datetime after which user will be in the office.If not set user will be out of office for unlimited amount of time.
+     * 
+     */
     @XmlAttribute(name = "EndDateTime")
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar endDateTime;
 
     /**
-     * Gets the value of the isOutOfOffice property.
+     * Flag which marks either user is in the office or not.
      * 
      */
     public boolean isIsOutOfOffice() {
@@ -60,7 +72,7 @@ public class OutOfOffice {
     }
 
     /**
-     * Gets the value of the startDateTime property.
+     * Start datetime after which user will not be in the office.
      * 
      * @return
      *     possible object is
@@ -78,13 +90,14 @@ public class OutOfOffice {
      *     allowed object is
      *     {@link XMLGregorianCalendar }
      *     
+     * @see #getStartDateTime()
      */
     public void setStartDateTime(XMLGregorianCalendar value) {
         this.startDateTime = value;
     }
 
     /**
-     * Gets the value of the endDateTime property.
+     * Ending datetime after which user will be in the office.If not set user will be out of office for unlimited amount of time.
      * 
      * @return
      *     possible object is
@@ -102,6 +115,7 @@ public class OutOfOffice {
      *     allowed object is
      *     {@link XMLGregorianCalendar }
      *     
+     * @see #getEndDateTime()
      */
     public void setEndDateTime(XMLGregorianCalendar value) {
         this.endDateTime = value;

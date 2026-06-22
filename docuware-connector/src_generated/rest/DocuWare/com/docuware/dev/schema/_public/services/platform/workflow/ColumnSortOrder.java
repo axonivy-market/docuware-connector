@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.platform.SortDirection;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * A sort by a specific column.
  * 
- * <p>Java class for ColumnSortOrder complex type.
+ * &lt;p&gt;Java class for ColumnSortOrder complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="ColumnSortOrder"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -24,7 +24,7 @@ import com.docuware.dev.schema._public.services.platform.SortDirection;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -32,13 +32,21 @@ import com.docuware.dev.schema._public.services.platform.SortDirection;
 @XmlType(name = "ColumnSortOrder")
 public class ColumnSortOrder {
 
+    /**
+     * Column identifier.
+     * 
+     */
     @XmlAttribute(name = "ColumnId", required = true)
     protected String columnId;
+    /**
+     * A sort direction.
+     * 
+     */
     @XmlAttribute(name = "Direction", required = true)
     protected SortDirection direction;
 
     /**
-     * Gets the value of the columnId property.
+     * Column identifier.
      * 
      * @return
      *     possible object is
@@ -56,13 +64,14 @@ public class ColumnSortOrder {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getColumnId()
      */
     public void setColumnId(String value) {
         this.columnId = value;
     }
 
     /**
-     * Gets the value of the direction property.
+     * A sort direction.
      * 
      * @return
      *     possible object is
@@ -80,6 +89,7 @@ public class ColumnSortOrder {
      *     allowed object is
      *     {@link SortDirection }
      *     
+     * @see #getDirection()
      */
     public void setDirection(SortDirection value) {
         this.direction = value;

@@ -3,24 +3,24 @@ package com.docuware.dev.schema._public.services.platform;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Define a result from document query
  * 
- * <p>Java class for DocumentsQueryResult complex type.
+ * &lt;p&gt;Java class for DocumentsQueryResult complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="DocumentsQueryResult"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -44,7 +44,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -56,20 +56,36 @@ import com.docuware.dev.schema._public.services.Links;
 })
 public class DocumentsQueryResult {
 
+    /**
+     * Gets the number of items of the query leading to this result.
+     * 
+     */
     @XmlElement(name = "Count")
     protected CountPlusValue count;
+    /**
+     * Collection of documents from result
+     * 
+     */
     @XmlElement(name = "Items", required = true)
     protected DocumentsQueryResult.Items items;
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services", required = true)
     protected Links links;
+    /**
+     * Could be the name of the dialog creating this collection.
+     * 
+     */
     @XmlAttribute(name = "Title")
     protected String title;
+    /**
+     * TimeStamp of the result.
+     * 
+     */
     @XmlAttribute(name = "TimeStamp", required = true)
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar timeStamp;
 
     /**
-     * Gets the value of the count property.
+     * Gets the number of items of the query leading to this result.
      * 
      * @return
      *     possible object is
@@ -87,13 +103,14 @@ public class DocumentsQueryResult {
      *     allowed object is
      *     {@link CountPlusValue }
      *     
+     * @see #getCount()
      */
     public void setCount(CountPlusValue value) {
         this.count = value;
     }
 
     /**
-     * Gets the value of the items property.
+     * Collection of documents from result
      * 
      * @return
      *     possible object is
@@ -111,6 +128,7 @@ public class DocumentsQueryResult {
      *     allowed object is
      *     {@link DocumentsQueryResult.Items }
      *     
+     * @see #getItems()
      */
     public void setItems(DocumentsQueryResult.Items value) {
         this.items = value;
@@ -141,7 +159,7 @@ public class DocumentsQueryResult {
     }
 
     /**
-     * Gets the value of the title property.
+     * Could be the name of the dialog creating this collection.
      * 
      * @return
      *     possible object is
@@ -159,13 +177,14 @@ public class DocumentsQueryResult {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getTitle()
      */
     public void setTitle(String value) {
         this.title = value;
     }
 
     /**
-     * Gets the value of the timeStamp property.
+     * TimeStamp of the result.
      * 
      * @return
      *     possible object is
@@ -183,6 +202,7 @@ public class DocumentsQueryResult {
      *     allowed object is
      *     {@link XMLGregorianCalendar }
      *     
+     * @see #getTimeStamp()
      */
     public void setTimeStamp(XMLGregorianCalendar value) {
         this.timeStamp = value;
@@ -190,11 +210,11 @@ public class DocumentsQueryResult {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * &lt;p&gt;Java class for anonymous complex type&lt;/p&gt;.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
      * 
-     * <pre>
+     * &lt;pre&gt;{&#064;code
      * &lt;complexType&gt;
      *   &lt;complexContent&gt;
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -204,7 +224,7 @@ public class DocumentsQueryResult {
      *     &lt;/restriction&gt;
      *   &lt;/complexContent&gt;
      * &lt;/complexType&gt;
-     * </pre>
+     * }&lt;/pre&gt;
      * 
      * 
      */
@@ -214,34 +234,43 @@ public class DocumentsQueryResult {
     })
     public static class Items {
 
+        /**
+         * Define a specific document from result
+         * 
+         */
         @XmlElement(name = "Item")
         protected List<Document> item;
 
         /**
+         * Define a specific document from result
+         * 
          * Gets the value of the item property.
          * 
-         * <p>
-         * This accessor method returns a reference to the live list,
+         * <p>This accessor method returns a reference to the live list,
          * not a snapshot. Therefore any modification you make to the
-         * returned list will be present inside the JAXB object.
-         * This is why there is not a <CODE>set</CODE> method for the item property.
+         * returned list will be present inside the Jakarta XML Binding object.
+         * This is why there is not a {@code set} method for the item property.</p>
          * 
          * <p>
          * For example, to add a new item, do as follows:
+         * </p>
          * <pre>
-         *    getItem().add(newItem);
+         * getItem().add(newItem);
          * </pre>
          * 
          * 
          * <p>
          * Objects of the following type(s) are allowed in the list
          * {@link Document }
+         * </p>
          * 
          * 
+         * @return
+         *     The value of the item property.
          */
         public List<Document> getItem() {
             if (item == null) {
-                item = new ArrayList<Document>();
+                item = new ArrayList<>();
             }
             return this.item;
         }

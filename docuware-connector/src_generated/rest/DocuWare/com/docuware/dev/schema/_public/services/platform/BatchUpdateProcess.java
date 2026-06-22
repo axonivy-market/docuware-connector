@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * A class which contains data for batch update processes.
  * 
- * <p>Java class for BatchUpdateProcess complex type.
+ * &lt;p&gt;Java class for BatchUpdateProcess complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="BatchUpdateProcess"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -36,13 +36,21 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class BatchUpdateProcess {
 
+    /**
+     * The source of the items to be updated.
+     * 
+     */
     @XmlElement(name = "Source", required = true)
     protected BatchUpdateSource source;
+    /**
+     * The data which is used to specify the updated data and update process control.
+     * 
+     */
     @XmlElement(name = "Data", required = true)
     protected BatchUpdateProcessData data;
 
     /**
-     * Gets the value of the source property.
+     * The source of the items to be updated.
      * 
      * @return
      *     possible object is
@@ -60,13 +68,14 @@ public class BatchUpdateProcess {
      *     allowed object is
      *     {@link BatchUpdateSource }
      *     
+     * @see #getSource()
      */
     public void setSource(BatchUpdateSource value) {
         this.source = value;
     }
 
     /**
-     * Gets the value of the data property.
+     * The data which is used to specify the updated data and update process control.
      * 
      * @return
      *     possible object is
@@ -84,6 +93,7 @@ public class BatchUpdateProcess {
      *     allowed object is
      *     {@link BatchUpdateProcessData }
      *     
+     * @see #getData()
      */
     public void setData(BatchUpdateProcessData value) {
         this.data = value;

@@ -3,24 +3,24 @@ package com.docuware.dev.schema._public.services.platform.workflow;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * A request task for a common user.
  * 
- * <p>Java class for RequestTask complex type.
+ * &lt;p&gt;Java class for RequestTask complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="RequestTask"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -41,7 +41,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -54,27 +54,71 @@ public class RequestTask {
 
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services", required = true)
     protected Links links;
+    /**
+     * List of request decisions.
+     * 
+     */
     @XmlElement(name = "Decisions")
     protected List<RequestDecision> decisions;
+    /**
+     * Task identifier.
+     * 
+     */
     @XmlAttribute(name = "Id", required = true)
     protected String id;
+    /**
+     * Request identifier.
+     * 
+     */
     @XmlAttribute(name = "WorkflowId", required = true)
     protected String workflowId;
+    /**
+     * Document id.
+     * 
+     */
     @XmlAttribute(name = "DocId", required = true)
     protected int docId;
+    /**
+     * File cabinet id of the document.
+     * 
+     */
     @XmlAttribute(name = "FcGuid", required = true)
     protected String fcGuid;
+    /**
+     * Creation date of the request.
+     * 
+     */
     @XmlAttribute(name = "CreateDate", required = true)
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar createDate;
+    /**
+     * Name of the initiator of the request.
+     * 
+     */
     @XmlAttribute(name = "Owner", required = true)
     protected String owner;
+    /**
+     * Name of the request.
+     * 
+     */
     @XmlAttribute(name = "WorkflowName", required = true)
     protected String workflowName;
+    /**
+     * Name of the document.
+     * 
+     */
     @XmlAttribute(name = "DocumentName", required = true)
     protected String documentName;
+    /**
+     * Indicates whether the task is read.
+     * 
+     */
     @XmlAttribute(name = "IsRead", required = true)
     protected boolean isRead;
+    /**
+     * Description of the request.
+     * 
+     */
     @XmlAttribute(name = "Description", required = true)
     protected String description;
 
@@ -103,36 +147,41 @@ public class RequestTask {
     }
 
     /**
+     * List of request decisions.
+     * 
      * Gets the value of the decisions property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the decisions property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the decisions property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getDecisions().add(newItem);
+     * getDecisions().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link RequestDecision }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the decisions property.
      */
     public List<RequestDecision> getDecisions() {
         if (decisions == null) {
-            decisions = new ArrayList<RequestDecision>();
+            decisions = new ArrayList<>();
         }
         return this.decisions;
     }
 
     /**
-     * Gets the value of the id property.
+     * Task identifier.
      * 
      * @return
      *     possible object is
@@ -150,13 +199,14 @@ public class RequestTask {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getId()
      */
     public void setId(String value) {
         this.id = value;
     }
 
     /**
-     * Gets the value of the workflowId property.
+     * Request identifier.
      * 
      * @return
      *     possible object is
@@ -174,13 +224,14 @@ public class RequestTask {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getWorkflowId()
      */
     public void setWorkflowId(String value) {
         this.workflowId = value;
     }
 
     /**
-     * Gets the value of the docId property.
+     * Document id.
      * 
      */
     public int getDocId() {
@@ -196,7 +247,7 @@ public class RequestTask {
     }
 
     /**
-     * Gets the value of the fcGuid property.
+     * File cabinet id of the document.
      * 
      * @return
      *     possible object is
@@ -214,13 +265,14 @@ public class RequestTask {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getFcGuid()
      */
     public void setFcGuid(String value) {
         this.fcGuid = value;
     }
 
     /**
-     * Gets the value of the createDate property.
+     * Creation date of the request.
      * 
      * @return
      *     possible object is
@@ -238,13 +290,14 @@ public class RequestTask {
      *     allowed object is
      *     {@link XMLGregorianCalendar }
      *     
+     * @see #getCreateDate()
      */
     public void setCreateDate(XMLGregorianCalendar value) {
         this.createDate = value;
     }
 
     /**
-     * Gets the value of the owner property.
+     * Name of the initiator of the request.
      * 
      * @return
      *     possible object is
@@ -262,13 +315,14 @@ public class RequestTask {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getOwner()
      */
     public void setOwner(String value) {
         this.owner = value;
     }
 
     /**
-     * Gets the value of the workflowName property.
+     * Name of the request.
      * 
      * @return
      *     possible object is
@@ -286,13 +340,14 @@ public class RequestTask {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getWorkflowName()
      */
     public void setWorkflowName(String value) {
         this.workflowName = value;
     }
 
     /**
-     * Gets the value of the documentName property.
+     * Name of the document.
      * 
      * @return
      *     possible object is
@@ -310,13 +365,14 @@ public class RequestTask {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getDocumentName()
      */
     public void setDocumentName(String value) {
         this.documentName = value;
     }
 
     /**
-     * Gets the value of the isRead property.
+     * Indicates whether the task is read.
      * 
      */
     public boolean isIsRead() {
@@ -332,7 +388,7 @@ public class RequestTask {
     }
 
     /**
-     * Gets the value of the description property.
+     * Description of the request.
      * 
      * @return
      *     possible object is
@@ -350,6 +406,7 @@ public class RequestTask {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getDescription()
      */
     public void setDescription(String value) {
         this.description = value;

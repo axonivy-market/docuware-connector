@@ -1,22 +1,22 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.platform.Font;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Stamp settings for a task.
  * 
- * <p>Java class for WorkflowStampsSettings complex type.
+ * &lt;p&gt;Java class for WorkflowStampsSettings complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="WorkflowStampsSettings"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -34,7 +34,7 @@ import com.docuware.dev.schema._public.services.platform.Font;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -45,27 +45,63 @@ import com.docuware.dev.schema._public.services.platform.Font;
 })
 public class WorkflowStampsSettings {
 
+    /**
+     * Specify the font of the header of the stamp.
+     * 
+     */
     @XmlElement(name = "InfoFontFamily", required = true)
     protected Font infoFontFamily;
+    /**
+     * Specify the font of the text.
+     * 
+     */
     @XmlElement(name = "StampFont", required = true)
     protected Font stampFont;
+    /**
+     * Indicates whether the stamp has visible frame.
+     * 
+     */
     @XmlAttribute(name = "UseFrame", required = true)
     protected boolean useFrame;
+    /**
+     * Indicates whether the stamp shows date when stamp is placed.
+     * 
+     */
     @XmlAttribute(name = "UseDate", required = true)
     protected boolean useDate;
+    /**
+     * Indicates whether the stamp shows the time when stamp is placed.
+     * 
+     */
     @XmlAttribute(name = "UseTime", required = true)
     protected boolean useTime;
+    /**
+     * Indicates whether the signature will be used for the stamp.
+     * 
+     */
     @XmlAttribute(name = "IsSignature", required = true)
     protected boolean isSignature;
+    /**
+     * Indicates whether stamp shows the user who placed the stamp.
+     * 
+     */
     @XmlAttribute(name = "UseUserName", required = true)
     protected boolean useUserName;
+    /**
+     * Indicates whether the stamp contains the decision name.
+     * 
+     */
     @XmlAttribute(name = "UseDecisionName", required = true)
     protected boolean useDecisionName;
+    /**
+     * Indicates whether the stamp contains the activity name.
+     * 
+     */
     @XmlAttribute(name = "UseActivityName", required = true)
     protected boolean useActivityName;
 
     /**
-     * Gets the value of the infoFontFamily property.
+     * Specify the font of the header of the stamp.
      * 
      * @return
      *     possible object is
@@ -83,13 +119,14 @@ public class WorkflowStampsSettings {
      *     allowed object is
      *     {@link Font }
      *     
+     * @see #getInfoFontFamily()
      */
     public void setInfoFontFamily(Font value) {
         this.infoFontFamily = value;
     }
 
     /**
-     * Gets the value of the stampFont property.
+     * Specify the font of the text.
      * 
      * @return
      *     possible object is
@@ -107,13 +144,14 @@ public class WorkflowStampsSettings {
      *     allowed object is
      *     {@link Font }
      *     
+     * @see #getStampFont()
      */
     public void setStampFont(Font value) {
         this.stampFont = value;
     }
 
     /**
-     * Gets the value of the useFrame property.
+     * Indicates whether the stamp has visible frame.
      * 
      */
     public boolean isUseFrame() {
@@ -129,7 +167,7 @@ public class WorkflowStampsSettings {
     }
 
     /**
-     * Gets the value of the useDate property.
+     * Indicates whether the stamp shows date when stamp is placed.
      * 
      */
     public boolean isUseDate() {
@@ -145,7 +183,7 @@ public class WorkflowStampsSettings {
     }
 
     /**
-     * Gets the value of the useTime property.
+     * Indicates whether the stamp shows the time when stamp is placed.
      * 
      */
     public boolean isUseTime() {
@@ -161,7 +199,7 @@ public class WorkflowStampsSettings {
     }
 
     /**
-     * Gets the value of the isSignature property.
+     * Indicates whether the signature will be used for the stamp.
      * 
      */
     public boolean isIsSignature() {
@@ -177,7 +215,7 @@ public class WorkflowStampsSettings {
     }
 
     /**
-     * Gets the value of the useUserName property.
+     * Indicates whether stamp shows the user who placed the stamp.
      * 
      */
     public boolean isUseUserName() {
@@ -193,7 +231,7 @@ public class WorkflowStampsSettings {
     }
 
     /**
-     * Gets the value of the useDecisionName property.
+     * Indicates whether the stamp contains the decision name.
      * 
      */
     public boolean isUseDecisionName() {
@@ -209,7 +247,7 @@ public class WorkflowStampsSettings {
     }
 
     /**
-     * Gets the value of the useActivityName property.
+     * Indicates whether the stamp contains the activity name.
      * 
      */
     public boolean isUseActivityName() {

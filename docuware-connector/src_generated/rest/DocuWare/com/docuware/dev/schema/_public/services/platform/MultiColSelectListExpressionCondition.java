@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Condition for specific multi column select list column
  * 
- * <p>Java class for MultiColSelectListExpressionCondition complex type.
+ * &lt;p&gt;Java class for MultiColSelectListExpressionCondition complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="MultiColSelectListExpressionCondition"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -37,15 +37,27 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class MultiColSelectListExpressionCondition {
 
+    /**
+     * The search value of the field.
+     * 
+     */
     @XmlElement(name = "Value", required = true, nillable = true)
     protected String value;
+    /**
+     * The name of the column
+     * 
+     */
     @XmlAttribute(name = "ColumnName")
     protected String columnName;
+    /**
+     * The type of the column
+     * 
+     */
     @XmlAttribute(name = "Type")
     protected String type;
 
     /**
-     * Gets the value of the value property.
+     * The search value of the field.
      * 
      * @return
      *     possible object is
@@ -63,13 +75,14 @@ public class MultiColSelectListExpressionCondition {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getValue()
      */
     public void setValue(String value) {
         this.value = value;
     }
 
     /**
-     * Gets the value of the columnName property.
+     * The name of the column
      * 
      * @return
      *     possible object is
@@ -87,13 +100,14 @@ public class MultiColSelectListExpressionCondition {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getColumnName()
      */
     public void setColumnName(String value) {
         this.columnName = value;
     }
 
     /**
-     * Gets the value of the type property.
+     * The type of the column
      * 
      * @return
      *     possible object is
@@ -111,6 +125,7 @@ public class MultiColSelectListExpressionCondition {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getType()
      */
     public void setType(String value) {
         this.type = value;

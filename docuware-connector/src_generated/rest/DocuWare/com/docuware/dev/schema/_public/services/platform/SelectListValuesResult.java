@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Specific properties for each dialog type
  * 
- * <p>Java class for SelectListValuesResult complex type.
+ * &lt;p&gt;Java class for SelectListValuesResult complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="SelectListValuesResult"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -34,11 +34,15 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class SelectListValuesResult {
 
+    /**
+     * Get or sets the form field value casted to the index field type.
+     * 
+     */
     @XmlElement(name = "SingleColumn")
     protected SingleColumnSelectListValues singleColumn;
 
     /**
-     * Gets the value of the singleColumn property.
+     * Get or sets the form field value casted to the index field type.
      * 
      * @return
      *     possible object is
@@ -56,6 +60,7 @@ public class SelectListValuesResult {
      *     allowed object is
      *     {@link SingleColumnSelectListValues }
      *     
+     * @see #getSingleColumn()
      */
     public void setSingleColumn(SingleColumnSelectListValues value) {
         this.singleColumn = value;

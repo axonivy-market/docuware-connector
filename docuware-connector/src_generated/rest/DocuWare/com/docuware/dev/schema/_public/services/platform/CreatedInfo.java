@@ -1,22 +1,22 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Info about creation of item.
  * 
- * <p>Java class for CreatedInfo complex type.
+ * &lt;p&gt;Java class for CreatedInfo complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="CreatedInfo"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -25,7 +25,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -33,14 +33,22 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "CreatedInfo")
 public class CreatedInfo {
 
+    /**
+     * Id of the user who created this item.
+     * 
+     */
     @XmlAttribute(name = "User", required = true)
     protected String user;
+    /**
+     * Timestamp when this item was created.
+     * 
+     */
     @XmlAttribute(name = "Time", required = true)
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar time;
 
     /**
-     * Gets the value of the user property.
+     * Id of the user who created this item.
      * 
      * @return
      *     possible object is
@@ -58,13 +66,14 @@ public class CreatedInfo {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getUser()
      */
     public void setUser(String value) {
         this.user = value;
     }
 
     /**
-     * Gets the value of the time property.
+     * Timestamp when this item was created.
      * 
      * @return
      *     possible object is
@@ -82,6 +91,7 @@ public class CreatedInfo {
      *     allowed object is
      *     {@link XMLGregorianCalendar }
      *     
+     * @see #getTime()
      */
     public void setTime(XMLGregorianCalendar value) {
         this.time = value;

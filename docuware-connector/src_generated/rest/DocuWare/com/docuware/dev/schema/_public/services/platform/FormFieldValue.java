@@ -1,22 +1,22 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Contains the value of form field
  * 
- * <p>Java class for FormFieldValue complex type.
+ * &lt;p&gt;Java class for FormFieldValue complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="FormFieldValue"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -41,15 +41,27 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class FormFieldValue {
 
+    /**
+     * Get or sets the form field value casted to the index field type.
+     * 
+     */
     @XmlElement(name = "TypedValue")
     protected DocumentIndexFieldValue typedValue;
+    /**
+     * Get or sets the name of the form field.
+     * 
+     */
     @XmlAttribute(name = "Name")
     protected String name;
+    /**
+     * Get or sets the display value of the form field.
+     * 
+     */
     @XmlAttribute(name = "Value")
     protected String value;
 
     /**
-     * Gets the value of the typedValue property.
+     * Get or sets the form field value casted to the index field type.
      * 
      * @return
      *     possible object is
@@ -67,13 +79,14 @@ public class FormFieldValue {
      *     allowed object is
      *     {@link DocumentIndexFieldValue }
      *     
+     * @see #getTypedValue()
      */
     public void setTypedValue(DocumentIndexFieldValue value) {
         this.typedValue = value;
     }
 
     /**
-     * Gets the value of the name property.
+     * Get or sets the name of the form field.
      * 
      * @return
      *     possible object is
@@ -91,13 +104,14 @@ public class FormFieldValue {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getName()
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Gets the value of the value property.
+     * Get or sets the display value of the form field.
      * 
      * @return
      *     possible object is
@@ -115,6 +129,7 @@ public class FormFieldValue {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getValue()
      */
     public void setValue(String value) {
         this.value = value;

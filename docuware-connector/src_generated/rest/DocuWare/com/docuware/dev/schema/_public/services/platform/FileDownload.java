@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Define how a document can be downloaded
  * 
- * <p>Java class for FileDownload complex type.
+ * &lt;p&gt;Java class for FileDownload complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="FileDownload"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform}FileDownloadBase"&gt;
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -35,17 +35,34 @@ public class FileDownload
     extends FileDownloadBase
 {
 
+    /**
+     * Specifies the target format (target file type) of the downloaded file.
+     * 
+     */
     @XmlAttribute(name = "TargetFileType")
     protected FileDownloadType targetFileType;
+    /**
+     * If you have a browser plugin installed which shows you the content a PDF file in the browser directly then this
+     *           flag can be used to override this behaviour and let the browser open a "Save file" box.
+     * 
+     */
     @XmlAttribute(name = "DirectDownload")
     protected Boolean directDownload;
+    /**
+     * This flag applies only to the PDF target format.
+     * 
+     */
     @XmlAttribute(name = "AutoPrint")
     protected Boolean autoPrint;
+    /**
+     * This flag applies only to the PDF target format.
+     * 
+     */
     @XmlAttribute(name = "SendByEmail")
     protected Boolean sendByEmail;
 
     /**
-     * Gets the value of the targetFileType property.
+     * Specifies the target format (target file type) of the downloaded file.
      * 
      * @return
      *     possible object is
@@ -67,13 +84,15 @@ public class FileDownload
      *     allowed object is
      *     {@link FileDownloadType }
      *     
+     * @see #getTargetFileType()
      */
     public void setTargetFileType(FileDownloadType value) {
         this.targetFileType = value;
     }
 
     /**
-     * Gets the value of the directDownload property.
+     * If you have a browser plugin installed which shows you the content a PDF file in the browser directly then this
+     *           flag can be used to override this behaviour and let the browser open a "Save file" box.
      * 
      * @return
      *     possible object is
@@ -95,13 +114,14 @@ public class FileDownload
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isDirectDownload()
      */
     public void setDirectDownload(Boolean value) {
         this.directDownload = value;
     }
 
     /**
-     * Gets the value of the autoPrint property.
+     * This flag applies only to the PDF target format.
      * 
      * @return
      *     possible object is
@@ -123,13 +143,14 @@ public class FileDownload
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isAutoPrint()
      */
     public void setAutoPrint(Boolean value) {
         this.autoPrint = value;
     }
 
     /**
-     * Gets the value of the sendByEmail property.
+     * This flag applies only to the PDF target format.
      * 
      * @return
      *     possible object is
@@ -151,6 +172,7 @@ public class FileDownload
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isSendByEmail()
      */
     public void setSendByEmail(Boolean value) {
         this.sendByEmail = value;

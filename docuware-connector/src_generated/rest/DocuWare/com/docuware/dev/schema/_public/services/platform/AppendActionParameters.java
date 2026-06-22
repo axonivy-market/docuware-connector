@@ -3,20 +3,20 @@ package com.docuware.dev.schema._public.services.platform;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Specific data for append action
  * 
- * <p>Java class for AppendActionParameters complex type.
+ * &lt;p&gt;Java class for AppendActionParameters complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="AppendActionParameters"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform}DocumentActionParameters"&gt;
@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -46,15 +46,27 @@ public class AppendActionParameters
     extends DocumentActionParameters
 {
 
+    /**
+     * Indicates whether to delete the documents from source cabinet
+     * 
+     */
     @XmlElement(name = "RemoveSourceDocuments", defaultValue = "true")
     protected boolean removeSourceDocuments;
+    /**
+     * Info for the documents to be attached before the target document
+     * 
+     */
     @XmlElement(name = "DocumentsInFront")
     protected List<AppendActionDocuments> documentsInFront;
+    /**
+     * Info for the documents to be attached after the target document
+     * 
+     */
     @XmlElement(name = "DocumentsAtBack")
     protected List<AppendActionDocuments> documentsAtBack;
 
     /**
-     * Gets the value of the removeSourceDocuments property.
+     * Indicates whether to delete the documents from source cabinet
      * 
      */
     public boolean isRemoveSourceDocuments() {
@@ -70,59 +82,69 @@ public class AppendActionParameters
     }
 
     /**
+     * Info for the documents to be attached before the target document
+     * 
      * Gets the value of the documentsInFront property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the documentsInFront property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the documentsInFront property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getDocumentsInFront().add(newItem);
+     * getDocumentsInFront().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link AppendActionDocuments }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the documentsInFront property.
      */
     public List<AppendActionDocuments> getDocumentsInFront() {
         if (documentsInFront == null) {
-            documentsInFront = new ArrayList<AppendActionDocuments>();
+            documentsInFront = new ArrayList<>();
         }
         return this.documentsInFront;
     }
 
     /**
+     * Info for the documents to be attached after the target document
+     * 
      * Gets the value of the documentsAtBack property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the documentsAtBack property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the documentsAtBack property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getDocumentsAtBack().add(newItem);
+     * getDocumentsAtBack().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link AppendActionDocuments }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the documentsAtBack property.
      */
     public List<AppendActionDocuments> getDocumentsAtBack() {
         if (documentsAtBack == null) {
-            documentsAtBack = new ArrayList<AppendActionDocuments>();
+            documentsAtBack = new ArrayList<>();
         }
         return this.documentsAtBack;
     }

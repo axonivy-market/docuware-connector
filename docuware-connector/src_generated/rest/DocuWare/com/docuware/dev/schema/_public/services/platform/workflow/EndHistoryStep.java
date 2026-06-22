@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * A history step for End activity.
  * 
- * <p>Java class for EndHistoryStep complex type.
+ * &lt;p&gt;Java class for EndHistoryStep complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="EndHistoryStep"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -30,11 +30,15 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "EndHistoryStep")
 public class EndHistoryStep {
 
+    /**
+     * Document user version when the instance is finished.
+     * 
+     */
     @XmlAttribute(name = "DocumentUserVersion")
     protected String documentUserVersion;
 
     /**
-     * Gets the value of the documentUserVersion property.
+     * Document user version when the instance is finished.
      * 
      * @return
      *     possible object is
@@ -52,6 +56,7 @@ public class EndHistoryStep {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getDocumentUserVersion()
      */
     public void setDocumentUserVersion(String value) {
         this.documentUserVersion = value;

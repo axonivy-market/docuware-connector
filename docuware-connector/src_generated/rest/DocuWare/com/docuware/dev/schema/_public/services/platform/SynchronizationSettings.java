@@ -1,19 +1,19 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for SynchronizationSettings complex type.
+ * &lt;p&gt;Java class for SynchronizationSettings complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="SynchronizationSettings"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -38,21 +38,45 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class SynchronizationSettings {
 
+    /**
+     * Gets or sets field mappings.
+     * 
+     */
     @XmlElement(name = "FieldMappings")
     protected FieldMappings fieldMappings;
+    /**
+     * Gets or sets a value indicating whether the document' system fields to be replaced.
+     * 
+     */
     @XmlAttribute(name = "SynchronizationOperation")
     protected SynchronizationOperation synchronizationOperation;
+    /**
+     * Document identity
+     * 
+     */
     @XmlAttribute(name = "Id")
     protected Integer id;
+    /**
+     * Gets or sets a value indicating whether the document' system fields to be replaced.
+     * 
+     */
     @XmlAttribute(name = "PreserveSystemFields")
     protected Boolean preserveSystemFields;
+    /**
+     * Gets or sets a value indicating whether the fields which do not have mapping to be imported. If they are imported they will be imported with the same name.
+     * 
+     */
     @XmlAttribute(name = "ImportNotMappedFields")
     protected Boolean importNotMappedFields;
+    /**
+     * Gets or sets a value indicating whether it is necessary to synchronize the files.
+     * 
+     */
     @XmlAttribute(name = "SynchronizeFiles")
     protected Boolean synchronizeFiles;
 
     /**
-     * Gets the value of the fieldMappings property.
+     * Gets or sets field mappings.
      * 
      * @return
      *     possible object is
@@ -70,13 +94,14 @@ public class SynchronizationSettings {
      *     allowed object is
      *     {@link FieldMappings }
      *     
+     * @see #getFieldMappings()
      */
     public void setFieldMappings(FieldMappings value) {
         this.fieldMappings = value;
     }
 
     /**
-     * Gets the value of the synchronizationOperation property.
+     * Gets or sets a value indicating whether the document' system fields to be replaced.
      * 
      * @return
      *     possible object is
@@ -98,13 +123,14 @@ public class SynchronizationSettings {
      *     allowed object is
      *     {@link SynchronizationOperation }
      *     
+     * @see #getSynchronizationOperation()
      */
     public void setSynchronizationOperation(SynchronizationOperation value) {
         this.synchronizationOperation = value;
     }
 
     /**
-     * Gets the value of the id property.
+     * Document identity
      * 
      * @return
      *     possible object is
@@ -126,13 +152,14 @@ public class SynchronizationSettings {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getId()
      */
     public void setId(Integer value) {
         this.id = value;
     }
 
     /**
-     * Gets the value of the preserveSystemFields property.
+     * Gets or sets a value indicating whether the document' system fields to be replaced.
      * 
      * @return
      *     possible object is
@@ -154,13 +181,14 @@ public class SynchronizationSettings {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isPreserveSystemFields()
      */
     public void setPreserveSystemFields(Boolean value) {
         this.preserveSystemFields = value;
     }
 
     /**
-     * Gets the value of the importNotMappedFields property.
+     * Gets or sets a value indicating whether the fields which do not have mapping to be imported. If they are imported they will be imported with the same name.
      * 
      * @return
      *     possible object is
@@ -182,13 +210,14 @@ public class SynchronizationSettings {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isImportNotMappedFields()
      */
     public void setImportNotMappedFields(Boolean value) {
         this.importNotMappedFields = value;
     }
 
     /**
-     * Gets the value of the synchronizeFiles property.
+     * Gets or sets a value indicating whether it is necessary to synchronize the files.
      * 
      * @return
      *     possible object is
@@ -210,6 +239,7 @@ public class SynchronizationSettings {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isSynchronizeFiles()
      */
     public void setSynchronizeFiles(Boolean value) {
         this.synchronizeFiles = value;

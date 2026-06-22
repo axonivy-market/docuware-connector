@@ -3,24 +3,24 @@ package com.docuware.dev.schema._public.services.platform;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Base dialog field definition
  * 
- * <p>Java class for DialogFieldBase complex type.
+ * &lt;p&gt;Java class for DialogFieldBase complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="DialogFieldBase"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -51,7 +51,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -70,54 +70,138 @@ import com.docuware.dev.schema._public.services.Links;
 })
 public class DialogFieldBase {
 
+    /**
+     * Mask(regular expression) for limiting the input options for the field.
+     * 
+     */
     @XmlElement(name = "Mask")
     protected String mask;
+    /**
+     * Error message to display if the input does not match the mask definition.
+     * 
+     */
     @XmlElement(name = "MaskErrorText", required = true)
     protected String maskErrorText;
+    /**
+     * Sample entry that matches the mask definition.
+     * 
+     */
     @XmlElement(name = "SampleEditText", required = true)
     protected String sampleEditText;
+    /**
+     * The default value of the field(s). If DynamicPrefillValue is not empty this property should be ignored.
+     * 
+     */
     @XmlElement(name = "PrefillValue")
     protected List<DocumentIndexFieldValue> prefillValue;
+    /**
+     * Dynamic (CurrentDate, CurrentDatetime, etc.) default value of the field(s).If this element is not empty PrefilValue shoud be ignored.
+     * 
+     */
     @XmlElement(name = "DynamicPrefillValue")
     @XmlSchemaType(name = "string")
     protected List<DynamicValueType> dynamicPrefillValue;
+    /**
+     * Gets a list with information for all assigned select lists.
+     * 
+     */
     @XmlElement(name = "SelectListInfos")
     protected SelectListInfos selectListInfos;
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services")
     protected Links links;
+    /**
+     * Name of field in the file cabinet.
+     * 
+     */
     @XmlAttribute(name = "DBFieldName", required = true)
     protected String dbFieldName;
+    /**
+     * Label (display name) of the field.
+     * 
+     */
     @XmlAttribute(name = "DlgLabel")
     protected String dlgLabel;
+    /**
+     * Determines whether the value of the field cannot be changed by the user.
+     * 
+     */
     @XmlAttribute(name = "Locked")
     protected Boolean locked;
+    /**
+     * Determines whether the field is read only, considering Locked property and user rights(Modify Right for info dialog, Write Right for store dialog)
+     * 
+     */
     @XmlAttribute(name = "ReadOnly")
     protected Boolean readOnly;
+    /**
+     * Determines whether the field can be empty, considering NotEmpty in Field settings and Field may be empty Right
+     * 
+     */
     @XmlAttribute(name = "NotEmpty")
     protected Boolean notEmpty;
+    /**
+     * Determines whether the field is visible.
+     * 
+     */
     @XmlAttribute(name = "Visible")
     protected Boolean visible;
+    /**
+     * Length of the field (for text fields).
+     * 
+     */
     @XmlAttribute(name = "Length")
     protected Integer length;
+    /**
+     * The precision of this dialog field. This is derived from the file cabinet fields precision.
+     * 
+     */
     @XmlAttribute(name = "Precision")
     protected Integer precision;
+    /**
+     * Use extended search
+     * 
+     */
     @XmlAttribute(name = "AllowExtendedSearch")
     protected Boolean allowExtendedSearch;
+    /**
+     * Allow extended filtering.
+     * 
+     */
     @XmlAttribute(name = "AllowFiltering")
     protected Boolean allowFiltering;
+    /**
+     * (Only relevant for store and info dialogs)If this flag is true, no one can allocate a new entry for this field when storing a document, unless this is contained in a selection list.
+     * 
+     */
     @XmlAttribute(name = "SelectListOnly")
     protected Boolean selectListOnly;
+    /**
+     * Type of the select list.
+     * 
+     */
     @XmlAttribute(name = "SelectListType")
     protected SelectListType selectListType;
+    /**
+     * A value indicating whether the internal select list is assigned.
+     * 
+     */
     @XmlAttribute(name = "AssignedInternalSelectList")
     protected Boolean assignedInternalSelectList;
+    /**
+     * The unique identifier of the sequence.
+     * 
+     */
     @XmlAttribute(name = "SequenceId")
     protected String sequenceId;
+    /**
+     * A value indicating whether the any select list is assigned.
+     * 
+     */
     @XmlAttribute(name = "SelectListsAssigned")
     protected Boolean selectListsAssigned;
 
     /**
-     * Gets the value of the mask property.
+     * Mask(regular expression) for limiting the input options for the field.
      * 
      * @return
      *     possible object is
@@ -135,13 +219,14 @@ public class DialogFieldBase {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getMask()
      */
     public void setMask(String value) {
         this.mask = value;
     }
 
     /**
-     * Gets the value of the maskErrorText property.
+     * Error message to display if the input does not match the mask definition.
      * 
      * @return
      *     possible object is
@@ -159,13 +244,14 @@ public class DialogFieldBase {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getMaskErrorText()
      */
     public void setMaskErrorText(String value) {
         this.maskErrorText = value;
     }
 
     /**
-     * Gets the value of the sampleEditText property.
+     * Sample entry that matches the mask definition.
      * 
      * @return
      *     possible object is
@@ -183,71 +269,82 @@ public class DialogFieldBase {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getSampleEditText()
      */
     public void setSampleEditText(String value) {
         this.sampleEditText = value;
     }
 
     /**
+     * The default value of the field(s). If DynamicPrefillValue is not empty this property should be ignored.
+     * 
      * Gets the value of the prefillValue property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the prefillValue property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the prefillValue property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getPrefillValue().add(newItem);
+     * getPrefillValue().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link DocumentIndexFieldValue }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the prefillValue property.
      */
     public List<DocumentIndexFieldValue> getPrefillValue() {
         if (prefillValue == null) {
-            prefillValue = new ArrayList<DocumentIndexFieldValue>();
+            prefillValue = new ArrayList<>();
         }
         return this.prefillValue;
     }
 
     /**
+     * Dynamic (CurrentDate, CurrentDatetime, etc.) default value of the field(s).If this element is not empty PrefilValue shoud be ignored.
+     * 
      * Gets the value of the dynamicPrefillValue property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the dynamicPrefillValue property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the dynamicPrefillValue property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getDynamicPrefillValue().add(newItem);
+     * getDynamicPrefillValue().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link DynamicValueType }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the dynamicPrefillValue property.
      */
     public List<DynamicValueType> getDynamicPrefillValue() {
         if (dynamicPrefillValue == null) {
-            dynamicPrefillValue = new ArrayList<DynamicValueType>();
+            dynamicPrefillValue = new ArrayList<>();
         }
         return this.dynamicPrefillValue;
     }
 
     /**
-     * Gets the value of the selectListInfos property.
+     * Gets a list with information for all assigned select lists.
      * 
      * @return
      *     possible object is
@@ -265,6 +362,7 @@ public class DialogFieldBase {
      *     allowed object is
      *     {@link SelectListInfos }
      *     
+     * @see #getSelectListInfos()
      */
     public void setSelectListInfos(SelectListInfos value) {
         this.selectListInfos = value;
@@ -295,7 +393,7 @@ public class DialogFieldBase {
     }
 
     /**
-     * Gets the value of the dbFieldName property.
+     * Name of field in the file cabinet.
      * 
      * @return
      *     possible object is
@@ -313,13 +411,14 @@ public class DialogFieldBase {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getDBFieldName()
      */
     public void setDBFieldName(String value) {
         this.dbFieldName = value;
     }
 
     /**
-     * Gets the value of the dlgLabel property.
+     * Label (display name) of the field.
      * 
      * @return
      *     possible object is
@@ -337,13 +436,14 @@ public class DialogFieldBase {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getDlgLabel()
      */
     public void setDlgLabel(String value) {
         this.dlgLabel = value;
     }
 
     /**
-     * Gets the value of the locked property.
+     * Determines whether the value of the field cannot be changed by the user.
      * 
      * @return
      *     possible object is
@@ -365,13 +465,14 @@ public class DialogFieldBase {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isLocked()
      */
     public void setLocked(Boolean value) {
         this.locked = value;
     }
 
     /**
-     * Gets the value of the readOnly property.
+     * Determines whether the field is read only, considering Locked property and user rights(Modify Right for info dialog, Write Right for store dialog)
      * 
      * @return
      *     possible object is
@@ -393,13 +494,14 @@ public class DialogFieldBase {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isReadOnly()
      */
     public void setReadOnly(Boolean value) {
         this.readOnly = value;
     }
 
     /**
-     * Gets the value of the notEmpty property.
+     * Determines whether the field can be empty, considering NotEmpty in Field settings and Field may be empty Right
      * 
      * @return
      *     possible object is
@@ -421,13 +523,14 @@ public class DialogFieldBase {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isNotEmpty()
      */
     public void setNotEmpty(Boolean value) {
         this.notEmpty = value;
     }
 
     /**
-     * Gets the value of the visible property.
+     * Determines whether the field is visible.
      * 
      * @return
      *     possible object is
@@ -449,13 +552,14 @@ public class DialogFieldBase {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isVisible()
      */
     public void setVisible(Boolean value) {
         this.visible = value;
     }
 
     /**
-     * Gets the value of the length property.
+     * Length of the field (for text fields).
      * 
      * @return
      *     possible object is
@@ -477,13 +581,14 @@ public class DialogFieldBase {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getLength()
      */
     public void setLength(Integer value) {
         this.length = value;
     }
 
     /**
-     * Gets the value of the precision property.
+     * The precision of this dialog field. This is derived from the file cabinet fields precision.
      * 
      * @return
      *     possible object is
@@ -505,13 +610,14 @@ public class DialogFieldBase {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getPrecision()
      */
     public void setPrecision(Integer value) {
         this.precision = value;
     }
 
     /**
-     * Gets the value of the allowExtendedSearch property.
+     * Use extended search
      * 
      * @return
      *     possible object is
@@ -533,13 +639,14 @@ public class DialogFieldBase {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isAllowExtendedSearch()
      */
     public void setAllowExtendedSearch(Boolean value) {
         this.allowExtendedSearch = value;
     }
 
     /**
-     * Gets the value of the allowFiltering property.
+     * Allow extended filtering.
      * 
      * @return
      *     possible object is
@@ -561,13 +668,14 @@ public class DialogFieldBase {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isAllowFiltering()
      */
     public void setAllowFiltering(Boolean value) {
         this.allowFiltering = value;
     }
 
     /**
-     * Gets the value of the selectListOnly property.
+     * (Only relevant for store and info dialogs)If this flag is true, no one can allocate a new entry for this field when storing a document, unless this is contained in a selection list.
      * 
      * @return
      *     possible object is
@@ -589,13 +697,14 @@ public class DialogFieldBase {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isSelectListOnly()
      */
     public void setSelectListOnly(Boolean value) {
         this.selectListOnly = value;
     }
 
     /**
-     * Gets the value of the selectListType property.
+     * Type of the select list.
      * 
      * @return
      *     possible object is
@@ -617,13 +726,14 @@ public class DialogFieldBase {
      *     allowed object is
      *     {@link SelectListType }
      *     
+     * @see #getSelectListType()
      */
     public void setSelectListType(SelectListType value) {
         this.selectListType = value;
     }
 
     /**
-     * Gets the value of the assignedInternalSelectList property.
+     * A value indicating whether the internal select list is assigned.
      * 
      * @return
      *     possible object is
@@ -645,13 +755,14 @@ public class DialogFieldBase {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isAssignedInternalSelectList()
      */
     public void setAssignedInternalSelectList(Boolean value) {
         this.assignedInternalSelectList = value;
     }
 
     /**
-     * Gets the value of the sequenceId property.
+     * The unique identifier of the sequence.
      * 
      * @return
      *     possible object is
@@ -669,13 +780,14 @@ public class DialogFieldBase {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getSequenceId()
      */
     public void setSequenceId(String value) {
         this.sequenceId = value;
     }
 
     /**
-     * Gets the value of the selectListsAssigned property.
+     * A value indicating whether the any select list is assigned.
      * 
      * @return
      *     possible object is
@@ -697,6 +809,7 @@ public class DialogFieldBase {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isSelectListsAssigned()
      */
     public void setSelectListsAssigned(Boolean value) {
         this.selectListsAssigned = value;

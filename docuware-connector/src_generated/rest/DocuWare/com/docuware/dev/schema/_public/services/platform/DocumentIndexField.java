@@ -1,19 +1,19 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for DocumentIndexField complex type.
+ * &lt;p&gt;Java class for DocumentIndexField complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="DocumentIndexField"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform}DocumentIndexFieldValueBase"&gt;
@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -39,19 +39,40 @@ public class DocumentIndexField
     extends DocumentIndexFieldValueBase
 {
 
+    /**
+     * Contains one rectangle value for scalar field values and one or more values for keyword fields.
+     * 
+     */
     @XmlElement(name = "PointAndShootInfo")
     protected PointAndShootInfo pointAndShootInfo;
+    /**
+     * Contains the internal name of the field.
+     * 
+     */
     @XmlAttribute(name = "FieldName", required = true)
     protected String fieldName;
+    /**
+     * Contains the label of the field.
+     * 
+     */
     @XmlAttribute(name = "FieldLabel")
     protected String fieldLabel;
+    /**
+     * Indicates whether the field value is null or non-null.
+     * 
+     */
     @XmlAttribute(name = "IsNull")
     protected Boolean isNull;
+    /**
+     * The value of this property can depend on the document. There might be documents which have a certain field set as read only while other
+     *               documents have these fields writable.
+     * 
+     */
     @XmlAttribute(name = "ReadOnly")
     protected Boolean readOnly;
 
     /**
-     * Gets the value of the pointAndShootInfo property.
+     * Contains one rectangle value for scalar field values and one or more values for keyword fields.
      * 
      * @return
      *     possible object is
@@ -69,13 +90,14 @@ public class DocumentIndexField
      *     allowed object is
      *     {@link PointAndShootInfo }
      *     
+     * @see #getPointAndShootInfo()
      */
     public void setPointAndShootInfo(PointAndShootInfo value) {
         this.pointAndShootInfo = value;
     }
 
     /**
-     * Gets the value of the fieldName property.
+     * Contains the internal name of the field.
      * 
      * @return
      *     possible object is
@@ -93,13 +115,14 @@ public class DocumentIndexField
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getFieldName()
      */
     public void setFieldName(String value) {
         this.fieldName = value;
     }
 
     /**
-     * Gets the value of the fieldLabel property.
+     * Contains the label of the field.
      * 
      * @return
      *     possible object is
@@ -117,13 +140,14 @@ public class DocumentIndexField
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getFieldLabel()
      */
     public void setFieldLabel(String value) {
         this.fieldLabel = value;
     }
 
     /**
-     * Gets the value of the isNull property.
+     * Indicates whether the field value is null or non-null.
      * 
      * @return
      *     possible object is
@@ -145,13 +169,15 @@ public class DocumentIndexField
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isIsNull()
      */
     public void setIsNull(Boolean value) {
         this.isNull = value;
     }
 
     /**
-     * Gets the value of the readOnly property.
+     * The value of this property can depend on the document. There might be documents which have a certain field set as read only while other
+     *               documents have these fields writable.
      * 
      * @return
      *     possible object is
@@ -173,6 +199,7 @@ public class DocumentIndexField
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isReadOnly()
      */
     public void setReadOnly(Boolean value) {
         this.readOnly = value;

@@ -1,22 +1,22 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Dialog properties specific for Tree list
  * 
- * <p>Java class for DialogPropertiesTreeView complex type.
+ * &lt;p&gt;Java class for DialogPropertiesTreeView complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="DialogPropertiesTreeView"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform}DialogProperties"&gt;
@@ -28,7 +28,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -42,8 +42,16 @@ public class DialogPropertiesTreeView
 
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services", required = true)
     protected Links links;
+    /**
+     * Id of the store dialog to be used for storing documents in the tree view.
+     * 
+     */
     @XmlAttribute(name = "StoreDialogId")
     protected String storeDialogId;
+    /**
+     * Gets a string which represents an icon name identifier.
+     * 
+     */
     @XmlAttribute(name = "Icon")
     protected String icon;
 
@@ -72,7 +80,7 @@ public class DialogPropertiesTreeView
     }
 
     /**
-     * Gets the value of the storeDialogId property.
+     * Id of the store dialog to be used for storing documents in the tree view.
      * 
      * @return
      *     possible object is
@@ -94,13 +102,14 @@ public class DialogPropertiesTreeView
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getStoreDialogId()
      */
     public void setStoreDialogId(String value) {
         this.storeDialogId = value;
     }
 
     /**
-     * Gets the value of the icon property.
+     * Gets a string which represents an icon name identifier.
      * 
      * @return
      *     possible object is
@@ -118,6 +127,7 @@ public class DialogPropertiesTreeView
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getIcon()
      */
     public void setIcon(String value) {
         this.icon = value;

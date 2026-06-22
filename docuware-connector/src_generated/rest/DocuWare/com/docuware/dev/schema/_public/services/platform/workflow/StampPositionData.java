@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Data which is sent when you want to get the best position for a workflow stamp
  * 
- * <p>Java class for StampPositionData complex type.
+ * &lt;p&gt;Java class for StampPositionData complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="StampPositionData"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform/workflow}ConfirmedData"&gt;
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -38,13 +38,21 @@ public class StampPositionData
     extends ConfirmedData
 {
 
+    /**
+     * ID of the section to set stamp.
+     * 
+     */
     @XmlElement(name = "SectionId", required = true)
     protected String sectionId;
+    /**
+     * Number of the page to set stamp.
+     * 
+     */
     @XmlElement(name = "Page")
     protected int page;
 
     /**
-     * Gets the value of the sectionId property.
+     * ID of the section to set stamp.
      * 
      * @return
      *     possible object is
@@ -62,13 +70,14 @@ public class StampPositionData
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getSectionId()
      */
     public void setSectionId(String value) {
         this.sectionId = value;
     }
 
     /**
-     * Gets the value of the page property.
+     * Number of the page to set stamp.
      * 
      */
     public int getPage() {

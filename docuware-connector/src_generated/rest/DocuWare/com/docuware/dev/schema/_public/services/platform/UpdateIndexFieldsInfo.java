@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Structure for updating index fields, including the index fields values and the dialog used for updating.
  * 
- * <p>Java class for UpdateIndexFieldsInfo complex type.
+ * &lt;p&gt;Java class for UpdateIndexFieldsInfo complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="UpdateIndexFieldsInfo"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform}DocumentIndexFields"&gt;
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -35,13 +35,21 @@ public class UpdateIndexFieldsInfo
     extends DocumentIndexFields
 {
 
+    /**
+     * Define dialog which is used to update the fields. Used to override data that is not exposed to the user.
+     * 
+     */
     @XmlAttribute(name = "DialogId")
     protected String dialogId;
+    /**
+     * If this flag is true then the orientation of the coordinates in PointAndShootInfo will be aligned with the page.
+     * 
+     */
     @XmlAttribute(name = "NormalizeCoordinates")
     protected Boolean normalizeCoordinates;
 
     /**
-     * Gets the value of the dialogId property.
+     * Define dialog which is used to update the fields. Used to override data that is not exposed to the user.
      * 
      * @return
      *     possible object is
@@ -59,13 +67,14 @@ public class UpdateIndexFieldsInfo
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getDialogId()
      */
     public void setDialogId(String value) {
         this.dialogId = value;
     }
 
     /**
-     * Gets the value of the normalizeCoordinates property.
+     * If this flag is true then the orientation of the coordinates in PointAndShootInfo will be aligned with the page.
      * 
      * @return
      *     possible object is
@@ -87,6 +96,7 @@ public class UpdateIndexFieldsInfo
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isNormalizeCoordinates()
      */
     public void setNormalizeCoordinates(Boolean value) {
         this.normalizeCoordinates = value;

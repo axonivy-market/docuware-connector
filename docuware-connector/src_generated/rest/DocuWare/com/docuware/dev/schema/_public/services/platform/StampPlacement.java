@@ -3,23 +3,23 @@ package com.docuware.dev.schema._public.services.platform;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Describes how to place a stamp on a page.
  * 
- * <p>Java class for StampPlacement complex type.
+ * &lt;p&gt;Java class for StampPlacement complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="StampPlacement"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -48,22 +48,46 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class StampPlacement {
 
+    /**
+     * A polyline entry in case of stroke stamps.
+     * 
+     */
     @XmlElement(name = "Strokes")
     protected PolyLineEntry strokes;
+    /**
+     * The form field values which are applied when placing the stamp.
+     * 
+     */
     @XmlElement(name = "Field")
     protected List<FormFieldValue> field;
+    /**
+     * The Id of the stamp to place.
+     * 
+     */
     @XmlAttribute(name = "StampId")
     @XmlSchemaType(name = "anySimpleType")
     protected String stampId;
+    /**
+     * Rotation of the stamp. Only rotation even of 90 degree are supported.
+     * 
+     */
     @XmlAttribute(name = "Rotation")
     protected Integer rotation;
+    /**
+     * Layer where the stamp have to be placed.
+     * 
+     */
     @XmlAttribute(name = "Layer")
     protected Integer layer;
+    /**
+     * Password for password protected stamps
+     * 
+     */
     @XmlAttribute(name = "Password")
     protected String password;
 
     /**
-     * Gets the value of the strokes property.
+     * A polyline entry in case of stroke stamps.
      * 
      * @return
      *     possible object is
@@ -81,42 +105,48 @@ public class StampPlacement {
      *     allowed object is
      *     {@link PolyLineEntry }
      *     
+     * @see #getStrokes()
      */
     public void setStrokes(PolyLineEntry value) {
         this.strokes = value;
     }
 
     /**
+     * The form field values which are applied when placing the stamp.
+     * 
      * Gets the value of the field property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the field property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the field property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getField().add(newItem);
+     * getField().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link FormFieldValue }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the field property.
      */
     public List<FormFieldValue> getField() {
         if (field == null) {
-            field = new ArrayList<FormFieldValue>();
+            field = new ArrayList<>();
         }
         return this.field;
     }
 
     /**
-     * Gets the value of the stampId property.
+     * The Id of the stamp to place.
      * 
      * @return
      *     possible object is
@@ -134,13 +164,14 @@ public class StampPlacement {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getStampId()
      */
     public void setStampId(String value) {
         this.stampId = value;
     }
 
     /**
-     * Gets the value of the rotation property.
+     * Rotation of the stamp. Only rotation even of 90 degree are supported.
      * 
      * @return
      *     possible object is
@@ -162,13 +193,14 @@ public class StampPlacement {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getRotation()
      */
     public void setRotation(Integer value) {
         this.rotation = value;
     }
 
     /**
-     * Gets the value of the layer property.
+     * Layer where the stamp have to be placed.
      * 
      * @return
      *     possible object is
@@ -190,13 +222,14 @@ public class StampPlacement {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getLayer()
      */
     public void setLayer(Integer value) {
         this.layer = value;
     }
 
     /**
-     * Gets the value of the password property.
+     * Password for password protected stamps
      * 
      * @return
      *     possible object is
@@ -218,6 +251,7 @@ public class StampPlacement {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getPassword()
      */
     public void setPassword(String value) {
         this.password = value;

@@ -3,22 +3,22 @@ package com.docuware.dev.schema._public.services.platform;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Dialog properties specific for Result List
  * 
- * <p>Java class for DialogPropertiesResultList complex type.
+ * &lt;p&gt;Java class for DialogPropertiesResultList complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="DialogPropertiesResultList"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform}DialogProperties"&gt;
@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -50,50 +50,79 @@ public class DialogPropertiesResultList
     extends DialogProperties
 {
 
+    /**
+     * Functions available for the result list (Print document, Display document, etc.)
+     * 
+     */
     @XmlElement(name = "Functions")
     protected List<ResultDialogFunction> functions;
+    /**
+     * Viewer properties
+     * 
+     */
     @XmlElement(name = "ViewerDialog", required = true)
     protected ViewerDialog viewerDialog;
+    /**
+     * Sort order for the result list.
+     * 
+     */
     @XmlElement(name = "SortOrder")
     protected SortedFieldsList sortOrder;
+    /**
+     * Letter case to be used to display the hits in the result list
+     * 
+     */
     @XmlAttribute(name = "DefaultListTextLetterCase", required = true)
     protected LetterCase defaultListTextLetterCase;
+    /**
+     * Determines whether the web client automatically displays the first document in the result list in the viewer.
+     * 
+     */
     @XmlAttribute(name = "DisplayFirstDocument", required = true)
     protected boolean displayFirstDocument;
+    /**
+     * Determines whether the result list can show documents that are currently checked out.
+     * 
+     */
     @XmlAttribute(name = "ShowCheckedOutDocumens")
     protected Boolean showCheckedOutDocumens;
 
     /**
+     * Functions available for the result list (Print document, Display document, etc.)
+     * 
      * Gets the value of the functions property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the functions property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the functions property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getFunctions().add(newItem);
+     * getFunctions().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link ResultDialogFunction }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the functions property.
      */
     public List<ResultDialogFunction> getFunctions() {
         if (functions == null) {
-            functions = new ArrayList<ResultDialogFunction>();
+            functions = new ArrayList<>();
         }
         return this.functions;
     }
 
     /**
-     * Gets the value of the viewerDialog property.
+     * Viewer properties
      * 
      * @return
      *     possible object is
@@ -111,13 +140,14 @@ public class DialogPropertiesResultList
      *     allowed object is
      *     {@link ViewerDialog }
      *     
+     * @see #getViewerDialog()
      */
     public void setViewerDialog(ViewerDialog value) {
         this.viewerDialog = value;
     }
 
     /**
-     * Gets the value of the sortOrder property.
+     * Sort order for the result list.
      * 
      * @return
      *     possible object is
@@ -135,13 +165,14 @@ public class DialogPropertiesResultList
      *     allowed object is
      *     {@link SortedFieldsList }
      *     
+     * @see #getSortOrder()
      */
     public void setSortOrder(SortedFieldsList value) {
         this.sortOrder = value;
     }
 
     /**
-     * Gets the value of the defaultListTextLetterCase property.
+     * Letter case to be used to display the hits in the result list
      * 
      * @return
      *     possible object is
@@ -159,13 +190,14 @@ public class DialogPropertiesResultList
      *     allowed object is
      *     {@link LetterCase }
      *     
+     * @see #getDefaultListTextLetterCase()
      */
     public void setDefaultListTextLetterCase(LetterCase value) {
         this.defaultListTextLetterCase = value;
     }
 
     /**
-     * Gets the value of the displayFirstDocument property.
+     * Determines whether the web client automatically displays the first document in the result list in the viewer.
      * 
      */
     public boolean isDisplayFirstDocument() {
@@ -181,7 +213,7 @@ public class DialogPropertiesResultList
     }
 
     /**
-     * Gets the value of the showCheckedOutDocumens property.
+     * Determines whether the result list can show documents that are currently checked out.
      * 
      * @return
      *     possible object is
@@ -203,6 +235,7 @@ public class DialogPropertiesResultList
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isShowCheckedOutDocumens()
      */
     public void setShowCheckedOutDocumens(Boolean value) {
         this.showCheckedOutDocumens = value;

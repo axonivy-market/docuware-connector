@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Header for a column table result from document query
  * 
- * <p>Java class for TableResultHeader complex type.
+ * &lt;p&gt;Java class for TableResultHeader complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="TableResultHeader"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -34,19 +34,36 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "TableResultHeader")
 public class TableResultHeader {
 
+    /**
+     * Contains the internal name of the field.
+     * 
+     */
     @XmlAttribute(name = "FieldName", required = true)
     protected String fieldName;
     @XmlAttribute(name = "Type", required = true)
     protected String type;
+    /**
+     * Contains the label of the field.
+     * 
+     */
     @XmlAttribute(name = "FieldLabel")
     protected String fieldLabel;
+    /**
+     * Kind of the field.
+     *           System, index or additional (calculated fields like total page count, special values like text preview etc.).
+     * 
+     */
     @XmlAttribute(name = "Kind", required = true)
     protected TableResultFieldKind kind;
+    /**
+     * Indicates whether the field is document name
+     * 
+     */
     @XmlAttribute(name = "IsDocumentName")
     protected Boolean isDocumentName;
 
     /**
-     * Gets the value of the fieldName property.
+     * Contains the internal name of the field.
      * 
      * @return
      *     possible object is
@@ -64,6 +81,7 @@ public class TableResultHeader {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getFieldName()
      */
     public void setFieldName(String value) {
         this.fieldName = value;
@@ -94,7 +112,7 @@ public class TableResultHeader {
     }
 
     /**
-     * Gets the value of the fieldLabel property.
+     * Contains the label of the field.
      * 
      * @return
      *     possible object is
@@ -112,13 +130,15 @@ public class TableResultHeader {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getFieldLabel()
      */
     public void setFieldLabel(String value) {
         this.fieldLabel = value;
     }
 
     /**
-     * Gets the value of the kind property.
+     * Kind of the field.
+     *           System, index or additional (calculated fields like total page count, special values like text preview etc.).
      * 
      * @return
      *     possible object is
@@ -136,13 +156,14 @@ public class TableResultHeader {
      *     allowed object is
      *     {@link TableResultFieldKind }
      *     
+     * @see #getKind()
      */
     public void setKind(TableResultFieldKind value) {
         this.kind = value;
     }
 
     /**
-     * Gets the value of the isDocumentName property.
+     * Indicates whether the field is document name
      * 
      * @return
      *     possible object is
@@ -164,6 +185,7 @@ public class TableResultHeader {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isIsDocumentName()
      */
     public void setIsDocumentName(Boolean value) {
         this.isDocumentName = value;

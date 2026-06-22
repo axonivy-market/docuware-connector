@@ -3,22 +3,22 @@ package com.docuware.dev.schema._public.services.platform;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Models a DocuWare stamp.
  * 
- * <p>Java class for Stamp complex type.
+ * &lt;p&gt;Java class for Stamp complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="Stamp"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -47,7 +47,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -63,10 +63,22 @@ import com.docuware.dev.schema._public.services.Links;
 })
 public class Stamp {
 
+    /**
+     * List of the stamp form fields.
+     * 
+     */
     @XmlElement(name = "FormField")
     protected List<StampFormField> formField;
+    /**
+     * List of the stamp fields.
+     * 
+     */
     @XmlElement(name = "Fields")
     protected List<StampField> fields;
+    /**
+     * Font for the additional items of information.
+     * 
+     */
     @XmlElement(name = "HeadFont", required = true)
     protected Font headFont;
     @XmlElement(name = "TextStamp")
@@ -77,89 +89,143 @@ public class Stamp {
     protected BitmapStamp bitmapStamp;
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services", required = true)
     protected Links links;
+    /**
+     * If this flag is true password is needed to place the stamp.
+     * 
+     */
     @XmlAttribute(name = "PasswordProtected", required = true)
     protected boolean passwordProtected;
+    /**
+     * The type of the stamp signature if there is any.
+     * 
+     */
     @XmlAttribute(name = "Signature", required = true)
     protected StampSignatureType signature;
+    /**
+     * The name of the stamp.
+     * 
+     */
     @XmlAttribute(name = "Name", required = true)
     protected String name;
+    /**
+     * The display name of the stamp.
+     * 
+     */
     @XmlAttribute(name = "DisplayName", required = true)
     protected String displayName;
+    /**
+     * If this flag is true the system will overwrite existing database entries with the stamp entries.
+     * 
+     */
     @XmlAttribute(name = "Overwrite")
     protected Boolean overwrite;
+    /**
+     * The id of the stamp, which is a GUID usually.
+     * 
+     */
     @XmlAttribute(name = "Id", required = true)
     protected String id;
+    /**
+     * Determines whether the stamp is visible.
+     * 
+     */
     @XmlAttribute(name = "IsHidden")
     protected Boolean isHidden;
+    /**
+     * Automatically save the stamp after specified period in seconds. Value -1 mean the stamp have to be saved on user action.
+     * 
+     */
     @XmlAttribute(name = "Autosave")
     protected Integer autosave;
+    /**
+     * Automatically close the window after stamp is placed in a document
+     * 
+     */
     @XmlAttribute(name = "CloseAfterStampSet")
     protected Boolean closeAfterStampSet;
+    /**
+     * Determines whether the stamp remains active after being stored.
+     * 
+     */
     @XmlAttribute(name = "AutomaticallyOpenNextDocument")
     protected Boolean automaticallyOpenNextDocument;
+    /**
+     * Determines whether next document is opened automatically after the stamp is stored.
+     * 
+     */
     @XmlAttribute(name = "KeepStampActive")
     protected Boolean keepStampActive;
 
     /**
+     * List of the stamp form fields.
+     * 
      * Gets the value of the formField property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the formField property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the formField property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getFormField().add(newItem);
+     * getFormField().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link StampFormField }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the formField property.
      */
     public List<StampFormField> getFormField() {
         if (formField == null) {
-            formField = new ArrayList<StampFormField>();
+            formField = new ArrayList<>();
         }
         return this.formField;
     }
 
     /**
+     * List of the stamp fields.
+     * 
      * Gets the value of the fields property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the fields property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the fields property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getFields().add(newItem);
+     * getFields().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link StampField }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the fields property.
      */
     public List<StampField> getFields() {
         if (fields == null) {
-            fields = new ArrayList<StampField>();
+            fields = new ArrayList<>();
         }
         return this.fields;
     }
 
     /**
-     * Gets the value of the headFont property.
+     * Font for the additional items of information.
      * 
      * @return
      *     possible object is
@@ -177,6 +243,7 @@ public class Stamp {
      *     allowed object is
      *     {@link Font }
      *     
+     * @see #getHeadFont()
      */
     public void setHeadFont(Font value) {
         this.headFont = value;
@@ -279,7 +346,7 @@ public class Stamp {
     }
 
     /**
-     * Gets the value of the passwordProtected property.
+     * If this flag is true password is needed to place the stamp.
      * 
      */
     public boolean isPasswordProtected() {
@@ -295,7 +362,7 @@ public class Stamp {
     }
 
     /**
-     * Gets the value of the signature property.
+     * The type of the stamp signature if there is any.
      * 
      * @return
      *     possible object is
@@ -313,13 +380,14 @@ public class Stamp {
      *     allowed object is
      *     {@link StampSignatureType }
      *     
+     * @see #getSignature()
      */
     public void setSignature(StampSignatureType value) {
         this.signature = value;
     }
 
     /**
-     * Gets the value of the name property.
+     * The name of the stamp.
      * 
      * @return
      *     possible object is
@@ -337,13 +405,14 @@ public class Stamp {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getName()
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Gets the value of the displayName property.
+     * The display name of the stamp.
      * 
      * @return
      *     possible object is
@@ -361,13 +430,14 @@ public class Stamp {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getDisplayName()
      */
     public void setDisplayName(String value) {
         this.displayName = value;
     }
 
     /**
-     * Gets the value of the overwrite property.
+     * If this flag is true the system will overwrite existing database entries with the stamp entries.
      * 
      * @return
      *     possible object is
@@ -389,13 +459,14 @@ public class Stamp {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isOverwrite()
      */
     public void setOverwrite(Boolean value) {
         this.overwrite = value;
     }
 
     /**
-     * Gets the value of the id property.
+     * The id of the stamp, which is a GUID usually.
      * 
      * @return
      *     possible object is
@@ -413,13 +484,14 @@ public class Stamp {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getId()
      */
     public void setId(String value) {
         this.id = value;
     }
 
     /**
-     * Gets the value of the isHidden property.
+     * Determines whether the stamp is visible.
      * 
      * @return
      *     possible object is
@@ -441,13 +513,14 @@ public class Stamp {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isIsHidden()
      */
     public void setIsHidden(Boolean value) {
         this.isHidden = value;
     }
 
     /**
-     * Gets the value of the autosave property.
+     * Automatically save the stamp after specified period in seconds. Value -1 mean the stamp have to be saved on user action.
      * 
      * @return
      *     possible object is
@@ -469,13 +542,14 @@ public class Stamp {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getAutosave()
      */
     public void setAutosave(Integer value) {
         this.autosave = value;
     }
 
     /**
-     * Gets the value of the closeAfterStampSet property.
+     * Automatically close the window after stamp is placed in a document
      * 
      * @return
      *     possible object is
@@ -497,13 +571,14 @@ public class Stamp {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isCloseAfterStampSet()
      */
     public void setCloseAfterStampSet(Boolean value) {
         this.closeAfterStampSet = value;
     }
 
     /**
-     * Gets the value of the automaticallyOpenNextDocument property.
+     * Determines whether the stamp remains active after being stored.
      * 
      * @return
      *     possible object is
@@ -525,13 +600,14 @@ public class Stamp {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isAutomaticallyOpenNextDocument()
      */
     public void setAutomaticallyOpenNextDocument(Boolean value) {
         this.automaticallyOpenNextDocument = value;
     }
 
     /**
-     * Gets the value of the keepStampActive property.
+     * Determines whether next document is opened automatically after the stamp is stored.
      * 
      * @return
      *     possible object is
@@ -553,6 +629,7 @@ public class Stamp {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isKeepStampActive()
      */
     public void setKeepStampActive(Boolean value) {
         this.keepStampActive = value;

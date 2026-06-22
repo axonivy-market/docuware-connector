@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * A table number field.
  * 
- * <p>Java class for TaskTableNumberField complex type.
+ * &lt;p&gt;Java class for TaskTableNumberField complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="TaskTableNumberField"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform/workflow}TaskNumberField"&gt;
@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -33,13 +33,21 @@ public class TaskTableNumberField
     extends TaskNumberField
 {
 
+    /**
+     * Determines whether the column will be prefilled with splitbooking balance.
+     * 
+     */
     @XmlAttribute(name = "PrefillWithBalance", required = true)
     protected boolean prefillWithBalance;
+    /**
+     * The document index field that will be used for splitbooking balance.
+     * 
+     */
     @XmlAttribute(name = "BalanceField")
     protected String balanceField;
 
     /**
-     * Gets the value of the prefillWithBalance property.
+     * Determines whether the column will be prefilled with splitbooking balance.
      * 
      */
     public boolean isPrefillWithBalance() {
@@ -55,7 +63,7 @@ public class TaskTableNumberField
     }
 
     /**
-     * Gets the value of the balanceField property.
+     * The document index field that will be used for splitbooking balance.
      * 
      * @return
      *     possible object is
@@ -73,6 +81,7 @@ public class TaskTableNumberField
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getBalanceField()
      */
     public void setBalanceField(String value) {
         this.balanceField = value;

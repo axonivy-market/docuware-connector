@@ -1,24 +1,24 @@
 
 package com.docuware.dev.schema._public.services;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAnyElement;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAnyElement;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 import org.w3c.dom.Element;
 
 
 /**
  * Describes a parameter of an URI template.
  * 
- * <p>Java class for UriTemplateParameter complex type.
+ * &lt;p&gt;Java class for UriTemplateParameter complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="UriTemplateParameter"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -44,7 +44,7 @@ import org.w3c.dom.Element;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -54,24 +54,52 @@ import org.w3c.dom.Element;
 })
 public class UriTemplateParameter {
 
+    /**
+     * Describes the parameter.
+     * 
+     */
     @XmlElement(name = "HtmlDescription")
     protected UriTemplateParameter.HtmlDescription htmlDescription;
+    /**
+     * The name of this URI parameter.
+     * 
+     */
     @XmlAttribute(name = "Name", required = true)
     protected String name;
+    /**
+     * Gets if the parameter can be ommitted.
+     * 
+     */
     @XmlAttribute(name = "IsOptional")
     protected Boolean isOptional;
+    /**
+     * Gets the default parameter in case the parameter is optional and the parameter has a default value.
+     * 
+     */
     @XmlAttribute(name = "DefaultValue")
     protected String defaultValue;
+    /**
+     * Gets a link for further readings.
+     * 
+     */
     @XmlAttribute(name = "FurtherReading")
     @XmlSchemaType(name = "anyURI")
     protected String furtherReading;
+    /**
+     * Gets the type of this parameter.
+     * 
+     */
     @XmlAttribute(name = "Type")
     protected String type;
+    /**
+     * Gets the a link for further readings about this parameter's type.
+     * 
+     */
     @XmlAttribute(name = "TypeDescriptionUri")
     protected String typeDescriptionUri;
 
     /**
-     * Gets the value of the htmlDescription property.
+     * Describes the parameter.
      * 
      * @return
      *     possible object is
@@ -89,13 +117,14 @@ public class UriTemplateParameter {
      *     allowed object is
      *     {@link UriTemplateParameter.HtmlDescription }
      *     
+     * @see #getHtmlDescription()
      */
     public void setHtmlDescription(UriTemplateParameter.HtmlDescription value) {
         this.htmlDescription = value;
     }
 
     /**
-     * Gets the value of the name property.
+     * The name of this URI parameter.
      * 
      * @return
      *     possible object is
@@ -113,13 +142,14 @@ public class UriTemplateParameter {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getName()
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Gets the value of the isOptional property.
+     * Gets if the parameter can be ommitted.
      * 
      * @return
      *     possible object is
@@ -141,13 +171,14 @@ public class UriTemplateParameter {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isIsOptional()
      */
     public void setIsOptional(Boolean value) {
         this.isOptional = value;
     }
 
     /**
-     * Gets the value of the defaultValue property.
+     * Gets the default parameter in case the parameter is optional and the parameter has a default value.
      * 
      * @return
      *     possible object is
@@ -165,13 +196,14 @@ public class UriTemplateParameter {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getDefaultValue()
      */
     public void setDefaultValue(String value) {
         this.defaultValue = value;
     }
 
     /**
-     * Gets the value of the furtherReading property.
+     * Gets a link for further readings.
      * 
      * @return
      *     possible object is
@@ -189,13 +221,14 @@ public class UriTemplateParameter {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getFurtherReading()
      */
     public void setFurtherReading(String value) {
         this.furtherReading = value;
     }
 
     /**
-     * Gets the value of the type property.
+     * Gets the type of this parameter.
      * 
      * @return
      *     possible object is
@@ -213,13 +246,14 @@ public class UriTemplateParameter {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getType()
      */
     public void setType(String value) {
         this.type = value;
     }
 
     /**
-     * Gets the value of the typeDescriptionUri property.
+     * Gets the a link for further readings about this parameter's type.
      * 
      * @return
      *     possible object is
@@ -237,6 +271,7 @@ public class UriTemplateParameter {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getTypeDescriptionUri()
      */
     public void setTypeDescriptionUri(String value) {
         this.typeDescriptionUri = value;
@@ -244,11 +279,11 @@ public class UriTemplateParameter {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * &lt;p&gt;Java class for anonymous complex type&lt;/p&gt;.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
      * 
-     * <pre>
+     * &lt;pre&gt;{&#064;code
      * &lt;complexType&gt;
      *   &lt;complexContent&gt;
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -258,7 +293,7 @@ public class UriTemplateParameter {
      *     &lt;/restriction&gt;
      *   &lt;/complexContent&gt;
      * &lt;/complexType&gt;
-     * </pre>
+     * }&lt;/pre&gt;
      * 
      * 
      */

@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * A history step for Error exit.
  * 
- * <p>Java class for ErrorHistoryStep complex type.
+ * &lt;p&gt;Java class for ErrorHistoryStep complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="ErrorHistoryStep"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -32,15 +32,27 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "ErrorHistoryStep")
 public class ErrorHistoryStep {
 
+    /**
+     * Error message which cause error exit.
+     * 
+     */
     @XmlAttribute(name = "ErrorMessage")
     protected String errorMessage;
+    /**
+     * Contains full error message.
+     * 
+     */
     @XmlAttribute(name = "FullErrorMessage")
     protected String fullErrorMessage;
+    /**
+     * Name of the error exit.
+     * 
+     */
     @XmlAttribute(name = "OutputName")
     protected String outputName;
 
     /**
-     * Gets the value of the errorMessage property.
+     * Error message which cause error exit.
      * 
      * @return
      *     possible object is
@@ -58,13 +70,14 @@ public class ErrorHistoryStep {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getErrorMessage()
      */
     public void setErrorMessage(String value) {
         this.errorMessage = value;
     }
 
     /**
-     * Gets the value of the fullErrorMessage property.
+     * Contains full error message.
      * 
      * @return
      *     possible object is
@@ -82,13 +95,14 @@ public class ErrorHistoryStep {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getFullErrorMessage()
      */
     public void setFullErrorMessage(String value) {
         this.fullErrorMessage = value;
     }
 
     /**
-     * Gets the value of the outputName property.
+     * Name of the error exit.
      * 
      * @return
      *     possible object is
@@ -106,6 +120,7 @@ public class ErrorHistoryStep {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getOutputName()
      */
     public void setOutputName(String value) {
         this.outputName = value;

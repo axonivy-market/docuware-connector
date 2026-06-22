@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Condition for specific field.
  * 
- * <p>Java class for MultiColumnSelectListExpressionCondition complex type.
+ * &lt;p&gt;Java class for MultiColumnSelectListExpressionCondition complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="MultiColumnSelectListExpressionCondition"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform}DialogExpressionCondition"&gt;
@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -32,11 +32,15 @@ public class MultiColumnSelectListExpressionCondition
     extends DialogExpressionCondition
 {
 
+    /**
+     * The type of the field
+     * 
+     */
     @XmlAttribute(name = "Type")
     protected String type;
 
     /**
-     * Gets the value of the type property.
+     * The type of the field
      * 
      * @return
      *     possible object is
@@ -54,6 +58,7 @@ public class MultiColumnSelectListExpressionCondition
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getType()
      */
     public void setType(String value) {
         this.type = value;

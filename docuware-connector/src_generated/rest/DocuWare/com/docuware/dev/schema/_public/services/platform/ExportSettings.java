@@ -1,18 +1,18 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ExportSettings complex type.
+ * &lt;p&gt;Java class for ExportSettings complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="ExportSettings"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -30,15 +30,27 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "ExportSettings")
 public class ExportSettings {
 
+    /**
+     * Gets or sets a value indicating whether the document's section data files has to be exported.
+     * 
+     */
     @XmlAttribute(name = "IncludeDataFiles")
     protected Boolean includeDataFiles;
+    /**
+     * Gets or sets a value indicating whether the document's versions has to be exported.
+     * 
+     */
     @XmlAttribute(name = "ExportHistory")
     protected Boolean exportHistory;
+    /**
+     * Gets or sets a value indicating whether the document's textshot has to be exported.
+     * 
+     */
     @XmlAttribute(name = "ExportTextshots")
     protected Boolean exportTextshots;
 
     /**
-     * Gets the value of the includeDataFiles property.
+     * Gets or sets a value indicating whether the document's section data files has to be exported.
      * 
      * @return
      *     possible object is
@@ -60,13 +72,14 @@ public class ExportSettings {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isIncludeDataFiles()
      */
     public void setIncludeDataFiles(Boolean value) {
         this.includeDataFiles = value;
     }
 
     /**
-     * Gets the value of the exportHistory property.
+     * Gets or sets a value indicating whether the document's versions has to be exported.
      * 
      * @return
      *     possible object is
@@ -88,13 +101,14 @@ public class ExportSettings {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isExportHistory()
      */
     public void setExportHistory(Boolean value) {
         this.exportHistory = value;
     }
 
     /**
-     * Gets the value of the exportTextshots property.
+     * Gets or sets a value indicating whether the document's textshot has to be exported.
      * 
      * @return
      *     possible object is
@@ -116,6 +130,7 @@ public class ExportSettings {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isExportTextshots()
      */
     public void setExportTextshots(Boolean value) {
         this.exportTextshots = value;

@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Defines the description of auditing event property.
  * 
- * <p>Java class for DocumentAuditEventProperty complex type.
+ * &lt;p&gt;Java class for DocumentAuditEventProperty complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="DocumentAuditEventProperty"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -32,15 +32,27 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "DocumentAuditEventProperty")
 public class DocumentAuditEventProperty {
 
+    /**
+     * Gets or sets the name of the property that has been changed.
+     * 
+     */
     @XmlAttribute(name = "PropertyName", required = true)
     protected String propertyName;
+    /**
+     * Gets or sets the old value of the property.
+     * 
+     */
     @XmlAttribute(name = "OldValue")
     protected String oldValue;
+    /**
+     * Gets or sets the new value of the property.
+     * 
+     */
     @XmlAttribute(name = "NewValue")
     protected String newValue;
 
     /**
-     * Gets the value of the propertyName property.
+     * Gets or sets the name of the property that has been changed.
      * 
      * @return
      *     possible object is
@@ -58,13 +70,14 @@ public class DocumentAuditEventProperty {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getPropertyName()
      */
     public void setPropertyName(String value) {
         this.propertyName = value;
     }
 
     /**
-     * Gets the value of the oldValue property.
+     * Gets or sets the old value of the property.
      * 
      * @return
      *     possible object is
@@ -82,13 +95,14 @@ public class DocumentAuditEventProperty {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getOldValue()
      */
     public void setOldValue(String value) {
         this.oldValue = value;
     }
 
     /**
-     * Gets the value of the newValue property.
+     * Gets or sets the new value of the property.
      * 
      * @return
      *     possible object is
@@ -106,6 +120,7 @@ public class DocumentAuditEventProperty {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getNewValue()
      */
     public void setNewValue(String value) {
         this.newValue = value;

@@ -1,22 +1,22 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * A request decision for a common user.
  * 
- * <p>Java class for RequestDecision complex type.
+ * &lt;p&gt;Java class for RequestDecision complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="RequestDecision"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -28,7 +28,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -40,8 +40,16 @@ public class RequestDecision {
 
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services", required = true)
     protected Links links;
+    /**
+     * Sequential order number of the decision in the request. Decision identifier.
+     * 
+     */
     @XmlAttribute(name = "Id", required = true)
     protected String id;
+    /**
+     * Label of the decision.
+     * 
+     */
     @XmlAttribute(name = "Label", required = true)
     protected String label;
 
@@ -70,7 +78,7 @@ public class RequestDecision {
     }
 
     /**
-     * Gets the value of the id property.
+     * Sequential order number of the decision in the request. Decision identifier.
      * 
      * @return
      *     possible object is
@@ -88,13 +96,14 @@ public class RequestDecision {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getId()
      */
     public void setId(String value) {
         this.id = value;
     }
 
     /**
-     * Gets the value of the label property.
+     * Label of the decision.
      * 
      * @return
      *     possible object is
@@ -112,6 +121,7 @@ public class RequestDecision {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getLabel()
      */
     public void setLabel(String value) {
         this.label = value;

@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Operations which can be executed on a decision.
  * 
- * <p>Java class for DecisionOperations complex type.
+ * &lt;p&gt;Java class for DecisionOperations complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="DecisionOperations"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -27,7 +27,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -39,15 +39,23 @@ import com.docuware.dev.schema._public.services.Links;
 })
 public class DecisionOperations {
 
+    /**
+     * Base operations which can be executed on a decision.
+     * 
+     */
     @XmlElement(name = "BaseDecisionOperations", required = true)
     protected BaseDecisionOperations baseDecisionOperations;
+    /**
+     * Operations which can be executed on a decision only from form interface.
+     * 
+     */
     @XmlElement(name = "ExtendedDecisionOperations")
     protected ExtendedDecisionOperations extendedDecisionOperations;
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services", required = true)
     protected Links links;
 
     /**
-     * Gets the value of the baseDecisionOperations property.
+     * Base operations which can be executed on a decision.
      * 
      * @return
      *     possible object is
@@ -65,13 +73,14 @@ public class DecisionOperations {
      *     allowed object is
      *     {@link BaseDecisionOperations }
      *     
+     * @see #getBaseDecisionOperations()
      */
     public void setBaseDecisionOperations(BaseDecisionOperations value) {
         this.baseDecisionOperations = value;
     }
 
     /**
-     * Gets the value of the extendedDecisionOperations property.
+     * Operations which can be executed on a decision only from form interface.
      * 
      * @return
      *     possible object is
@@ -89,6 +98,7 @@ public class DecisionOperations {
      *     allowed object is
      *     {@link ExtendedDecisionOperations }
      *     
+     * @see #getExtendedDecisionOperations()
      */
     public void setExtendedDecisionOperations(ExtendedDecisionOperations value) {
         this.extendedDecisionOperations = value;

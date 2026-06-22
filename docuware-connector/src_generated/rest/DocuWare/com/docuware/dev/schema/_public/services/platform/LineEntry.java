@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Line/Arrow annotation
  * 
- * <p>Java class for LineEntry complex type.
+ * &lt;p&gt;Java class for LineEntry complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="LineEntry"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform}EntryBase"&gt;
@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -40,15 +40,27 @@ public class LineEntry
     extends EntryBase
 {
 
+    /**
+     * Start point of the line.
+     * 
+     */
     @XmlElement(name = "From", required = true)
     protected AnnotationPoint from;
+    /**
+     * End  point of the line.
+     * 
+     */
     @XmlElement(name = "To", required = true)
     protected AnnotationPoint to;
+    /**
+     * Define a line with arror.
+     * 
+     */
     @XmlAttribute(name = "Arrow")
     protected Boolean arrow;
 
     /**
-     * Gets the value of the from property.
+     * Start point of the line.
      * 
      * @return
      *     possible object is
@@ -66,13 +78,14 @@ public class LineEntry
      *     allowed object is
      *     {@link AnnotationPoint }
      *     
+     * @see #getFrom()
      */
     public void setFrom(AnnotationPoint value) {
         this.from = value;
     }
 
     /**
-     * Gets the value of the to property.
+     * End  point of the line.
      * 
      * @return
      *     possible object is
@@ -90,13 +103,14 @@ public class LineEntry
      *     allowed object is
      *     {@link AnnotationPoint }
      *     
+     * @see #getTo()
      */
     public void setTo(AnnotationPoint value) {
         this.to = value;
     }
 
     /**
-     * Gets the value of the arrow property.
+     * Define a line with arror.
      * 
      * @return
      *     possible object is
@@ -118,6 +132,7 @@ public class LineEntry
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isArrow()
      */
     public void setArrow(Boolean value) {
         this.arrow = value;

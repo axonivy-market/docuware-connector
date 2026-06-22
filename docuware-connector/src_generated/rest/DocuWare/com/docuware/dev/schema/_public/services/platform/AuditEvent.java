@@ -1,22 +1,22 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Define auditing information property
  * 
- * <p>Java class for AuditEvent complex type.
+ * &lt;p&gt;Java class for AuditEvent complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="AuditEvent"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -29,7 +29,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -37,22 +37,46 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "AuditEvent")
 public class AuditEvent {
 
+    /**
+     * Gets or sets the identity of the auditing event.
+     * 
+     */
     @XmlAttribute(name = "Id")
     protected String id;
+    /**
+     * Gets or sets the name of the event.
+     * 
+     */
     @XmlAttribute(name = "Event")
     protected String event;
+    /**
+     * Gets or sets the type of the event.
+     * 
+     */
     @XmlAttribute(name = "Type")
     protected String type;
+    /**
+     * Gets or sets the name of the object that has been changed.
+     * 
+     */
     @XmlAttribute(name = "Name")
     protected String name;
+    /**
+     * Gets or sets the name of the user who updated the object.
+     * 
+     */
     @XmlAttribute(name = "User")
     protected String user;
+    /**
+     * Gets or sets the date and time when the event is happened.
+     * 
+     */
     @XmlAttribute(name = "Date")
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar date;
 
     /**
-     * Gets the value of the id property.
+     * Gets or sets the identity of the auditing event.
      * 
      * @return
      *     possible object is
@@ -70,13 +94,14 @@ public class AuditEvent {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getId()
      */
     public void setId(String value) {
         this.id = value;
     }
 
     /**
-     * Gets the value of the event property.
+     * Gets or sets the name of the event.
      * 
      * @return
      *     possible object is
@@ -94,13 +119,14 @@ public class AuditEvent {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getEvent()
      */
     public void setEvent(String value) {
         this.event = value;
     }
 
     /**
-     * Gets the value of the type property.
+     * Gets or sets the type of the event.
      * 
      * @return
      *     possible object is
@@ -118,13 +144,14 @@ public class AuditEvent {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getType()
      */
     public void setType(String value) {
         this.type = value;
     }
 
     /**
-     * Gets the value of the name property.
+     * Gets or sets the name of the object that has been changed.
      * 
      * @return
      *     possible object is
@@ -142,13 +169,14 @@ public class AuditEvent {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getName()
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Gets the value of the user property.
+     * Gets or sets the name of the user who updated the object.
      * 
      * @return
      *     possible object is
@@ -166,13 +194,14 @@ public class AuditEvent {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getUser()
      */
     public void setUser(String value) {
         this.user = value;
     }
 
     /**
-     * Gets the value of the date property.
+     * Gets or sets the date and time when the event is happened.
      * 
      * @return
      *     possible object is
@@ -190,6 +219,7 @@ public class AuditEvent {
      *     allowed object is
      *     {@link XMLGregorianCalendar }
      *     
+     * @see #getDate()
      */
     public void setDate(XMLGregorianCalendar value) {
         this.date = value;

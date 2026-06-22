@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Annotation that contains text
  * 
- * <p>Java class for TextEntry complex type.
+ * &lt;p&gt;Java class for TextEntry complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="TextEntry"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform}EntryBase"&gt;
@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -40,15 +40,27 @@ public class TextEntry
     extends EntryBase
 {
 
+    /**
+     * Specify the font of the text.
+     * 
+     */
     @XmlElement(name = "Font", required = true)
     protected Font font;
+    /**
+     * Text to be displayed.
+     * 
+     */
     @XmlElement(name = "Value", required = true)
     protected String value;
+    /**
+     * Location of the annotation.
+     * 
+     */
     @XmlElement(name = "Location", required = true)
     protected AnnotationRectangle location;
 
     /**
-     * Gets the value of the font property.
+     * Specify the font of the text.
      * 
      * @return
      *     possible object is
@@ -66,13 +78,14 @@ public class TextEntry
      *     allowed object is
      *     {@link Font }
      *     
+     * @see #getFont()
      */
     public void setFont(Font value) {
         this.font = value;
     }
 
     /**
-     * Gets the value of the value property.
+     * Text to be displayed.
      * 
      * @return
      *     possible object is
@@ -90,13 +103,14 @@ public class TextEntry
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getValue()
      */
     public void setValue(String value) {
         this.value = value;
     }
 
     /**
-     * Gets the value of the location property.
+     * Location of the annotation.
      * 
      * @return
      *     possible object is
@@ -114,6 +128,7 @@ public class TextEntry
      *     allowed object is
      *     {@link AnnotationRectangle }
      *     
+     * @see #getLocation()
      */
     public void setLocation(AnnotationRectangle value) {
         this.location = value;

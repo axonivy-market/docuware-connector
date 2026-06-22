@@ -3,19 +3,19 @@ package com.docuware.dev.schema._public.services.platform.workflow;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for DecisionHistoryStep complex type.
+ * &lt;p&gt;Java class for DecisionHistoryStep complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="DecisionHistoryStep"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -42,108 +42,147 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class DecisionHistoryStep {
 
+    /**
+     * List of fields which has been confirmed.
+     * 
+     */
     @XmlElement(name = "InputFields")
     protected List<HistoryField> inputFields;
+    /**
+     * List of assignments which has been executed in this step.
+     * 
+     */
     @XmlElement(name = "Assignments")
     protected List<HistoryField> assignments;
+    /**
+     * List of file cabinet assignments which has been executed in this step.
+     * 
+     */
     @XmlElement(name = "FileCabinetAssignments")
     protected List<FileCabinetHistoryField> fileCabinetAssignments;
+    /**
+     * Document user version when the task is confirmed.
+     * 
+     */
     @XmlAttribute(name = "DocumentUserVersion")
     protected String documentUserVersion;
+    /**
+     * Name of the user who confirmed the task.
+     * 
+     */
     @XmlAttribute(name = "UserName")
     protected String userName;
+    /**
+     * Name of the decision which has been confirmed.
+     * 
+     */
     @XmlAttribute(name = "DecisionName")
     protected String decisionName;
 
     /**
+     * List of fields which has been confirmed.
+     * 
      * Gets the value of the inputFields property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the inputFields property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the inputFields property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getInputFields().add(newItem);
+     * getInputFields().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link HistoryField }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the inputFields property.
      */
     public List<HistoryField> getInputFields() {
         if (inputFields == null) {
-            inputFields = new ArrayList<HistoryField>();
+            inputFields = new ArrayList<>();
         }
         return this.inputFields;
     }
 
     /**
+     * List of assignments which has been executed in this step.
+     * 
      * Gets the value of the assignments property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the assignments property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the assignments property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getAssignments().add(newItem);
+     * getAssignments().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link HistoryField }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the assignments property.
      */
     public List<HistoryField> getAssignments() {
         if (assignments == null) {
-            assignments = new ArrayList<HistoryField>();
+            assignments = new ArrayList<>();
         }
         return this.assignments;
     }
 
     /**
+     * List of file cabinet assignments which has been executed in this step.
+     * 
      * Gets the value of the fileCabinetAssignments property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the fileCabinetAssignments property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the fileCabinetAssignments property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getFileCabinetAssignments().add(newItem);
+     * getFileCabinetAssignments().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link FileCabinetHistoryField }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the fileCabinetAssignments property.
      */
     public List<FileCabinetHistoryField> getFileCabinetAssignments() {
         if (fileCabinetAssignments == null) {
-            fileCabinetAssignments = new ArrayList<FileCabinetHistoryField>();
+            fileCabinetAssignments = new ArrayList<>();
         }
         return this.fileCabinetAssignments;
     }
 
     /**
-     * Gets the value of the documentUserVersion property.
+     * Document user version when the task is confirmed.
      * 
      * @return
      *     possible object is
@@ -161,13 +200,14 @@ public class DecisionHistoryStep {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getDocumentUserVersion()
      */
     public void setDocumentUserVersion(String value) {
         this.documentUserVersion = value;
     }
 
     /**
-     * Gets the value of the userName property.
+     * Name of the user who confirmed the task.
      * 
      * @return
      *     possible object is
@@ -185,13 +225,14 @@ public class DecisionHistoryStep {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getUserName()
      */
     public void setUserName(String value) {
         this.userName = value;
     }
 
     /**
-     * Gets the value of the decisionName property.
+     * Name of the decision which has been confirmed.
      * 
      * @return
      *     possible object is
@@ -209,6 +250,7 @@ public class DecisionHistoryStep {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getDecisionName()
      */
     public void setDecisionName(String value) {
         this.decisionName = value;

@@ -3,25 +3,25 @@ package com.docuware.dev.schema._public.services.platform;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAnyElement;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
 import com.docuware.dev._public.intellix.DocumentContent;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAnyElement;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 import org.w3c.dom.Element;
 
 
 /**
- * <p>Java class for Document complex type.
+ * &lt;p&gt;Java class for Document complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="Document"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -64,7 +64,7 @@ import org.w3c.dom.Element;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -83,59 +83,152 @@ import org.w3c.dom.Element;
 })
 public class Document {
 
+    /**
+     * Fields of a document
+     * 
+     */
     @XmlElement(name = "Fields", required = true)
     protected DocumentIndexFields fields;
+    /**
+     * Flags of a document
+     * 
+     */
     @XmlElement(name = "Flags")
     protected DocumentFlags flags;
+    /**
+     * Version of a document
+     * 
+     */
     @XmlElement(name = "Version")
     protected DocumentVersion version;
+    /**
+     * Obsolete. Use TextShots property. Content textshot (OCR) of the document
+     * 
+     */
     @XmlElement(name = "TextShot")
     protected List<DocumentContent> textShot;
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services")
     protected Links links;
+    /**
+     * Sections of the document. Contain no sections if document is DBRecord
+     * 
+     */
     @XmlElement(name = "Sections")
     protected Sections sections;
+    /**
+     * Contains an XHTML preview of the document. This can be used to display a part of text which contains the hits of a full-text query.
+     * 
+     */
     @XmlElement(name = "Preview")
     protected Document.Preview preview;
+    /**
+     * The internet media type of the document. If there is no section this value is missing.
+     * 
+     */
     @XmlElement(name = "ContentType")
     protected String contentType;
+    /**
+     * Contains data for a file chunk during a big file upload. This data is created on the server of every chunk request.
+     * 
+     */
     @XmlElement(name = "FileChunk")
     protected UploadedFileChunk fileChunk;
+    /**
+     * Defines application specific properties. Different applications store specific application here
+     * 
+     */
     @XmlElement(name = "ApplicationProperties")
     protected DocumentApplicationProperties applicationProperties;
+    /**
+     * Contains true if all pages are known so PageCount contains exact number the pages in section. If the value is set to false there are more pagesm but at least the number set in PageCount
+     * 
+     */
     @XmlAttribute(name = "HaveMoreTotalPages")
     protected Boolean haveMoreTotalPages;
+    /**
+     * Contains true if document has a text annotation (the first section of the document has text annotation)
+     * 
+     */
     @XmlAttribute(name = "HasTextAnnotation")
     protected Boolean hasTextAnnotation;
+    /**
+     * Contains true if document contains at least one XML Digital signature
+     * 
+     */
     @XmlAttribute(name = "HasXmlDigitalSignatures")
     protected Boolean hasXmlDigitalSignatures;
+    /**
+     * Contains true if the document may contain any annotations on the first section and first page.
+     *           If this is false there is no need the AnnotationsAsImage link to be called.
+     * 
+     */
     @XmlAttribute(name = "AnnotationsPreview")
     protected Boolean annotationsPreview;
+    /**
+     * The number of pages of this section, if known. If it is unknown, this value is -1.
+     * 
+     */
     @XmlAttribute(name = "TotalPages")
     protected Integer totalPages;
+    /**
+     * Document identity
+     * 
+     */
     @XmlAttribute(name = "Id")
     protected Integer id;
+    /**
+     * The title of the document, if it exists.
+     * 
+     */
     @XmlAttribute(name = "Title")
     protected String title;
+    /**
+     * Contains last modification date of the document
+     * 
+     */
     @XmlAttribute(name = "LastModified")
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar lastModified;
+    /**
+     * Contains creation date of the document
+     * 
+     */
     @XmlAttribute(name = "CreatedAt")
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar createdAt;
+    /**
+     * The sum of the size of all section files and document header.
+     * 
+     */
     @XmlAttribute(name = "FileSize")
     protected Long fileSize;
+    /**
+     * The number of sections of this document. This number is equal to the sequence length of the Sections element.
+     * 
+     */
     @XmlAttribute(name = "SectionCount")
     protected Integer sectionCount;
+    /**
+     * Intellix status
+     * 
+     */
     @XmlAttribute(name = "IntellixTrust")
     protected IntellixTrust intellixTrust;
+    /**
+     * Version management status of the document
+     * 
+     */
     @XmlAttribute(name = "VersionStatus")
     protected VersionManagementStatus versionStatus;
+    /**
+     * Defines the location of the document if it is stored outside of the system
+     * 
+     */
     @XmlAttribute(name = "ExternalContentLocation")
     protected String externalContentLocation;
 
     /**
-     * Gets the value of the fields property.
+     * Fields of a document
      * 
      * @return
      *     possible object is
@@ -153,13 +246,14 @@ public class Document {
      *     allowed object is
      *     {@link DocumentIndexFields }
      *     
+     * @see #getFields()
      */
     public void setFields(DocumentIndexFields value) {
         this.fields = value;
     }
 
     /**
-     * Gets the value of the flags property.
+     * Flags of a document
      * 
      * @return
      *     possible object is
@@ -177,13 +271,14 @@ public class Document {
      *     allowed object is
      *     {@link DocumentFlags }
      *     
+     * @see #getFlags()
      */
     public void setFlags(DocumentFlags value) {
         this.flags = value;
     }
 
     /**
-     * Gets the value of the version property.
+     * Version of a document
      * 
      * @return
      *     possible object is
@@ -201,36 +296,42 @@ public class Document {
      *     allowed object is
      *     {@link DocumentVersion }
      *     
+     * @see #getVersion()
      */
     public void setVersion(DocumentVersion value) {
         this.version = value;
     }
 
     /**
+     * Obsolete. Use TextShots property. Content textshot (OCR) of the document
+     * 
      * Gets the value of the textShot property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the textShot property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the textShot property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getTextShot().add(newItem);
+     * getTextShot().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link DocumentContent }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the textShot property.
      */
     public List<DocumentContent> getTextShot() {
         if (textShot == null) {
-            textShot = new ArrayList<DocumentContent>();
+            textShot = new ArrayList<>();
         }
         return this.textShot;
     }
@@ -260,7 +361,7 @@ public class Document {
     }
 
     /**
-     * Gets the value of the sections property.
+     * Sections of the document. Contain no sections if document is DBRecord
      * 
      * @return
      *     possible object is
@@ -278,13 +379,14 @@ public class Document {
      *     allowed object is
      *     {@link Sections }
      *     
+     * @see #getSections()
      */
     public void setSections(Sections value) {
         this.sections = value;
     }
 
     /**
-     * Gets the value of the preview property.
+     * Contains an XHTML preview of the document. This can be used to display a part of text which contains the hits of a full-text query.
      * 
      * @return
      *     possible object is
@@ -302,13 +404,14 @@ public class Document {
      *     allowed object is
      *     {@link Document.Preview }
      *     
+     * @see #getPreview()
      */
     public void setPreview(Document.Preview value) {
         this.preview = value;
     }
 
     /**
-     * Gets the value of the contentType property.
+     * The internet media type of the document. If there is no section this value is missing.
      * 
      * @return
      *     possible object is
@@ -326,13 +429,14 @@ public class Document {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getContentType()
      */
     public void setContentType(String value) {
         this.contentType = value;
     }
 
     /**
-     * Gets the value of the fileChunk property.
+     * Contains data for a file chunk during a big file upload. This data is created on the server of every chunk request.
      * 
      * @return
      *     possible object is
@@ -350,13 +454,14 @@ public class Document {
      *     allowed object is
      *     {@link UploadedFileChunk }
      *     
+     * @see #getFileChunk()
      */
     public void setFileChunk(UploadedFileChunk value) {
         this.fileChunk = value;
     }
 
     /**
-     * Gets the value of the applicationProperties property.
+     * Defines application specific properties. Different applications store specific application here
      * 
      * @return
      *     possible object is
@@ -374,13 +479,14 @@ public class Document {
      *     allowed object is
      *     {@link DocumentApplicationProperties }
      *     
+     * @see #getApplicationProperties()
      */
     public void setApplicationProperties(DocumentApplicationProperties value) {
         this.applicationProperties = value;
     }
 
     /**
-     * Gets the value of the haveMoreTotalPages property.
+     * Contains true if all pages are known so PageCount contains exact number the pages in section. If the value is set to false there are more pagesm but at least the number set in PageCount
      * 
      * @return
      *     possible object is
@@ -402,13 +508,14 @@ public class Document {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isHaveMoreTotalPages()
      */
     public void setHaveMoreTotalPages(Boolean value) {
         this.haveMoreTotalPages = value;
     }
 
     /**
-     * Gets the value of the hasTextAnnotation property.
+     * Contains true if document has a text annotation (the first section of the document has text annotation)
      * 
      * @return
      *     possible object is
@@ -430,13 +537,14 @@ public class Document {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isHasTextAnnotation()
      */
     public void setHasTextAnnotation(Boolean value) {
         this.hasTextAnnotation = value;
     }
 
     /**
-     * Gets the value of the hasXmlDigitalSignatures property.
+     * Contains true if document contains at least one XML Digital signature
      * 
      * @return
      *     possible object is
@@ -458,13 +566,15 @@ public class Document {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isHasXmlDigitalSignatures()
      */
     public void setHasXmlDigitalSignatures(Boolean value) {
         this.hasXmlDigitalSignatures = value;
     }
 
     /**
-     * Gets the value of the annotationsPreview property.
+     * Contains true if the document may contain any annotations on the first section and first page.
+     *           If this is false there is no need the AnnotationsAsImage link to be called.
      * 
      * @return
      *     possible object is
@@ -486,13 +596,14 @@ public class Document {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isAnnotationsPreview()
      */
     public void setAnnotationsPreview(Boolean value) {
         this.annotationsPreview = value;
     }
 
     /**
-     * Gets the value of the totalPages property.
+     * The number of pages of this section, if known. If it is unknown, this value is -1.
      * 
      * @return
      *     possible object is
@@ -514,13 +625,14 @@ public class Document {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getTotalPages()
      */
     public void setTotalPages(Integer value) {
         this.totalPages = value;
     }
 
     /**
-     * Gets the value of the id property.
+     * Document identity
      * 
      * @return
      *     possible object is
@@ -542,13 +654,14 @@ public class Document {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getId()
      */
     public void setId(Integer value) {
         this.id = value;
     }
 
     /**
-     * Gets the value of the title property.
+     * The title of the document, if it exists.
      * 
      * @return
      *     possible object is
@@ -566,13 +679,14 @@ public class Document {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getTitle()
      */
     public void setTitle(String value) {
         this.title = value;
     }
 
     /**
-     * Gets the value of the lastModified property.
+     * Contains last modification date of the document
      * 
      * @return
      *     possible object is
@@ -590,13 +704,14 @@ public class Document {
      *     allowed object is
      *     {@link XMLGregorianCalendar }
      *     
+     * @see #getLastModified()
      */
     public void setLastModified(XMLGregorianCalendar value) {
         this.lastModified = value;
     }
 
     /**
-     * Gets the value of the createdAt property.
+     * Contains creation date of the document
      * 
      * @return
      *     possible object is
@@ -614,13 +729,14 @@ public class Document {
      *     allowed object is
      *     {@link XMLGregorianCalendar }
      *     
+     * @see #getCreatedAt()
      */
     public void setCreatedAt(XMLGregorianCalendar value) {
         this.createdAt = value;
     }
 
     /**
-     * Gets the value of the fileSize property.
+     * The sum of the size of all section files and document header.
      * 
      * @return
      *     possible object is
@@ -642,13 +758,14 @@ public class Document {
      *     allowed object is
      *     {@link Long }
      *     
+     * @see #getFileSize()
      */
     public void setFileSize(Long value) {
         this.fileSize = value;
     }
 
     /**
-     * Gets the value of the sectionCount property.
+     * The number of sections of this document. This number is equal to the sequence length of the Sections element.
      * 
      * @return
      *     possible object is
@@ -670,13 +787,14 @@ public class Document {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getSectionCount()
      */
     public void setSectionCount(Integer value) {
         this.sectionCount = value;
     }
 
     /**
-     * Gets the value of the intellixTrust property.
+     * Intellix status
      * 
      * @return
      *     possible object is
@@ -698,13 +816,14 @@ public class Document {
      *     allowed object is
      *     {@link IntellixTrust }
      *     
+     * @see #getIntellixTrust()
      */
     public void setIntellixTrust(IntellixTrust value) {
         this.intellixTrust = value;
     }
 
     /**
-     * Gets the value of the versionStatus property.
+     * Version management status of the document
      * 
      * @return
      *     possible object is
@@ -726,13 +845,14 @@ public class Document {
      *     allowed object is
      *     {@link VersionManagementStatus }
      *     
+     * @see #getVersionStatus()
      */
     public void setVersionStatus(VersionManagementStatus value) {
         this.versionStatus = value;
     }
 
     /**
-     * Gets the value of the externalContentLocation property.
+     * Defines the location of the document if it is stored outside of the system
      * 
      * @return
      *     possible object is
@@ -750,6 +870,7 @@ public class Document {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getExternalContentLocation()
      */
     public void setExternalContentLocation(String value) {
         this.externalContentLocation = value;
@@ -757,11 +878,11 @@ public class Document {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * &lt;p&gt;Java class for anonymous complex type&lt;/p&gt;.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
      * 
-     * <pre>
+     * &lt;pre&gt;{&#064;code
      * &lt;complexType&gt;
      *   &lt;complexContent&gt;
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -771,7 +892,7 @@ public class Document {
      *     &lt;/restriction&gt;
      *   &lt;/complexContent&gt;
      * &lt;/complexType&gt;
-     * </pre>
+     * }&lt;/pre&gt;
      * 
      * 
      */

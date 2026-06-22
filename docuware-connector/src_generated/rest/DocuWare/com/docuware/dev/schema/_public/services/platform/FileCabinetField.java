@@ -1,19 +1,19 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for FileCabinetField complex type.
+ * &lt;p&gt;Java class for FileCabinetField complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="FileCabinetField"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform}FileCabinetFieldBase"&gt;
@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -36,13 +36,21 @@ public class FileCabinetField
     extends FileCabinetFieldBase
 {
 
+    /**
+     * Only relevant for fields with "Table" DWFieldType. Columns of the table field.
+     * 
+     */
     @XmlElement(name = "TableFieldColumns", required = true)
     protected TableFieldColumns tableFieldColumns;
+    /**
+     * Determines whether the field is used as document name.
+     * 
+     */
     @XmlAttribute(name = "UsedAsDocumentName")
     protected Boolean usedAsDocumentName;
 
     /**
-     * Gets the value of the tableFieldColumns property.
+     * Only relevant for fields with "Table" DWFieldType. Columns of the table field.
      * 
      * @return
      *     possible object is
@@ -60,13 +68,14 @@ public class FileCabinetField
      *     allowed object is
      *     {@link TableFieldColumns }
      *     
+     * @see #getTableFieldColumns()
      */
     public void setTableFieldColumns(TableFieldColumns value) {
         this.tableFieldColumns = value;
     }
 
     /**
-     * Gets the value of the usedAsDocumentName property.
+     * Determines whether the field is used as document name.
      * 
      * @return
      *     possible object is
@@ -88,6 +97,7 @@ public class FileCabinetField
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isUsedAsDocumentName()
      */
     public void setUsedAsDocumentName(Boolean value) {
         this.usedAsDocumentName = value;

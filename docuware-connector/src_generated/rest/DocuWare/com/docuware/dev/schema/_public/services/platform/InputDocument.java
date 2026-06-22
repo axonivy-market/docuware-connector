@@ -1,19 +1,19 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for InputDocument complex type.
+ * &lt;p&gt;Java class for InputDocument complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="InputDocument"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -27,7 +27,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -41,19 +41,35 @@ import com.docuware.dev.schema._public.services.Links;
 })
 public class InputDocument {
 
+    /**
+     * Fields of a document
+     * 
+     */
     @XmlElement(name = "Fields", required = true)
     protected DocumentIndexFields fields;
+    /**
+     * Flags of a document
+     * 
+     */
     @XmlElement(name = "Flags")
     protected InputFlags flags;
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services")
     protected Links links;
+    /**
+     * Sections of the document. Contains no sections if the document is DBRecord
+     * 
+     */
     @XmlElement(name = "Sections")
     protected InputSections sections;
+    /**
+     * Contains data for a file chunk during a big file upload. This data is created on the server of every chunk request.
+     * 
+     */
     @XmlElement(name = "FileChunk")
     protected UploadedFileChunk fileChunk;
 
     /**
-     * Gets the value of the fields property.
+     * Fields of a document
      * 
      * @return
      *     possible object is
@@ -71,13 +87,14 @@ public class InputDocument {
      *     allowed object is
      *     {@link DocumentIndexFields }
      *     
+     * @see #getFields()
      */
     public void setFields(DocumentIndexFields value) {
         this.fields = value;
     }
 
     /**
-     * Gets the value of the flags property.
+     * Flags of a document
      * 
      * @return
      *     possible object is
@@ -95,6 +112,7 @@ public class InputDocument {
      *     allowed object is
      *     {@link InputFlags }
      *     
+     * @see #getFlags()
      */
     public void setFlags(InputFlags value) {
         this.flags = value;
@@ -125,7 +143,7 @@ public class InputDocument {
     }
 
     /**
-     * Gets the value of the sections property.
+     * Sections of the document. Contains no sections if the document is DBRecord
      * 
      * @return
      *     possible object is
@@ -143,13 +161,14 @@ public class InputDocument {
      *     allowed object is
      *     {@link InputSections }
      *     
+     * @see #getSections()
      */
     public void setSections(InputSections value) {
         this.sections = value;
     }
 
     /**
-     * Gets the value of the fileChunk property.
+     * Contains data for a file chunk during a big file upload. This data is created on the server of every chunk request.
      * 
      * @return
      *     possible object is
@@ -167,6 +186,7 @@ public class InputDocument {
      *     allowed object is
      *     {@link UploadedFileChunk }
      *     
+     * @see #getFileChunk()
      */
     public void setFileChunk(UploadedFileChunk value) {
         this.fileChunk = value;

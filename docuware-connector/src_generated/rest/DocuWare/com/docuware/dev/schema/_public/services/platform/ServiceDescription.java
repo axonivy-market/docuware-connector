@@ -1,22 +1,22 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Root object that define platform structure.
  * 
- * <p>Java class for ServiceDescription complex type.
+ * &lt;p&gt;Java class for ServiceDescription complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="ServiceDescription"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -30,7 +30,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -45,12 +45,28 @@ public class ServiceDescription {
 
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services", required = true)
     protected Links links;
+    /**
+     * Test applications for platform.
+     * 
+     */
     @XmlElement(name = "Tests", required = true)
     protected ServiceDescriptionTests tests;
+    /**
+     * Documentation links for platform.
+     * 
+     */
     @XmlElement(name = "Documentation", required = true)
     protected ServiceDescriptionDocumentation documentation;
+    /**
+     * Test applications for platform.
+     * 
+     */
     @XmlElement(name = "Statistics", required = true)
     protected ServiceDescriptionStatistics statistics;
+    /**
+     * Contains the product version of DocuWare.
+     * 
+     */
     @XmlAttribute(name = "Version")
     protected String version;
 
@@ -79,7 +95,7 @@ public class ServiceDescription {
     }
 
     /**
-     * Gets the value of the tests property.
+     * Test applications for platform.
      * 
      * @return
      *     possible object is
@@ -97,13 +113,14 @@ public class ServiceDescription {
      *     allowed object is
      *     {@link ServiceDescriptionTests }
      *     
+     * @see #getTests()
      */
     public void setTests(ServiceDescriptionTests value) {
         this.tests = value;
     }
 
     /**
-     * Gets the value of the documentation property.
+     * Documentation links for platform.
      * 
      * @return
      *     possible object is
@@ -121,13 +138,14 @@ public class ServiceDescription {
      *     allowed object is
      *     {@link ServiceDescriptionDocumentation }
      *     
+     * @see #getDocumentation()
      */
     public void setDocumentation(ServiceDescriptionDocumentation value) {
         this.documentation = value;
     }
 
     /**
-     * Gets the value of the statistics property.
+     * Test applications for platform.
      * 
      * @return
      *     possible object is
@@ -145,13 +163,14 @@ public class ServiceDescription {
      *     allowed object is
      *     {@link ServiceDescriptionStatistics }
      *     
+     * @see #getStatistics()
      */
     public void setStatistics(ServiceDescriptionStatistics value) {
         this.statistics = value;
     }
 
     /**
-     * Gets the value of the version property.
+     * Contains the product version of DocuWare.
      * 
      * @return
      *     possible object is
@@ -169,6 +188,7 @@ public class ServiceDescription {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getVersion()
      */
     public void setVersion(String value) {
         this.version = value;

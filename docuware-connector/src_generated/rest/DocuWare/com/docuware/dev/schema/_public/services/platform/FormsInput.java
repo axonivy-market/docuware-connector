@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Input used to submit form and store in DocuWare
  * 
- * <p>Java class for FormsInput complex type.
+ * &lt;p&gt;Java class for FormsInput complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="FormsInput"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -36,13 +36,21 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class FormsInput {
 
+    /**
+     * Form information with configuration id and form fields with user input
+     * 
+     */
     @XmlElement(name = "FormInfo", required = true)
     protected FormInfo formInfo;
+    /**
+     * String representing the HTML of the form
+     * 
+     */
     @XmlElement(name = "HTML", required = true)
     protected String html;
 
     /**
-     * Gets the value of the formInfo property.
+     * Form information with configuration id and form fields with user input
      * 
      * @return
      *     possible object is
@@ -60,13 +68,14 @@ public class FormsInput {
      *     allowed object is
      *     {@link FormInfo }
      *     
+     * @see #getFormInfo()
      */
     public void setFormInfo(FormInfo value) {
         this.formInfo = value;
     }
 
     /**
-     * Gets the value of the html property.
+     * String representing the HTML of the form
      * 
      * @return
      *     possible object is
@@ -84,6 +93,7 @@ public class FormsInput {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getHTML()
      */
     public void setHTML(String value) {
         this.html = value;

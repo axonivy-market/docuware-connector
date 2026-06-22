@@ -1,18 +1,18 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Font complex type.
+ * &lt;p&gt;Java class for Font complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="Font"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -34,23 +34,51 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "Font")
 public class Font {
 
+    /**
+     * Define name of the font.
+     * 
+     */
     @XmlAttribute(name = "FontName", required = true)
     protected String fontName;
+    /**
+     * Define bold text.
+     * 
+     */
     @XmlAttribute(name = "Bold")
     protected Boolean bold;
+    /**
+     * Define italic text.
+     * 
+     */
     @XmlAttribute(name = "Italic")
     protected Boolean italic;
+    /**
+     * Define underlined text.
+     * 
+     */
     @XmlAttribute(name = "Underlined")
     protected Boolean underlined;
+    /**
+     * Define striked text.
+     * 
+     */
     @XmlAttribute(name = "StrikeThrough")
     protected Boolean strikeThrough;
+    /**
+     * The font size in twpis. E.g. a font of size 10pt has a value of 200.
+     * 
+     */
     @XmlAttribute(name = "FontSize", required = true)
     protected int fontSize;
+    /**
+     * Character spacing in twips. Extra distance between characters. It may be negative.
+     * 
+     */
     @XmlAttribute(name = "Spacing")
     protected Integer spacing;
 
     /**
-     * Gets the value of the fontName property.
+     * Define name of the font.
      * 
      * @return
      *     possible object is
@@ -68,13 +96,14 @@ public class Font {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getFontName()
      */
     public void setFontName(String value) {
         this.fontName = value;
     }
 
     /**
-     * Gets the value of the bold property.
+     * Define bold text.
      * 
      * @return
      *     possible object is
@@ -96,13 +125,14 @@ public class Font {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isBold()
      */
     public void setBold(Boolean value) {
         this.bold = value;
     }
 
     /**
-     * Gets the value of the italic property.
+     * Define italic text.
      * 
      * @return
      *     possible object is
@@ -124,13 +154,14 @@ public class Font {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isItalic()
      */
     public void setItalic(Boolean value) {
         this.italic = value;
     }
 
     /**
-     * Gets the value of the underlined property.
+     * Define underlined text.
      * 
      * @return
      *     possible object is
@@ -152,13 +183,14 @@ public class Font {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isUnderlined()
      */
     public void setUnderlined(Boolean value) {
         this.underlined = value;
     }
 
     /**
-     * Gets the value of the strikeThrough property.
+     * Define striked text.
      * 
      * @return
      *     possible object is
@@ -180,13 +212,14 @@ public class Font {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isStrikeThrough()
      */
     public void setStrikeThrough(Boolean value) {
         this.strikeThrough = value;
     }
 
     /**
-     * Gets the value of the fontSize property.
+     * The font size in twpis. E.g. a font of size 10pt has a value of 200.
      * 
      */
     public int getFontSize() {
@@ -202,7 +235,7 @@ public class Font {
     }
 
     /**
-     * Gets the value of the spacing property.
+     * Character spacing in twips. Extra distance between characters. It may be negative.
      * 
      * @return
      *     possible object is
@@ -224,6 +257,7 @@ public class Font {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getSpacing()
      */
     public void setSpacing(Integer value) {
         this.spacing = value;

@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * A history step for Out of office exit.
  * 
- * <p>Java class for OutOfOfficeHistoryStep complex type.
+ * &lt;p&gt;Java class for OutOfOfficeHistoryStep complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="OutOfOfficeHistoryStep"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -31,13 +31,21 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "OutOfOfficeHistoryStep")
 public class OutOfOfficeHistoryStep {
 
+    /**
+     * User name of the new assigned user.
+     * 
+     */
     @XmlAttribute(name = "NewUser")
     protected String newUser;
+    /**
+     * User name of the user who went out of office.
+     * 
+     */
     @XmlAttribute(name = "OutOfOfficeUser")
     protected String outOfOfficeUser;
 
     /**
-     * Gets the value of the newUser property.
+     * User name of the new assigned user.
      * 
      * @return
      *     possible object is
@@ -55,13 +63,14 @@ public class OutOfOfficeHistoryStep {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getNewUser()
      */
     public void setNewUser(String value) {
         this.newUser = value;
     }
 
     /**
-     * Gets the value of the outOfOfficeUser property.
+     * User name of the user who went out of office.
      * 
      * @return
      *     possible object is
@@ -79,6 +88,7 @@ public class OutOfOfficeHistoryStep {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getOutOfOfficeUser()
      */
     public void setOutOfOfficeUser(String value) {
         this.outOfOfficeUser = value;

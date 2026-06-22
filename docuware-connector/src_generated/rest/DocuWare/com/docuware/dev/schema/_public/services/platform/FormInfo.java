@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Form object used for displaying form
  * 
- * <p>Java class for FormInfo complex type.
+ * &lt;p&gt;Java class for FormInfo complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="FormInfo"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -48,25 +48,49 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class FormInfo {
 
+    /**
+     * Id of the form configuration used to retrieve full configuration
+     * 
+     */
     @XmlElement(name = "ConfigId", required = true)
     protected String configId;
     @XmlElement(name = "Name", required = true)
     protected String name;
+    /**
+     * List of web form fields
+     * 
+     */
     @XmlElement(name = "Fields", required = true)
     protected WebFormControls fields;
+    /**
+     * List of web form behaviors
+     * 
+     */
     @XmlElement(name = "Behaviors", required = true)
     protected Behaviors behaviors;
+    /**
+     * List of web form field validations
+     * 
+     */
     @XmlElement(name = "FieldValidations", required = true)
     protected FieldValidations fieldValidations;
+    /**
+     * Form Properties
+     * 
+     */
     @XmlElement(name = "FormProperties", required = true)
     protected FormProperties formProperties;
+    /**
+     * Submission Options
+     * 
+     */
     @XmlElement(name = "SubmissionOptions", required = true)
     protected SubmissionOptions submissionOptions;
     @XmlAttribute(name = "Public")
     protected Boolean _public;
 
     /**
-     * Gets the value of the configId property.
+     * Id of the form configuration used to retrieve full configuration
      * 
      * @return
      *     possible object is
@@ -84,6 +108,7 @@ public class FormInfo {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getConfigId()
      */
     public void setConfigId(String value) {
         this.configId = value;
@@ -114,7 +139,7 @@ public class FormInfo {
     }
 
     /**
-     * Gets the value of the fields property.
+     * List of web form fields
      * 
      * @return
      *     possible object is
@@ -132,13 +157,14 @@ public class FormInfo {
      *     allowed object is
      *     {@link WebFormControls }
      *     
+     * @see #getFields()
      */
     public void setFields(WebFormControls value) {
         this.fields = value;
     }
 
     /**
-     * Gets the value of the behaviors property.
+     * List of web form behaviors
      * 
      * @return
      *     possible object is
@@ -156,13 +182,14 @@ public class FormInfo {
      *     allowed object is
      *     {@link Behaviors }
      *     
+     * @see #getBehaviors()
      */
     public void setBehaviors(Behaviors value) {
         this.behaviors = value;
     }
 
     /**
-     * Gets the value of the fieldValidations property.
+     * List of web form field validations
      * 
      * @return
      *     possible object is
@@ -180,13 +207,14 @@ public class FormInfo {
      *     allowed object is
      *     {@link FieldValidations }
      *     
+     * @see #getFieldValidations()
      */
     public void setFieldValidations(FieldValidations value) {
         this.fieldValidations = value;
     }
 
     /**
-     * Gets the value of the formProperties property.
+     * Form Properties
      * 
      * @return
      *     possible object is
@@ -204,13 +232,14 @@ public class FormInfo {
      *     allowed object is
      *     {@link FormProperties }
      *     
+     * @see #getFormProperties()
      */
     public void setFormProperties(FormProperties value) {
         this.formProperties = value;
     }
 
     /**
-     * Gets the value of the submissionOptions property.
+     * Submission Options
      * 
      * @return
      *     possible object is
@@ -228,6 +257,7 @@ public class FormInfo {
      *     allowed object is
      *     {@link SubmissionOptions }
      *     
+     * @see #getSubmissionOptions()
      */
     public void setSubmissionOptions(SubmissionOptions value) {
         this.submissionOptions = value;

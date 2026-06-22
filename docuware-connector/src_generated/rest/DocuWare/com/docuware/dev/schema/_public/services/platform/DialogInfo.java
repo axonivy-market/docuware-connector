@@ -1,23 +1,23 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * General properties of any dialog.
  * 
- * <p>Java class for DialogInfo complex type.
+ * &lt;p&gt;Java class for DialogInfo complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="DialogInfo"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -35,7 +35,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -50,20 +50,52 @@ public class DialogInfo {
 
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services", required = true)
     protected Links links;
+    /**
+     * The id of the dialog
+     * 
+     */
     @XmlAttribute(name = "Id", required = true)
     protected String id;
+    /**
+     * The id of the file cabinet
+     * 
+     */
     @XmlAttribute(name = "FileCabinetId", required = true)
     protected String fileCabinetId;
+    /**
+     * The name of the file cabinet
+     * 
+     */
     @XmlAttribute(name = "FileCabinetName", required = true)
     protected String fileCabinetName;
+    /**
+     * The display name of the dialog
+     * 
+     */
     @XmlAttribute(name = "DisplayName")
     protected String displayName;
+    /**
+     * Gets or sets if this dialog is a available for mobile client
+     * 
+     */
     @XmlAttribute(name = "IsForMobile", required = true)
     protected boolean isForMobile;
+    /**
+     * The id of the assigned dialog (result list for search dialogs, info dialog for result dialogs, etc.)
+     * 
+     */
     @XmlAttribute(name = "AssignedDialogId", required = true)
     protected String assignedDialogId;
+    /**
+     * This flag can be used by the client to display a dialog in favour of the other dialogs. It can be used to display the initial dialog in case there is more than one dialog which can be displayed.
+     * 
+     */
     @XmlAttribute(name = "IsDefault")
     protected Boolean isDefault;
+    /**
+     * The type of the dialog.
+     * 
+     */
     @XmlAttribute(name = "Type", required = true)
     protected DialogTypes type;
 
@@ -92,7 +124,7 @@ public class DialogInfo {
     }
 
     /**
-     * Gets the value of the id property.
+     * The id of the dialog
      * 
      * @return
      *     possible object is
@@ -110,13 +142,14 @@ public class DialogInfo {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getId()
      */
     public void setId(String value) {
         this.id = value;
     }
 
     /**
-     * Gets the value of the fileCabinetId property.
+     * The id of the file cabinet
      * 
      * @return
      *     possible object is
@@ -134,13 +167,14 @@ public class DialogInfo {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getFileCabinetId()
      */
     public void setFileCabinetId(String value) {
         this.fileCabinetId = value;
     }
 
     /**
-     * Gets the value of the fileCabinetName property.
+     * The name of the file cabinet
      * 
      * @return
      *     possible object is
@@ -158,13 +192,14 @@ public class DialogInfo {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getFileCabinetName()
      */
     public void setFileCabinetName(String value) {
         this.fileCabinetName = value;
     }
 
     /**
-     * Gets the value of the displayName property.
+     * The display name of the dialog
      * 
      * @return
      *     possible object is
@@ -182,13 +217,14 @@ public class DialogInfo {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getDisplayName()
      */
     public void setDisplayName(String value) {
         this.displayName = value;
     }
 
     /**
-     * Gets the value of the isForMobile property.
+     * Gets or sets if this dialog is a available for mobile client
      * 
      */
     public boolean isIsForMobile() {
@@ -204,7 +240,7 @@ public class DialogInfo {
     }
 
     /**
-     * Gets the value of the assignedDialogId property.
+     * The id of the assigned dialog (result list for search dialogs, info dialog for result dialogs, etc.)
      * 
      * @return
      *     possible object is
@@ -222,13 +258,14 @@ public class DialogInfo {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getAssignedDialogId()
      */
     public void setAssignedDialogId(String value) {
         this.assignedDialogId = value;
     }
 
     /**
-     * Gets the value of the isDefault property.
+     * This flag can be used by the client to display a dialog in favour of the other dialogs. It can be used to display the initial dialog in case there is more than one dialog which can be displayed.
      * 
      * @return
      *     possible object is
@@ -250,13 +287,14 @@ public class DialogInfo {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isIsDefault()
      */
     public void setIsDefault(Boolean value) {
         this.isDefault = value;
     }
 
     /**
-     * Gets the value of the type property.
+     * The type of the dialog.
      * 
      * @return
      *     possible object is
@@ -274,6 +312,7 @@ public class DialogInfo {
      *     allowed object is
      *     {@link DialogTypes }
      *     
+     * @see #getType()
      */
     public void setType(DialogTypes value) {
         this.type = value;

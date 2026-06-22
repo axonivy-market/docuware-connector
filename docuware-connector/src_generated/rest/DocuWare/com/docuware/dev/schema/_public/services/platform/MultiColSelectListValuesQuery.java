@@ -3,21 +3,21 @@ package com.docuware.dev.schema._public.services.platform;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Query for multi column select list values
  * 
- * <p>Java class for MultiColSelectListValuesQuery complex type.
+ * &lt;p&gt;Java class for MultiColSelectListValuesQuery complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="MultiColSelectListValuesQuery"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -42,50 +42,79 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class MultiColSelectListValuesQuery {
 
+    /**
+     * Gets or sets the conditions which are checked to obtain the select list result.
+     * 
+     */
     @XmlElement(name = "Condition")
     protected List<MultiColSelectListExpressionCondition> condition;
+    /**
+     * Column name for prefix search.
+     * 
+     */
     @XmlAttribute(name = "StartsWithColumn")
     protected String startsWithColumn;
+    /**
+     * Value for prefix search.
+     * 
+     */
     @XmlAttribute(name = "StartsWithValue")
     protected String startsWithValue;
+    /**
+     * First result to return if block size is specified.
+     * 
+     */
     @XmlAttribute(name = "Start")
     protected Integer start;
+    /**
+     * Result will be returned on pages with that block size if specified.
+     * 
+     */
     @XmlAttribute(name = "Count")
     protected Integer count;
+    /**
+     * Specifies the operation between the conditions which are checked.
+     * 
+     */
     @XmlAttribute(name = "Operation", required = true)
     protected DialogExpressionOperation operation;
 
     /**
+     * Gets or sets the conditions which are checked to obtain the select list result.
+     * 
      * Gets the value of the condition property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the condition property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the condition property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getCondition().add(newItem);
+     * getCondition().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link MultiColSelectListExpressionCondition }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the condition property.
      */
     public List<MultiColSelectListExpressionCondition> getCondition() {
         if (condition == null) {
-            condition = new ArrayList<MultiColSelectListExpressionCondition>();
+            condition = new ArrayList<>();
         }
         return this.condition;
     }
 
     /**
-     * Gets the value of the startsWithColumn property.
+     * Column name for prefix search.
      * 
      * @return
      *     possible object is
@@ -103,13 +132,14 @@ public class MultiColSelectListValuesQuery {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getStartsWithColumn()
      */
     public void setStartsWithColumn(String value) {
         this.startsWithColumn = value;
     }
 
     /**
-     * Gets the value of the startsWithValue property.
+     * Value for prefix search.
      * 
      * @return
      *     possible object is
@@ -127,13 +157,14 @@ public class MultiColSelectListValuesQuery {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getStartsWithValue()
      */
     public void setStartsWithValue(String value) {
         this.startsWithValue = value;
     }
 
     /**
-     * Gets the value of the start property.
+     * First result to return if block size is specified.
      * 
      * @return
      *     possible object is
@@ -155,13 +186,14 @@ public class MultiColSelectListValuesQuery {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getStart()
      */
     public void setStart(Integer value) {
         this.start = value;
     }
 
     /**
-     * Gets the value of the count property.
+     * Result will be returned on pages with that block size if specified.
      * 
      * @return
      *     possible object is
@@ -183,13 +215,14 @@ public class MultiColSelectListValuesQuery {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getCount()
      */
     public void setCount(Integer value) {
         this.count = value;
     }
 
     /**
-     * Gets the value of the operation property.
+     * Specifies the operation between the conditions which are checked.
      * 
      * @return
      *     possible object is
@@ -207,6 +240,7 @@ public class MultiColSelectListValuesQuery {
      *     allowed object is
      *     {@link DialogExpressionOperation }
      *     
+     * @see #getOperation()
      */
     public void setOperation(DialogExpressionOperation value) {
         this.operation = value;

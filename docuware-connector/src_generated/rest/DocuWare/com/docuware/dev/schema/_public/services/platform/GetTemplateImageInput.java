@@ -1,18 +1,18 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for GetTemplateImageInput complex type.
+ * &lt;p&gt;Java class for GetTemplateImageInput complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="GetTemplateImageInput"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -30,15 +30,27 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "GetTemplateImageInput")
 public class GetTemplateImageInput {
 
+    /**
+     * GUID for the uploaded template
+     * 
+     */
     @XmlAttribute(name = "TemplateGUID", required = true)
     protected String templateGUID;
+    /**
+     * File Name
+     * 
+     */
     @XmlAttribute(name = "FileName", required = true)
     protected String fileName;
+    /**
+     * Page Number
+     * 
+     */
     @XmlAttribute(name = "PageNumber", required = true)
     protected int pageNumber;
 
     /**
-     * Gets the value of the templateGUID property.
+     * GUID for the uploaded template
      * 
      * @return
      *     possible object is
@@ -56,13 +68,14 @@ public class GetTemplateImageInput {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getTemplateGUID()
      */
     public void setTemplateGUID(String value) {
         this.templateGUID = value;
     }
 
     /**
-     * Gets the value of the fileName property.
+     * File Name
      * 
      * @return
      *     possible object is
@@ -80,13 +93,14 @@ public class GetTemplateImageInput {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getFileName()
      */
     public void setFileName(String value) {
         this.fileName = value;
     }
 
     /**
-     * Gets the value of the pageNumber property.
+     * Page Number
      * 
      */
     public int getPageNumber() {

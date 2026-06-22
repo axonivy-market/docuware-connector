@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Defines the result of the imported archive.
  * 
- * <p>Java class for ImportEntryVersion complex type.
+ * &lt;p&gt;Java class for ImportEntryVersion complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="ImportEntryVersion"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -31,13 +31,21 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "ImportEntryVersion")
 public class ImportEntryVersion {
 
+    /**
+     * Gets or sets the error message if the import operation fails.
+     * 
+     */
     @XmlAttribute(name = "Id", required = true)
     protected int id;
+    /**
+     * Gets or sets the status of the document.
+     * 
+     */
     @XmlAttribute(name = "Status", required = true)
     protected ImportEntryVersionStatus status;
 
     /**
-     * Gets the value of the id property.
+     * Gets or sets the error message if the import operation fails.
      * 
      */
     public int getId() {
@@ -53,7 +61,7 @@ public class ImportEntryVersion {
     }
 
     /**
-     * Gets the value of the status property.
+     * Gets or sets the status of the document.
      * 
      * @return
      *     possible object is
@@ -71,6 +79,7 @@ public class ImportEntryVersion {
      *     allowed object is
      *     {@link ImportEntryVersionStatus }
      *     
+     * @see #getStatus()
      */
     public void setStatus(ImportEntryVersionStatus value) {
         this.status = value;

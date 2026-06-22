@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for LogMessage complex type.
+ * &lt;p&gt;Java class for LogMessage complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="LogMessage"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -33,7 +33,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -60,8 +60,16 @@ public class LogMessage {
     protected String user;
     @XmlAttribute(name = "Level")
     protected LogMessageLevel level;
+    /**
+     * The number of occurrences of this message. This is useful if you want to filter messages which occure many times and flood your log.
+     * 
+     */
     @XmlAttribute(name = "Count")
     protected Integer count;
+    /**
+     * In case this message is representing a group you can use this attribute to mark the group id.
+     * 
+     */
     @XmlAttribute(name = "GroupId")
     protected String groupId;
 
@@ -238,7 +246,7 @@ public class LogMessage {
     }
 
     /**
-     * Gets the value of the count property.
+     * The number of occurrences of this message. This is useful if you want to filter messages which occure many times and flood your log.
      * 
      * @return
      *     possible object is
@@ -260,13 +268,14 @@ public class LogMessage {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getCount()
      */
     public void setCount(Integer value) {
         this.count = value;
     }
 
     /**
-     * Gets the value of the groupId property.
+     * In case this message is representing a group you can use this attribute to mark the group id.
      * 
      * @return
      *     possible object is
@@ -284,6 +293,7 @@ public class LogMessage {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getGroupId()
      */
     public void setGroupId(String value) {
         this.groupId = value;

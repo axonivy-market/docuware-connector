@@ -1,22 +1,22 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * A form field for variable text to a text stamp.
  * 
- * <p>Java class for StampFormField complex type.
+ * &lt;p&gt;Java class for StampFormField complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="StampFormField"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -35,7 +35,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -47,22 +47,58 @@ public class StampFormField {
 
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services")
     protected Links links;
+    /**
+     * Name of the form field
+     * 
+     */
     @XmlAttribute(name = "Name", required = true)
     protected String name;
+    /**
+     * The label used to represent the form field when the stamp is set on the client.
+     * 
+     */
     @XmlAttribute(name = "Label", required = true)
     protected String label;
+    /**
+     * Lenght of the form field
+     * 
+     */
     @XmlAttribute(name = "Length")
     protected Integer length;
+    /**
+     * Gets the number of digits after the decimal point in case of a numeric field.
+     * 
+     */
     @XmlAttribute(name = "Precision")
     protected Integer precision;
+    /**
+     * Mask(regular expression) for limiting the input options for the form field.
+     * 
+     */
     @XmlAttribute(name = "Mask")
     protected String mask;
+    /**
+     * Error message to display if the input does not match the mask definition.
+     * 
+     */
     @XmlAttribute(name = "MaskErrorText")
     protected String maskErrorText;
+    /**
+     * Sample entry that matches the mask definition.
+     * 
+     */
     @XmlAttribute(name = "SampleEditText")
     protected String sampleEditText;
+    /**
+     * A value indicating whether the any select list is assigned.
+     * 
+     */
     @XmlAttribute(name = "SelectListsAssigned")
     protected Boolean selectListsAssigned;
+    /**
+     * A value indicating whether the form field value must be filled.
+     * 
+     */
     @XmlAttribute(name = "NotEmpty")
     protected Boolean notEmpty;
 
@@ -91,7 +127,7 @@ public class StampFormField {
     }
 
     /**
-     * Gets the value of the name property.
+     * Name of the form field
      * 
      * @return
      *     possible object is
@@ -109,13 +145,14 @@ public class StampFormField {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getName()
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Gets the value of the label property.
+     * The label used to represent the form field when the stamp is set on the client.
      * 
      * @return
      *     possible object is
@@ -133,13 +170,14 @@ public class StampFormField {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getLabel()
      */
     public void setLabel(String value) {
         this.label = value;
     }
 
     /**
-     * Gets the value of the length property.
+     * Lenght of the form field
      * 
      * @return
      *     possible object is
@@ -161,13 +199,14 @@ public class StampFormField {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getLength()
      */
     public void setLength(Integer value) {
         this.length = value;
     }
 
     /**
-     * Gets the value of the precision property.
+     * Gets the number of digits after the decimal point in case of a numeric field.
      * 
      * @return
      *     possible object is
@@ -189,13 +228,14 @@ public class StampFormField {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getPrecision()
      */
     public void setPrecision(Integer value) {
         this.precision = value;
     }
 
     /**
-     * Gets the value of the mask property.
+     * Mask(regular expression) for limiting the input options for the form field.
      * 
      * @return
      *     possible object is
@@ -213,13 +253,14 @@ public class StampFormField {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getMask()
      */
     public void setMask(String value) {
         this.mask = value;
     }
 
     /**
-     * Gets the value of the maskErrorText property.
+     * Error message to display if the input does not match the mask definition.
      * 
      * @return
      *     possible object is
@@ -237,13 +278,14 @@ public class StampFormField {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getMaskErrorText()
      */
     public void setMaskErrorText(String value) {
         this.maskErrorText = value;
     }
 
     /**
-     * Gets the value of the sampleEditText property.
+     * Sample entry that matches the mask definition.
      * 
      * @return
      *     possible object is
@@ -261,13 +303,14 @@ public class StampFormField {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getSampleEditText()
      */
     public void setSampleEditText(String value) {
         this.sampleEditText = value;
     }
 
     /**
-     * Gets the value of the selectListsAssigned property.
+     * A value indicating whether the any select list is assigned.
      * 
      * @return
      *     possible object is
@@ -289,13 +332,14 @@ public class StampFormField {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isSelectListsAssigned()
      */
     public void setSelectListsAssigned(Boolean value) {
         this.selectListsAssigned = value;
     }
 
     /**
-     * Gets the value of the notEmpty property.
+     * A value indicating whether the form field value must be filled.
      * 
      * @return
      *     possible object is
@@ -317,6 +361,7 @@ public class StampFormField {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isNotEmpty()
      */
     public void setNotEmpty(Boolean value) {
         this.notEmpty = value;

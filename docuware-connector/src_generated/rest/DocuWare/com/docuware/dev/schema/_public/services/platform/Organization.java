@@ -1,22 +1,22 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Definition for DocuWare organization.
  * 
- * <p>Java class for Organization complex type.
+ * &lt;p&gt;Java class for Organization complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="Organization"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -32,7 +32,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -49,14 +49,34 @@ public class Organization {
     protected AdditionalOrganizationInfo additionalInfo;
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services", required = true)
     protected Links links;
+    /**
+     * List of the rights that the current user has for this cabinet.
+     * 
+     */
     @XmlElement(name = "ConfigurationRights")
     protected ConfigurationRights configurationRights;
+    /**
+     * Gets or sets the extended configuration rights
+     * 
+     */
     @XmlElement(name = "ExtendedConfigurationRights", required = true)
     protected ExtendedConfigurationRights extendedConfigurationRights;
+    /**
+     * Name of the organization
+     * 
+     */
     @XmlAttribute(name = "Name", required = true)
     protected String name;
+    /**
+     * Identity of the organization
+     * 
+     */
     @XmlAttribute(name = "Id", required = true)
     protected String id;
+    /**
+     * Guid of the organization
+     * 
+     */
     @XmlAttribute(name = "Guid", required = true)
     protected String guid;
 
@@ -109,7 +129,7 @@ public class Organization {
     }
 
     /**
-     * Gets the value of the configurationRights property.
+     * List of the rights that the current user has for this cabinet.
      * 
      * @return
      *     possible object is
@@ -127,13 +147,14 @@ public class Organization {
      *     allowed object is
      *     {@link ConfigurationRights }
      *     
+     * @see #getConfigurationRights()
      */
     public void setConfigurationRights(ConfigurationRights value) {
         this.configurationRights = value;
     }
 
     /**
-     * Gets the value of the extendedConfigurationRights property.
+     * Gets or sets the extended configuration rights
      * 
      * @return
      *     possible object is
@@ -151,13 +172,14 @@ public class Organization {
      *     allowed object is
      *     {@link ExtendedConfigurationRights }
      *     
+     * @see #getExtendedConfigurationRights()
      */
     public void setExtendedConfigurationRights(ExtendedConfigurationRights value) {
         this.extendedConfigurationRights = value;
     }
 
     /**
-     * Gets the value of the name property.
+     * Name of the organization
      * 
      * @return
      *     possible object is
@@ -175,13 +197,14 @@ public class Organization {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getName()
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Gets the value of the id property.
+     * Identity of the organization
      * 
      * @return
      *     possible object is
@@ -199,13 +222,14 @@ public class Organization {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getId()
      */
     public void setId(String value) {
         this.id = value;
     }
 
     /**
-     * Gets the value of the guid property.
+     * Guid of the organization
      * 
      * @return
      *     possible object is
@@ -223,6 +247,7 @@ public class Organization {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getGuid()
      */
     public void setGuid(String value) {
         this.guid = value;

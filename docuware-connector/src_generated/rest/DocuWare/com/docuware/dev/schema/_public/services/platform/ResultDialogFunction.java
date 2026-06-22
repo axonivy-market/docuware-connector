@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Function of result list
  * 
- * <p>Java class for ResultDialogFunction complex type.
+ * &lt;p&gt;Java class for ResultDialogFunction complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="ResultDialogFunction"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -32,15 +32,27 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "ResultDialogFunction")
 public class ResultDialogFunction {
 
+    /**
+     * The type of the result dialog function.
+     * 
+     */
     @XmlAttribute(name = "Type", required = true)
     protected ResultDialogFunctionType type;
+    /**
+     * If this option is enabled, the result list contains an icon you can use to access the function
+     * 
+     */
     @XmlAttribute(name = "InToolBar")
     protected Boolean inToolBar;
+    /**
+     * If this option is enabled, the result list contains a button with which to call the function
+     * 
+     */
     @XmlAttribute(name = "AsButton")
     protected Boolean asButton;
 
     /**
-     * Gets the value of the type property.
+     * The type of the result dialog function.
      * 
      * @return
      *     possible object is
@@ -58,13 +70,14 @@ public class ResultDialogFunction {
      *     allowed object is
      *     {@link ResultDialogFunctionType }
      *     
+     * @see #getType()
      */
     public void setType(ResultDialogFunctionType value) {
         this.type = value;
     }
 
     /**
-     * Gets the value of the inToolBar property.
+     * If this option is enabled, the result list contains an icon you can use to access the function
      * 
      * @return
      *     possible object is
@@ -86,13 +99,14 @@ public class ResultDialogFunction {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isInToolBar()
      */
     public void setInToolBar(Boolean value) {
         this.inToolBar = value;
     }
 
     /**
-     * Gets the value of the asButton property.
+     * If this option is enabled, the result list contains a button with which to call the function
      * 
      * @return
      *     possible object is
@@ -114,6 +128,7 @@ public class ResultDialogFunction {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isAsButton()
      */
     public void setAsButton(Boolean value) {
         this.asButton = value;

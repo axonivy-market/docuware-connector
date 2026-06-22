@@ -1,19 +1,19 @@
 
 package com.docuware.dev._public.intellix;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for RectangleBase complex type.
+ * &lt;p&gt;Java class for RectangleBase complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="RectangleBase"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -38,17 +38,33 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class RectangleBase {
 
+    /**
+     * Left of rectangle.
+     * 
+     */
     @XmlAttribute(name = "L", required = true)
     protected int l;
+    /**
+     * Top of rectangle.
+     * 
+     */
     @XmlAttribute(name = "T", required = true)
     protected int t;
+    /**
+     * Width of rectangle.
+     * 
+     */
     @XmlAttribute(name = "W", required = true)
     protected int w;
+    /**
+     * Height of rectangle.
+     * 
+     */
     @XmlAttribute(name = "H", required = true)
     protected int h;
 
     /**
-     * Gets the value of the l property.
+     * Left of rectangle.
      * 
      */
     public int getL() {
@@ -64,7 +80,7 @@ public class RectangleBase {
     }
 
     /**
-     * Gets the value of the t property.
+     * Top of rectangle.
      * 
      */
     public int getT() {
@@ -80,7 +96,7 @@ public class RectangleBase {
     }
 
     /**
-     * Gets the value of the w property.
+     * Width of rectangle.
      * 
      */
     public int getW() {
@@ -96,7 +112,7 @@ public class RectangleBase {
     }
 
     /**
-     * Gets the value of the h property.
+     * Height of rectangle.
      * 
      */
     public int getH() {

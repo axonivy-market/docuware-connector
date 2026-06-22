@@ -1,19 +1,19 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Dialog complex type.
+ * &lt;p&gt;Java class for Dialog complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="Dialog"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform}DialogInfo"&gt;
@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -40,17 +40,33 @@ public class Dialog
     extends DialogInfo
 {
 
+    /**
+     * The fields of this dialog.
+     * 
+     */
     @XmlElement(name = "Fields", required = true)
     protected DialogFields fields;
+    /**
+     * The query defined by this dialog.
+     * 
+     */
     @XmlElement(name = "Query")
     protected DocumentsQuery query;
+    /**
+     * Dialog properties specific for dialog type.
+     * 
+     */
     @XmlElement(name = "Properties", required = true)
     protected DialogProperties properties;
+    /**
+     * A value indicating whether the dialog has configured client side validation.This option is available only for store and info dialogs, for other dialog types it is always false.
+     * 
+     */
     @XmlAttribute(name = "HasValidation")
     protected Boolean hasValidation;
 
     /**
-     * Gets the value of the fields property.
+     * The fields of this dialog.
      * 
      * @return
      *     possible object is
@@ -68,13 +84,14 @@ public class Dialog
      *     allowed object is
      *     {@link DialogFields }
      *     
+     * @see #getFields()
      */
     public void setFields(DialogFields value) {
         this.fields = value;
     }
 
     /**
-     * Gets the value of the query property.
+     * The query defined by this dialog.
      * 
      * @return
      *     possible object is
@@ -92,13 +109,14 @@ public class Dialog
      *     allowed object is
      *     {@link DocumentsQuery }
      *     
+     * @see #getQuery()
      */
     public void setQuery(DocumentsQuery value) {
         this.query = value;
     }
 
     /**
-     * Gets the value of the properties property.
+     * Dialog properties specific for dialog type.
      * 
      * @return
      *     possible object is
@@ -116,13 +134,14 @@ public class Dialog
      *     allowed object is
      *     {@link DialogProperties }
      *     
+     * @see #getProperties()
      */
     public void setProperties(DialogProperties value) {
         this.properties = value;
     }
 
     /**
-     * Gets the value of the hasValidation property.
+     * A value indicating whether the dialog has configured client side validation.This option is available only for store and info dialogs, for other dialog types it is always false.
      * 
      * @return
      *     possible object is
@@ -144,6 +163,7 @@ public class Dialog
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isHasValidation()
      */
     public void setHasValidation(Boolean value) {
         this.hasValidation = value;

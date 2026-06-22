@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * A history step for Time out exit.
  * 
- * <p>Java class for TimeoutHistoryStep complex type.
+ * &lt;p&gt;Java class for TimeoutHistoryStep complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="TimeoutHistoryStep"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -30,11 +30,15 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "TimeoutHistoryStep")
 public class TimeoutHistoryStep {
 
+    /**
+     * Name of the time out exit of the activity.
+     * 
+     */
     @XmlAttribute(name = "OutputName")
     protected String outputName;
 
     /**
-     * Gets the value of the outputName property.
+     * Name of the time out exit of the activity.
      * 
      * @return
      *     possible object is
@@ -52,6 +56,7 @@ public class TimeoutHistoryStep {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getOutputName()
      */
     public void setOutputName(String value) {
         this.outputName = value;

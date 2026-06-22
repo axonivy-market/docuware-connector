@@ -1,19 +1,19 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for TaskTableColumn complex type.
+ * &lt;p&gt;Java class for TaskTableColumn complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="TaskTableColumn"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -36,15 +36,27 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class TaskTableColumn {
 
+    /**
+     * Field mask a text field.
+     * 
+     */
     @XmlElement(name = "BaseData")
     protected TaskTableColumnBase baseData;
+    /**
+     * Field mask a text field.
+     * 
+     */
     @XmlElement(name = "FieldName", required = true)
     protected String fieldName;
+    /**
+     * Determines whether the column can be showned in table field
+     * 
+     */
     @XmlAttribute(name = "IsHidden", required = true)
     protected boolean isHidden;
 
     /**
-     * Gets the value of the baseData property.
+     * Field mask a text field.
      * 
      * @return
      *     possible object is
@@ -62,13 +74,14 @@ public class TaskTableColumn {
      *     allowed object is
      *     {@link TaskTableColumnBase }
      *     
+     * @see #getBaseData()
      */
     public void setBaseData(TaskTableColumnBase value) {
         this.baseData = value;
     }
 
     /**
-     * Gets the value of the fieldName property.
+     * Field mask a text field.
      * 
      * @return
      *     possible object is
@@ -86,13 +99,14 @@ public class TaskTableColumn {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getFieldName()
      */
     public void setFieldName(String value) {
         this.fieldName = value;
     }
 
     /**
-     * Gets the value of the isHidden property.
+     * Determines whether the column can be showned in table field
      * 
      */
     public boolean isIsHidden() {

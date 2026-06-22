@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Workflow decision stamps
  * 
- * <p>Java class for DecisionsStampSettings complex type.
+ * &lt;p&gt;Java class for DecisionsStampSettings complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="DecisionsStampSettings"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -41,21 +41,45 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class DecisionsStampSettings {
 
+    /**
+     * Workflow stamps settings
+     * 
+     */
     @XmlElement(name = "StampsSettings")
     protected WorkflowStampsSettings stampsSettings;
+    /**
+     * Decisions which are present as stamps.
+     * 
+     */
     @XmlElement(name = "DecisionStamps")
     protected DecisionStamps decisionStamps;
+    /**
+     * Workflow identifier
+     * 
+     */
     @XmlAttribute(name = "WorkflowId", required = true)
     protected String workflowId;
+    /**
+     * Instance identifier
+     * 
+     */
     @XmlAttribute(name = "InstanceId", required = true)
     protected String instanceId;
+    /**
+     * Task identifier
+     * 
+     */
     @XmlAttribute(name = "TaskId", required = true)
     protected String taskId;
+    /**
+     * Current activity name
+     * 
+     */
     @XmlAttribute(name = "ActivityName", required = true)
     protected String activityName;
 
     /**
-     * Gets the value of the stampsSettings property.
+     * Workflow stamps settings
      * 
      * @return
      *     possible object is
@@ -73,13 +97,14 @@ public class DecisionsStampSettings {
      *     allowed object is
      *     {@link WorkflowStampsSettings }
      *     
+     * @see #getStampsSettings()
      */
     public void setStampsSettings(WorkflowStampsSettings value) {
         this.stampsSettings = value;
     }
 
     /**
-     * Gets the value of the decisionStamps property.
+     * Decisions which are present as stamps.
      * 
      * @return
      *     possible object is
@@ -97,13 +122,14 @@ public class DecisionsStampSettings {
      *     allowed object is
      *     {@link DecisionStamps }
      *     
+     * @see #getDecisionStamps()
      */
     public void setDecisionStamps(DecisionStamps value) {
         this.decisionStamps = value;
     }
 
     /**
-     * Gets the value of the workflowId property.
+     * Workflow identifier
      * 
      * @return
      *     possible object is
@@ -121,13 +147,14 @@ public class DecisionsStampSettings {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getWorkflowId()
      */
     public void setWorkflowId(String value) {
         this.workflowId = value;
     }
 
     /**
-     * Gets the value of the instanceId property.
+     * Instance identifier
      * 
      * @return
      *     possible object is
@@ -145,13 +172,14 @@ public class DecisionsStampSettings {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getInstanceId()
      */
     public void setInstanceId(String value) {
         this.instanceId = value;
     }
 
     /**
-     * Gets the value of the taskId property.
+     * Task identifier
      * 
      * @return
      *     possible object is
@@ -169,13 +197,14 @@ public class DecisionsStampSettings {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getTaskId()
      */
     public void setTaskId(String value) {
         this.taskId = value;
     }
 
     /**
-     * Gets the value of the activityName property.
+     * Current activity name
      * 
      * @return
      *     possible object is
@@ -193,6 +222,7 @@ public class DecisionsStampSettings {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getActivityName()
      */
     public void setActivityName(String value) {
         this.activityName = value;

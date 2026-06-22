@@ -1,17 +1,17 @@
 
 package com.docuware.dev.schema._public.services;
 
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.annotation.XmlElementDecl;
-import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.annotation.XmlElementDecl;
+import jakarta.xml.bind.annotation.XmlRegistry;
 
 
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
  * generated in the com.docuware.dev.schema._public.services package. 
- * <p>An ObjectFactory allows you to programatically 
+ * <p>An ObjectFactory allows you to programmatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
  * content can consist of schema derived interfaces 
@@ -24,12 +24,12 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _Link_QNAME = new QName("http://dev.docuware.com/schema/public/services", "Link");
-    private final static QName _Links_QNAME = new QName("http://dev.docuware.com/schema/public/services", "Links");
-    private final static QName _UriTemplates_QNAME = new QName("http://dev.docuware.com/schema/public/services", "UriTemplates");
-    private final static QName _UriTemplate_QNAME = new QName("http://dev.docuware.com/schema/public/services", "UriTemplate");
-    private final static QName _LogMessages_QNAME = new QName("http://dev.docuware.com/schema/public/services", "LogMessages");
-    private final static QName _LogMessageGroups_QNAME = new QName("http://dev.docuware.com/schema/public/services", "LogMessageGroups");
+    private static final QName _Link_QNAME = new QName("http://dev.docuware.com/schema/public/services", "Link");
+    private static final QName _Links_QNAME = new QName("http://dev.docuware.com/schema/public/services", "Links");
+    private static final QName _UriTemplates_QNAME = new QName("http://dev.docuware.com/schema/public/services", "UriTemplates");
+    private static final QName _UriTemplate_QNAME = new QName("http://dev.docuware.com/schema/public/services", "UriTemplate");
+    private static final QName _LogMessages_QNAME = new QName("http://dev.docuware.com/schema/public/services", "LogMessages");
+    private static final QName _LogMessageGroups_QNAME = new QName("http://dev.docuware.com/schema/public/services", "LogMessageGroups");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.docuware.dev.schema._public.services
@@ -41,6 +41,8 @@ public class ObjectFactory {
     /**
      * Create an instance of {@link UriTemplateParameter }
      * 
+     * @return
+     *     the new instance of {@link UriTemplateParameter }
      */
     public UriTemplateParameter createUriTemplateParameter() {
         return new UriTemplateParameter();
@@ -49,6 +51,8 @@ public class ObjectFactory {
     /**
      * Create an instance of {@link UriTemplateDescription }
      * 
+     * @return
+     *     the new instance of {@link UriTemplateDescription }
      */
     public UriTemplateDescription createUriTemplateDescription() {
         return new UriTemplateDescription();
@@ -57,6 +61,8 @@ public class ObjectFactory {
     /**
      * Create an instance of {@link Link }
      * 
+     * @return
+     *     the new instance of {@link Link }
      */
     public Link createLink() {
         return new Link();
@@ -65,6 +71,8 @@ public class ObjectFactory {
     /**
      * Create an instance of {@link Links }
      * 
+     * @return
+     *     the new instance of {@link Links }
      */
     public Links createLinks() {
         return new Links();
@@ -73,6 +81,8 @@ public class ObjectFactory {
     /**
      * Create an instance of {@link UriTemplateDescriptions }
      * 
+     * @return
+     *     the new instance of {@link UriTemplateDescriptions }
      */
     public UriTemplateDescriptions createUriTemplateDescriptions() {
         return new UriTemplateDescriptions();
@@ -81,6 +91,8 @@ public class ObjectFactory {
     /**
      * Create an instance of {@link LogMessages }
      * 
+     * @return
+     *     the new instance of {@link LogMessages }
      */
     public LogMessages createLogMessages() {
         return new LogMessages();
@@ -89,6 +101,8 @@ public class ObjectFactory {
     /**
      * Create an instance of {@link LogMessageGroups }
      * 
+     * @return
+     *     the new instance of {@link LogMessageGroups }
      */
     public LogMessageGroups createLogMessageGroups() {
         return new LogMessageGroups();
@@ -97,6 +111,8 @@ public class ObjectFactory {
     /**
      * Create an instance of {@link TypeReference }
      * 
+     * @return
+     *     the new instance of {@link TypeReference }
      */
     public TypeReference createTypeReference() {
         return new TypeReference();
@@ -105,6 +121,8 @@ public class ObjectFactory {
     /**
      * Create an instance of {@link UriInvocation }
      * 
+     * @return
+     *     the new instance of {@link UriInvocation }
      */
     public UriInvocation createUriInvocation() {
         return new UriInvocation();
@@ -113,6 +131,8 @@ public class ObjectFactory {
     /**
      * Create an instance of {@link LogMessage }
      * 
+     * @return
+     *     the new instance of {@link LogMessage }
      */
     public LogMessage createLogMessage() {
         return new LogMessage();
@@ -121,6 +141,8 @@ public class ObjectFactory {
     /**
      * Create an instance of {@link LogMessageGroup }
      * 
+     * @return
+     *     the new instance of {@link LogMessageGroup }
      */
     public LogMessageGroup createLogMessageGroup() {
         return new LogMessageGroup();
@@ -129,6 +151,8 @@ public class ObjectFactory {
     /**
      * Create an instance of {@link UriTemplateParameter.HtmlDescription }
      * 
+     * @return
+     *     the new instance of {@link UriTemplateParameter.HtmlDescription }
      */
     public UriTemplateParameter.HtmlDescription createUriTemplateParameterHtmlDescription() {
         return new UriTemplateParameter.HtmlDescription();
@@ -137,6 +161,8 @@ public class ObjectFactory {
     /**
      * Create an instance of {@link UriTemplateDescription.HtmlDescription }
      * 
+     * @return
+     *     the new instance of {@link UriTemplateDescription.HtmlDescription }
      */
     public UriTemplateDescription.HtmlDescription createUriTemplateDescriptionHtmlDescription() {
         return new UriTemplateDescription.HtmlDescription();
@@ -152,7 +178,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://dev.docuware.com/schema/public/services", name = "Link")
     public JAXBElement<Link> createLink(Link value) {
-        return new JAXBElement<Link>(_Link_QNAME, Link.class, null, value);
+        return new JAXBElement<>(_Link_QNAME, Link.class, null, value);
     }
 
     /**
@@ -165,7 +191,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://dev.docuware.com/schema/public/services", name = "Links")
     public JAXBElement<Links> createLinks(Links value) {
-        return new JAXBElement<Links>(_Links_QNAME, Links.class, null, value);
+        return new JAXBElement<>(_Links_QNAME, Links.class, null, value);
     }
 
     /**
@@ -178,7 +204,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://dev.docuware.com/schema/public/services", name = "UriTemplates")
     public JAXBElement<UriTemplateDescriptions> createUriTemplates(UriTemplateDescriptions value) {
-        return new JAXBElement<UriTemplateDescriptions>(_UriTemplates_QNAME, UriTemplateDescriptions.class, null, value);
+        return new JAXBElement<>(_UriTemplates_QNAME, UriTemplateDescriptions.class, null, value);
     }
 
     /**
@@ -191,7 +217,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://dev.docuware.com/schema/public/services", name = "UriTemplate")
     public JAXBElement<UriTemplateDescription> createUriTemplate(UriTemplateDescription value) {
-        return new JAXBElement<UriTemplateDescription>(_UriTemplate_QNAME, UriTemplateDescription.class, null, value);
+        return new JAXBElement<>(_UriTemplate_QNAME, UriTemplateDescription.class, null, value);
     }
 
     /**
@@ -204,7 +230,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://dev.docuware.com/schema/public/services", name = "LogMessages")
     public JAXBElement<LogMessages> createLogMessages(LogMessages value) {
-        return new JAXBElement<LogMessages>(_LogMessages_QNAME, LogMessages.class, null, value);
+        return new JAXBElement<>(_LogMessages_QNAME, LogMessages.class, null, value);
     }
 
     /**
@@ -217,7 +243,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://dev.docuware.com/schema/public/services", name = "LogMessageGroups")
     public JAXBElement<LogMessageGroups> createLogMessageGroups(LogMessageGroups value) {
-        return new JAXBElement<LogMessageGroups>(_LogMessageGroups_QNAME, LogMessageGroups.class, null, value);
+        return new JAXBElement<>(_LogMessageGroups_QNAME, LogMessageGroups.class, null, value);
     }
 
 }

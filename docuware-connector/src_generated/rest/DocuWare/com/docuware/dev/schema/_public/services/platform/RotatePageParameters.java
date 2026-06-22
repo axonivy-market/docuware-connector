@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Parameters for RotatePage action
  * 
- * <p>Java class for RotatePageParameters complex type.
+ * &lt;p&gt;Java class for RotatePageParameters complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="RotatePageParameters"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform}DocumentActionParameters"&gt;
@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -34,15 +34,27 @@ public class RotatePageParameters
     extends DocumentActionParameters
 {
 
+    /**
+     * Number of the section to process.
+     * 
+     */
     @XmlAttribute(name = "SectionNumber")
     protected Integer sectionNumber;
+    /**
+     * Page to be rotated.
+     * 
+     */
     @XmlAttribute(name = "PageNumber")
     protected Integer pageNumber;
+    /**
+     * Angle divisible by 90. Counterclockwise. DocuWare legacy.
+     * 
+     */
     @XmlAttribute(name = "Rotation")
     protected Integer rotation;
 
     /**
-     * Gets the value of the sectionNumber property.
+     * Number of the section to process.
      * 
      * @return
      *     possible object is
@@ -64,13 +76,14 @@ public class RotatePageParameters
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getSectionNumber()
      */
     public void setSectionNumber(Integer value) {
         this.sectionNumber = value;
     }
 
     /**
-     * Gets the value of the pageNumber property.
+     * Page to be rotated.
      * 
      * @return
      *     possible object is
@@ -92,13 +105,14 @@ public class RotatePageParameters
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getPageNumber()
      */
     public void setPageNumber(Integer value) {
         this.pageNumber = value;
     }
 
     /**
-     * Gets the value of the rotation property.
+     * Angle divisible by 90. Counterclockwise. DocuWare legacy.
      * 
      * @return
      *     possible object is
@@ -120,6 +134,7 @@ public class RotatePageParameters
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getRotation()
      */
     public void setRotation(Integer value) {
         this.rotation = value;

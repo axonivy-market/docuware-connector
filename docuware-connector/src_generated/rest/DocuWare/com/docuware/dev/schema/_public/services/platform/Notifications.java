@@ -3,22 +3,22 @@ package com.docuware.dev.schema._public.services.platform;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * A data stucture for managing notifications.
  * 
- * <p>Java class for Notifications complex type.
+ * &lt;p&gt;Java class for Notifications complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="Notifications"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -30,7 +30,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -41,38 +41,51 @@ import com.docuware.dev.schema._public.services.Links;
 })
 public class Notifications {
 
+    /**
+     * Collection of notifications.
+     * 
+     */
     @XmlElement(name = "Notification")
     protected List<Notification> notification;
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services", required = true)
     protected Links links;
+    /**
+     * Gets or sets the notifications timeout im milliseconds. A positive value lets the server wait for notifications for the specified amount of time. A value of 0 means that the server should respond immediately. A value of -1 indicates that the server should define the timeout.
+     * 
+     */
     @XmlAttribute(name = "Timeout")
     protected Integer timeout;
 
     /**
+     * Collection of notifications.
+     * 
      * Gets the value of the notification property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the notification property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the notification property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getNotification().add(newItem);
+     * getNotification().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link Notification }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the notification property.
      */
     public List<Notification> getNotification() {
         if (notification == null) {
-            notification = new ArrayList<Notification>();
+            notification = new ArrayList<>();
         }
         return this.notification;
     }
@@ -102,7 +115,7 @@ public class Notifications {
     }
 
     /**
-     * Gets the value of the timeout property.
+     * Gets or sets the notifications timeout im milliseconds. A positive value lets the server wait for notifications for the specified amount of time. A value of 0 means that the server should respond immediately. A value of -1 indicates that the server should define the timeout.
      * 
      * @return
      *     possible object is
@@ -124,6 +137,7 @@ public class Notifications {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getTimeout()
      */
     public void setTimeout(Integer value) {
         this.timeout = value;

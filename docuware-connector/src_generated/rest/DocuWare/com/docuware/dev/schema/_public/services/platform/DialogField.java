@@ -1,19 +1,19 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for DialogField complex type.
+ * &lt;p&gt;Java class for DialogField complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="DialogField"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform}DialogFieldBase"&gt;
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -37,15 +37,27 @@ public class DialogField
     extends DialogFieldBase
 {
 
+    /**
+     * Only relevant for fields with "Table" DWFieldType. Columns of the table field.
+     * 
+     */
     @XmlElement(name = "DialogTableFieldColumns", required = true)
     protected DialogTableFieldColumns dialogTableFieldColumns;
+    /**
+     * Determines whether the field is used as document name.
+     * 
+     */
     @XmlAttribute(name = "UsedAsDocumentName")
     protected Boolean usedAsDocumentName;
+    /**
+     * Determines whether the field is part of the hierarchy structure of tree view result dialog (only for tree view result dialogs, for other types it's always false).
+     * 
+     */
     @XmlAttribute(name = "IsHierarchy")
     protected Boolean isHierarchy;
 
     /**
-     * Gets the value of the dialogTableFieldColumns property.
+     * Only relevant for fields with "Table" DWFieldType. Columns of the table field.
      * 
      * @return
      *     possible object is
@@ -63,13 +75,14 @@ public class DialogField
      *     allowed object is
      *     {@link DialogTableFieldColumns }
      *     
+     * @see #getDialogTableFieldColumns()
      */
     public void setDialogTableFieldColumns(DialogTableFieldColumns value) {
         this.dialogTableFieldColumns = value;
     }
 
     /**
-     * Gets the value of the usedAsDocumentName property.
+     * Determines whether the field is used as document name.
      * 
      * @return
      *     possible object is
@@ -91,13 +104,14 @@ public class DialogField
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isUsedAsDocumentName()
      */
     public void setUsedAsDocumentName(Boolean value) {
         this.usedAsDocumentName = value;
     }
 
     /**
-     * Gets the value of the isHierarchy property.
+     * Determines whether the field is part of the hierarchy structure of tree view result dialog (only for tree view result dialogs, for other types it's always false).
      * 
      * @return
      *     possible object is
@@ -119,6 +133,7 @@ public class DialogField
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isIsHierarchy()
      */
     public void setIsHierarchy(Boolean value) {
         this.isHierarchy = value;

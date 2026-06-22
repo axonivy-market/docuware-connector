@@ -3,24 +3,24 @@ package com.docuware.dev.schema._public.services.platform;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Define table result from document query
  * 
- * <p>Java class for DocumentsQueryTableResult complex type.
+ * &lt;p&gt;Java class for DocumentsQueryTableResult complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="DocumentsQueryTableResult"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -54,7 +54,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -67,20 +67,36 @@ import com.docuware.dev.schema._public.services.Links;
 })
 public class DocumentsQueryTableResult {
 
+    /**
+     * Gets the number of items of the query leading to this result.
+     * 
+     */
     @XmlElement(name = "Count")
     protected CountPlusValue count;
+    /**
+     * Collection of headers for the result
+     * 
+     */
     @XmlElement(name = "Headers", required = true)
     protected DocumentsQueryTableResult.Headers headers;
+    /**
+     * Collection of the rows for the result
+     * 
+     */
     @XmlElement(name = "Rows", required = true)
     protected DocumentsQueryTableResult.Rows rows;
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services", required = true)
     protected Links links;
+    /**
+     * TimeStamp of the result.
+     * 
+     */
     @XmlAttribute(name = "TimeStamp", required = true)
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar timeStamp;
 
     /**
-     * Gets the value of the count property.
+     * Gets the number of items of the query leading to this result.
      * 
      * @return
      *     possible object is
@@ -98,13 +114,14 @@ public class DocumentsQueryTableResult {
      *     allowed object is
      *     {@link CountPlusValue }
      *     
+     * @see #getCount()
      */
     public void setCount(CountPlusValue value) {
         this.count = value;
     }
 
     /**
-     * Gets the value of the headers property.
+     * Collection of headers for the result
      * 
      * @return
      *     possible object is
@@ -122,13 +139,14 @@ public class DocumentsQueryTableResult {
      *     allowed object is
      *     {@link DocumentsQueryTableResult.Headers }
      *     
+     * @see #getHeaders()
      */
     public void setHeaders(DocumentsQueryTableResult.Headers value) {
         this.headers = value;
     }
 
     /**
-     * Gets the value of the rows property.
+     * Collection of the rows for the result
      * 
      * @return
      *     possible object is
@@ -146,6 +164,7 @@ public class DocumentsQueryTableResult {
      *     allowed object is
      *     {@link DocumentsQueryTableResult.Rows }
      *     
+     * @see #getRows()
      */
     public void setRows(DocumentsQueryTableResult.Rows value) {
         this.rows = value;
@@ -176,7 +195,7 @@ public class DocumentsQueryTableResult {
     }
 
     /**
-     * Gets the value of the timeStamp property.
+     * TimeStamp of the result.
      * 
      * @return
      *     possible object is
@@ -194,6 +213,7 @@ public class DocumentsQueryTableResult {
      *     allowed object is
      *     {@link XMLGregorianCalendar }
      *     
+     * @see #getTimeStamp()
      */
     public void setTimeStamp(XMLGregorianCalendar value) {
         this.timeStamp = value;
@@ -201,11 +221,11 @@ public class DocumentsQueryTableResult {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * &lt;p&gt;Java class for anonymous complex type&lt;/p&gt;.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
      * 
-     * <pre>
+     * &lt;pre&gt;{&#064;code
      * &lt;complexType&gt;
      *   &lt;complexContent&gt;
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -215,7 +235,7 @@ public class DocumentsQueryTableResult {
      *     &lt;/restriction&gt;
      *   &lt;/complexContent&gt;
      * &lt;/complexType&gt;
-     * </pre>
+     * }&lt;/pre&gt;
      * 
      * 
      */
@@ -225,34 +245,43 @@ public class DocumentsQueryTableResult {
     })
     public static class Headers {
 
+        /**
+         * Define a specific result header
+         * 
+         */
         @XmlElement(name = "Header")
         protected List<TableResultHeader> header;
 
         /**
+         * Define a specific result header
+         * 
          * Gets the value of the header property.
          * 
-         * <p>
-         * This accessor method returns a reference to the live list,
+         * <p>This accessor method returns a reference to the live list,
          * not a snapshot. Therefore any modification you make to the
-         * returned list will be present inside the JAXB object.
-         * This is why there is not a <CODE>set</CODE> method for the header property.
+         * returned list will be present inside the Jakarta XML Binding object.
+         * This is why there is not a {@code set} method for the header property.</p>
          * 
          * <p>
          * For example, to add a new item, do as follows:
+         * </p>
          * <pre>
-         *    getHeader().add(newItem);
+         * getHeader().add(newItem);
          * </pre>
          * 
          * 
          * <p>
          * Objects of the following type(s) are allowed in the list
          * {@link TableResultHeader }
+         * </p>
          * 
          * 
+         * @return
+         *     The value of the header property.
          */
         public List<TableResultHeader> getHeader() {
             if (header == null) {
-                header = new ArrayList<TableResultHeader>();
+                header = new ArrayList<>();
             }
             return this.header;
         }
@@ -261,11 +290,11 @@ public class DocumentsQueryTableResult {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * &lt;p&gt;Java class for anonymous complex type&lt;/p&gt;.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
      * 
-     * <pre>
+     * &lt;pre&gt;{&#064;code
      * &lt;complexType&gt;
      *   &lt;complexContent&gt;
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -275,7 +304,7 @@ public class DocumentsQueryTableResult {
      *     &lt;/restriction&gt;
      *   &lt;/complexContent&gt;
      * &lt;/complexType&gt;
-     * </pre>
+     * }&lt;/pre&gt;
      * 
      * 
      */
@@ -285,34 +314,43 @@ public class DocumentsQueryTableResult {
     })
     public static class Rows {
 
+        /**
+         * Define a specific result row
+         * 
+         */
         @XmlElement(name = "R")
         protected List<TableResultRow> r;
 
         /**
+         * Define a specific result row
+         * 
          * Gets the value of the r property.
          * 
-         * <p>
-         * This accessor method returns a reference to the live list,
+         * <p>This accessor method returns a reference to the live list,
          * not a snapshot. Therefore any modification you make to the
-         * returned list will be present inside the JAXB object.
-         * This is why there is not a <CODE>set</CODE> method for the r property.
+         * returned list will be present inside the Jakarta XML Binding object.
+         * This is why there is not a {@code set} method for the r property.</p>
          * 
          * <p>
          * For example, to add a new item, do as follows:
+         * </p>
          * <pre>
-         *    getR().add(newItem);
+         * getR().add(newItem);
          * </pre>
          * 
          * 
          * <p>
          * Objects of the following type(s) are allowed in the list
          * {@link TableResultRow }
+         * </p>
          * 
          * 
+         * @return
+         *     The value of the r property.
          */
         public List<TableResultRow> getR() {
             if (r == null) {
-                r = new ArrayList<TableResultRow>();
+                r = new ArrayList<>();
             }
             return this.r;
         }

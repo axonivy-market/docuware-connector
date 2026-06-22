@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Dialog properties specific for Task lists
  * 
- * <p>Java class for DialogPropertiesTaskList complex type.
+ * &lt;p&gt;Java class for DialogPropertiesTaskList complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="DialogPropertiesTaskList"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform}DialogPropertiesResultList"&gt;
@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -41,19 +41,39 @@ public class DialogPropertiesTaskList
     extends DialogPropertiesResultList
 {
 
+    /**
+     * The search conditions of the dialog.
+     * 
+     */
     @XmlElement(name = "Conditions", required = true)
     protected DialogExpression conditions;
+    /**
+     * The search conditions of the dialog as string.
+     * 
+     */
     @XmlAttribute(name = "ConditionString")
     protected String conditionString;
+    /**
+     * Determines whether the task list is private for the user that created it (by user defined search)
+     * 
+     */
     @XmlAttribute(name = "Private")
     protected Boolean _private;
+    /**
+     * Determines whether the task list is automatically refreshed.
+     * 
+     */
     @XmlAttribute(name = "AutoRefresh")
     protected Boolean autoRefresh;
+    /**
+     * Determines the refresh period if the task list is automatically refreshed.
+     * 
+     */
     @XmlAttribute(name = "AutoRefreshPeriod")
     protected Integer autoRefreshPeriod;
 
     /**
-     * Gets the value of the conditions property.
+     * The search conditions of the dialog.
      * 
      * @return
      *     possible object is
@@ -71,13 +91,14 @@ public class DialogPropertiesTaskList
      *     allowed object is
      *     {@link DialogExpression }
      *     
+     * @see #getConditions()
      */
     public void setConditions(DialogExpression value) {
         this.conditions = value;
     }
 
     /**
-     * Gets the value of the conditionString property.
+     * The search conditions of the dialog as string.
      * 
      * @return
      *     possible object is
@@ -95,13 +116,14 @@ public class DialogPropertiesTaskList
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getConditionString()
      */
     public void setConditionString(String value) {
         this.conditionString = value;
     }
 
     /**
-     * Gets the value of the private property.
+     * Determines whether the task list is private for the user that created it (by user defined search)
      * 
      * @return
      *     possible object is
@@ -123,13 +145,14 @@ public class DialogPropertiesTaskList
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isPrivate()
      */
     public void setPrivate(Boolean value) {
         this._private = value;
     }
 
     /**
-     * Gets the value of the autoRefresh property.
+     * Determines whether the task list is automatically refreshed.
      * 
      * @return
      *     possible object is
@@ -151,13 +174,14 @@ public class DialogPropertiesTaskList
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isAutoRefresh()
      */
     public void setAutoRefresh(Boolean value) {
         this.autoRefresh = value;
     }
 
     /**
-     * Gets the value of the autoRefreshPeriod property.
+     * Determines the refresh period if the task list is automatically refreshed.
      * 
      * @return
      *     possible object is
@@ -175,6 +199,7 @@ public class DialogPropertiesTaskList
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getAutoRefreshPeriod()
      */
     public void setAutoRefreshPeriod(Integer value) {
         this.autoRefreshPeriod = value;

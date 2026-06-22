@@ -1,22 +1,22 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Defines a substitution list for an organization.
  * 
- * <p>Java class for SubstitutionList complex type.
+ * &lt;p&gt;Java class for SubstitutionList complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="SubstitutionList"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -29,7 +29,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -41,10 +41,22 @@ public class SubstitutionList {
 
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services", required = true)
     protected Links links;
+    /**
+     * Gets the name of the list.
+     * 
+     */
     @XmlAttribute(name = "Name", required = true)
     protected String name;
+    /**
+     * Gets a value indicating whether the list is active.
+     * 
+     */
     @XmlAttribute(name = "Active", required = true)
     protected boolean active;
+    /**
+     * Gets the Guid of the list.
+     * 
+     */
     @XmlAttribute(name = "Guid", required = true)
     protected String guid;
 
@@ -73,7 +85,7 @@ public class SubstitutionList {
     }
 
     /**
-     * Gets the value of the name property.
+     * Gets the name of the list.
      * 
      * @return
      *     possible object is
@@ -91,13 +103,14 @@ public class SubstitutionList {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getName()
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Gets the value of the active property.
+     * Gets a value indicating whether the list is active.
      * 
      */
     public boolean isActive() {
@@ -113,7 +126,7 @@ public class SubstitutionList {
     }
 
     /**
-     * Gets the value of the guid property.
+     * Gets the Guid of the list.
      * 
      * @return
      *     possible object is
@@ -131,6 +144,7 @@ public class SubstitutionList {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getGuid()
      */
     public void setGuid(String value) {
         this.guid = value;

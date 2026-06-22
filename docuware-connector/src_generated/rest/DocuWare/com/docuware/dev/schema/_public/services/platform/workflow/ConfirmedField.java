@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Value of form field
  * 
- * <p>Java class for ConfirmedField complex type.
+ * &lt;p&gt;Java class for ConfirmedField complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="ConfirmedField"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -36,13 +36,21 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ConfirmedField {
 
+    /**
+     * Form field value casted to the form field value type.
+     * 
+     */
     @XmlElement(name = "Value", required = true)
     protected WFFormFieldValue value;
+    /**
+     * Identifier of the field.
+     * 
+     */
     @XmlAttribute(name = "Id")
     protected Integer id;
 
     /**
-     * Gets the value of the value property.
+     * Form field value casted to the form field value type.
      * 
      * @return
      *     possible object is
@@ -60,13 +68,14 @@ public class ConfirmedField {
      *     allowed object is
      *     {@link WFFormFieldValue }
      *     
+     * @see #getValue()
      */
     public void setValue(WFFormFieldValue value) {
         this.value = value;
     }
 
     /**
-     * Gets the value of the id property.
+     * Identifier of the field.
      * 
      * @return
      *     possible object is
@@ -84,6 +93,7 @@ public class ConfirmedField {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getId()
      */
     public void setId(Integer value) {
         this.id = value;

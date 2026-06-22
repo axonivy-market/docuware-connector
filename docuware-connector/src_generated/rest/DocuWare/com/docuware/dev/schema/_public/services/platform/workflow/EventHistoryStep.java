@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * A history step for Event activity.
  * 
- * <p>Java class for EventHistoryStep complex type.
+ * &lt;p&gt;Java class for EventHistoryStep complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="EventHistoryStep"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -32,15 +32,27 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "EventHistoryStep")
 public class EventHistoryStep {
 
+    /**
+     * Name of the file cabinet in which the event activity waits in.
+     * 
+     */
     @XmlAttribute(name = "FCName")
     protected String fcName;
+    /**
+     * Document Id that caused the event activity to trigger.
+     * 
+     */
     @XmlAttribute(name = "DocId")
     protected String docId;
+    /**
+     * Status of the event activity.
+     * 
+     */
     @XmlAttribute(name = "Status")
     protected String status;
 
     /**
-     * Gets the value of the fcName property.
+     * Name of the file cabinet in which the event activity waits in.
      * 
      * @return
      *     possible object is
@@ -58,13 +70,14 @@ public class EventHistoryStep {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getFCName()
      */
     public void setFCName(String value) {
         this.fcName = value;
     }
 
     /**
-     * Gets the value of the docId property.
+     * Document Id that caused the event activity to trigger.
      * 
      * @return
      *     possible object is
@@ -82,13 +95,14 @@ public class EventHistoryStep {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getDocId()
      */
     public void setDocId(String value) {
         this.docId = value;
     }
 
     /**
-     * Gets the value of the status property.
+     * Status of the event activity.
      * 
      * @return
      *     possible object is
@@ -106,6 +120,7 @@ public class EventHistoryStep {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getStatus()
      */
     public void setStatus(String value) {
         this.status = value;

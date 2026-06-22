@@ -1,18 +1,18 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for BatchUpdateDialogExpressionSource complex type.
+ * &lt;p&gt;Java class for BatchUpdateDialogExpressionSource complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="BatchUpdateDialogExpressionSource"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform}BatchUpdateSource"&gt;
@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -34,11 +34,15 @@ public class BatchUpdateDialogExpressionSource
     extends BatchUpdateSource
 {
 
+    /**
+     * A dialog expression which is used to get the documents to be updated.
+     * 
+     */
     @XmlElement(name = "Expression", required = true)
     protected DialogExpression expression;
 
     /**
-     * Gets the value of the expression property.
+     * A dialog expression which is used to get the documents to be updated.
      * 
      * @return
      *     possible object is
@@ -56,6 +60,7 @@ public class BatchUpdateDialogExpressionSource
      *     allowed object is
      *     {@link DialogExpression }
      *     
+     * @see #getExpression()
      */
     public void setExpression(DialogExpression value) {
         this.expression = value;

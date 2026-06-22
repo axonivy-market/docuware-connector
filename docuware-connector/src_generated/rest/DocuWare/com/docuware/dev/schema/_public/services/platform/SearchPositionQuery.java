@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Define a query for searching words in phrase
  * 
- * <p>Java class for SearchPositionQuery complex type.
+ * &lt;p&gt;Java class for SearchPositionQuery complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="SearchPositionQuery"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -43,27 +43,63 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class SearchPositionQuery {
 
+    /**
+     * Define the search phrase (words)
+     * 
+     */
     @XmlElement(name = "Phrase", required = true)
     protected String phrase;
+    /**
+     * Define if case is ignored
+     * 
+     */
     @XmlAttribute(name = "IgnoreCase")
     protected Boolean ignoreCase;
+    /**
+     * Define if search for whole words only
+     * 
+     */
     @XmlAttribute(name = "WholeWord")
     protected Boolean wholeWord;
+    /**
+     * Define a starting page for the search
+     * 
+     */
     @XmlAttribute(name = "StartPage")
     protected Integer startPage;
+    /**
+     * Define a starting section for the search
+     * 
+     */
     @XmlAttribute(name = "StartSectionNumber")
     protected Integer startSectionNumber;
+    /**
+     * Search this number of pages after the first page where a hit occur. If value is less than zero then all pages will be returned
+     * 
+     */
     @XmlAttribute(name = "PageCount")
     protected Integer pageCount;
+    /**
+     * If this flag is true then the search will be executed in the previous pages.
+     * 
+     */
     @XmlAttribute(name = "Backward")
     protected Boolean backward;
+    /**
+     * If this flag is true then only the specified page range is searched. Otherwise the whole document starting at the specified page is serched until the specified number of pages are found.
+     * 
+     */
     @XmlAttribute(name = "RangeSearch")
     protected Boolean rangeSearch;
+    /**
+     * If this flag is true then the result coordinates orientation will be alligned with the page
+     * 
+     */
     @XmlAttribute(name = "Normalize")
     protected Boolean normalize;
 
     /**
-     * Gets the value of the phrase property.
+     * Define the search phrase (words)
      * 
      * @return
      *     possible object is
@@ -81,13 +117,14 @@ public class SearchPositionQuery {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getPhrase()
      */
     public void setPhrase(String value) {
         this.phrase = value;
     }
 
     /**
-     * Gets the value of the ignoreCase property.
+     * Define if case is ignored
      * 
      * @return
      *     possible object is
@@ -109,13 +146,14 @@ public class SearchPositionQuery {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isIgnoreCase()
      */
     public void setIgnoreCase(Boolean value) {
         this.ignoreCase = value;
     }
 
     /**
-     * Gets the value of the wholeWord property.
+     * Define if search for whole words only
      * 
      * @return
      *     possible object is
@@ -137,13 +175,14 @@ public class SearchPositionQuery {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isWholeWord()
      */
     public void setWholeWord(Boolean value) {
         this.wholeWord = value;
     }
 
     /**
-     * Gets the value of the startPage property.
+     * Define a starting page for the search
      * 
      * @return
      *     possible object is
@@ -165,13 +204,14 @@ public class SearchPositionQuery {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getStartPage()
      */
     public void setStartPage(Integer value) {
         this.startPage = value;
     }
 
     /**
-     * Gets the value of the startSectionNumber property.
+     * Define a starting section for the search
      * 
      * @return
      *     possible object is
@@ -193,13 +233,14 @@ public class SearchPositionQuery {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getStartSectionNumber()
      */
     public void setStartSectionNumber(Integer value) {
         this.startSectionNumber = value;
     }
 
     /**
-     * Gets the value of the pageCount property.
+     * Search this number of pages after the first page where a hit occur. If value is less than zero then all pages will be returned
      * 
      * @return
      *     possible object is
@@ -221,13 +262,14 @@ public class SearchPositionQuery {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getPageCount()
      */
     public void setPageCount(Integer value) {
         this.pageCount = value;
     }
 
     /**
-     * Gets the value of the backward property.
+     * If this flag is true then the search will be executed in the previous pages.
      * 
      * @return
      *     possible object is
@@ -249,13 +291,14 @@ public class SearchPositionQuery {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isBackward()
      */
     public void setBackward(Boolean value) {
         this.backward = value;
     }
 
     /**
-     * Gets the value of the rangeSearch property.
+     * If this flag is true then only the specified page range is searched. Otherwise the whole document starting at the specified page is serched until the specified number of pages are found.
      * 
      * @return
      *     possible object is
@@ -277,13 +320,14 @@ public class SearchPositionQuery {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isRangeSearch()
      */
     public void setRangeSearch(Boolean value) {
         this.rangeSearch = value;
     }
 
     /**
-     * Gets the value of the normalize property.
+     * If this flag is true then the result coordinates orientation will be alligned with the page
      * 
      * @return
      *     possible object is
@@ -305,6 +349,7 @@ public class SearchPositionQuery {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isNormalize()
      */
     public void setNormalize(Boolean value) {
         this.normalize = value;

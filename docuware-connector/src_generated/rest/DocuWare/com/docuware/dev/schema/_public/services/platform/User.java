@@ -1,22 +1,22 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * User details and settings
  * 
- * <p>Java class for User complex type.
+ * &lt;p&gt;Java class for User complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="User"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -38,7 +38,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -52,35 +52,83 @@ import com.docuware.dev.schema._public.services.Links;
 })
 public class User {
 
+    /**
+     * The email address of the user.
+     * 
+     */
     @XmlElement(name = "EMail")
     protected String eMail;
+    /**
+     * Default Web Basket
+     * 
+     */
     @XmlElement(name = "DefaultWebBasket", defaultValue = "00000000-0000-0000-0000-000000000000")
     protected String defaultWebBasket;
+    /**
+     * Out of office settings
+     * 
+     */
     @XmlElement(name = "OutOfOffice", required = true)
     protected OutOfOffice outOfOffice;
+    /**
+     * Regional settings
+     * 
+     */
     @XmlElement(name = "RegionalSettings", required = true)
     protected RegionalSettings regionalSettings;
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services", required = true)
     protected Links links;
+    /**
+     * The ID of the user.
+     * 
+     */
     @XmlAttribute(name = "Id", required = true)
     protected String id;
+    /**
+     * The display name of the user.
+     * 
+     */
     @XmlAttribute(name = "Name", required = true)
     protected String name;
+    /**
+     * The first name of the user.
+     * 
+     */
     @XmlAttribute(name = "FirstName", required = true)
     protected String firstName;
+    /**
+     * The last name of the user.
+     * 
+     */
     @XmlAttribute(name = "LastName", required = true)
     protected String lastName;
+    /**
+     * The salutation of the user.
+     * 
+     */
     @XmlAttribute(name = "Salutation", required = true)
     protected String salutation;
+    /**
+     * The databasename of the user.
+     * 
+     */
     @XmlAttribute(name = "DBName", required = true)
     protected String dbName;
+    /**
+     * The value indicates whether the user is active or not.
+     * 
+     */
     @XmlAttribute(name = "Active", required = true)
     protected boolean active;
+    /**
+     * The networkId of the user.
+     * 
+     */
     @XmlAttribute(name = "NetworkId")
     protected String networkId;
 
     /**
-     * Gets the value of the eMail property.
+     * The email address of the user.
      * 
      * @return
      *     possible object is
@@ -98,13 +146,14 @@ public class User {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getEMail()
      */
     public void setEMail(String value) {
         this.eMail = value;
     }
 
     /**
-     * Gets the value of the defaultWebBasket property.
+     * Default Web Basket
      * 
      * @return
      *     possible object is
@@ -122,13 +171,14 @@ public class User {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getDefaultWebBasket()
      */
     public void setDefaultWebBasket(String value) {
         this.defaultWebBasket = value;
     }
 
     /**
-     * Gets the value of the outOfOffice property.
+     * Out of office settings
      * 
      * @return
      *     possible object is
@@ -146,13 +196,14 @@ public class User {
      *     allowed object is
      *     {@link OutOfOffice }
      *     
+     * @see #getOutOfOffice()
      */
     public void setOutOfOffice(OutOfOffice value) {
         this.outOfOffice = value;
     }
 
     /**
-     * Gets the value of the regionalSettings property.
+     * Regional settings
      * 
      * @return
      *     possible object is
@@ -170,6 +221,7 @@ public class User {
      *     allowed object is
      *     {@link RegionalSettings }
      *     
+     * @see #getRegionalSettings()
      */
     public void setRegionalSettings(RegionalSettings value) {
         this.regionalSettings = value;
@@ -200,7 +252,7 @@ public class User {
     }
 
     /**
-     * Gets the value of the id property.
+     * The ID of the user.
      * 
      * @return
      *     possible object is
@@ -218,13 +270,14 @@ public class User {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getId()
      */
     public void setId(String value) {
         this.id = value;
     }
 
     /**
-     * Gets the value of the name property.
+     * The display name of the user.
      * 
      * @return
      *     possible object is
@@ -242,13 +295,14 @@ public class User {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getName()
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Gets the value of the firstName property.
+     * The first name of the user.
      * 
      * @return
      *     possible object is
@@ -266,13 +320,14 @@ public class User {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getFirstName()
      */
     public void setFirstName(String value) {
         this.firstName = value;
     }
 
     /**
-     * Gets the value of the lastName property.
+     * The last name of the user.
      * 
      * @return
      *     possible object is
@@ -290,13 +345,14 @@ public class User {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getLastName()
      */
     public void setLastName(String value) {
         this.lastName = value;
     }
 
     /**
-     * Gets the value of the salutation property.
+     * The salutation of the user.
      * 
      * @return
      *     possible object is
@@ -314,13 +370,14 @@ public class User {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getSalutation()
      */
     public void setSalutation(String value) {
         this.salutation = value;
     }
 
     /**
-     * Gets the value of the dbName property.
+     * The databasename of the user.
      * 
      * @return
      *     possible object is
@@ -338,13 +395,14 @@ public class User {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getDBName()
      */
     public void setDBName(String value) {
         this.dbName = value;
     }
 
     /**
-     * Gets the value of the active property.
+     * The value indicates whether the user is active or not.
      * 
      */
     public boolean isActive() {
@@ -360,7 +418,7 @@ public class User {
     }
 
     /**
-     * Gets the value of the networkId property.
+     * The networkId of the user.
      * 
      * @return
      *     possible object is
@@ -378,6 +436,7 @@ public class User {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getNetworkId()
      */
     public void setNetworkId(String value) {
         this.networkId = value;

@@ -3,22 +3,22 @@ package com.docuware.dev.schema._public.services.platform;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Structure for the result of batch update operations.
  * 
- * <p>Java class for BatchUpdateIndexFieldsResult complex type.
+ * &lt;p&gt;Java class for BatchUpdateIndexFieldsResult complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="BatchUpdateIndexFieldsResult"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -30,7 +30,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -41,38 +41,51 @@ import com.docuware.dev.schema._public.services.Links;
 })
 public class BatchUpdateIndexFieldsResult {
 
+    /**
+     * List of the resulting documents and errors.
+     * 
+     */
     @XmlElement(name = "Item")
     protected List<BatchUpdateResultItem> item;
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services", required = true)
     protected Links links;
+    /**
+     * The number of successful updated documents.
+     * 
+     */
     @XmlAttribute(name = "SuccessCount", required = true)
     protected int successCount;
 
     /**
+     * List of the resulting documents and errors.
+     * 
      * Gets the value of the item property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the item property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the item property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getItem().add(newItem);
+     * getItem().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link BatchUpdateResultItem }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the item property.
      */
     public List<BatchUpdateResultItem> getItem() {
         if (item == null) {
-            item = new ArrayList<BatchUpdateResultItem>();
+            item = new ArrayList<>();
         }
         return this.item;
     }
@@ -102,7 +115,7 @@ public class BatchUpdateIndexFieldsResult {
     }
 
     /**
-     * Gets the value of the successCount property.
+     * The number of successful updated documents.
      * 
      */
     public int getSuccessCount() {

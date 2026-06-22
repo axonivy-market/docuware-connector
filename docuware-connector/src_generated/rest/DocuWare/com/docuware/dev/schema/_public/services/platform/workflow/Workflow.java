@@ -1,24 +1,24 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Model a workflow.
  * 
- * <p>Java class for Workflow complex type.
+ * &lt;p&gt;Java class for Workflow complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="Workflow"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -36,7 +36,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -50,21 +50,49 @@ public class Workflow {
 
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services", required = true)
     protected Links links;
+    /**
+     * List of the visible columns of the workflow.
+     * 
+     */
     @XmlElement(name = "ColumnDefinition", required = true)
     protected ColumnsDefinition columnDefinition;
     @XmlElement(name = "WorkflowBehaviorOptions", required = true)
     protected WorkflowBehaviorOptions workflowBehaviorOptions;
+    /**
+     * Id of the workflow.
+     * 
+     */
     @XmlAttribute(name = "Id", required = true)
     protected String id;
+    /**
+     * Name of the workflow.
+     * 
+     */
     @XmlAttribute(name = "Name", required = true)
     protected String name;
+    /**
+     * Number of items of the query leading to this result.
+     * 
+     */
     @XmlAttribute(name = "TaskCount", required = true)
     protected int taskCount;
+    /**
+     * Id of the file cabinet which has been connected with this workflow.
+     * 
+     */
     @XmlAttribute(name = "FileCabinetId", required = true)
     protected String fileCabinetId;
+    /**
+     * TimeStamp of the result.
+     * 
+     */
     @XmlAttribute(name = "TimeStamp", required = true)
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar timeStamp;
+    /**
+     * Id of the resultList needed to get context menu functions
+     * 
+     */
     @XmlAttribute(name = "ResultListId", required = true)
     protected String resultListId;
 
@@ -93,7 +121,7 @@ public class Workflow {
     }
 
     /**
-     * Gets the value of the columnDefinition property.
+     * List of the visible columns of the workflow.
      * 
      * @return
      *     possible object is
@@ -111,6 +139,7 @@ public class Workflow {
      *     allowed object is
      *     {@link ColumnsDefinition }
      *     
+     * @see #getColumnDefinition()
      */
     public void setColumnDefinition(ColumnsDefinition value) {
         this.columnDefinition = value;
@@ -141,7 +170,7 @@ public class Workflow {
     }
 
     /**
-     * Gets the value of the id property.
+     * Id of the workflow.
      * 
      * @return
      *     possible object is
@@ -159,13 +188,14 @@ public class Workflow {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getId()
      */
     public void setId(String value) {
         this.id = value;
     }
 
     /**
-     * Gets the value of the name property.
+     * Name of the workflow.
      * 
      * @return
      *     possible object is
@@ -183,13 +213,14 @@ public class Workflow {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getName()
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Gets the value of the taskCount property.
+     * Number of items of the query leading to this result.
      * 
      */
     public int getTaskCount() {
@@ -205,7 +236,7 @@ public class Workflow {
     }
 
     /**
-     * Gets the value of the fileCabinetId property.
+     * Id of the file cabinet which has been connected with this workflow.
      * 
      * @return
      *     possible object is
@@ -223,13 +254,14 @@ public class Workflow {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getFileCabinetId()
      */
     public void setFileCabinetId(String value) {
         this.fileCabinetId = value;
     }
 
     /**
-     * Gets the value of the timeStamp property.
+     * TimeStamp of the result.
      * 
      * @return
      *     possible object is
@@ -247,13 +279,14 @@ public class Workflow {
      *     allowed object is
      *     {@link XMLGregorianCalendar }
      *     
+     * @see #getTimeStamp()
      */
     public void setTimeStamp(XMLGregorianCalendar value) {
         this.timeStamp = value;
     }
 
     /**
-     * Gets the value of the resultListId property.
+     * Id of the resultList needed to get context menu functions
      * 
      * @return
      *     possible object is
@@ -271,6 +304,7 @@ public class Workflow {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getResultListId()
      */
     public void setResultListId(String value) {
         this.resultListId = value;

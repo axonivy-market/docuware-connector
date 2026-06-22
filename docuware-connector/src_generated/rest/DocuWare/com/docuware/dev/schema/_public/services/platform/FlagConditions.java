@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Filter documents with specific flags
  * 
- * <p>Java class for FlagConditions complex type.
+ * &lt;p&gt;Java class for FlagConditions complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="FlagConditions"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -31,13 +31,21 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "FlagConditions")
 public class FlagConditions {
 
+    /**
+     * Include documents which are checked out
+     * 
+     */
     @XmlAttribute(name = "IncludeCheckedOut")
     protected Boolean includeCheckedOut;
+    /**
+     * Include documents which are appended
+     * 
+     */
     @XmlAttribute(name = "IncludeAppended")
     protected Boolean includeAppended;
 
     /**
-     * Gets the value of the includeCheckedOut property.
+     * Include documents which are checked out
      * 
      * @return
      *     possible object is
@@ -59,13 +67,14 @@ public class FlagConditions {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isIncludeCheckedOut()
      */
     public void setIncludeCheckedOut(Boolean value) {
         this.includeCheckedOut = value;
     }
 
     /**
-     * Gets the value of the includeAppended property.
+     * Include documents which are appended
      * 
      * @return
      *     possible object is
@@ -87,6 +96,7 @@ public class FlagConditions {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isIncludeAppended()
      */
     public void setIncludeAppended(Boolean value) {
         this.includeAppended = value;

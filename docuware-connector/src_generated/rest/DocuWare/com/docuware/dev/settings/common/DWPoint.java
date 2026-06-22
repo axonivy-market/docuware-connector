@@ -1,18 +1,18 @@
 
 package com.docuware.dev.settings.common;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for DWPoint complex type.
+ * &lt;p&gt;Java class for DWPoint complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="DWPoint"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -29,13 +29,21 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "DWPoint")
 public class DWPoint {
 
+    /**
+     * The horizontal position in coordinates.
+     * 
+     */
     @XmlAttribute(name = "X", required = true)
     protected double x;
+    /**
+     * The vertical position in coordinates.
+     * 
+     */
     @XmlAttribute(name = "Y", required = true)
     protected double y;
 
     /**
-     * Gets the value of the x property.
+     * The horizontal position in coordinates.
      * 
      */
     public double getX() {
@@ -51,7 +59,7 @@ public class DWPoint {
     }
 
     /**
-     * Gets the value of the y property.
+     * The vertical position in coordinates.
      * 
      */
     public double getY() {

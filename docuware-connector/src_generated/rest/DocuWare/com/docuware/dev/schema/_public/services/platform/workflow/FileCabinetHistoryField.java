@@ -1,18 +1,18 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for FileCabinetHistoryField complex type.
+ * &lt;p&gt;Java class for FileCabinetHistoryField complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="FileCabinetHistoryField"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform/workflow}HistoryField"&gt;
@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -36,13 +36,21 @@ public class FileCabinetHistoryField
     extends HistoryField
 {
 
+    /**
+     * File cabinet name
+     * 
+     */
     @XmlElement(name = "FileCabinetName", required = true)
     protected String fileCabinetName;
+    /**
+     * Document id
+     * 
+     */
     @XmlElement(name = "DocId", required = true)
     protected String docId;
 
     /**
-     * Gets the value of the fileCabinetName property.
+     * File cabinet name
      * 
      * @return
      *     possible object is
@@ -60,13 +68,14 @@ public class FileCabinetHistoryField
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getFileCabinetName()
      */
     public void setFileCabinetName(String value) {
         this.fileCabinetName = value;
     }
 
     /**
-     * Gets the value of the docId property.
+     * Document id
      * 
      * @return
      *     possible object is
@@ -84,6 +93,7 @@ public class FileCabinetHistoryField
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getDocId()
      */
     public void setDocId(String value) {
         this.docId = value;

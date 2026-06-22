@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * A text field mask.
  * 
- * <p>Java class for FieldMask complex type.
+ * &lt;p&gt;Java class for FieldMask complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="FieldMask"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -32,15 +32,27 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "FieldMask")
 public class FieldMask {
 
+    /**
+     * Error message to display if the input does not match the mask definition.
+     * 
+     */
     @XmlAttribute(name = "ErrorText", required = true)
     protected String errorText;
+    /**
+     * Regular expression for limiting the input options for the field.
+     * 
+     */
     @XmlAttribute(name = "RegularExpression", required = true)
     protected String regularExpression;
+    /**
+     * Sample entry that matches the mask definition.
+     * 
+     */
     @XmlAttribute(name = "SampleEditText", required = true)
     protected String sampleEditText;
 
     /**
-     * Gets the value of the errorText property.
+     * Error message to display if the input does not match the mask definition.
      * 
      * @return
      *     possible object is
@@ -58,13 +70,14 @@ public class FieldMask {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getErrorText()
      */
     public void setErrorText(String value) {
         this.errorText = value;
     }
 
     /**
-     * Gets the value of the regularExpression property.
+     * Regular expression for limiting the input options for the field.
      * 
      * @return
      *     possible object is
@@ -82,13 +95,14 @@ public class FieldMask {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getRegularExpression()
      */
     public void setRegularExpression(String value) {
         this.regularExpression = value;
     }
 
     /**
-     * Gets the value of the sampleEditText property.
+     * Sample entry that matches the mask definition.
      * 
      * @return
      *     possible object is
@@ -106,6 +120,7 @@ public class FieldMask {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getSampleEditText()
      */
     public void setSampleEditText(String value) {
         this.sampleEditText = value;

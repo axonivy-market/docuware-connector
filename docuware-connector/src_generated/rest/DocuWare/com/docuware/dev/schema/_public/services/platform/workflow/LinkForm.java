@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * A link form.
  * 
- * <p>Java class for LinkForm complex type.
+ * &lt;p&gt;Java class for LinkForm complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="LinkForm"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform/workflow}BaseForm"&gt;
@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -32,11 +32,15 @@ public class LinkForm
     extends BaseForm
 {
 
+    /**
+     * Contains a web address.
+     * 
+     */
     @XmlAttribute(name = "Url", required = true)
     protected String url;
 
     /**
-     * Gets the value of the url property.
+     * Contains a web address.
      * 
      * @return
      *     possible object is
@@ -54,6 +58,7 @@ public class LinkForm
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getUrl()
      */
     public void setUrl(String value) {
         this.url = value;

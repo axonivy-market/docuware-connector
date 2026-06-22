@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for HistoryField complex type.
+ * &lt;p&gt;Java class for HistoryField complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="HistoryField"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -44,20 +44,40 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class HistoryField {
 
+    /**
+     * Value of the field.
+     * 
+     */
     @XmlElement(name = "Value", required = true)
     protected WFFormFieldValue value;
+    /**
+     * Additional options specific for field type.
+     * 
+     */
     @XmlElement(name = "Options")
     protected HistoryFieldOptions options;
+    /**
+     * Assignment destination type specific for field.
+     * 
+     */
     @XmlElement(name = "AssignmentType", required = true)
     @XmlSchemaType(name = "string")
     protected AssignmentType assignmentType;
+    /**
+     * Тhe label of the field.
+     * 
+     */
     @XmlAttribute(name = "Label")
     protected String label;
+    /**
+     * Type of the history form field.
+     * 
+     */
     @XmlAttribute(name = "Type", required = true)
     protected HistoryFormTypeEnum type;
 
     /**
-     * Gets the value of the value property.
+     * Value of the field.
      * 
      * @return
      *     possible object is
@@ -75,13 +95,14 @@ public class HistoryField {
      *     allowed object is
      *     {@link WFFormFieldValue }
      *     
+     * @see #getValue()
      */
     public void setValue(WFFormFieldValue value) {
         this.value = value;
     }
 
     /**
-     * Gets the value of the options property.
+     * Additional options specific for field type.
      * 
      * @return
      *     possible object is
@@ -99,13 +120,14 @@ public class HistoryField {
      *     allowed object is
      *     {@link HistoryFieldOptions }
      *     
+     * @see #getOptions()
      */
     public void setOptions(HistoryFieldOptions value) {
         this.options = value;
     }
 
     /**
-     * Gets the value of the assignmentType property.
+     * Assignment destination type specific for field.
      * 
      * @return
      *     possible object is
@@ -123,13 +145,14 @@ public class HistoryField {
      *     allowed object is
      *     {@link AssignmentType }
      *     
+     * @see #getAssignmentType()
      */
     public void setAssignmentType(AssignmentType value) {
         this.assignmentType = value;
     }
 
     /**
-     * Gets the value of the label property.
+     * Тhe label of the field.
      * 
      * @return
      *     possible object is
@@ -147,13 +170,14 @@ public class HistoryField {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getLabel()
      */
     public void setLabel(String value) {
         this.label = value;
     }
 
     /**
-     * Gets the value of the type property.
+     * Type of the history form field.
      * 
      * @return
      *     possible object is
@@ -171,6 +195,7 @@ public class HistoryField {
      *     allowed object is
      *     {@link HistoryFormTypeEnum }
      *     
+     * @see #getType()
      */
     public void setType(HistoryFormTypeEnum value) {
         this.type = value;

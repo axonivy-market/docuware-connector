@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Define a a set of words and locations where they are found in a section
  * 
- * <p>Java class for WordSearchResult complex type.
+ * &lt;p&gt;Java class for WordSearchResult complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="WordSearchResult"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -27,7 +27,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -39,15 +39,23 @@ import com.docuware.dev.schema._public.services.Links;
 })
 public class WordSearchResult {
 
+    /**
+     * Contains the search query leading to this result.
+     * 
+     */
     @XmlElement(name = "Search", required = true)
     protected String search;
+    /**
+     * Contains a set pages where of words are found
+     * 
+     */
     @XmlElement(name = "PageHits", required = true)
     protected PageHits pageHits;
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services", required = true)
     protected Links links;
 
     /**
-     * Gets the value of the search property.
+     * Contains the search query leading to this result.
      * 
      * @return
      *     possible object is
@@ -65,13 +73,14 @@ public class WordSearchResult {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getSearch()
      */
     public void setSearch(String value) {
         this.search = value;
     }
 
     /**
-     * Gets the value of the pageHits property.
+     * Contains a set pages where of words are found
      * 
      * @return
      *     possible object is
@@ -89,6 +98,7 @@ public class WordSearchResult {
      *     allowed object is
      *     {@link PageHits }
      *     
+     * @see #getPageHits()
      */
     public void setPageHits(PageHits value) {
         this.pageHits = value;

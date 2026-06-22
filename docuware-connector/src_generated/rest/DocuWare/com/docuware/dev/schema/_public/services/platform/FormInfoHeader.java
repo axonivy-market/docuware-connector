@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Simple Form object used for displaying form in web client's forms area
  * 
- * <p>Java class for FormInfoHeader complex type.
+ * &lt;p&gt;Java class for FormInfoHeader complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="FormInfoHeader"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -48,6 +48,10 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class FormInfoHeader {
 
+    /**
+     * Id of the form configuration used to retrieve full configuration
+     * 
+     */
     @XmlElement(name = "Id", required = true)
     protected String id;
     @XmlElement(name = "Name", required = true)
@@ -66,7 +70,7 @@ public class FormInfoHeader {
     protected boolean _public;
 
     /**
-     * Gets the value of the id property.
+     * Id of the form configuration used to retrieve full configuration
      * 
      * @return
      *     possible object is
@@ -84,6 +88,7 @@ public class FormInfoHeader {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getId()
      */
     public void setId(String value) {
         this.id = value;

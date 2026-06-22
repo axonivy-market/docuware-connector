@@ -1,22 +1,22 @@
 
 package com.docuware.dev._public.intellix;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.XmlValue;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlValue;
 
 
 /**
  * Contains a word with its bounding box.
  * 
- * <p>Java class for SimpleWord complex type.
+ * &lt;p&gt;Java class for SimpleWord complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="SimpleWord"&gt;
  *   &lt;simpleContent&gt;
  *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema&gt;string"&gt;
@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlValue;
  *     &lt;/extension&gt;
  *   &lt;/simpleContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -39,12 +39,28 @@ public class SimpleWord {
 
     @XmlValue
     protected String value;
+    /**
+     * Left of rectangle.
+     * 
+     */
     @XmlAttribute(name = "L", required = true)
     protected int l;
+    /**
+     * Top of rectangle.
+     * 
+     */
     @XmlAttribute(name = "T", required = true)
     protected int t;
+    /**
+     * Width of rectangle.
+     * 
+     */
     @XmlAttribute(name = "W", required = true)
     protected int w;
+    /**
+     * Height of rectangle.
+     * 
+     */
     @XmlAttribute(name = "H", required = true)
     protected int h;
 
@@ -73,7 +89,7 @@ public class SimpleWord {
     }
 
     /**
-     * Gets the value of the l property.
+     * Left of rectangle.
      * 
      */
     public int getL() {
@@ -89,7 +105,7 @@ public class SimpleWord {
     }
 
     /**
-     * Gets the value of the t property.
+     * Top of rectangle.
      * 
      */
     public int getT() {
@@ -105,7 +121,7 @@ public class SimpleWord {
     }
 
     /**
-     * Gets the value of the w property.
+     * Width of rectangle.
      * 
      */
     public int getW() {
@@ -121,7 +137,7 @@ public class SimpleWord {
     }
 
     /**
-     * Gets the value of the h property.
+     * Height of rectangle.
      * 
      */
     public int getH() {

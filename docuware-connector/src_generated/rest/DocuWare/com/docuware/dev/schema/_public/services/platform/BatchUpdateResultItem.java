@@ -1,18 +1,18 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for BatchUpdateResultItem complex type.
+ * &lt;p&gt;Java class for BatchUpdateResultItem complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="BatchUpdateResultItem"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -34,13 +34,21 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class BatchUpdateResultItem {
 
+    /**
+     * The document after it has been updated.
+     * 
+     */
     @XmlElement(name = "Document", required = true)
     protected Document document;
+    /**
+     * The error message of the failed update operation.
+     * 
+     */
     @XmlElement(name = "ErrorMessage")
     protected String errorMessage;
 
     /**
-     * Gets the value of the document property.
+     * The document after it has been updated.
      * 
      * @return
      *     possible object is
@@ -58,13 +66,14 @@ public class BatchUpdateResultItem {
      *     allowed object is
      *     {@link Document }
      *     
+     * @see #getDocument()
      */
     public void setDocument(Document value) {
         this.document = value;
     }
 
     /**
-     * Gets the value of the errorMessage property.
+     * The error message of the failed update operation.
      * 
      * @return
      *     possible object is
@@ -82,6 +91,7 @@ public class BatchUpdateResultItem {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getErrorMessage()
      */
     public void setErrorMessage(String value) {
         this.errorMessage = value;

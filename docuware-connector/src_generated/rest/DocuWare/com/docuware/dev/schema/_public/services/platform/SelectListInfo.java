@@ -1,22 +1,22 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Select list information object.
  * 
- * <p>Java class for SelectListInfo complex type.
+ * &lt;p&gt;Java class for SelectListInfo complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="SelectListInfo"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -29,7 +29,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -41,10 +41,22 @@ public class SelectListInfo {
 
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services", required = true)
     protected Links links;
+    /**
+     * The guid of the select list.
+     * 
+     */
     @XmlAttribute(name = "Guid", required = true)
     protected String guid;
+    /**
+     * The name of the select list.
+     * 
+     */
     @XmlAttribute(name = "Name")
     protected String name;
+    /**
+     * The Kind of the select list.
+     * 
+     */
     @XmlAttribute(name = "Kind", required = true)
     protected SelectListKind kind;
 
@@ -73,7 +85,7 @@ public class SelectListInfo {
     }
 
     /**
-     * Gets the value of the guid property.
+     * The guid of the select list.
      * 
      * @return
      *     possible object is
@@ -91,13 +103,14 @@ public class SelectListInfo {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getGuid()
      */
     public void setGuid(String value) {
         this.guid = value;
     }
 
     /**
-     * Gets the value of the name property.
+     * The name of the select list.
      * 
      * @return
      *     possible object is
@@ -115,13 +128,14 @@ public class SelectListInfo {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getName()
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Gets the value of the kind property.
+     * The Kind of the select list.
      * 
      * @return
      *     possible object is
@@ -139,6 +153,7 @@ public class SelectListInfo {
      *     allowed object is
      *     {@link SelectListKind }
      *     
+     * @see #getKind()
      */
     public void setKind(SelectListKind value) {
         this.kind = value;

@@ -3,19 +3,19 @@ package com.docuware.dev.schema._public.services.platform.workflow;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for TasksQuery complex type.
+ * &lt;p&gt;Java class for TasksQuery complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="TasksQuery"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -40,77 +40,107 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class TasksQuery {
 
+    /**
+     * List of instances ids.
+     * 
+     */
     @XmlElement(name = "Instances")
     protected List<String> instances;
+    /**
+     * Sort order for the task list.
+     * 
+     */
     @XmlElement(name = "SortOrder")
     protected List<ColumnSortOrder> sortOrder;
+    /**
+     * Start position of the search.
+     * 
+     */
     @XmlAttribute(name = "Start", required = true)
     protected int start;
+    /**
+     * Count of the returned items.
+     * 
+     */
     @XmlAttribute(name = "Count", required = true)
     protected int count;
+    /**
+     * Indicates whether the task links should be loaded.
+     * 
+     */
     @XmlAttribute(name = "RemoveLinks")
     protected Boolean removeLinks;
 
     /**
+     * List of instances ids.
+     * 
      * Gets the value of the instances property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the instances property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the instances property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getInstances().add(newItem);
+     * getInstances().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the instances property.
      */
     public List<String> getInstances() {
         if (instances == null) {
-            instances = new ArrayList<String>();
+            instances = new ArrayList<>();
         }
         return this.instances;
     }
 
     /**
+     * Sort order for the task list.
+     * 
      * Gets the value of the sortOrder property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the sortOrder property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the sortOrder property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getSortOrder().add(newItem);
+     * getSortOrder().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link ColumnSortOrder }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the sortOrder property.
      */
     public List<ColumnSortOrder> getSortOrder() {
         if (sortOrder == null) {
-            sortOrder = new ArrayList<ColumnSortOrder>();
+            sortOrder = new ArrayList<>();
         }
         return this.sortOrder;
     }
 
     /**
-     * Gets the value of the start property.
+     * Start position of the search.
      * 
      */
     public int getStart() {
@@ -126,7 +156,7 @@ public class TasksQuery {
     }
 
     /**
-     * Gets the value of the count property.
+     * Count of the returned items.
      * 
      */
     public int getCount() {
@@ -142,7 +172,7 @@ public class TasksQuery {
     }
 
     /**
-     * Gets the value of the removeLinks property.
+     * Indicates whether the task links should be loaded.
      * 
      * @return
      *     possible object is
@@ -164,6 +194,7 @@ public class TasksQuery {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isRemoveLinks()
      */
     public void setRemoveLinks(Boolean value) {
         this.removeLinks = value;

@@ -1,23 +1,23 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * A data stucture for implementing simple notifications.
  * 
- * <p>Java class for Notification complex type.
+ * &lt;p&gt;Java class for Notification complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="Notification"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -29,7 +29,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -39,16 +39,28 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 public class Notification {
 
+    /**
+     * TimeStamp when the notification was checked. Ensure that notification was happened before that time stamp
+     * 
+     */
     @XmlElement(name = "TimeStamp", required = true, nillable = true)
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar timeStamp;
+    /**
+     * If this flag is true then this notification is set.
+     * 
+     */
     @XmlAttribute(name = "IsActive")
     protected Boolean isActive;
+    /**
+     * Gets or sets the name of this notification.
+     * 
+     */
     @XmlAttribute(name = "Name", required = true)
     protected String name;
 
     /**
-     * Gets the value of the timeStamp property.
+     * TimeStamp when the notification was checked. Ensure that notification was happened before that time stamp
      * 
      * @return
      *     possible object is
@@ -66,13 +78,14 @@ public class Notification {
      *     allowed object is
      *     {@link XMLGregorianCalendar }
      *     
+     * @see #getTimeStamp()
      */
     public void setTimeStamp(XMLGregorianCalendar value) {
         this.timeStamp = value;
     }
 
     /**
-     * Gets the value of the isActive property.
+     * If this flag is true then this notification is set.
      * 
      * @return
      *     possible object is
@@ -94,13 +107,14 @@ public class Notification {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isIsActive()
      */
     public void setIsActive(Boolean value) {
         this.isActive = value;
     }
 
     /**
-     * Gets the value of the name property.
+     * Gets or sets the name of this notification.
      * 
      * @return
      *     possible object is
@@ -118,6 +132,7 @@ public class Notification {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getName()
      */
     public void setName(String value) {
         this.name = value;

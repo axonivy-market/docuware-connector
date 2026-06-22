@@ -3,21 +3,21 @@ package com.docuware.dev.schema._public.services.platform.workflow;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * A history step for confirmed decision in request.
  * 
- * <p>Java class for RequestDecisionHistoryStep complex type.
+ * &lt;p&gt;Java class for RequestDecisionHistoryStep complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="RequestDecisionHistoryStep"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -40,46 +40,67 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class RequestDecisionHistoryStep {
 
+    /**
+     * List of fields which has been confirmed.
+     * 
+     */
     @XmlElement(name = "InputFields")
     protected List<HistoryField> inputFields;
+    /**
+     * Document user version when the task is confirmed.
+     * 
+     */
     @XmlAttribute(name = "DocumentUserVersion")
     protected String documentUserVersion;
+    /**
+     * Name of the user who confirmed the request.
+     * 
+     */
     @XmlAttribute(name = "UserName")
     protected String userName;
+    /**
+     * Name of the decision which has been confirmed.
+     * 
+     */
     @XmlAttribute(name = "DecisionName")
     protected String decisionName;
 
     /**
+     * List of fields which has been confirmed.
+     * 
      * Gets the value of the inputFields property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the inputFields property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the inputFields property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getInputFields().add(newItem);
+     * getInputFields().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link HistoryField }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the inputFields property.
      */
     public List<HistoryField> getInputFields() {
         if (inputFields == null) {
-            inputFields = new ArrayList<HistoryField>();
+            inputFields = new ArrayList<>();
         }
         return this.inputFields;
     }
 
     /**
-     * Gets the value of the documentUserVersion property.
+     * Document user version when the task is confirmed.
      * 
      * @return
      *     possible object is
@@ -97,13 +118,14 @@ public class RequestDecisionHistoryStep {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getDocumentUserVersion()
      */
     public void setDocumentUserVersion(String value) {
         this.documentUserVersion = value;
     }
 
     /**
-     * Gets the value of the userName property.
+     * Name of the user who confirmed the request.
      * 
      * @return
      *     possible object is
@@ -121,13 +143,14 @@ public class RequestDecisionHistoryStep {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getUserName()
      */
     public void setUserName(String value) {
         this.userName = value;
     }
 
     /**
-     * Gets the value of the decisionName property.
+     * Name of the decision which has been confirmed.
      * 
      * @return
      *     possible object is
@@ -145,6 +168,7 @@ public class RequestDecisionHistoryStep {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getDecisionName()
      */
     public void setDecisionName(String value) {
         this.decisionName = value;

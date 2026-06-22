@@ -1,22 +1,22 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * List of history steps for an instance.
  * 
- * <p>Java class for InstanceHistory complex type.
+ * &lt;p&gt;Java class for InstanceHistory complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="InstanceHistory"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -32,7 +32,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -45,16 +45,40 @@ public class InstanceHistory {
 
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services", required = true)
     protected Links links;
+    /**
+     * List of history steps.
+     * 
+     */
     @XmlElement(name = "HistorySteps", required = true)
     protected HistorySteps historySteps;
+    /**
+     * Instance id.
+     * 
+     */
     @XmlAttribute(name = "Id")
     protected String id;
+    /**
+     * Workflow id.
+     * 
+     */
     @XmlAttribute(name = "WorkflowId")
     protected String workflowId;
+    /**
+     * Workflow name.
+     * 
+     */
     @XmlAttribute(name = "Name")
     protected String name;
+    /**
+     * Workflow version number.
+     * 
+     */
     @XmlAttribute(name = "Version", required = true)
     protected int version;
+    /**
+     * True if it is history for workflow request.
+     * 
+     */
     @XmlAttribute(name = "WorkflowRequest", required = true)
     protected boolean workflowRequest;
 
@@ -83,7 +107,7 @@ public class InstanceHistory {
     }
 
     /**
-     * Gets the value of the historySteps property.
+     * List of history steps.
      * 
      * @return
      *     possible object is
@@ -101,13 +125,14 @@ public class InstanceHistory {
      *     allowed object is
      *     {@link HistorySteps }
      *     
+     * @see #getHistorySteps()
      */
     public void setHistorySteps(HistorySteps value) {
         this.historySteps = value;
     }
 
     /**
-     * Gets the value of the id property.
+     * Instance id.
      * 
      * @return
      *     possible object is
@@ -125,13 +150,14 @@ public class InstanceHistory {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getId()
      */
     public void setId(String value) {
         this.id = value;
     }
 
     /**
-     * Gets the value of the workflowId property.
+     * Workflow id.
      * 
      * @return
      *     possible object is
@@ -149,13 +175,14 @@ public class InstanceHistory {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getWorkflowId()
      */
     public void setWorkflowId(String value) {
         this.workflowId = value;
     }
 
     /**
-     * Gets the value of the name property.
+     * Workflow name.
      * 
      * @return
      *     possible object is
@@ -173,13 +200,14 @@ public class InstanceHistory {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getName()
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Gets the value of the version property.
+     * Workflow version number.
      * 
      */
     public int getVersion() {
@@ -195,7 +223,7 @@ public class InstanceHistory {
     }
 
     /**
-     * Gets the value of the workflowRequest property.
+     * True if it is history for workflow request.
      * 
      */
     public boolean isWorkflowRequest() {

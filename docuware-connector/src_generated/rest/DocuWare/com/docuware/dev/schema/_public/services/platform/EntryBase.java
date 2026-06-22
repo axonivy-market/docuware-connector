@@ -1,22 +1,22 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Base element for annotation entry.
  * 
- * <p>Java class for EntryBase complex type.
+ * &lt;p&gt;Java class for EntryBase complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="EntryBase"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -49,21 +49,45 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class EntryBase {
 
+    /**
+     * Info about creation of the annotation.
+     * 
+     */
     @XmlElement(name = "Created", required = true)
     protected CreatedInfo created;
+    /**
+     * DEPRECATED! No longer used since 7.0. The type can be retrieved by the class name.
+     * 
+     */
     @XmlAttribute(name = "Type")
     protected String type;
+    /**
+     * Rotaion of the annotation.
+     * 
+     */
     @XmlAttribute(name = "Rotation")
     protected Integer rotation;
+    /**
+     * Define if annotation is transparent.
+     * 
+     */
     @XmlAttribute(name = "Transparent")
     protected Boolean transparent;
+    /**
+     * The default thickness is 1 pt = 20 twips
+     * 
+     */
     @XmlAttribute(name = "StrokeWidth")
     protected Integer strokeWidth;
+    /**
+     * Specified if updating already exisitng annotation
+     * 
+     */
     @XmlAttribute(name = "Id")
     protected String id;
 
     /**
-     * Gets the value of the created property.
+     * Info about creation of the annotation.
      * 
      * @return
      *     possible object is
@@ -81,13 +105,14 @@ public class EntryBase {
      *     allowed object is
      *     {@link CreatedInfo }
      *     
+     * @see #getCreated()
      */
     public void setCreated(CreatedInfo value) {
         this.created = value;
     }
 
     /**
-     * Gets the value of the type property.
+     * DEPRECATED! No longer used since 7.0. The type can be retrieved by the class name.
      * 
      * @return
      *     possible object is
@@ -105,13 +130,14 @@ public class EntryBase {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getType()
      */
     public void setType(String value) {
         this.type = value;
     }
 
     /**
-     * Gets the value of the rotation property.
+     * Rotaion of the annotation.
      * 
      * @return
      *     possible object is
@@ -133,13 +159,14 @@ public class EntryBase {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getRotation()
      */
     public void setRotation(Integer value) {
         this.rotation = value;
     }
 
     /**
-     * Gets the value of the transparent property.
+     * Define if annotation is transparent.
      * 
      * @return
      *     possible object is
@@ -161,13 +188,14 @@ public class EntryBase {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isTransparent()
      */
     public void setTransparent(Boolean value) {
         this.transparent = value;
     }
 
     /**
-     * Gets the value of the strokeWidth property.
+     * The default thickness is 1 pt = 20 twips
      * 
      * @return
      *     possible object is
@@ -189,13 +217,14 @@ public class EntryBase {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getStrokeWidth()
      */
     public void setStrokeWidth(Integer value) {
         this.strokeWidth = value;
     }
 
     /**
-     * Gets the value of the id property.
+     * Specified if updating already exisitng annotation
      * 
      * @return
      *     possible object is
@@ -213,6 +242,7 @@ public class EntryBase {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getId()
      */
     public void setId(String value) {
         this.id = value;

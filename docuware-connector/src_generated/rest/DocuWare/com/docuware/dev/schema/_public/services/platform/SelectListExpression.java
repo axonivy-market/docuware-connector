@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Query definition for a select list
  * 
- * <p>Java class for SelectListExpression complex type.
+ * &lt;p&gt;Java class for SelectListExpression complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="SelectListExpression"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -44,27 +44,63 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class SelectListExpression {
 
+    /**
+     * The expression with already filled values.
+     * 
+     */
     @XmlElement(name = "DialogExpression")
     protected DialogExpression dialogExpression;
+    /**
+     * A possible prefix of value of the field to be filled.
+     * 
+     */
     @XmlElement(name = "ValuePrefix")
     protected String valuePrefix;
+    /**
+     * The database name of the dialog field to be filled.
+     * 
+     */
     @XmlAttribute(name = "FieldName", required = true)
     protected String fieldName;
+    /**
+     * Result will be returned on pages with that block size if specified. If set to default (0) select lists will be returned in one block using Limit parameter.
+     * 
+     */
     @XmlAttribute(name = "Count")
     protected Integer count;
+    /**
+     * First result to return if block size is specified
+     * 
+     */
     @XmlAttribute(name = "Start")
     protected Integer start;
+    /**
+     * Limit the number of hits that are returned if no block size is specified
+     * 
+     */
     @XmlAttribute(name = "Limit")
     protected Integer limit;
+    /**
+     * Define sort order of the select list
+     * 
+     */
     @XmlAttribute(name = "SortDirection")
     protected SortDirection sortDirection;
+    /**
+     * Determines whether to return values from external select lists
+     * 
+     */
     @XmlAttribute(name = "ExcludeExternal")
     protected Boolean excludeExternal;
+    /**
+     * If this value is &lt;c&gt;true&lt;/c&gt;, then the response contains typed values. Otherwise each value is converted to a string using the agent's locale settings.
+     * 
+     */
     @XmlAttribute(name = "Typed")
     protected Boolean typed;
 
     /**
-     * Gets the value of the dialogExpression property.
+     * The expression with already filled values.
      * 
      * @return
      *     possible object is
@@ -82,13 +118,14 @@ public class SelectListExpression {
      *     allowed object is
      *     {@link DialogExpression }
      *     
+     * @see #getDialogExpression()
      */
     public void setDialogExpression(DialogExpression value) {
         this.dialogExpression = value;
     }
 
     /**
-     * Gets the value of the valuePrefix property.
+     * A possible prefix of value of the field to be filled.
      * 
      * @return
      *     possible object is
@@ -106,13 +143,14 @@ public class SelectListExpression {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getValuePrefix()
      */
     public void setValuePrefix(String value) {
         this.valuePrefix = value;
     }
 
     /**
-     * Gets the value of the fieldName property.
+     * The database name of the dialog field to be filled.
      * 
      * @return
      *     possible object is
@@ -130,13 +168,14 @@ public class SelectListExpression {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getFieldName()
      */
     public void setFieldName(String value) {
         this.fieldName = value;
     }
 
     /**
-     * Gets the value of the count property.
+     * Result will be returned on pages with that block size if specified. If set to default (0) select lists will be returned in one block using Limit parameter.
      * 
      * @return
      *     possible object is
@@ -158,13 +197,14 @@ public class SelectListExpression {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getCount()
      */
     public void setCount(Integer value) {
         this.count = value;
     }
 
     /**
-     * Gets the value of the start property.
+     * First result to return if block size is specified
      * 
      * @return
      *     possible object is
@@ -186,13 +226,14 @@ public class SelectListExpression {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getStart()
      */
     public void setStart(Integer value) {
         this.start = value;
     }
 
     /**
-     * Gets the value of the limit property.
+     * Limit the number of hits that are returned if no block size is specified
      * 
      * @return
      *     possible object is
@@ -214,13 +255,14 @@ public class SelectListExpression {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getLimit()
      */
     public void setLimit(Integer value) {
         this.limit = value;
     }
 
     /**
-     * Gets the value of the sortDirection property.
+     * Define sort order of the select list
      * 
      * @return
      *     possible object is
@@ -242,13 +284,14 @@ public class SelectListExpression {
      *     allowed object is
      *     {@link SortDirection }
      *     
+     * @see #getSortDirection()
      */
     public void setSortDirection(SortDirection value) {
         this.sortDirection = value;
     }
 
     /**
-     * Gets the value of the excludeExternal property.
+     * Determines whether to return values from external select lists
      * 
      * @return
      *     possible object is
@@ -270,13 +313,14 @@ public class SelectListExpression {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isExcludeExternal()
      */
     public void setExcludeExternal(Boolean value) {
         this.excludeExternal = value;
     }
 
     /**
-     * Gets the value of the typed property.
+     * If this value is &lt;c&gt;true&lt;/c&gt;, then the response contains typed values. Otherwise each value is converted to a string using the agent's locale settings.
      * 
      * @return
      *     possible object is
@@ -298,6 +342,7 @@ public class SelectListExpression {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isTyped()
      */
     public void setTyped(Boolean value) {
         this.typed = value;

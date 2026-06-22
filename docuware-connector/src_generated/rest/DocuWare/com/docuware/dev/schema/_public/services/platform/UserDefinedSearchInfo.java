@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Options for creating user defined search based on result list.
  * 
- * <p>Java class for UserDefinedSearchInfo complex type.
+ * &lt;p&gt;Java class for UserDefinedSearchInfo complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="UserDefinedSearchInfo"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -36,13 +36,21 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class UserDefinedSearchInfo {
 
+    /**
+     * Gets or sets the conditions which are used for creating user defined search based on result list.
+     * 
+     */
     @XmlElement(name = "DialogExpression", required = true)
     protected DialogExpression dialogExpression;
+    /**
+     * The name of the user defined search based on result list.
+     * 
+     */
     @XmlAttribute(name = "Name")
     protected String name;
 
     /**
-     * Gets the value of the dialogExpression property.
+     * Gets or sets the conditions which are used for creating user defined search based on result list.
      * 
      * @return
      *     possible object is
@@ -60,13 +68,14 @@ public class UserDefinedSearchInfo {
      *     allowed object is
      *     {@link DialogExpression }
      *     
+     * @see #getDialogExpression()
      */
     public void setDialogExpression(DialogExpression value) {
         this.dialogExpression = value;
     }
 
     /**
-     * Gets the value of the name property.
+     * The name of the user defined search based on result list.
      * 
      * @return
      *     possible object is
@@ -84,6 +93,7 @@ public class UserDefinedSearchInfo {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getName()
      */
     public void setName(String value) {
         this.name = value;

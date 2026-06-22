@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * A confirmation data for a request.
  * 
- * <p>Java class for RequestConfirmedData complex type.
+ * &lt;p&gt;Java class for RequestConfirmedData complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="RequestConfirmedData"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -31,13 +31,21 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "RequestConfirmedData")
 public class RequestConfirmedData {
 
+    /**
+     * Decision id.
+     * 
+     */
     @XmlAttribute(name = "DecisionId", required = true)
     protected int decisionId;
+    /**
+     * Value of a field comment in the decision.
+     * 
+     */
     @XmlAttribute(name = "Comment", required = true)
     protected String comment;
 
     /**
-     * Gets the value of the decisionId property.
+     * Decision id.
      * 
      */
     public int getDecisionId() {
@@ -53,7 +61,7 @@ public class RequestConfirmedData {
     }
 
     /**
-     * Gets the value of the comment property.
+     * Value of a field comment in the decision.
      * 
      * @return
      *     possible object is
@@ -71,6 +79,7 @@ public class RequestConfirmedData {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getComment()
      */
     public void setComment(String value) {
         this.comment = value;

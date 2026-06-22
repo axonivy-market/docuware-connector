@@ -3,22 +3,22 @@ package com.docuware.dev.schema._public.services.platform;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Multi column select list object.
  * 
- * <p>Java class for MultiColSelectListInfo complex type.
+ * &lt;p&gt;Java class for MultiColSelectListInfo complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="MultiColSelectListInfo"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -42,7 +42,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -55,12 +55,28 @@ public class MultiColSelectListInfo {
 
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services", required = true)
     protected Links links;
+    /**
+     * Header for the select list columns
+     * 
+     */
     @XmlElement(name = "Columns", required = true)
     protected MultiColSelectListInfo.Columns columns;
+    /**
+     * The guid of the select list.
+     * 
+     */
     @XmlAttribute(name = "Guid", required = true)
     protected String guid;
+    /**
+     * The name of the select list.
+     * 
+     */
     @XmlAttribute(name = "Name")
     protected String name;
+    /**
+     * The Kind of the select list.
+     * 
+     */
     @XmlAttribute(name = "Kind", required = true)
     protected SelectListKind kind;
 
@@ -89,7 +105,7 @@ public class MultiColSelectListInfo {
     }
 
     /**
-     * Gets the value of the columns property.
+     * Header for the select list columns
      * 
      * @return
      *     possible object is
@@ -107,13 +123,14 @@ public class MultiColSelectListInfo {
      *     allowed object is
      *     {@link MultiColSelectListInfo.Columns }
      *     
+     * @see #getColumns()
      */
     public void setColumns(MultiColSelectListInfo.Columns value) {
         this.columns = value;
     }
 
     /**
-     * Gets the value of the guid property.
+     * The guid of the select list.
      * 
      * @return
      *     possible object is
@@ -131,13 +148,14 @@ public class MultiColSelectListInfo {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getGuid()
      */
     public void setGuid(String value) {
         this.guid = value;
     }
 
     /**
-     * Gets the value of the name property.
+     * The name of the select list.
      * 
      * @return
      *     possible object is
@@ -155,13 +173,14 @@ public class MultiColSelectListInfo {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getName()
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Gets the value of the kind property.
+     * The Kind of the select list.
      * 
      * @return
      *     possible object is
@@ -179,6 +198,7 @@ public class MultiColSelectListInfo {
      *     allowed object is
      *     {@link SelectListKind }
      *     
+     * @see #getKind()
      */
     public void setKind(SelectListKind value) {
         this.kind = value;
@@ -186,11 +206,11 @@ public class MultiColSelectListInfo {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * &lt;p&gt;Java class for anonymous complex type&lt;/p&gt;.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
      * 
-     * <pre>
+     * &lt;pre&gt;{&#064;code
      * &lt;complexType&gt;
      *   &lt;complexContent&gt;
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -200,7 +220,7 @@ public class MultiColSelectListInfo {
      *     &lt;/restriction&gt;
      *   &lt;/complexContent&gt;
      * &lt;/complexType&gt;
-     * </pre>
+     * }&lt;/pre&gt;
      * 
      * 
      */
@@ -210,34 +230,43 @@ public class MultiColSelectListInfo {
     })
     public static class Columns {
 
+        /**
+         * Define a single column in the multi column select list
+         * 
+         */
         @XmlElement(name = "Column")
         protected List<String> column;
 
         /**
+         * Define a single column in the multi column select list
+         * 
          * Gets the value of the column property.
          * 
-         * <p>
-         * This accessor method returns a reference to the live list,
+         * <p>This accessor method returns a reference to the live list,
          * not a snapshot. Therefore any modification you make to the
-         * returned list will be present inside the JAXB object.
-         * This is why there is not a <CODE>set</CODE> method for the column property.
+         * returned list will be present inside the Jakarta XML Binding object.
+         * This is why there is not a {@code set} method for the column property.</p>
          * 
          * <p>
          * For example, to add a new item, do as follows:
+         * </p>
          * <pre>
-         *    getColumn().add(newItem);
+         * getColumn().add(newItem);
          * </pre>
          * 
          * 
          * <p>
          * Objects of the following type(s) are allowed in the list
          * {@link String }
+         * </p>
          * 
          * 
+         * @return
+         *     The value of the column property.
          */
         public List<String> getColumn() {
             if (column == null) {
-                column = new ArrayList<String>();
+                column = new ArrayList<>();
             }
             return this.column;
         }

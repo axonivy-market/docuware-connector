@@ -1,22 +1,22 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.Links;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Defines a DocuWare role
  * 
- * <p>Java class for Role complex type.
+ * &lt;p&gt;Java class for Role complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="Role"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -30,7 +30,7 @@ import com.docuware.dev.schema._public.services.Links;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -42,12 +42,28 @@ public class Role {
 
     @XmlElement(name = "Links", namespace = "http://dev.docuware.com/schema/public/services", required = true)
     protected Links links;
+    /**
+     * The role id.
+     * 
+     */
     @XmlAttribute(name = "Id")
     protected String id;
+    /**
+     * The name of the user.
+     * 
+     */
     @XmlAttribute(name = "Name", required = true)
     protected String name;
+    /**
+     * Is role active flag.
+     * 
+     */
     @XmlAttribute(name = "Active", required = true)
     protected boolean active;
+    /**
+     * Type of role.
+     * 
+     */
     @XmlAttribute(name = "Type")
     protected RoleTypes type;
 
@@ -76,7 +92,7 @@ public class Role {
     }
 
     /**
-     * Gets the value of the id property.
+     * The role id.
      * 
      * @return
      *     possible object is
@@ -94,13 +110,14 @@ public class Role {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getId()
      */
     public void setId(String value) {
         this.id = value;
     }
 
     /**
-     * Gets the value of the name property.
+     * The name of the user.
      * 
      * @return
      *     possible object is
@@ -118,13 +135,14 @@ public class Role {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getName()
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Gets the value of the active property.
+     * Is role active flag.
      * 
      */
     public boolean isActive() {
@@ -140,7 +158,7 @@ public class Role {
     }
 
     /**
-     * Gets the value of the type property.
+     * Type of role.
      * 
      * @return
      *     possible object is
@@ -162,6 +180,7 @@ public class Role {
      *     allowed object is
      *     {@link RoleTypes }
      *     
+     * @see #getType()
      */
     public void setType(RoleTypes value) {
         this.type = value;

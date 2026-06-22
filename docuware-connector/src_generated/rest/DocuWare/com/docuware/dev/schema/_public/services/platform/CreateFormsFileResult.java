@@ -1,18 +1,18 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for CreateFormsFileResult complex type.
+ * &lt;p&gt;Java class for CreateFormsFileResult complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="CreateFormsFileResult"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -29,13 +29,21 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "CreateFormsFileResult")
 public class CreateFormsFileResult {
 
+    /**
+     * File path.
+     * 
+     */
     @XmlAttribute(name = "FilePath", required = true)
     protected String filePath;
+    /**
+     * the content type
+     * 
+     */
     @XmlAttribute(name = "ContentType", required = true)
     protected String contentType;
 
     /**
-     * Gets the value of the filePath property.
+     * File path.
      * 
      * @return
      *     possible object is
@@ -53,13 +61,14 @@ public class CreateFormsFileResult {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getFilePath()
      */
     public void setFilePath(String value) {
         this.filePath = value;
     }
 
     /**
-     * Gets the value of the contentType property.
+     * the content type
      * 
      * @return
      *     possible object is
@@ -77,6 +86,7 @@ public class CreateFormsFileResult {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getContentType()
      */
     public void setContentType(String value) {
         this.contentType = value;

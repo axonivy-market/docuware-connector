@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * The expression for field statistics.
  * 
- * <p>Java class for FieldValueStatisticsExpression complex type.
+ * &lt;p&gt;Java class for FieldValueStatisticsExpression complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="FieldValueStatisticsExpression"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -31,13 +31,21 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "FieldValueStatisticsExpression")
 public class FieldValueStatisticsExpression {
 
+    /**
+     * The database name of the field.
+     * 
+     */
     @XmlAttribute(name = "FieldName")
     protected String fieldName;
+    /**
+     * Limit the number of hits that are returned.
+     * 
+     */
     @XmlAttribute(name = "Limit")
     protected Integer limit;
 
     /**
-     * Gets the value of the fieldName property.
+     * The database name of the field.
      * 
      * @return
      *     possible object is
@@ -55,13 +63,14 @@ public class FieldValueStatisticsExpression {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getFieldName()
      */
     public void setFieldName(String value) {
         this.fieldName = value;
     }
 
     /**
-     * Gets the value of the limit property.
+     * Limit the number of hits that are returned.
      * 
      * @return
      *     possible object is
@@ -83,6 +92,7 @@ public class FieldValueStatisticsExpression {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getLimit()
      */
     public void setLimit(Integer value) {
         this.limit = value;

@@ -3,23 +3,23 @@ package com.docuware.dev.schema._public.services.annotations;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAnyElement;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElements;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.XmlValue;
 import javax.xml.namespace.QName;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAnyElement;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElements;
+import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlValue;
 
 
 /**
- * <p>Java class for ContentTypeList complex type.
+ * &lt;p&gt;Java class for ContentTypeList complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="ContentTypeList"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -61,7 +61,7 @@ import javax.xml.namespace.QName;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -83,30 +83,33 @@ public class ContentTypeList {
     /**
      * Gets the value of the contentTypeOrSchemaTypeOrComplexType property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the contentTypeOrSchemaTypeOrComplexType property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the contentTypeOrSchemaTypeOrComplexType property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getContentTypeOrSchemaTypeOrComplexType().add(newItem);
+     * getContentTypeOrSchemaTypeOrComplexType().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
+     * {@link ContentTypeList.ComplexType }
      * {@link ContentTypeList.ContentType }
      * {@link ContentTypeList.SchemaType }
-     * {@link ContentTypeList.ComplexType }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the contentTypeOrSchemaTypeOrComplexType property.
      */
     public List<Object> getContentTypeOrSchemaTypeOrComplexType() {
         if (contentTypeOrSchemaTypeOrComplexType == null) {
-            contentTypeOrSchemaTypeOrComplexType = new ArrayList<Object>();
+            contentTypeOrSchemaTypeOrComplexType = new ArrayList<>();
         }
         return this.contentTypeOrSchemaTypeOrComplexType;
     }
@@ -137,11 +140,11 @@ public class ContentTypeList {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * &lt;p&gt;Java class for anonymous complex type&lt;/p&gt;.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
      * 
-     * <pre>
+     * &lt;pre&gt;{&#064;code
      * &lt;complexType&gt;
      *   &lt;complexContent&gt;
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -152,7 +155,7 @@ public class ContentTypeList {
      *     &lt;/restriction&gt;
      *   &lt;/complexContent&gt;
      * &lt;/complexType&gt;
-     * </pre>
+     * }&lt;/pre&gt;
      * 
      * 
      */
@@ -219,11 +222,11 @@ public class ContentTypeList {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * &lt;p&gt;Java class for anonymous complex type&lt;/p&gt;.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
      * 
-     * <pre>
+     * &lt;pre&gt;{&#064;code
      * &lt;complexType&gt;
      *   &lt;simpleContent&gt;
      *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema&gt;string"&gt;
@@ -231,7 +234,7 @@ public class ContentTypeList {
      *     &lt;/extension&gt;
      *   &lt;/simpleContent&gt;
      * &lt;/complexType&gt;
-     * </pre>
+     * }&lt;/pre&gt;
      * 
      * 
      */
@@ -298,11 +301,11 @@ public class ContentTypeList {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * &lt;p&gt;Java class for anonymous complex type&lt;/p&gt;.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
      * 
-     * <pre>
+     * &lt;pre&gt;{&#064;code
      * &lt;complexType&gt;
      *   &lt;simpleContent&gt;
      *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema&gt;QName"&gt;
@@ -310,7 +313,7 @@ public class ContentTypeList {
      *     &lt;/extension&gt;
      *   &lt;/simpleContent&gt;
      * &lt;/complexType&gt;
-     * </pre>
+     * }&lt;/pre&gt;
      * 
      * 
      */

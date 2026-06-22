@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Text stamp. Value contains the text.
  * 
- * <p>Java class for TextStampEntry complex type.
+ * &lt;p&gt;Java class for TextStampEntry complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="TextStampEntry"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform}StampBase"&gt;
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -38,13 +38,21 @@ public class TextStampEntry
     extends StampBase
 {
 
+    /**
+     * Font that is used for the text of the stamp.
+     * 
+     */
     @XmlElement(name = "Font", required = true)
     protected Font font;
+    /**
+     * Text that stamp will show.
+     * 
+     */
     @XmlElement(name = "Value", required = true)
     protected String value;
 
     /**
-     * Gets the value of the font property.
+     * Font that is used for the text of the stamp.
      * 
      * @return
      *     possible object is
@@ -62,13 +70,14 @@ public class TextStampEntry
      *     allowed object is
      *     {@link Font }
      *     
+     * @see #getFont()
      */
     public void setFont(Font value) {
         this.font = value;
     }
 
     /**
-     * Gets the value of the value property.
+     * Text that stamp will show.
      * 
      * @return
      *     possible object is
@@ -86,6 +95,7 @@ public class TextStampEntry
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getValue()
      */
     public void setValue(String value) {
         this.value = value;

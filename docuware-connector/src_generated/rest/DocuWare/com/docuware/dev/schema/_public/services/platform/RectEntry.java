@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Rectangle or Ellipse annotation
  * 
- * <p>Java class for RectEntry complex type.
+ * &lt;p&gt;Java class for RectEntry complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="RectEntry"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://dev.docuware.com/schema/public/services/platform}EntryBase"&gt;
@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -39,15 +39,27 @@ public class RectEntry
     extends EntryBase
 {
 
+    /**
+     * Location of the annotation.
+     * 
+     */
     @XmlElement(name = "Location", required = true)
     protected AnnotationRectangle location;
+    /**
+     * Define if rectangle is solid.
+     * 
+     */
     @XmlAttribute(name = "Filled")
     protected Boolean filled;
+    /**
+     * True if annotation is elipse defined into rectangle.
+     * 
+     */
     @XmlAttribute(name = "Ellipse")
     protected Boolean ellipse;
 
     /**
-     * Gets the value of the location property.
+     * Location of the annotation.
      * 
      * @return
      *     possible object is
@@ -65,13 +77,14 @@ public class RectEntry
      *     allowed object is
      *     {@link AnnotationRectangle }
      *     
+     * @see #getLocation()
      */
     public void setLocation(AnnotationRectangle value) {
         this.location = value;
     }
 
     /**
-     * Gets the value of the filled property.
+     * Define if rectangle is solid.
      * 
      * @return
      *     possible object is
@@ -93,13 +106,14 @@ public class RectEntry
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isFilled()
      */
     public void setFilled(Boolean value) {
         this.filled = value;
     }
 
     /**
-     * Gets the value of the ellipse property.
+     * True if annotation is elipse defined into rectangle.
      * 
      * @return
      *     possible object is
@@ -121,6 +135,7 @@ public class RectEntry
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isEllipse()
      */
     public void setEllipse(Boolean value) {
         this.ellipse = value;

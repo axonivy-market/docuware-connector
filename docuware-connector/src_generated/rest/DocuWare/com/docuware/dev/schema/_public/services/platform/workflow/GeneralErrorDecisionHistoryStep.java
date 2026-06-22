@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * A history step for General error.
  * 
- * <p>Java class for GeneralErrorDecisionHistoryStep complex type.
+ * &lt;p&gt;Java class for GeneralErrorDecisionHistoryStep complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="GeneralErrorDecisionHistoryStep"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -31,13 +31,21 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "GeneralErrorDecisionHistoryStep")
 public class GeneralErrorDecisionHistoryStep {
 
+    /**
+     * Name of the user who confirmed the task.
+     * 
+     */
     @XmlAttribute(name = "UserName")
     protected String userName;
+    /**
+     * Name of the decision which has been confirmed.
+     * 
+     */
     @XmlAttribute(name = "DecisionName")
     protected String decisionName;
 
     /**
-     * Gets the value of the userName property.
+     * Name of the user who confirmed the task.
      * 
      * @return
      *     possible object is
@@ -55,13 +63,14 @@ public class GeneralErrorDecisionHistoryStep {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getUserName()
      */
     public void setUserName(String value) {
         this.userName = value;
     }
 
     /**
-     * Gets the value of the decisionName property.
+     * Name of the decision which has been confirmed.
      * 
      * @return
      *     possible object is
@@ -79,6 +88,7 @@ public class GeneralErrorDecisionHistoryStep {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getDecisionName()
      */
     public void setDecisionName(String value) {
         this.decisionName = value;

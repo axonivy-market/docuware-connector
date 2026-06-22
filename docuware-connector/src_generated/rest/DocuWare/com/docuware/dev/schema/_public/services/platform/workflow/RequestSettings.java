@@ -3,21 +3,21 @@ package com.docuware.dev.schema._public.services.platform.workflow;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- *  Data to trigger new request. 
+ * Data to trigger new request.
  * 
- * <p>Java class for RequestSettings complex type.
+ * &lt;p&gt;Java class for RequestSettings complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="RequestSettings"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -47,87 +47,137 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class RequestSettings {
 
+    /**
+     * List of decision settings.
+     * 
+     */
     @XmlElement(name = "Decisions", required = true)
     protected List<RequestDecisionSettings> decisions;
+    /**
+     * List of assigned users, roles or substitution rules.
+     * 
+     */
     @XmlElement(name = "AssignedItem")
     protected List<AssignedItem> assignedItem;
+    /**
+     * Name of the request
+     * 
+     */
     @XmlAttribute(name = "Name", required = true)
     protected String name;
+    /**
+     * Description of the request
+     * 
+     */
     @XmlAttribute(name = "Description", required = true)
     protected String description;
+    /**
+     * Determines whether request should be confirmed in sequence.
+     * 
+     */
     @XmlAttribute(name = "IsSequence")
     protected Boolean isSequence;
+    /**
+     * Determines whether request should be confirmed by all users.
+     * 
+     */
     @XmlAttribute(name = "IsAny", required = true)
     protected boolean isAny;
+    /**
+     * Document id
+     * 
+     */
     @XmlAttribute(name = "DocId", required = true)
     protected int docId;
+    /**
+     * Contains file cabinet id of the document.
+     * 
+     */
     @XmlAttribute(name = "FcGuid", required = true)
     protected String fcGuid;
+    /**
+     * Name of the document.
+     * 
+     */
     @XmlAttribute(name = "DocumentName")
     protected String documentName;
+    /**
+     * Determines whether an automatic stamp should be placed when a user confirms the request.
+     * 
+     */
     @XmlAttribute(name = "StampDocument", required = true)
     protected boolean stampDocument;
 
     /**
+     * List of decision settings.
+     * 
      * Gets the value of the decisions property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the decisions property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the decisions property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getDecisions().add(newItem);
+     * getDecisions().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link RequestDecisionSettings }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the decisions property.
      */
     public List<RequestDecisionSettings> getDecisions() {
         if (decisions == null) {
-            decisions = new ArrayList<RequestDecisionSettings>();
+            decisions = new ArrayList<>();
         }
         return this.decisions;
     }
 
     /**
+     * List of assigned users, roles or substitution rules.
+     * 
      * Gets the value of the assignedItem property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the assignedItem property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the assignedItem property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getAssignedItem().add(newItem);
+     * getAssignedItem().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link AssignedItem }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the assignedItem property.
      */
     public List<AssignedItem> getAssignedItem() {
         if (assignedItem == null) {
-            assignedItem = new ArrayList<AssignedItem>();
+            assignedItem = new ArrayList<>();
         }
         return this.assignedItem;
     }
 
     /**
-     * Gets the value of the name property.
+     * Name of the request
      * 
      * @return
      *     possible object is
@@ -145,13 +195,14 @@ public class RequestSettings {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getName()
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Gets the value of the description property.
+     * Description of the request
      * 
      * @return
      *     possible object is
@@ -169,13 +220,14 @@ public class RequestSettings {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getDescription()
      */
     public void setDescription(String value) {
         this.description = value;
     }
 
     /**
-     * Gets the value of the isSequence property.
+     * Determines whether request should be confirmed in sequence.
      * 
      * @return
      *     possible object is
@@ -197,13 +249,14 @@ public class RequestSettings {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isIsSequence()
      */
     public void setIsSequence(Boolean value) {
         this.isSequence = value;
     }
 
     /**
-     * Gets the value of the isAny property.
+     * Determines whether request should be confirmed by all users.
      * 
      */
     public boolean isIsAny() {
@@ -219,7 +272,7 @@ public class RequestSettings {
     }
 
     /**
-     * Gets the value of the docId property.
+     * Document id
      * 
      */
     public int getDocId() {
@@ -235,7 +288,7 @@ public class RequestSettings {
     }
 
     /**
-     * Gets the value of the fcGuid property.
+     * Contains file cabinet id of the document.
      * 
      * @return
      *     possible object is
@@ -253,13 +306,14 @@ public class RequestSettings {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getFcGuid()
      */
     public void setFcGuid(String value) {
         this.fcGuid = value;
     }
 
     /**
-     * Gets the value of the documentName property.
+     * Name of the document.
      * 
      * @return
      *     possible object is
@@ -277,13 +331,14 @@ public class RequestSettings {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getDocumentName()
      */
     public void setDocumentName(String value) {
         this.documentName = value;
     }
 
     /**
-     * Gets the value of the stampDocument property.
+     * Determines whether an automatic stamp should be placed when a user confirms the request.
      * 
      */
     public boolean isStampDocument() {

@@ -3,20 +3,20 @@ package com.docuware.dev.schema._public.services;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for UriInvocation complex type.
+ * &lt;p&gt;Java class for UriInvocation complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="UriInvocation"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -45,6 +45,10 @@ public class UriInvocation {
     protected List<TypeReference> acceptedType;
     @XmlElement(name = "ProducedType")
     protected List<TypeReference> producedType;
+    /**
+     * Application specific tag for the method.
+     * 
+     */
     @XmlElement(name = "Tag")
     protected String tag;
     @XmlAttribute(name = "Verb")
@@ -54,28 +58,31 @@ public class UriInvocation {
     /**
      * Gets the value of the acceptedType property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the acceptedType property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the acceptedType property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getAcceptedType().add(newItem);
+     * getAcceptedType().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link TypeReference }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the acceptedType property.
      */
     public List<TypeReference> getAcceptedType() {
         if (acceptedType == null) {
-            acceptedType = new ArrayList<TypeReference>();
+            acceptedType = new ArrayList<>();
         }
         return this.acceptedType;
     }
@@ -83,34 +90,37 @@ public class UriInvocation {
     /**
      * Gets the value of the producedType property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the producedType property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the producedType property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getProducedType().add(newItem);
+     * getProducedType().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link TypeReference }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the producedType property.
      */
     public List<TypeReference> getProducedType() {
         if (producedType == null) {
-            producedType = new ArrayList<TypeReference>();
+            producedType = new ArrayList<>();
         }
         return this.producedType;
     }
 
     /**
-     * Gets the value of the tag property.
+     * Application specific tag for the method.
      * 
      * @return
      *     possible object is
@@ -128,6 +138,7 @@ public class UriInvocation {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getTag()
      */
     public void setTag(String value) {
         this.tag = value;

@@ -1,18 +1,18 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for WorkflowBehaviorOptions complex type.
+ * &lt;p&gt;Java class for WorkflowBehaviorOptions complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="WorkflowBehaviorOptions"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -30,15 +30,27 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "WorkflowBehaviorOptions")
 public class WorkflowBehaviorOptions {
 
+    /**
+     * Indicates whether the reassign options is allowed in this workflow.
+     * 
+     */
     @XmlAttribute(name = "AllowReassign", required = true)
     protected boolean allowReassign;
+    /**
+     * Indicates whether the workflow history options is allowed in this workflow.
+     * 
+     */
     @XmlAttribute(name = "AllowWorkflowHistory", required = true)
     protected boolean allowWorkflowHistory;
+    /**
+     * Indicates whether the mark as read / unread options is allowed in this workflow.
+     * 
+     */
     @XmlAttribute(name = "AllowMarkAsReadUnread", required = true)
     protected boolean allowMarkAsReadUnread;
 
     /**
-     * Gets the value of the allowReassign property.
+     * Indicates whether the reassign options is allowed in this workflow.
      * 
      */
     public boolean isAllowReassign() {
@@ -54,7 +66,7 @@ public class WorkflowBehaviorOptions {
     }
 
     /**
-     * Gets the value of the allowWorkflowHistory property.
+     * Indicates whether the workflow history options is allowed in this workflow.
      * 
      */
     public boolean isAllowWorkflowHistory() {
@@ -70,7 +82,7 @@ public class WorkflowBehaviorOptions {
     }
 
     /**
-     * Gets the value of the allowMarkAsReadUnread property.
+     * Indicates whether the mark as read / unread options is allowed in this workflow.
      * 
      */
     public boolean isAllowMarkAsReadUnread() {

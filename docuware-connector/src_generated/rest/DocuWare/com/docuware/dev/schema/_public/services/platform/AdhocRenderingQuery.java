@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * In case you do not specify the size or resolution a default rendering resolution of 72 dpi is assumed.
  * 
- * <p>Java class for AdhocRenderingQuery complex type.
+ * &lt;p&gt;Java class for AdhocRenderingQuery complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="AdhocRenderingQuery"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -32,15 +32,27 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "AdhocRenderingQuery")
 public class AdhocRenderingQuery {
 
+    /**
+     * Gets or sets page number to be rendered.
+     * 
+     */
     @XmlAttribute(name = "Page")
     protected Integer page;
+    /**
+     * Gets or sets the resolution of the rendered bitmap.
+     * 
+     */
     @XmlAttribute(name = "Dpi")
     protected Float dpi;
+    /**
+     * Gets or sets the rendering api key.
+     * 
+     */
     @XmlAttribute(name = "ApiKey", required = true)
     protected String apiKey;
 
     /**
-     * Gets the value of the page property.
+     * Gets or sets page number to be rendered.
      * 
      * @return
      *     possible object is
@@ -62,13 +74,14 @@ public class AdhocRenderingQuery {
      *     allowed object is
      *     {@link Integer }
      *     
+     * @see #getPage()
      */
     public void setPage(Integer value) {
         this.page = value;
     }
 
     /**
-     * Gets the value of the dpi property.
+     * Gets or sets the resolution of the rendered bitmap.
      * 
      * @return
      *     possible object is
@@ -90,13 +103,14 @@ public class AdhocRenderingQuery {
      *     allowed object is
      *     {@link Float }
      *     
+     * @see #getDpi()
      */
     public void setDpi(Float value) {
         this.dpi = value;
     }
 
     /**
-     * Gets the value of the apiKey property.
+     * Gets or sets the rendering api key.
      * 
      * @return
      *     possible object is
@@ -114,6 +128,7 @@ public class AdhocRenderingQuery {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getApiKey()
      */
     public void setApiKey(String value) {
         this.apiKey = value;

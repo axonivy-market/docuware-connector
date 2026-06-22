@@ -1,17 +1,18 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ResultDialogFunctionType.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
+ * 
+ * &lt;p&gt;Java class for ResultDialogFunctionType&lt;/p&gt;.
+ * 
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
+ * &lt;pre&gt;{&#064;code
  * &lt;simpleType name="ResultDialogFunctionType"&gt;
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
  *     &lt;enumeration value="StartNewRetrieval"/&gt;
@@ -48,7 +49,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="SendREQUEST"/&gt;
  *   &lt;/restriction&gt;
  * &lt;/simpleType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  */
 @XmlType(name = "ResultDialogFunctionType")
@@ -57,288 +58,224 @@ public enum ResultDialogFunctionType {
 
 
     /**
-     * 
-     * 						Function for initiating a new search. The search dialog contains the search terms used in the last search.
-     * 					
+     * Function for initiating a new search. The search dialog contains the search terms used in the last search.
      * 
      */
     @XmlEnumValue("StartNewRetrieval")
     START_NEW_RETRIEVAL("StartNewRetrieval"),
 
     /**
-     * 
-     * 						Function for displaying documents linked to a document selected in the result list. It opens a dialog listing all the link definitions for that document. When you select one of these definitions, the linked documents are displayed.
-     * 					
+     * Function for displaying documents linked to a document selected in the result list. It opens a dialog listing all the link definitions for that document. When you select one of these definitions, the linked documents are displayed.
      * 
      */
     @XmlEnumValue("LinkSearch")
     LINK_SEARCH("LinkSearch"),
 
     /**
-     * 
-     * 						Function for displaying the document in the Viewer.
-     * 					
+     * Function for displaying the document in the Viewer.
      * 
      */
     @XmlEnumValue("DisplayDocument")
     DISPLAY_DOCUMENT("DisplayDocument"),
 
     /**
-     * 
-     * 						Function for opening the infobox for a highlighted document. This allows you to view and modify all database entries for the document as well as the contents of the system fields - such as store date and DocID.
-     * 					
+     * Function for opening the infobox for a highlighted document. This allows you to view and modify all database entries for the document as well as the contents of the system fields - such as store date and DocID.
      * 
      */
     @XmlEnumValue("DisplayInfoBox")
     DISPLAY_INFO_BOX("DisplayInfoBox"),
 
     /**
-     * 
-     * 						Function for printing documents that are selected in the result list.
-     * 					
+     * Function for printing documents that are selected in the result list.
      * 
      */
     @XmlEnumValue("PrintSelectedDocument")
     PRINT_SELECTED_DOCUMENT("PrintSelectedDocument"),
 
     /**
-     * 
-     * 						Function for deleting documents selected in the result list.
-     * 					
+     * Function for deleting documents selected in the result list.
      * 
      */
     @XmlEnumValue("DeleteSelectedDocument")
     DELETE_SELECTED_DOCUMENT("DeleteSelectedDocument"),
 
     /**
-     * 
-     * 						Function that allows you to place a copy of the selected documents in the selected basket / document tray in Windows Client or Web Client.
-     * 					
+     * Function that allows you to place a copy of the selected documents in the selected basket / document tray in Windows Client or Web Client.
      * 
      */
     @XmlEnumValue("CopyToBasket")
     COPY_TO_BASKET("CopyToBasket"),
 
     /**
-     * 
-     * 						Function that allows you to show or hide checked-out documents Checked-out documents can only be viewed by other users. No overlays can be shown, and no stamps added.
-     * 					
+     * Function that allows you to show or hide checked-out documents Checked-out documents can only be viewed by other users. No overlays can be shown, and no stamps added.
      * 
      */
     @XmlEnumValue("Versions")
     VERSIONS("Versions"),
 
     /**
-     * 
-     * 						Function that allows you to attach selected documents from the selected basket / document tray to a document or database entry in the result list.
-     * 					
+     * Function that allows you to attach selected documents from the selected basket / document tray to a document or database entry in the result list.
      * 
      */
     @XmlEnumValue("AppendFromBasket")
     APPEND_FROM_BASKET("AppendFromBasket"),
 
     /**
-     * 
-     * 						The function for downloading a document in the original format from a result list.
-     * 					
+     * The function for downloading a document in the original format from a result list.
      * 
      */
     @XmlEnumValue("DownloadAsOriginal")
     DOWNLOAD_AS_ORIGINAL("DownloadAsOriginal"),
 
     /**
-     * 
-     * 						The function for downloading a document from a result list in PDF format without annotations.
-     * 					
+     * The function for downloading a document from a result list in PDF format without annotations.
      * 
      */
     @XmlEnumValue("DownloadAsPDFWithoutAnno")
     DOWNLOAD_AS_PDF_WITHOUT_ANNO("DownloadAsPDFWithoutAnno"),
 
     /**
-     * 
-     * 						The function for downloading a document from a result list in PDF format with annotations.
-     * 					
+     * The function for downloading a document from a result list in PDF format with annotations.
      * 
      */
     @XmlEnumValue("DownloadAsPDFWithAnno")
     DOWNLOAD_AS_PDF_WITH_ANNO("DownloadAsPDFWithAnno"),
 
     /**
-     * 
-     * 						The function for sending a document in the original format from a result list as an email attachment.
-     * 					
+     * The function for sending a document in the original format from a result list as an email attachment.
      * 
      */
     @XmlEnumValue("SendAsOriginal")
     SEND_AS_ORIGINAL("SendAsOriginal"),
 
     /**
-     * 
-     * 						The function for sending a document from a result list in PDF format without annotations as an email attachment.
-     * 					
+     * The function for sending a document from a result list in PDF format without annotations as an email attachment.
      * 
      */
     @XmlEnumValue("SendAsPDFWithoutAnno")
     SEND_AS_PDF_WITHOUT_ANNO("SendAsPDFWithoutAnno"),
 
     /**
-     * 
-     * 						The function for sending a document from a result list in PDF format with annotations as an email attachment.
-     * 					
+     * The function for sending a document from a result list in PDF format with annotations as an email attachment.
      * 
      */
     @XmlEnumValue("SendAsPDFWithAnno")
     SEND_AS_PDF_WITH_ANNO("SendAsPDFWithAnno"),
 
     /**
-     * 
-     * 						The function for sending a document from a result list as a hyperlink in an email.
-     * 					
+     * The function for sending a document from a result list as a hyperlink in an email.
      * 
      */
     @XmlEnumValue("SendAsHyperlink")
     SEND_AS_HYPERLINK("SendAsHyperlink"),
 
     /**
-     * 
-     * 						The function for sending a currently open result list by email. A hyperlink is inserted in the email with the search query on which the current result list is based.
-     * 					
+     * The function for sending a currently open result list by email. A hyperlink is inserted in the email with the search query on which the current result list is based.
      * 
      */
     @XmlEnumValue("SendResultList")
     SEND_RESULT_LIST("SendResultList"),
 
     /**
-     * 
-     * 						The function for creating a reply email to an email that is stored in DocuWare. If this function is used in the result list, the email client, e.g. Outlook, opens with a normal reply email.
-     * 					
+     * The function for creating a reply email to an email that is stored in DocuWare. If this function is used in the result list, the email client, e.g. Outlook, opens with a normal reply email.
      * 
      */
     @XmlEnumValue("EMailReply")
     E_MAIL_REPLY("EMailReply"),
 
     /**
-     * 
-     * 						The function for creating a reply email to all parties for an email that is stored in DocuWare. If this function is used in the result list, the email client, e.g. Outlook, opens with a normal reply-to-all email.
-     * 					
+     * The function for creating a reply email to all parties for an email that is stored in DocuWare. If this function is used in the result list, the email client, e.g. Outlook, opens with a normal reply-to-all email.
      * 
      */
     @XmlEnumValue("EMailReplyAll")
     E_MAIL_REPLY_ALL("EMailReplyAll"),
 
     /**
-     * 
-     * 						The function for forwarding an email that is stored in DocuWare. If this function is used in the result list, the email client, e.g. Outlook, opens with a normal forward email.
-     * 					
+     * The function for forwarding an email that is stored in DocuWare. If this function is used in the result list, the email client, e.g. Outlook, opens with a normal forward email.
      * 
      */
     @XmlEnumValue("EMailForward")
     E_MAIL_FORWARD("EMailForward"),
 
     /**
-     * 
-     * 						The function for opening the documents of a result list in different viewers. A new Viewer is opened for each document when you want to view the document. This makes it easy to compare documents with each other.
-     * 					
+     * The function for opening the documents of a result list in different viewers. A new Viewer is opened for each document when you want to view the document. This makes it easy to compare documents with each other.
      * 
      */
     @XmlEnumValue("ShowInSeparateViewer")
     SHOW_IN_SEPARATE_VIEWER("ShowInSeparateViewer"),
 
     /**
-     * 
-     * 						The function for editing documents in the original program and saving the changes back to the archived document.
-     * 					
+     * The function for editing documents in the original program and saving the changes back to the archived document.
      * 
      */
     @XmlEnumValue("EditDocument")
     EDIT_DOCUMENT("EditDocument"),
 
     /**
-     * 
-     * 						Function for displaying the workflow tracking which is linked to the document.
-     * 					
+     * Function for displaying the workflow tracking which is linked to the document.
      * 
      */
     @XmlEnumValue("ShowWorkflowHistory")
     SHOW_WORKFLOW_HISTORY("ShowWorkflowHistory"),
 
     /**
-     * 
-     * 						Function for exporting the document to CSV.
-     * 					
+     * Function for exporting the document to CSV.
      * 
      */
     @XmlEnumValue("ExportToCSV")
     EXPORT_TO_CSV("ExportToCSV"),
 
     /**
-     * 
-     * 						Functions for storing the documents in a DocuWare Request.
-     * 					
+     * Functions for storing the documents in a DocuWare Request.
      * 
      */
     @XmlEnumValue("CreateREQUEST")
     CREATE_REQUEST("CreateREQUEST"),
 
     /**
-     * 
-     * 						Function for selecting several documents, calling up an index field and editing the entry for all selected documents.
-     * 					
+     * Function for selecting several documents, calling up an index field and editing the entry for all selected documents.
      * 
      */
     @XmlEnumValue("ChangeIndexOfMultipleDocuments")
     CHANGE_INDEX_OF_MULTIPLE_DOCUMENTS("ChangeIndexOfMultipleDocuments"),
 
     /**
-     * 
-     * 						The function for checking out a document from the file cabinet to a basket / document tray and editing it there. During this time, the document is locked in the file cabinet, but can be viewed in read-only mode.
-     * 					
+     * The function for checking out a document from the file cabinet to a basket / document tray and editing it there. During this time, the document is locked in the file cabinet, but can be viewed in read-only mode.
      * 
      */
     @XmlEnumValue("CheckOutToBasket")
     CHECK_OUT_TO_BASKET("CheckOutToBasket"),
 
     /**
-     * 
-     * 						The function for checking out a document from the file cabinet to a Windows file system and editing it there. During this time, the document is locked in the file cabinet, but can be viewed in read-only mode.
-     * 					
+     * The function for checking out a document from the file cabinet to a Windows file system and editing it there. During this time, the document is locked in the file cabinet, but can be viewed in read-only mode.
      * 
      */
     @XmlEnumValue("CheckOutToFileSystem")
     CHECK_OUT_TO_FILE_SYSTEM("CheckOutToFileSystem"),
 
     /**
-     * 
-     * 						The function for setting the status of a document version from, e.g. "Out of Date" or "In Progress" to "Up to Date".
-     * 					
+     * The function for setting the status of a document version from, e.g. "Out of Date" or "In Progress" to "Up to Date".
      * 
      */
     @XmlEnumValue("ChangeDocumentStatus")
     CHANGE_DOCUMENT_STATUS("ChangeDocumentStatus"),
 
     /**
-     * 
-     * 						The function for displaying all versions of a document.
-     * 					
+     * The function for displaying all versions of a document.
      * 
      */
     @XmlEnumValue("ShowVersionHistory")
     SHOW_VERSION_HISTORY("ShowVersionHistory"),
 
     /**
-     * 
-     * 						Function that allows you to copy a selected document into a different file cabinet.
-     * 					
+     * Function that allows you to copy a selected document into a different file cabinet.
      * 
      */
     @XmlEnumValue("CopyIntoAnotherFileCabinet")
     COPY_INTO_ANOTHER_FILE_CABINET("CopyIntoAnotherFileCabinet"),
 
     /**
-     * 
-     *             Functions for sending a DocuWare Request.
-     *           
+     * Functions for sending a DocuWare Request.
      * 
      */
     @XmlEnumValue("SendREQUEST")
@@ -349,10 +286,26 @@ public enum ResultDialogFunctionType {
         value = v;
     }
 
+    /**
+     * Gets the value associated to the enum constant.
+     * 
+     * @return
+     *     The value linked to the enum.
+     */
     public String value() {
         return value;
     }
 
+    /**
+     * Gets the enum associated to the value passed as parameter.
+     * 
+     * @param v
+     *     The value to get the enum from.
+     * @return
+     *     The enum which corresponds to the value, if it exists.
+     * @throws IllegalArgumentException
+     *     If no value matches in the enum declaration.
+     */
     public static ResultDialogFunctionType fromValue(String v) {
         for (ResultDialogFunctionType c: ResultDialogFunctionType.values()) {
             if (c.value.equals(v)) {

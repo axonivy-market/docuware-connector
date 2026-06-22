@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import com.docuware.dev.schema._public.services.platform.DocumentIndexFieldTable;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for TaskTableFieldInitialValues complex type.
+ * &lt;p&gt;Java class for TaskTableFieldInitialValues complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="TaskTableFieldInitialValues"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -25,7 +25,7 @@ import com.docuware.dev.schema._public.services.platform.DocumentIndexFieldTable
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -35,13 +35,21 @@ import com.docuware.dev.schema._public.services.platform.DocumentIndexFieldTable
 })
 public class TaskTableFieldInitialValues {
 
+    /**
+     * Values to be prefilled in a table field
+     * 
+     */
     @XmlElement(name = "DocumentIndexFieldTable", required = true)
     protected DocumentIndexFieldTable documentIndexFieldTable;
+    /**
+     * Defines if the values should be prepended, appended or replaced
+     * 
+     */
     @XmlAttribute(name = "TaskTableFieldJoinType", required = true)
     protected TaskTableFieldJoinTypeEnum taskTableFieldJoinType;
 
     /**
-     * Gets the value of the documentIndexFieldTable property.
+     * Values to be prefilled in a table field
      * 
      * @return
      *     possible object is
@@ -59,13 +67,14 @@ public class TaskTableFieldInitialValues {
      *     allowed object is
      *     {@link DocumentIndexFieldTable }
      *     
+     * @see #getDocumentIndexFieldTable()
      */
     public void setDocumentIndexFieldTable(DocumentIndexFieldTable value) {
         this.documentIndexFieldTable = value;
     }
 
     /**
-     * Gets the value of the taskTableFieldJoinType property.
+     * Defines if the values should be prepended, appended or replaced
      * 
      * @return
      *     possible object is
@@ -83,6 +92,7 @@ public class TaskTableFieldInitialValues {
      *     allowed object is
      *     {@link TaskTableFieldJoinTypeEnum }
      *     
+     * @see #getTaskTableFieldJoinType()
      */
     public void setTaskTableFieldJoinType(TaskTableFieldJoinTypeEnum value) {
         this.taskTableFieldJoinType = value;

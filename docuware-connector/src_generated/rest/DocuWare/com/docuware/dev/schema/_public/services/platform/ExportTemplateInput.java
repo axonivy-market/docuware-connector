@@ -1,18 +1,18 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ExportTemplateInput complex type.
+ * &lt;p&gt;Java class for ExportTemplateInput complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="ExportTemplateInput"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -30,15 +30,27 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "ExportTemplateInput")
 public class ExportTemplateInput {
 
+    /**
+     * GUID for the exported config
+     * 
+     */
     @XmlAttribute(name = "ConfigGUID", required = true)
     protected String configGUID;
+    /**
+     * GUID for the exported template
+     * 
+     */
     @XmlAttribute(name = "TemplateGUID", required = true)
     protected String templateGUID;
+    /**
+     * Org ID
+     * 
+     */
     @XmlAttribute(name = "OrganizationID", required = true)
     protected String organizationID;
 
     /**
-     * Gets the value of the configGUID property.
+     * GUID for the exported config
      * 
      * @return
      *     possible object is
@@ -56,13 +68,14 @@ public class ExportTemplateInput {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getConfigGUID()
      */
     public void setConfigGUID(String value) {
         this.configGUID = value;
     }
 
     /**
-     * Gets the value of the templateGUID property.
+     * GUID for the exported template
      * 
      * @return
      *     possible object is
@@ -80,13 +93,14 @@ public class ExportTemplateInput {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getTemplateGUID()
      */
     public void setTemplateGUID(String value) {
         this.templateGUID = value;
     }
 
     /**
-     * Gets the value of the organizationID property.
+     * Org ID
      * 
      * @return
      *     possible object is
@@ -104,6 +118,7 @@ public class ExportTemplateInput {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getOrganizationID()
      */
     public void setOrganizationID(String value) {
         this.organizationID = value;

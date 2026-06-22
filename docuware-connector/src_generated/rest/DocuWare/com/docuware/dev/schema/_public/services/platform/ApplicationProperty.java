@@ -1,21 +1,21 @@
 
 package com.docuware.dev.schema._public.services.platform;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Define application specific property
  * 
- * <p>Java class for ApplicationProperty complex type.
+ * &lt;p&gt;Java class for ApplicationProperty complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="ApplicationProperty"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -35,13 +35,21 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ApplicationProperty {
 
+    /**
+     * Name of the property.
+     * 
+     */
     @XmlAttribute(name = "Name", required = true)
     protected String name;
+    /**
+     * Value of the property
+     * 
+     */
     @XmlAttribute(name = "Value")
     protected String value;
 
     /**
-     * Gets the value of the name property.
+     * Name of the property.
      * 
      * @return
      *     possible object is
@@ -59,13 +67,14 @@ public class ApplicationProperty {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getName()
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Gets the value of the value property.
+     * Value of the property
      * 
      * @return
      *     possible object is
@@ -83,6 +92,7 @@ public class ApplicationProperty {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getValue()
      */
     public void setValue(String value) {
         this.value = value;

@@ -3,20 +3,20 @@ package com.docuware.dev._public.intellix;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElements;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElements;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for PageContent complex type.
+ * &lt;p&gt;Java class for PageContent complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="PageContent"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -43,7 +43,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -74,49 +74,80 @@ public class PageContent {
     protected Integer candidateDetectionVersion;
     @XmlAttribute(name = "Version")
     protected Integer version;
+    /**
+     * The page width in pixel.
+     * 
+     */
     @XmlAttribute(name = "SizeX", required = true)
     protected int sizeX;
+    /**
+     * The page height in pixel.
+     * 
+     */
     @XmlAttribute(name = "SizeY", required = true)
     protected int sizeY;
+    /**
+     * The skew angle in degree denoting the amount by which the document image has to be rotated clockwise in order to match the text shot.
+     * 
+     */
     @XmlAttribute(name = "SkewAngle")
     protected Double skewAngle;
+    /**
+     * The rotation angle of the page.
+     * 
+     */
     @XmlAttribute(name = "Rotation")
     protected Rotation rotation;
+    /**
+     * A tag identifiying the file the page was created from.
+     * 
+     */
     @XmlAttribute(name = "FileTag")
     protected String fileTag;
+    /**
+     * Horizontal resolution in dpi.
+     * 
+     */
     @XmlAttribute(name = "HorizontalDpi", required = true)
     protected double horizontalDpi;
+    /**
+     * Vertical resolution in dpi.
+     * 
+     */
     @XmlAttribute(name = "VerticalDpi", required = true)
     protected double verticalDpi;
 
     /**
      * Gets the value of the textZoneOrPictureZoneOrTableZone property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the textZoneOrPictureZoneOrTableZone property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the textZoneOrPictureZoneOrTableZone property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getTextZoneOrPictureZoneOrTableZone().add(newItem);
+     * getTextZoneOrPictureZoneOrTableZone().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link TextZone }
      * {@link PictureZone }
-     * {@link TableZone }
      * {@link Rulerline }
+     * {@link TableZone }
+     * {@link TextZone }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the textZoneOrPictureZoneOrTableZone property.
      */
     public List<RectangleBase> getTextZoneOrPictureZoneOrTableZone() {
         if (textZoneOrPictureZoneOrTableZone == null) {
-            textZoneOrPictureZoneOrTableZone = new ArrayList<RectangleBase>();
+            textZoneOrPictureZoneOrTableZone = new ArrayList<>();
         }
         return this.textZoneOrPictureZoneOrTableZone;
     }
@@ -124,28 +155,31 @@ public class PageContent {
     /**
      * Gets the value of the barCodes property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the barCodes property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the barCodes property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getBarCodes().add(newItem);
+     * getBarCodes().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link BarCodeZone }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the barCodes property.
      */
     public List<BarCodeZone> getBarCodes() {
         if (barCodes == null) {
-            barCodes = new ArrayList<BarCodeZone>();
+            barCodes = new ArrayList<>();
         }
         return this.barCodes;
     }
@@ -153,28 +187,31 @@ public class PageContent {
     /**
      * Gets the value of the candidates property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
+     * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the candidates property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the candidates property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * </p>
      * <pre>
-     *    getCandidates().add(newItem);
+     * getCandidates().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link CandidateInfo }
+     * </p>
      * 
      * 
+     * @return
+     *     The value of the candidates property.
      */
     public List<CandidateInfo> getCandidates() {
         if (candidates == null) {
-            candidates = new ArrayList<CandidateInfo>();
+            candidates = new ArrayList<>();
         }
         return this.candidates;
     }
@@ -288,7 +325,7 @@ public class PageContent {
     }
 
     /**
-     * Gets the value of the sizeX property.
+     * The page width in pixel.
      * 
      */
     public int getSizeX() {
@@ -304,7 +341,7 @@ public class PageContent {
     }
 
     /**
-     * Gets the value of the sizeY property.
+     * The page height in pixel.
      * 
      */
     public int getSizeY() {
@@ -320,7 +357,7 @@ public class PageContent {
     }
 
     /**
-     * Gets the value of the skewAngle property.
+     * The skew angle in degree denoting the amount by which the document image has to be rotated clockwise in order to match the text shot.
      * 
      * @return
      *     possible object is
@@ -342,13 +379,14 @@ public class PageContent {
      *     allowed object is
      *     {@link Double }
      *     
+     * @see #getSkewAngle()
      */
     public void setSkewAngle(Double value) {
         this.skewAngle = value;
     }
 
     /**
-     * Gets the value of the rotation property.
+     * The rotation angle of the page.
      * 
      * @return
      *     possible object is
@@ -370,13 +408,14 @@ public class PageContent {
      *     allowed object is
      *     {@link Rotation }
      *     
+     * @see #getRotation()
      */
     public void setRotation(Rotation value) {
         this.rotation = value;
     }
 
     /**
-     * Gets the value of the fileTag property.
+     * A tag identifiying the file the page was created from.
      * 
      * @return
      *     possible object is
@@ -394,13 +433,14 @@ public class PageContent {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getFileTag()
      */
     public void setFileTag(String value) {
         this.fileTag = value;
     }
 
     /**
-     * Gets the value of the horizontalDpi property.
+     * Horizontal resolution in dpi.
      * 
      */
     public double getHorizontalDpi() {
@@ -416,7 +456,7 @@ public class PageContent {
     }
 
     /**
-     * Gets the value of the verticalDpi property.
+     * Vertical resolution in dpi.
      * 
      */
     public double getVerticalDpi() {

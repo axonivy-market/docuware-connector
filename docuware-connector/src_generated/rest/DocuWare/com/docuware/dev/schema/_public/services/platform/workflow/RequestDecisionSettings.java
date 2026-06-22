@@ -1,20 +1,20 @@
 
 package com.docuware.dev.schema._public.services.platform.workflow;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * Decision in the request when we create it.
  * 
- * <p>Java class for RequestDecisionSettings complex type.
+ * &lt;p&gt;Java class for RequestDecisionSettings complex type&lt;/p&gt;.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.&lt;/p&gt;
  * 
- * <pre>
+ * &lt;pre&gt;{&#064;code
  * &lt;complexType name="RequestDecisionSettings"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
- * </pre>
+ * }&lt;/pre&gt;
  * 
  * 
  */
@@ -32,15 +32,27 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "RequestDecisionSettings")
 public class RequestDecisionSettings {
 
+    /**
+     * Sequential order number of the decision in the request
+     * 
+     */
     @XmlAttribute(name = "Id", required = true)
     protected int id;
+    /**
+     * Label of the decision.
+     * 
+     */
     @XmlAttribute(name = "Label", required = true)
     protected String label;
+    /**
+     * Determines whether the decision is active.
+     * 
+     */
     @XmlAttribute(name = "IsActive")
     protected Boolean isActive;
 
     /**
-     * Gets the value of the id property.
+     * Sequential order number of the decision in the request
      * 
      */
     public int getId() {
@@ -56,7 +68,7 @@ public class RequestDecisionSettings {
     }
 
     /**
-     * Gets the value of the label property.
+     * Label of the decision.
      * 
      * @return
      *     possible object is
@@ -74,13 +86,14 @@ public class RequestDecisionSettings {
      *     allowed object is
      *     {@link String }
      *     
+     * @see #getLabel()
      */
     public void setLabel(String value) {
         this.label = value;
     }
 
     /**
-     * Gets the value of the isActive property.
+     * Determines whether the decision is active.
      * 
      * @return
      *     possible object is
@@ -102,6 +115,7 @@ public class RequestDecisionSettings {
      *     allowed object is
      *     {@link Boolean }
      *     
+     * @see #isIsActive()
      */
     public void setIsActive(Boolean value) {
         this.isActive = value;
