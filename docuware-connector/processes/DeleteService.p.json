@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/process.json",
+  "$schema" : "https://json-schema.axonivy.com/process/13.2.0/process.json",
   "id" : "18516121B5CC015E",
   "kind" : "CALLABLE_SUB",
   "config" : {
@@ -164,8 +164,8 @@
         "Summary: Add a Call to DeleteService with deleteDocument(String, String, String), set configKey, documentId, and fileCabinetId, call DELETE /FileCabinets/{FileCabinetId}/Documents/{DocumentId}, and confirm success by the successful response."
       ],
       "visual" : {
-        "at" : { "x" : 1368, "y" : 711 },
-        "size" : { "width" : 550, "height" : 755 },
+        "at" : { "x" : 1358, "y" : 626 },
+        "size" : { "width" : 531, "height" : 585 },
         "color" : "NodeStyle4"
       }
     } ]
