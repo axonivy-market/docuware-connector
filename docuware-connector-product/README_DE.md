@@ -17,44 +17,46 @@ Mit diesem Connector kannst du deine Dokumente und Dokumentworkflows programmges
 
 ## Demo
 
-Der DocuWare Connector umfasst zwei Demo-Workflows, die gängige Dokumentverwaltungsszenarien demonstrieren. Starten Sie die Demo, um zu sehen, wie Sie DocuWare-Dokumentvorgänge in Ihre Ivy-Prozesse integrieren.
+### Funktionen
 
-![Demo Startbildschirm](images/1-startdemo.png)
+1. **Abruf von Organisationen**  
+   Klicke auf die Schaltfläche **Organisationen**, um die Organisations-ID abzurufen. Das System fügt diese ID automatisch in nachfolgende Anfragen ein.
 
-### Demo-Workflows
+    ![organization-result](images/get-organization-result.png)
 
-##### DocuWare Demo
+2. **Abruf von Dateiablagen**  
+    Klicke auf die Schaltfläche **Dateiablagen**, um die Ablagen-ID der ausgewählten Organisation abzurufen. Die Ablagen-ID bestimmt, wohin die Datei hochgeladen wird.
 
-1. Starten Sie den DocuWare Demo-Prozess aus dem Demo-Menü
-2. Sie sehen einen UI-Dialog, der grundlegende Dokumentverwaltungsvorgänge demonstriert
+    ![file-cabinet-result](images/get-file-cabinet-result.png)
 
-![DocuWare UI](images/2-fetchorgas.png)
+3. **Hochladen von Dokumenten**  
+    Wähle eine Datei aus, die in die ausgewählte DocuWare-Dateiablage hochgeladen werden soll. Du kannst die hochgeladene Datei auf dem DocuWare-Dashboard überprüfen.
 
-3. Die Demo lädt Organisationen und Aktenschränke von Ihrem konfigurierten DocuWare-Server
-4. Führen Sie Vorgänge aus, z. B. Abfragen von Dokumenten oder Anzeigen verfügbarer Aktenschränke
-5. Überprüfen Sie die Ergebnisse und beobachten Sie, wie der Connector REST-API-Aufrufe an DocuWare ausführt
+    ![upload-document](images/upload-document-result.png)
 
-##### Dokumententabelle
+4. **Abruf von Dokumenten**  
+   Dokumente werden automatisch abgerufen, indem die vordefinierten Felder **organization** und **fileCabinetId** aus der Datei `variables.yaml` verwendet werden.
 
-1. Starten Sie die Dokumententabelle Demo aus dem Demo-Menü
-2. Sie sehen eine Tabellenoberfläche mit Dokumenten aus Ihrem DocuWare-Aktenschrank
+   ![fetch-documents](images/fetch-documents.png)
 
-![Dokumententabelle Demo](images/6-tabledemo.png)
+5. **Anzeigen von Dokumenten**  
+   Dokumente können direkt in der Benutzeroberfläche mithilfe des DocuWare-Dokumentenbetrachters angezeigt werden.
 
-3. Wählen Sie ein Dokument aus, um seine Eigenschaften und Metadaten anzuzeigen
-4. Führen Sie Vorgänge aus, z. B. das Herunterladen des Dokuments oder das Bearbeiten seiner Indexfelder
-5. Überprüfen Sie Änderungen und bestätigen Sie erfolgreiche Dokumentvorgänge
+   ![view-document](images/view-document.png)
 
-##### Download-Workflow-Beispiel
+6. **Bearbeiten von Dokumenteigenschaften**  
+   Ändere die Dokumenteigenschaften, einschließlich Metadaten und benutzerdefinierter Felder.
 
-1. Starten Sie das Download-Workflow-Beispiel aus dem Demo-Menü
-2. Geben Sie die Dokument-ID und die Aktenschrank-ID an
+   ![edit-document-properties](images/edit-document-properties.png)
 
-![Dokument herunterladen](images/4-downloaddocument.png)
+7. **Löschen von Dokumenten**  
+   Lösche die Dokumente aus der Dateiablage.
 
-3. Der Workflow ruft das Dokument von DocuWare ab und hängt es an einen Ivy-Fall an
-4. Sie sehen eine Bestätigungsmeldung mit dem Dokumentnamen
-5. Greifen Sie auf das angehängte Dokument über die Dokumentverwaltungsschnittstelle des Falls zu
+   ![delete-document](images/delete-document.png)
+
+Um Dokumente anzuzeigen und deren Eigenschaften zu bearbeiten, starte den Prozess mit dem Namen **DocuWare View/Edit Document**.
+
+Um Dokumente hochzuladen und Aktionen wie Abruf von Organisationen, Abruf von Dateiablagen und Hochladen von Dokumenten auszuführen, starte den Prozess mit dem Namen **Start some DocuWare calls**.
 
 ## Einrichtung
 
@@ -66,7 +68,12 @@ Der DocuWare Connector umfasst zwei Demo-Workflows, die gängige Dokumentverwalt
 2. **Konfigurieren Sie die DocuWare-Verbindung** – Bearbeiten Sie `config/rest-clients.yaml` und legen Sie die DocuWare-Server-URL und API-Anmeldeinformationen in der REST-Client-Konfiguration `DocuWare` fest
 3. **Wählen Sie Authentifizierung** – Wählen Sie Ihre bevorzugte Authentifizierungsmethode (Passwort, vertraut oder tokenbasiert), indem Sie die Variable `grantType` in `config/variables.yaml` konfigurieren
 4. **Geben Sie Anmeldeinformationen an** – Speichern Sie Ihren DocuWare-Benutzernamen und -Passwort (oder Token) in der Konfiguration, verschlüsselt aus Sicherheitsgründen
-5. **Optional: Multi-Umgebungs-Setup** – Erstellen Sie umgebungsspezifische `variables.yaml`-Dateien in Unterverzeichnissen, wenn Sie verschiedene Konfigurationen für Entwicklung, Staging und Produktion benötigen
+5. **Optional: Multi-Umgebungs-Setup** – Erstellen Sie umgebungsspezifische `variables.yaml`-Dateien in Unterverzeichnissen, wenn Sie verschiedene Konfigurationen für Entwicklung, Staging und Produktion benötigen.
+    - Im Demo-Bereich müssen Sie die **URL** in **trustedUser** einfügen, um den Demo-Prozess auszuführen. Beispiel:
+    ```
+    trustedUser:
+        url: "https://put.here.your.url/DocuWare/Platform"
+    ```
 6. **Verbindung überprüfen** – Führen Sie einen der Demo-Workflows aus, um zu bestätigen, dass Ihre DocuWare-Serververbindung funktioniert
 7. **Aufrufbare Subprozesse integrieren** – Rufen Sie die aufrufbaren Subprozesse des DocuWare Connectors aus Ihren eigenen Prozessen auf, um Dokumente hochzuladen, herunterzuladen, abzufragen oder zu aktualisieren
 

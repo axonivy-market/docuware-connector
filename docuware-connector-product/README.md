@@ -16,45 +16,138 @@ With this connector, you can manage your documents and document workflows progra
 - **Configuration Flexibility** — Support for multiple DocuWare server configurations with flexible authentication (password, trusted, token-based)
 
 ## Demo
+### DocuWare Basic Demo: Fetching Organizations, File Cabinets and Documents
 
-The DocuWare Connector includes two demo workflows that showcase common document management scenarios. Launch the demo to see how to integrate DocuWare document operations into your Ivy processes.
+1. Start the DocuWare Demo Process:
+   
+![start-demo-process](images/1-startdemo.png)
 
-![Demo start screen](images/1-startdemo.png)
+The DocuWare Demo provides a GUI to test different DocuWare configurations. To use all demo features, multiple configurations with different grant types must be provided in `variables.yaml`. **For a basic demo (username and password based): - just provide a defaultConfig**.
 
-### Demo Workflows
+#### Fetch Organizations 
+![fetch-organization](images/2-fetchorgas.png)
 
-##### DocuWare Demo
+If everything went well you will see `Response: Status: OK` in the textfield below the buttons. It may look like:
+```
+Response: Status: OK
 
-1. Launch the DocuWare Demo process from the demo menu
-2. You'll see a UI dialog that demonstrates basic document management operations
+Headers
+=======
+Content-Type: application/xml; charset=utf-8
+Date: Fri, 06 Mar 2026 03:57:13 GMT
+Cache-Control: max-age=0, private
+Set-Cookie: dwingressplatform=1772769434.007.32.96427|a8466521666073443d68d0f15f64584f; Path=/; Secure; HttpOnly
+Transfer-Encoding: chunked
+Vary: Cookie,Accept,Accept-Encoding
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+Server-Timing: proxy-start;dur=1.5
 
-![DocuWare UI](images/2-fetchorgas.png)
+```
+#### Fetch File Cabinets
+When clicking "Fetch File Cabinets", several additional buttons (features) become available.
 
-3. The demo loads organizations and file cabinets from your configured DocuWare server
-4. Perform actions such as querying documents or viewing available file cabinets
-5. Review the results and observe how the connector executes REST API calls to DocuWare
+![fetch-cabinets](images/3-fetchcabinets.png)
 
-##### Document Table
+In particular, you will get a list of available file cabinets at the bottom of your log file. It might look like this:
 
-1. Start the Document Table demo from the demo menu
-2. You'll see a table interface showing documents from your DocuWare file cabinet
+```
+File Cabinets:
+Size: 5
+Id: 4b4be7af-629f-4340-82cb-126d249d2b95 - 'Awesome Filecabinet'
+Id: 90b4f666-b79f-4d26-97f7-7786d8fbe4c2 - 'TEST Filecabinet'
+Id: 94532ab8-a22f-4b70-a15d-ba44d916bd45 - 'Archive Cabinet'
+Id: wdss996-b61c-4b4b-88fd-e506a58156278 - 'Src'
+Id: 43sfsdfb137-c5a8-4ab-ae73-715e7c360f - 'Not important'
+```
 
-![Document Table Demo](images/6-tabledemo.png)
+Choose a File Cabinet you would like to inspect further and copy its ID into the UI.
 
-3. Select a document to view its properties and metadata
-4. Perform operations such as downloading the document or editing its index fields
-5. Review changes and confirm successful document operations
+![fetch-cabinets](images/7-filecabinet.png)
 
-##### Download Workflow Example
+#### Fetch & download Documents
+![fetch-cabinets](images/4-downloaddocument.png)
 
-1. Launch the Download Workflow Example from the demo menu
-2. Specify the document ID and file cabinet ID
+For fetching and downloading a document, click "Fetch Documents" (1) to get a list of available documents in the log viewer. You will get a list that looks like this:
 
-![Download Document](images/4-downloaddocument.png)
+```
+Documents:
+Size: 4
+Id: 11 - 'Hello World'
+Id: 10 - 'Bla'
+Id: 7 - 'Umlaut.äöüÄÖÜß'
+Id: 6 - 'Bla'
+```
+Remember the ID of the document you would like to inspect further and enter it into the UI (2). With "Download Document" (3), you can then download the document associated with this ID.
 
-3. The workflow retrieves the document from DocuWare and attaches it to an Ivy case
-4. You'll see a confirmation message with the document name
-5. Access the attached document from the case document management interface
+#### Further Features
+- Using different configurations, i.e. for different grant types
+- Getting document fields
+- Downloading a document
+- Creating a new version of a document
+- Attaching a document to an Ivy case
+- Uploading a document
+- Uploading a document with index fields
+- Viewing files with the embedded DocuWare viewer (if the configuration has an `integrationPassphrase` set and your DocuWare installation allows embedding in a frame - check your DocuWare's content security policy!)
+- Encrypting and decrypting parameters for embedding
+
+
+### Second Demo: Document Table
+
+Make sure you have configured a File Cabinet ID in `variables.yaml`. Remember that you can fetch available File Cabinets using the first demo process (see above).
+
+```
+  # Variables used by the demo.
+  docuwareWorkflow:
+    fileCabinetId: ""
+```
+
+Start the  process **Document Table** to get a basic viewer showing how to add, change, view and delete documents. 
+
+![second-demo](images/5-startseconddemo.png)
+
+A user-friendly UI will open:
+
+![table-demo](images/6-tabledemo.png)
+
+**Document Preview**
+
+Note that previewing documents might require additional configuration of your DocuWare installation’s Content Security Policy (CSP) to allow embedding DocuWare frames into your Axon Ivy frames.
+
+![view-document](images/view-document.png)
+
+**Document Properties Editing**
+Modify document properties, including metadata and custom fields.
+
+   ![edit-document-properties](images/edit-document-properties.png)
+
+**Document Deletion**
+Delete documents from the file cabinet.
+
+   ![delete-document](images/delete-document.png)
+
+### Stamp Demo
+
+Start the **Stamp** demo from its process start link.
+
+   ![stamp-demo-start](images/stamp_demo_start.png)
+
+1. The demo fetches the stamp templates that the current account is allowed to use. The result is printed to the log, for example:
+
+```
+***DocuWareDemo-Stamp - Found Stamps: 3
+Stamp id=xxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, name=ABC-AP1
+Stamp id=yyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy, name=ABC-AP2
+Stamp id=zzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz, name=ABC-AP3
+```
+
+2. The demo uploads a document and applies a stamp on it using the first stamp template.
+3. Finally, the stamped document is downloaded and attached to the Ivy case.
+
+   ![stamped-document](images/stamped_document.png)
+
+### Other demos
+
+Other process starts show examples of DocuWare usage.
 
 ## Setup
 
@@ -66,7 +159,12 @@ The DocuWare Connector includes two demo workflows that showcase common document
 2. **Configure DocuWare connection** — Edit `config/rest-clients.yaml` and set the DocuWare server URL and API credentials in the `DocuWare` rest client configuration
 3. **Set authentication** — Choose your preferred authentication method (password, trusted, or token-based) by configuring the `grantType` variable in `config/variables.yaml`
 4. **Provide credentials** — Store your DocuWare username and password (or token) in the configuration, encrypted for security
-5. **Optional: Multi-environment setup** — Create environment-specific `variables.yaml` files in subdirectories if you need different configurations for development, staging, and production
+5. **Optional: Multi-environment setup** — Create environment-specific `variables.yaml` files in subdirectories if you need different configurations for development, staging, and production.
+    - In Demo section, you need to add **url** into **trustedUser** to run demo process. For example:
+    ```
+     trustedUser:
+        url: "https://put.here.your.url/DocuWare/Platform"
+    ```
 6. **Verify connection** — Run one of the demo workflows to confirm your DocuWare server connection is working correctly
 7. **Integrate callable subs** — Call the DocuWare connector callable subprocesses from your own processes to upload, download, query, or update documents
 
