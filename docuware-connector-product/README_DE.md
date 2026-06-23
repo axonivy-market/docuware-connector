@@ -69,12 +69,12 @@ Um Dokumente hochzuladen und Aktionen wie Abruf von Organisationen, Abruf von Da
 3. **Wählen Sie Authentifizierung** – Wählen Sie Ihre bevorzugte Authentifizierungsmethode (Passwort, vertraut oder tokenbasiert), indem Sie die Variable `grantType` in `config/variables.yaml` konfigurieren
 4. **Geben Sie Anmeldeinformationen an** – Speichern Sie Ihren DocuWare-Benutzernamen und -Passwort (oder Token) in der Konfiguration, verschlüsselt aus Sicherheitsgründen
 5. **Optional: Multi-Umgebungs-Setup** – Erstellen Sie umgebungsspezifische `variables.yaml`-Dateien in Unterverzeichnissen, wenn Sie verschiedene Konfigurationen für Entwicklung, Staging und Produktion benötigen.
+6. **Verbindung überprüfen** – Führen Sie einen der Demo-Workflows aus, um zu bestätigen, dass Ihre DocuWare-Serververbindung funktioniert
     - Im Demo-Bereich müssen Sie die **URL** in der Datei `variables.yaml` unter **trustedUser** hinzufügen, um den Demo-Prozess auszuführen. Beispiel:
     ```
     trustedUser:
         url: "https://put.here.your.url/DocuWare/Platform"
     ```
-6. **Verbindung überprüfen** – Führen Sie einen der Demo-Workflows aus, um zu bestätigen, dass Ihre DocuWare-Serververbindung funktioniert
 7. **Aufrufbare Subprozesse integrieren** – Rufen Sie die aufrufbaren Subprozesse des DocuWare Connectors aus Ihren eigenen Prozessen auf, um Dokumente hochzuladen, herunterzuladen, abzufragen oder zu aktualisieren
 
 ### Variablen
