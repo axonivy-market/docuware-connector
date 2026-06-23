@@ -160,12 +160,12 @@ Other process starts show examples of DocuWare usage.
 3. **Set authentication** — Choose your preferred authentication method (password, trusted, or token-based) by configuring the `grantType` variable in `config/variables.yaml`
 4. **Provide credentials** — Store your DocuWare username and password (or token) in the configuration, encrypted for security
 5. **Optional: Multi-environment setup** — Create environment-specific `variables.yaml` files in subdirectories if you need different configurations for development, staging, and production.
-    - In Demo section, you need to add **url** into **trustedUser** to run demo process. For example:
+6. **Verify connection** — Run one of the demo workflows to confirm your DocuWare server connection is working correctly.
+    - In Demo section, you need to add **url** into **trustedUser** in `variables.yaml` files to run demo process. For example:
     ```
-     trustedUser:
+    trustedUser:
         url: "https://put.here.your.url/DocuWare/Platform"
     ```
-6. **Verify connection** — Run one of the demo workflows to confirm your DocuWare server connection is working correctly
 7. **Integrate callable subs** — Call the DocuWare connector callable subprocesses from your own processes to upload, download, query, or update documents
 
 ### Variables
