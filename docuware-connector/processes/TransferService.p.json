@@ -13,10 +13,10 @@
         "signature" : "moveDocument",
         "input" : {
           "params" : [
-            { "name" : "configKey", "type" : "String", "desc" : "" },
-            { "name" : "documentId", "type" : "String", "desc" : "" },
-            { "name" : "sourceFileCabinetId", "type" : "String", "desc" : "" },
-            { "name" : "targetFileCabinetId", "type" : "String", "desc" : "" }
+            { "name" : "configKey", "type" : "String", "desc" : "REST client configuration key identifying the DocuWare connection from rest-clients.yaml" },
+            { "name" : "documentId", "type" : "String", "desc" : "The unique identifier of the document to move" },
+            { "name" : "sourceFileCabinetId", "type" : "String", "desc" : "The unique identifier of the source file cabinet containing the document" },
+            { "name" : "targetFileCabinetId", "type" : "String", "desc" : "The unique identifier of the target file cabinet to move the document into" }
           ],
           "map" : {
             "out.configKey" : "param.configKey",
@@ -27,7 +27,7 @@
         },
         "result" : {
           "params" : [
-            { "name" : "result", "type" : "com.docuware.dev.schema._public.services.platform.DocumentsQueryResult", "desc" : "" }
+            { "name" : "result", "type" : "com.docuware.dev.schema._public.services.platform.DocumentsQueryResult", "desc" : "Result object containing the document query response after the transfer operation" }
           ],
           "map" : {
             "result.result" : "in.result"
@@ -38,7 +38,7 @@
         "connector"
       ],
       "visual" : {
-        "at" : { "x" : 136, "y" : 144 },
+        "at" : { "x" : 1024, "y" : 456 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -48,7 +48,7 @@
       "id" : "f1",
       "type" : "CallSubEnd",
       "visual" : {
-        "at" : { "x" : 568, "y" : 144 },
+        "at" : { "x" : 1456, "y" : 456 },
         "labelOffset" : { "x" : 13, "y" : 33 }
       }
     }, {
@@ -94,7 +94,7 @@
         ]
       },
       "visual" : {
-        "at" : { "x" : 448, "y" : 144 },
+        "at" : { "x" : 1336, "y" : 456 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -114,10 +114,126 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 280, "y" : 144 }
+        "at" : { "x" : 1168, "y" : 456 }
       },
       "connect" : [
         { "id" : "f5", "to" : "f85", "color" : "default" }
       ]
+    }, {
+      "id" : "f86",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**Description",
+        "This request transfers one or more documents from a Document Tray/File Cabinet to another Document Tray/File Cabinet."
+      ],
+      "visual" : {
+        "at" : { "x" : 590, "y" : 377 },
+        "size" : { "width" : 540, "height" : 77 }
+      }
+    }, {
+      "id" : "f87",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**Integration",
+        "moveDocument(String,String,String,String)",
+        "",
+        "- Moves a document from one file cabinet to another in DocuWare.",
+        "- Calls REST endpoint /FileCabinets/{FileCabinetId}/Task/Transfer via the move file RestClientCall in TransferService.p.json.",
+        "- Prepares the request body by converting source cabinet and document IDs into JSON with:",
+        "+ DocuWareTransferService.get().moveDocumentRequestBody(in.sourceFileCabinetId, in.documentId)",
+        "- Sends the resulting raw JSON as FileCabinetIdDocumentsBody in the POST body.",
+        "- Returns the DocuWare DocumentsQueryResult object.",
+        "",
+        "Parameters:",
+        "- configKey (String): REST client configuration key to identify the DocuWare server connection from rest-clients.yaml",
+        "- sourceFileCabinetId (String): The unique identifier of the source file cabinet containing the document",
+        "- documentId (String): The unique identifier of the document to move",
+        "- targetFileCabinetId (String): The unique identifier of the target file cabinet to move the document into",
+        "",
+        "- Default / Return: Returns a DocuWare DocumentsQueryResult object containing the document query response after the transfer operation."
+      ],
+      "visual" : {
+        "at" : { "x" : 592, "y" : 663 },
+        "size" : { "width" : 540, "height" : 421 },
+        "color" : "NodeStyle4"
+      }
+    }, {
+      "id" : "f88",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**Prepare request body",
+        "Prepare data request body to call Docuware APIs"
+      ],
+      "visual" : {
+        "at" : { "x" : 1168, "y" : 591 },
+        "size" : { "width" : 276, "height" : 45 }
+      },
+      "connect" : [
+        { "id" : "f89", "to" : "f4" }
+      ]
+    }, {
+      "id" : "f90",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**move file",
+        "Call REST Client APIs from Docuware."
+      ],
+      "visual" : {
+        "at" : { "x" : 1416, "y" : 311 },
+        "size" : { "width" : 276, "height" : 45 }
+      },
+      "connect" : [
+        { "id" : "f91", "to" : "f85" }
+      ]
+    }, {
+      "id" : "f92",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**How to integrate",
+        "- Add Call: Add a Call element to your process that invokes the TransferService sub-process using signature moveDocument(String,String,String,String).",
+        "",
+        "- Prepare data: Populate the parameters before calling:",
+        "+ configKey: REST client configuration key matching the entry in config/rest-clients.yaml",
+        "+ documentId: ID of the document to move",
+        "+ sourceFileCabinetId: ID of the source file cabinet containing the document",
+        "+ targetFileCabinetId: ID of the target file cabinet to move the document into",
+        "",
+        "- Build request body: TransferService.p.json prepares the raw JSON payload in the script step:",
+        "+ DocuWareTransferService.get().moveDocumentRequestBody(in.sourceFileCabinetId, in.documentId)",
+        "+ This produces in.requestJson",
+        "+ The move file RestClientCall sends that raw JSON as FileCabinetIdDocumentsBody in the POST body",
+        "",
+        "- Call REST API: The move file RestClientCall sends the transfer request to:",
+        "+ POST /FileCabinets/{FileCabinetId}/Task/Transfer",
+        "",
+        "- Return object: The call returns a com.docuware.dev.schema._public.services.platform.DocumentsQueryResult",
+        "+ map the process result to result.result",
+        "+ use the returned object to confirm the transfer response",
+        "",
+        "- Post-success behavior: After success, the document is transferred into the target file cabinet",
+        "+ inspect result to confirm the transfer outcome and any returned document query details",
+        "",
+        "- Example (conceptual):",
+        "+ Set variables:",
+        "configKey = \"02d1eec1-32e9-4316-afc3-793448486203\"",
+        "sourceFileCabinetId = \"FC-123\"",
+        "documentId = \"DOC-456\"",
+        "targetFileCabinetId = \"FC-789\"",
+        "+ Call the TransferService sub-process with the matching signature",
+        "+ After the Call returns, read result for confirmation",
+        "",
+        "- Notes & tips:",
+        "+ configKey must match the RestClients entry so URL and credentials are correct",
+        "+ sourceFileCabinetId and targetFileCabinetId must refer to valid DocuWare file cabinets",
+        "+ This operation does not upload a file; it transfers an existing document between cabinets",
+        "+ Use the returned DocumentsQueryResult to verify the transfer and check the moved document metadata",
+        "",
+        "Summary: Add a Call to TransferService with moveDocument(String,String,String,String), set configKey, documentId, sourceFileCabinetId, and targetFileCabinetId, let the process build the transfer JSON, call POST /FileCabinets/{FileCabinetId}/Task/Transfer, and verify the returned DocumentsQueryResult."
+      ],
+      "visual" : {
+        "at" : { "x" : 1895, "y" : 776 },
+        "size" : { "width" : 765, "height" : 826 },
+        "color" : "NodeStyle4"
+      }
     } ]
 }

@@ -1,14 +1,19 @@
 # DocuWare Connector
 
-[DocuWare](https://start.docuware.com/) bietet cloudbasierte Dokumentenverwaltung und Workflow-Automatisierungssoftware. Es kann verwendet werden, um alle Geschäftsdokumente revisionssicher zu digitalisieren, zu archivieren und zu verarbeiten, um die Kernprozesse Ihres Unternehmens zu optimieren.
+Der DocuWare Connector integriert DocuWare-Dokumentverwaltung mit Axon Ivy und ermöglicht nahtlose Dokumentworkflows direkt aus Ihren Axon Ivy-Prozessen.
 
-Der Axon Ivy DocuWare-Connector ermöglicht eine effiziente Integration von DocuWare-Funktionalitäten in deine Axon Ivy Prozessanwendungen.
+![DocuWare Demo](images/docuwaredemo.png)
 
-Dieser Connector:
+Mit diesem Connector kannst du deine Dokumente und Dokumentworkflows programmgesteuert verwalten – Dateien mit Metadaten hochladen, Dokumente herunterladen, Aktenschränke abfragen, Stempel und Signaturen anwenden und Dokumente zwischen Aktenschränken übertragen – alles mit einfachen aufrufbaren Unterprozessen, die sich nativ in deine Ivy-Anwendungen integrieren.
 
-- Minimiert den Integrationsaufwand: Verwende die Demo-Version, die Beispiele für API-Aufrufe enthält.
-- Basiert auf REST-Webdienst-Technologien.
-- Gibt dir Zugriff auf grundlegende DocuWare-Funktionen.
+**Wichtigste Funktionen**
+
+- **Dokumentverwaltung** – Lade Dateien mit Index-Feldmetadaten hoch und verwalte Dokumente programmgesteuert
+- **Dokumentabruf** – Lade Dokumente herunter und rufe sie bei Bedarf aus DocuWare-Aktenschränken ab
+- **Metadatenvorgänge** – Abfrage und Aktualisierung von Dokumenteigenschaften und Indexfeldern in DocuWare
+- **Dokumentorganisation** – Übertrage Dokumente zwischen Aktenschränken und lösche unerwünschte Dokumente
+- **Stempel & Signatur** – Wende vordefinierte Stempel und Anmerkungen programmgesteuert auf Dokumente an
+- **Konfigurationsflexibilität** – Unterstützung mehrerer DocuWare-Serverkonfigurationen mit flexibler Authentifizierung (Passwort, vertraut, tokenbasiert)
 
 ## Demo
 
@@ -53,27 +58,159 @@ Um Dokumente anzuzeigen und deren Eigenschaften zu bearbeiten, starte den Prozes
 
 Um Dokumente hochzuladen und Aktionen wie Abruf von Organisationen, Abruf von Dateiablagen und Hochladen von Dokumenten auszuführen, starte den Prozess mit dem Namen **Start some DocuWare calls**.
 
-## Setup
+## Einrichtung
 
-Bevor eine Interaktion zwischen der Axon Ivy Engine und den DocuWare-Diensten ausgeführt werden kann, müssen diese mit einander verknüpft werden. Dies kann wie folgt durchgeführt werden:
+- **Rollen:** Everybody (konfiguriert in config/roles.xml)
+- **OpenAPI:** Spezifikations-URL
+- **REST-Client-Konfiguration:** Der Connector verwendet die DocuWare-REST-API (OpenAPI-Spezifikation), die in der Konfiguration rest-clients.yaml definiert ist
 
-1. Erstelle ein DocuWare-Konto und nutze den DocuWare-Cloud-`host`, `user-name` und das `password`.
+1. **Installieren Sie den Connector** – Fügen Sie das Artefakt docuware-connector über Maven zu Ihrem Ivy-Projekt hinzu
+2. **Konfigurieren Sie die DocuWare-Verbindung** – Bearbeiten Sie `config/rest-clients.yaml` und legen Sie die DocuWare-Server-URL und API-Anmeldeinformationen in der REST-Client-Konfiguration `DocuWare` fest
+3. **Wählen Sie Authentifizierung** – Wählen Sie Ihre bevorzugte Authentifizierungsmethode (Passwort, vertraut oder tokenbasiert), indem Sie die Variable `grantType` in `config/variables.yaml` konfigurieren
+4. **Geben Sie Anmeldeinformationen an** – Speichern Sie Ihren DocuWare-Benutzernamen und -Passwort (oder Token) in der Konfiguration, verschlüsselt aus Sicherheitsgründen
+5. **Optional: Multi-Umgebungs-Setup** – Erstellen Sie umgebungsspezifische `variables.yaml`-Dateien in Unterverzeichnissen, wenn Sie verschiedene Konfigurationen für Entwicklung, Staging und Produktion benötigen.
+6. **Verbindung überprüfen** – Führen Sie einen der Demo-Workflows aus, um zu bestätigen, dass Ihre DocuWare-Serververbindung funktioniert
+    - Im Demo-Bereich müssen Sie die **URL** in der Datei `variables.yaml` unter **trustedUser** hinzufügen, um den Demo-Prozess auszuführen. Beispiel:
+    ```
+    trustedUser:
+        url: "https://put.here.your.url/DocuWare/Platform"
+    ```
+7. **Aufrufbare Subprozesse integrieren** – Rufen Sie die aufrufbaren Subprozesse des DocuWare Connectors aus Ihren eigenen Prozessen auf, um Dokumente hochzuladen, herunterzuladen, abzufragen oder zu aktualisieren
 
-2. Überschreibe die globalen Variablen für `host`, `username` und `password` im Demo-Projekt wie im folgenden Beispiel gezeigt:
+### Variablen
 
-   ```yaml
-   @variables.yaml@
-   
-3. DocuWare unterstützt 3 Methoden, um ein Zugriffstoken vom Identitätsdienst zu generieren:
+```
+@variables.yaml@
+```
 
-    3.a Zugriffstoken per Benutzername und Passwort anfordern - GrantType ist `password`
-    
-    3.b Zugriffstoken mit einem DocuWare-Token anfordern - GrantType ist `dwtoken`
-    
-    3.c Zugriffstoken per Benutzername und Passwort (Trusted User) anfordern - GrantType ist `trusted`
+## Komponenten
 
-4. Für GrantType `dwtoken` muss ein LoginToken generiert werden. Starte den Prozess `startRequestALoginToken.ivp` und folge der Anleitung, um ein neues LoginToken zu erstellen.
+### Aufrufbare Subprozesse
 
-Wenn deine REST-URL nicht dem vordefinierten REST-URL-Muster dieses Connectors entspricht, kannst du die URL im Engine Cockpit ändern. Um die URL im Designer zu ändern, musst du das Connector-Projekt entpacken und dort ändern.
+#### CheckinService.p.json
 
-Starte `start.ivp` des DocuWareDemo-Demoprozesses, um deine Einrichtung zu testen.
+- **Signatur**: checkOutToFileSystem(String, String, String) -> file: File
+    - Eingabe:
+        - `configKey` (String) - REST-Client-Konfigurationsschlüssel zur Identifizierung der DocuWare-Verbindung aus rest-clients.yaml
+        - `documentId` (String) - Eindeutige Kennung des herunterzuladenden Dokuments
+        - `fileCabinetId` (String) - Eindeutige Kennung des Aktenschranks, der das Dokument enthält
+    - Ergebnis:
+        - `file` (File) - Von DocuWare heruntergeladene lokale Datei
+
+- **Signatur**: checkOutToFileSystem(String, String, String, Boolean) -> file: File
+    - Eingabe:
+        - `configKey` (String) - REST-Client-Konfigurationsschlüssel zur Identifizierung der DocuWare-Verbindung aus rest-clients.yaml
+        - `documentId` (String) - Eindeutige Kennung des herunterzuladenden Dokuments
+        - `fileCabinetId` (String) - Eindeutige Kennung des Aktenschranks, der das Dokument enthält
+        - `checkOutAsStream` (Boolean) - Flag zum Bestimmen, ob als Stream oder Datei ausgecheckt werden soll
+    - Ergebnis:
+        - `file` (File) - Von DocuWare heruntergeladene lokale Datei
+
+#### DeleteService.p.json
+
+- **Signatur**: deleteDocument(String, String, String) -> (keine)
+    - Eingabe:
+        - `configKey` (String) - REST-Client-Konfigurationsschlüssel zur Identifizierung der DocuWare-Verbindung aus rest-clients.yaml
+        - `documentId` (String) - Eindeutige Kennung des zu löschenden Dokuments
+        - `fileCabinetId` (String) - Eindeutige Kennung des Aktenschranks, der das Dokument enthält
+    - Ergebnis: (keine)
+
+#### DownloadService.p.json
+
+- **Signatur**: downloadFile(String, String, String) -> file: File
+    - Eingabe:
+        - `configKey` (String) - REST-Client-Konfigurationsschlüssel zur Identifizierung der DocuWare-Verbindung aus rest-clients.yaml
+        - `documentId` (String) - Eindeutige Kennung des herunterzuladenden Dokuments
+        - `fileCabinetId` (String) - Eindeutige Kennung des Aktenschranks, der das Dokument enthält
+    - Ergebnis:
+        - `file` (File) - Von DocuWare heruntergeladene lokale Datei
+
+#### StampService.p.json
+
+- **Signatur**: addStamp(String, String, String, List<String>, String) -> annotations: com.docuware.dev.schema._public.services.platform.DocumentAnnotations
+    - Eingabe:
+        - `configKey` (String) - REST-Client-Konfigurationsschlüssel zur Identifizierung der DocuWare-Serververbindung aus rest-clients.yaml
+        - `documentId` (String) - Eindeutige Kennung des Dokuments, auf das der Stempel angewendet wird
+        - `fileCabinetId` (String) - Eindeutige Kennung des Aktenschranks, in dem sich das Dokument befindet
+        - `stampFieldValues` (List<String>) - Dynamische Textwerte für Stempelformularfelder (z. B. Name des Unterzeichners, Datum usw.)
+        - `stampPassword` (String) - Optionales Passwort zum Anwenden passwortgeschützter Stempel
+    - Ergebnis:
+        - `annotations` (com.docuware.dev.schema._public.services.platform.DocumentAnnotations) - Dokumentanmerkungen nach Stempelanwendung
+
+#### TransferService.p.json
+
+- **Signatur**: moveDocument(String, String, String, String) -> result: com.docuware.dev.schema._public.services.platform.DocumentsQueryResult
+    - Eingabe:
+        - `configKey` (String) - REST-Client-Konfigurationsschlüssel zur Identifizierung der DocuWare-Verbindung aus rest-clients.yaml
+        - `documentId` (String) - Eindeutige Kennung des zu verschiebenden Dokuments
+        - `sourceFileCabinetId` (String) - Eindeutige Kennung des Quellaktenschranks, der das Dokument enthält
+        - `targetFileCabinetId` (String) - Eindeutige Kennung des Zielaktenschranks, in den das Dokument verschoben werden soll
+    - Ergebnis:
+        - `result` (com.docuware.dev.schema._public.services.platform.DocumentsQueryResult) - Ergebnisobjekt mit der Dokumentabfrageantwort
+
+#### UpdateService.p.json
+
+- **Signatur**: updateDocumentIndexFields(String, String, String, List<com.axonivy.connector.docuware.connector.DocuWareProperty>) -> (keine)
+    - Eingabe:
+        - `configKey` (String) - REST-Client-Konfigurationsschlüssel zur Identifizierung der DocuWare-Verbindung aus rest-clients.yaml
+        - `documentId` (String) - Eindeutige Kennung des zu aktualisierenden Dokuments
+        - `fileCabinetId` (String) - Eindeutige Kennung des Aktenschranks, der das Dokument enthält
+        - `indexFields` (List<com.axonivy.connector.docuware.connector.DocuWareProperty>) - Liste der zu aktualisierenden DocuWare-Indexfeld-Zuweisungen
+    - Ergebnis: (keine)
+
+#### UploadService.p.json
+
+- **Signatur**: uploadFileWithIndexFields(String, String, File, List<com.axonivy.connector.docuware.connector.DocuWareProperty>, String) -> document: com.docuware.dev.schema._public.services.platform.Document
+    - Eingabe:
+        - `configKey` (String) - REST-Client-Konfigurationsschlüssel zur Identifizierung der DocuWare-Verbindung aus rest-clients.yaml
+        - `fileCabinetId` (String) - Eindeutige Kennung des Aktenschranks, in den das Dokument hochgeladen werden soll
+        - `file` (File) - Lokales Dateiobjekt, dessen Inhalt in den ausgewählten DocuWare-Aktenschrank hochgeladen wird
+        - `indexFields` (List<com.axonivy.connector.docuware.connector.DocuWareProperty>) - Liste der DocuWare-Indexfeld-Zuweisungen
+        - `storeDialogId` (String) - Optionale Speicherdialog-Kennung, die DocuWare beim Speichern des Dokuments verwendet
+    - Ergebnis:
+        - `document` (com.docuware.dev.schema._public.services.platform.Document) - Erstellte DocuWare-Dokumentmetadaten
+
+- **Signatur**: uploadFileWithIndexFields(String, String, InputStream, String, List<com.axonivy.connector.docuware.connector.DocuWareProperty>, String) -> document: com.docuware.dev.schema._public.services.platform.Document
+    - Eingabe:
+        - `configKey` (String) - REST-Client-Konfigurationsschlüssel zur Identifizierung der DocuWare-Verbindung aus rest-clients.yaml
+        - `fileCabinetId` (String) - Eindeutige Kennung des Aktenschranks, in den das Dokument hochgeladen werden soll
+        - `fileStream` (java.io.InputStream) - Eingabestrom mit den binären Dateidaten zum Hochladen
+        - `fileName` (String) - Dateiname für das hochgeladene Dokument
+        - `indexFields` (List<com.axonivy.connector.docuware.connector.DocuWareProperty>) - Liste der DocuWare-Indexfeld-Zuweisungen
+        - `storeDialogId` (String) - Optionale Speicherdialog-Kennung, die DocuWare beim Speichern des Dokuments verwendet
+    - Ergebnis:
+        - `document` (com.docuware.dev.schema._public.services.platform.Document) - Erstellte DocuWare-Dokumentmetadaten
+
+### Dialog-Komponenten
+
+- Für diese Markterweiterung stellen wir keine Dialog-Komponenten bereit.
+
+### Rest-Clients
+
+- **OpenAPI:** [DocuWare API-Spezifikation](file:///X:/AxonIvy/marketplace/docuware/openapi-handmade.json)
+
+### Webdienste
+
+- Für diese Markterweiterung stellen wir keine Webdienste bereit.
+
+### Maven-Artefakte
+
+1. docuware-connector
+
+```xml
+<dependency>
+    <groupId>com.axonivy.connector.docuware</groupId>
+    <artifactId>docuware-connector</artifactId>
+    <type>iar</type>
+</dependency>
+```
+
+2. docuware-connector-demo *(optional)*
+
+```xml
+<dependency>
+    <groupId>com.axonivy.connector.docuware</groupId>
+    <artifactId>docuware-connector-demo</artifactId>
+    <type>iar</type>
+</dependency>
+```

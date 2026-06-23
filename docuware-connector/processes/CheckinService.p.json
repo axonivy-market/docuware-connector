@@ -9,14 +9,14 @@
       "id" : "f1",
       "type" : "CallSubEnd",
       "visual" : {
-        "at" : { "x" : 448, "y" : 112 },
+        "at" : { "x" : 1096, "y" : 896 },
         "labelOffset" : { "x" : 13, "y" : 33 }
       }
     }, {
       "id" : "f4",
       "type" : "CallSubEnd",
       "visual" : {
-        "at" : { "x" : 448, "y" : 416 },
+        "at" : { "x" : 1096, "y" : 1200 },
         "labelOffset" : { "x" : 13, "y" : 33 }
       }
     }, {
@@ -27,9 +27,9 @@
         "signature" : "checkOutToFileSystem",
         "input" : {
           "params" : [
-            { "name" : "configKey", "type" : "String", "desc" : "" },
-            { "name" : "documentId", "type" : "String", "desc" : "" },
-            { "name" : "fileCabinetId", "type" : "String", "desc" : "" }
+            { "name" : "configKey", "type" : "String", "desc" : "REST client configuration key identifying the DocuWare connection from rest-clients.yaml" },
+            { "name" : "documentId", "type" : "String", "desc" : "The unique identifier of the document to download" },
+            { "name" : "fileCabinetId", "type" : "String", "desc" : "The unique identifier of the file cabinet containing the document" }
           ],
           "map" : {
             "out.checkOutAsStream" : "false",
@@ -40,8 +40,8 @@
         },
         "result" : {
           "params" : [
-            { "name" : "file", "type" : "File", "desc" : "" },
-            { "name" : "error", "type" : "ch.ivyteam.ivy.bpm.error.BpmError", "desc" : "" }
+            { "name" : "file", "type" : "File", "desc" : "Local file downloaded from DocuWare" },
+            { "name" : "error", "type" : "ch.ivyteam.ivy.bpm.error.BpmError", "desc" : "Error object if checkout fails" }
           ],
           "map" : {
             "result.file" : "in.#file"
@@ -52,12 +52,12 @@
         "connector"
       ],
       "visual" : {
-        "at" : { "x" : 96, "y" : 64 },
+        "at" : { "x" : 744, "y" : 848 },
         "labelOffset" : { "x" : 57, "y" : -23 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
-        { "id" : "f14", "to" : "f73", "via" : [ { "x" : 144, "y" : 64 }, { "x" : 144, "y" : 112 } ] }
+        { "id" : "f14", "to" : "f73", "via" : [ { "x" : 792, "y" : 848 }, { "x" : 792, "y" : 896 } ] }
       ]
     }, {
       "id" : "f15",
@@ -67,11 +67,11 @@
         "signature" : "checkInFromFileSystem",
         "input" : {
           "params" : [
-            { "name" : "configKey", "type" : "String", "desc" : "" },
-            { "name" : "documentId", "type" : "String", "desc" : "" },
-            { "name" : "fileCabinetId", "type" : "String", "desc" : "" },
-            { "name" : "checkInParameters", "type" : "com.axonivy.connector.docuware.connector.DocuWareCheckInActionParameters", "desc" : "" },
-            { "name" : "file", "type" : "File", "desc" : "" }
+            { "name" : "configKey", "type" : "String", "desc" : "REST client configuration key identifying the DocuWare connection from rest-clients.yaml" },
+            { "name" : "documentId", "type" : "String", "desc" : "The unique identifier of the target document for check-in" },
+            { "name" : "fileCabinetId", "type" : "String", "desc" : "The unique identifier of the file cabinet containing the document" },
+            { "name" : "checkInParameters", "type" : "com.axonivy.connector.docuware.connector.DocuWareCheckInActionParameters", "desc" : "Check-in metadata (document version, return behavior, comments)" },
+            { "name" : "file", "type" : "File", "desc" : "Local file to upload to DocuWare" }
           ],
           "map" : {
             "out.checkInParameters" : "param.#checkInParameters",
@@ -85,8 +85,8 @@
         },
         "result" : {
           "params" : [
-            { "name" : "document", "type" : "com.docuware.dev.schema._public.services.platform.Document", "desc" : "" },
-            { "name" : "error", "type" : "ch.ivyteam.ivy.bpm.error.BpmError", "desc" : "" }
+            { "name" : "document", "type" : "com.docuware.dev.schema._public.services.platform.Document", "desc" : "Updated DocuWare document object with check-in metadata" },
+            { "name" : "error", "type" : "ch.ivyteam.ivy.bpm.error.BpmError", "desc" : "Error object if check-in fails" }
           ],
           "map" : {
             "result.document" : "in.#document"
@@ -97,12 +97,12 @@
         "connector"
       ],
       "visual" : {
-        "at" : { "x" : 96, "y" : 352 },
+        "at" : { "x" : 744, "y" : 1136 },
         "labelOffset" : { "x" : 169, "y" : -39 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
-        { "id" : "f19", "to" : "f71", "via" : [ { "x" : 144, "y" : 352 }, { "x" : 144, "y" : 416 } ] }
+        { "id" : "f19", "to" : "f71", "via" : [ { "x" : 792, "y" : 1136 }, { "x" : 792, "y" : 1200 } ] }
       ]
     }, {
       "id" : "f73",
@@ -147,7 +147,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 280, "y" : 112 }
+        "at" : { "x" : 928, "y" : 896 }
       },
       "connect" : [
         { "id" : "f20", "to" : "f1", "color" : "default" }
@@ -191,7 +191,7 @@
         ]
       },
       "visual" : {
-        "at" : { "x" : 280, "y" : 416 }
+        "at" : { "x" : 928, "y" : 1200 }
       },
       "connect" : [
         { "id" : "f22", "to" : "f4", "color" : "default" }
@@ -204,9 +204,9 @@
         "signature" : "checkOutToFileSystemAsStream",
         "input" : {
           "params" : [
-            { "name" : "configKey", "type" : "String", "desc" : "" },
-            { "name" : "documentId", "type" : "String", "desc" : "" },
-            { "name" : "fileCabinetId", "type" : "String", "desc" : "" }
+            { "name" : "configKey", "type" : "String", "desc" : "REST client configuration key identifying the DocuWare connection from rest-clients.yaml" },
+            { "name" : "documentId", "type" : "String", "desc" : "The unique identifier of the document to download" },
+            { "name" : "fileCabinetId", "type" : "String", "desc" : "The unique identifier of the file cabinet containing the document" }
           ],
           "map" : {
             "out.checkOutAsStream" : "true",
@@ -231,12 +231,12 @@
         "connector"
       ],
       "visual" : {
-        "at" : { "x" : 96, "y" : 160 },
+        "at" : { "x" : 744, "y" : 944 },
         "labelOffset" : { "x" : 81, "y" : 41 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
-        { "id" : "f0", "to" : "f73", "via" : [ { "x" : 144, "y" : 160 }, { "x" : 144, "y" : 112 } ] }
+        { "id" : "f0", "to" : "f73", "via" : [ { "x" : 792, "y" : 944 }, { "x" : 792, "y" : 896 } ] }
       ]
     }, {
       "id" : "f2",
@@ -246,12 +246,12 @@
         "signature" : "checkInFromFileSystem",
         "input" : {
           "params" : [
-            { "name" : "configKey", "type" : "String", "desc" : "" },
-            { "name" : "documentId", "type" : "String", "desc" : "" },
-            { "name" : "fileCabinetId", "type" : "String", "desc" : "" },
-            { "name" : "fileName", "type" : "String", "desc" : "" },
-            { "name" : "stream", "type" : "java.io.InputStream", "desc" : "" },
-            { "name" : "checkInParameters", "type" : "com.axonivy.connector.docuware.connector.DocuWareCheckInActionParameters", "desc" : "" }
+            { "name" : "configKey", "type" : "String", "desc" : "REST client configuration key identifying the DocuWare connection from rest-clients.yaml" },
+            { "name" : "documentId", "type" : "String", "desc" : "The unique identifier of the target document for check-in" },
+            { "name" : "fileCabinetId", "type" : "String", "desc" : "The unique identifier of the file cabinet containing the document" },
+            { "name" : "fileName", "type" : "String", "desc" : "Name to use for the uploaded file" },
+            { "name" : "stream", "type" : "java.io.InputStream", "desc" : "File content stream to upload to DocuWare" },
+            { "name" : "checkInParameters", "type" : "com.axonivy.connector.docuware.connector.DocuWareCheckInActionParameters", "desc" : "Check-in metadata (document version, return behavior, comments)" }
           ],
           "map" : {
             "out.checkInParameters" : "param.#checkInParameters",
@@ -276,12 +276,228 @@
         "connector"
       ],
       "visual" : {
-        "at" : { "x" : 96, "y" : 480 },
+        "at" : { "x" : 744, "y" : 1264 },
         "labelOffset" : { "x" : 209, "y" : 41 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
-        { "id" : "f6", "to" : "f71", "via" : [ { "x" : 144, "y" : 480 }, { "x" : 144, "y" : 416 } ] }
+        { "id" : "f6", "to" : "f71", "via" : [ { "x" : 792, "y" : 1264 }, { "x" : 792, "y" : 1200 } ] }
+      ]
+    }, {
+      "id" : "f74",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**Description",
+        "This API endpoint is used to checkout a document from a file cabinet and save it to the file system. "
+      ],
+      "visual" : {
+        "at" : { "x" : 304, "y" : 624 },
+        "size" : { "width" : 520, "height" : 74 }
+      }
+    }, {
+      "id" : "f75",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**Integration",
+        "checkOutToFileSystem (Basic - Download to File)",
+        "- Downloads a document from DocuWare and writes it to disk as a File.",
+        "- Calls the REST endpoint /FileCabinets/{FileCabinetId}/Documents/{DocumentId}/CheckOutToFileSystem.",
+        "- Returns a local File containing the downloaded content.",
+        "",
+        "Parameters:",
+        "- configKey (String): REST client configuration key to identify the DocuWare server connection from rest-clients.yaml",
+        "- fileCabinetId (String): The unique identifier of the file cabinet where the document resides",
+        "- documentId (String): The unique identifier of the document where the stamp will be applied",
+        "",
+        "",
+        "- Default / Return: Returns a File written to disk; use the stream overload to avoid creating temp files."
+      ],
+      "visual" : {
+        "at" : { "x" : 304, "y" : 864 },
+        "size" : { "width" : 520, "height" : 314 },
+        "color" : "NodeStyle4"
+      },
+      "connect" : [
+        { "id" : "f79", "to" : "f10" }
+      ]
+    }, {
+      "id" : "f76",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**Integration",
+        "checkOutToFileSystemAsStream (Basic - Stream Download)",
+        "- Downloads a document from DocuWare and returns it as an InputStream plus fileName (no temp file).",
+        "- Calls the REST endpoint /FileCabinets/{FileCabinetId}/Documents/{DocumentId}/CheckOutToFileSystem.",
+        "- Useful for in-memory processing or direct streaming to another service.",
+        "",
+        "Parameters:",
+        "- configKey (String): REST client configuration key to identify the DocuWare server connection from rest-clients.yaml",
+        "- fileCabinetId (String): The unique identifier of the file cabinet where the document resides",
+        "- documentId (String): The unique identifier of the document where the stamp will be applied",
+        "",
+        "",
+        "- Default / Return: Returns InputStream and fileName (no File created)."
+      ],
+      "visual" : {
+        "at" : { "x" : 312, "y" : 1216 },
+        "size" : { "width" : 520, "height" : 314 },
+        "color" : "NodeStyle4"
+      },
+      "connect" : [
+        { "id" : "f80", "to" : "f5" }
+      ]
+    }, {
+      "id" : "f77",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**Integration",
+        "checkInFromFileSystem (File overload - Multipart Upload)",
+        "- Performs a multipart POST to /FileCabinets/{FileCabinetId}/Documents/{DocumentId}/CheckInFromFileSystem.",
+        "- Multipart includes serialized CheckIn JSON (DocuWareCheckInActionParameters) and the File[] content.",
+        "- Uses DocuWareService.checkInFromFileSystem(...) internally to perform the upload and parse the result.",
+        "",
+        "Parameters:",
+        "- configKey (String): REST client configuration key to identify the DocuWare server connection from rest-clients.yaml",
+        "- fileCabinetId (String): The unique identifier of the file cabinet where the document resides",
+        "- documentId (String): The unique identifier of the document where the stamp will be applied",
+        "- checkInParameters (DocuWareCheckInActionParameters): Check-in metadata (document version, CheckInReturnDocument enum, comments)",
+        "- file (File): Local file to upload",
+        "",
+        "- Return: com.docuware.dev.schema._public.services.platform.Document — DocuWare Document object with updated metadata on success."
+      ],
+      "visual" : {
+        "at" : { "x" : 576, "y" : 1583 },
+        "size" : { "width" : 516, "height" : 389 },
+        "color" : "NodeStyle4"
+      },
+      "connect" : [
+        { "id" : "f81", "to" : "f15" }
+      ]
+    }, {
+      "id" : "f78",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**Integration",
+        "checkInFromFileSystem (Stream overload - Multipart Upload)",
+        "- Performs a multipart POST to /FileCabinets/{FileCabinetId}/Documents/{DocumentId}/CheckInFromFileSystem.",
+        "- Multipart includes serialized CheckIn JSON (DocuWareCheckInActionParameters) and accepts an InputStream and fileName.",
+        "- Uses DocuWareService.checkInFromFileSystem(...) internally to perform the upload and parse the result.",
+        "- Preferred when you already hold the file in memory or want to avoid disk IO.",
+        "",
+        "Parameters:",
+        "- configKey (String): REST client configuration key to identify the DocuWare server connection from rest-clients.yaml",
+        "- fileCabinetId (String): The unique identifier of the file cabinet where the document resides",
+        "- documentId (String): The unique identifier of the document where the stamp will be applied",
+        "- checkInParameters (DocuWareCheckInActionParameters): Check-in metadata (document version, CheckInReturnDocument enum, comments)",
+        "- fileName (String): Name to use for the uploaded file",
+        "- stream (InputStream): File content stream",
+        "",
+        "- Return: com.docuware.dev.schema._public.services.platform.Document — updated document metadata."
+      ],
+      "visual" : {
+        "at" : { "x" : 1120, "y" : 1583 },
+        "size" : { "width" : 516, "height" : 389 },
+        "color" : "NodeStyle4"
+      },
+      "connect" : [
+        { "id" : "f82", "to" : "f2" }
+      ]
+    }, {
+      "id" : "f83",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**How to integrate",
+        "Add Call: Add a Call element to your process that invokes CheckinService. Use one of the exposed signatures:",
+        "",
+        "checkOutToFileSystem(String, String, String) — download file to workspace File",
+        "checkOutToFileSystemAsStream(String, String, String) — download file as InputStream + filename",
+        "checkInFromFileSystem(String, String, DocuWareCheckInActionParameters, String, File) — check in from a local File",
+        "checkInFromFileSystem(String, String, String, String, InputStream, DocuWareCheckInActionParameters) — check in from a stream",
+        "",
+        "Prepare inputs:",
+        "",
+        "- configKey (String): REST client config key from config/rest-clients.yaml (the DocuWare UUID).",
+        "- fileCabinetId (String): target file cabinet ID.",
+        "- documentId (String): target document ID.",
+        "- file (File) or stream + fileName: file contents to check in (depending on overload).",
+        "- checkInParameters (DocuWareCheckInActionParameters): contains:",
+        "+ DocumentVersion / major & minor — version to use for the new check-in",
+        "+ CheckInReturnDocument — e.g., CHECKED_IN",
+        "+ Comments — optional check-in comment",
+        "",
+        "What the process does:",
+        "",
+        "- For checkout: sends POST to /FileCabinets/{FileCabinetId}/Documents/{DocumentId}/CheckOutToFileSystem. If checkOutAsStream is true the result is returned as InputStream + fileName; otherwise a File is created and populated.",
+        "- For checkin: builds a multipart request with:",
+        "+ CheckIn JSON (serialized DocuWareCheckInActionParameters)",
+        "+ File[] content (the file stream or file)",
+        "- The actual implementation lives in DocuWareService:",
+        "+ checkInFromFileSystem(WebTarget target, DocuWareCheckInActionParameters params, String fileName, InputStream file)",
+        "",
+        "Return values:",
+        "",
+        "+ Checkout (basic): returns a File (downloaded file).",
+        "+ Checkout (stream): returns InputStream + fileName.",
+        "+ Checkin: returns com.docuware.dev.schema._public.services.platform.Document on success.",
+        "",
+        "After success:",
+        "",
+        "+ The document in DocuWare is checked in with the provided version and comments.",
+        "+ Inspect the returned Document to confirm metadata (version, id, links).",
+        "",
+        "Example (conceptual):",
+        "",
+        "- Set variables:",
+        "+ configKey = \"02d1eec1-32e9-4316-afc3-793448486203\"",
+        "+ fileCabinetId = \"FC-123\"",
+        "+ documentId = \"DOC-456\"",
+        "+ checkInParameters = DocuWareService.get().createCheckInActionParameters(CheckInReturnDocument.CHECKED_IN, \"Checked in by process\", 1, 0)",
+        "+ file = new File(\"signed.pdf\", true) or read stream into InputStream stream",
+        "- Call CheckinService:checkInFromFileSystem(...) with the matching signature.",
+        "- After return, read result.document for the updated Document object.",
+        "",
+        "Notes & tips:",
+        "",
+        "- Use checkOutToFileSystemAsStream when you want to avoid creating temporary files.",
+        "- Use DocuWareService.createCheckInActionParameters(...) helper to construct proper DocuWareCheckInActionParameters.",
+        "- Ensure config/rest-clients.yaml DocuWare entry is configured (URL, auth features).",
+        "",
+        "Summary: documented how to call CheckinService (signatures, inputs, behavior, returns) and provided a concise example and tips.",
+        "",
+        "Task completed: wrote integration documentation for CheckinService."
+      ],
+      "visual" : {
+        "at" : { "x" : 1807, "y" : 1195 },
+        "size" : { "width" : 785, "height" : 1162 },
+        "color" : "NodeStyle4"
+      }
+    }, {
+      "id" : "f84",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**Check out",
+        "Call REST Client APIs from Docuware."
+      ],
+      "visual" : {
+        "at" : { "x" : 1000, "y" : 735 },
+        "size" : { "width" : 276, "height" : 45 }
+      },
+      "connect" : [
+        { "id" : "f85", "to" : "f73" }
+      ]
+    }, {
+      "id" : "f86",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**Check in",
+        "Call REST Client APIs from Docuware."
+      ],
+      "visual" : {
+        "at" : { "x" : 1128, "y" : 1031 },
+        "size" : { "width" : 276, "height" : 45 }
+      },
+      "connect" : [
+        { "id" : "f87", "to" : "f71" }
       ]
     } ]
 }

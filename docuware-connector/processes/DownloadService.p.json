@@ -9,7 +9,7 @@
       "id" : "f1",
       "type" : "CallSubEnd",
       "visual" : {
-        "at" : { "x" : 384, "y" : 64 }
+        "at" : { "x" : 1520, "y" : 344 }
       }
     }, {
       "id" : "f5",
@@ -37,7 +37,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 240, "y" : 64 },
+        "at" : { "x" : 1376, "y" : 344 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -47,7 +47,7 @@
       "id" : "f12",
       "type" : "CallSubEnd",
       "visual" : {
-        "at" : { "x" : 384, "y" : 224 }
+        "at" : { "x" : 1520, "y" : 504 }
       }
     }, {
       "id" : "f17",
@@ -95,7 +95,7 @@
         ]
       },
       "visual" : {
-        "at" : { "x" : 240, "y" : 224 },
+        "at" : { "x" : 1376, "y" : 504 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -109,9 +109,9 @@
         "signature" : "getDocument",
         "input" : {
           "params" : [
-            { "name" : "configKey", "type" : "String", "desc" : "" },
-            { "name" : "documentId", "type" : "String", "desc" : "" },
-            { "name" : "fileCabinetId", "type" : "String", "desc" : "" }
+            { "name" : "configKey", "type" : "String", "desc" : "Configuration key for the DocuWare target instance." },
+            { "name" : "documentId", "type" : "String", "desc" : "Identifier of the document to retrieve." },
+            { "name" : "fileCabinetId", "type" : "String", "desc" : "Identifier of the file cabinet containing the document." }
           ],
           "map" : {
             "out.configKey" : "param.#configKey",
@@ -121,7 +121,7 @@
         },
         "result" : {
           "params" : [
-            { "name" : "document", "type" : "com.docuware.dev.schema._public.services.platform.Document", "desc" : "" }
+            { "name" : "document", "type" : "com.docuware.dev.schema._public.services.platform.Document", "desc" : "Retrieved document metadata and attributes." }
           ],
           "map" : {
             "result.document" : "in.#document"
@@ -132,7 +132,7 @@
         "connector"
       ],
       "visual" : {
-        "at" : { "x" : 96, "y" : 64 },
+        "at" : { "x" : 1232, "y" : 344 },
         "labelOffset" : { "x" : 49, "y" : -31 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
@@ -147,9 +147,9 @@
         "signature" : "downloadFile",
         "input" : {
           "params" : [
-            { "name" : "configKey", "type" : "String", "desc" : "" },
-            { "name" : "documentId", "type" : "String", "desc" : "" },
-            { "name" : "fileCabinetId", "type" : "String", "desc" : "" }
+            { "name" : "configKey", "type" : "String", "desc" : "Configuration key for the DocuWare target instance." },
+            { "name" : "documentId", "type" : "String", "desc" : "Identifier of the document to download." },
+            { "name" : "fileCabinetId", "type" : "String", "desc" : "Identifier of the file cabinet containing the document." }
           ],
           "map" : {
             "out.configKey" : "param.#configKey",
@@ -159,7 +159,7 @@
         },
         "result" : {
           "params" : [
-            { "name" : "file", "type" : "File", "desc" : "" }
+            { "name" : "file", "type" : "File", "desc" : "Downloaded output file saved to the configured download folder." }
           ],
           "map" : {
             "result.file" : "in.#file"
@@ -170,7 +170,7 @@
         "connector"
       ],
       "visual" : {
-        "at" : { "x" : 96, "y" : 224 },
+        "at" : { "x" : 1232, "y" : 504 },
         "labelOffset" : { "x" : 41, "y" : -39 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
@@ -185,9 +185,9 @@
         "signature" : "downloadFileWithAllAnnotations",
         "input" : {
           "params" : [
-            { "name" : "configKey", "type" : "String", "desc" : "" },
-            { "name" : "documentId", "type" : "String", "desc" : "" },
-            { "name" : "fileCabinetId", "type" : "String", "desc" : "" }
+            { "name" : "configKey", "type" : "String", "desc" : "Configuration key for the DocuWare target instance." },
+            { "name" : "documentId", "type" : "String", "desc" : "Identifier of the document to download with annotations." },
+            { "name" : "fileCabinetId", "type" : "String", "desc" : "Identifier of the file cabinet containing the document." }
           ],
           "map" : {
             "out.configKey" : "param.#configKey",
@@ -197,7 +197,7 @@
         },
         "result" : {
           "params" : [
-            { "name" : "file", "type" : "File", "desc" : "" }
+            { "name" : "file", "type" : "File", "desc" : "Downloaded output file including all annotations." }
           ],
           "map" : {
             "result.file" : "in.#file"
@@ -208,7 +208,7 @@
         "connector"
       ],
       "visual" : {
-        "at" : { "x" : 96, "y" : 376 },
+        "at" : { "x" : 1232, "y" : 656 },
         "labelOffset" : { "x" : 81, "y" : -39 },
         "icon" : "res:/webContent/icons/docuware.png?small"
       },
@@ -261,7 +261,7 @@
         ]
       },
       "visual" : {
-        "at" : { "x" : 240, "y" : 376 },
+        "at" : { "x" : 1376, "y" : 656 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -271,7 +271,7 @@
       "id" : "f4",
       "type" : "CallSubEnd",
       "visual" : {
-        "at" : { "x" : 384, "y" : 376 }
+        "at" : { "x" : 1520, "y" : 656 }
       }
     }, {
       "id" : "f8",
@@ -281,9 +281,9 @@
         "signature" : "downloadFileAsPDF",
         "input" : {
           "params" : [
-            { "name" : "configKey", "type" : "String", "desc" : "" },
-            { "name" : "documentId", "type" : "String", "desc" : "" },
-            { "name" : "fileCabinetId", "type" : "String", "desc" : "" }
+            { "name" : "configKey", "type" : "String", "desc" : "Configuration key for the DocuWare target instance." },
+            { "name" : "documentId", "type" : "String", "desc" : "Identifier of the document to download as PDF." },
+            { "name" : "fileCabinetId", "type" : "String", "desc" : "Identifier of the file cabinet containing the document." }
           ],
           "map" : {
             "out.configKey" : "param.#configKey",
@@ -293,7 +293,7 @@
         },
         "result" : {
           "params" : [
-            { "name" : "file", "type" : "File", "desc" : "" }
+            { "name" : "file", "type" : "File", "desc" : "Downloaded PDF file generated from the specified document." }
           ],
           "map" : {
             "result.file" : "in.#file"
@@ -304,7 +304,7 @@
         "connector"
       ],
       "visual" : {
-        "at" : { "x" : 96, "y" : 560 },
+        "at" : { "x" : 1232, "y" : 840 },
         "labelOffset" : { "x" : 81, "y" : -39 },
         "description" : "download file with target type as PDF",
         "icon" : "res:/webContent/icons/docuware.png?small"
@@ -358,7 +358,7 @@
         ]
       },
       "visual" : {
-        "at" : { "x" : 240, "y" : 560 },
+        "at" : { "x" : 1376, "y" : 840 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -368,7 +368,303 @@
       "id" : "f13",
       "type" : "CallSubEnd",
       "visual" : {
-        "at" : { "x" : 384, "y" : 560 }
+        "at" : { "x" : 1520, "y" : 840 }
       }
+    }, {
+      "id" : "f25",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**Description",
+        "This API endpoint is used to download a file from a specific document in a file cabinet. The file is downloaded in the format specified by the \"TargetFileType\" parameter."
+      ],
+      "visual" : {
+        "at" : { "x" : 688, "y" : 255 },
+        "size" : { "width" : 540, "height" : 77 }
+      }
+    }, {
+      "id" : "f26",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**Integration",
+        "getDocument(String, String, String)",
+        "",
+        "- Retrieves document metadata from a DocuWare file cabinet.",
+        "- Calls REST endpoint /FileCabinets/{FileCabinetId}/Documents/{DocumentId} via the get document RestClientCall in DownloadService.p.json.",
+        "- Maps FileCabinetId and DocumentId into the request path from input parameters.",
+        "- Sends configKey as REST client configuration via properties.configKey.",
+        "- Maps the REST response into out.document with type com.docuware.dev.schema._public.services.platform.Document.",
+        "- Returns the retrieved document metadata as result.document.",
+        "",
+        "Parameters:",
+        "- configKey (String): REST client configuration key to identify the DocuWare server connection from rest-clients.yaml",
+        "- fileCabinetId (String): The unique identifier of the file cabinet containing the document",
+        "- documentId (String): The unique identifier of the document to move",
+        "",
+        "- Default / Return: Returns com.docuware.dev.schema._public.services.platform.Document via result.document."
+      ],
+      "visual" : {
+        "at" : { "x" : 688, "y" : 456 },
+        "size" : { "width" : 544, "height" : 304 },
+        "color" : "NodeStyle4"
+      },
+      "connect" : [
+        { "id" : "f28", "to" : "f10" }
+      ]
+    }, {
+      "id" : "f27",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**Integration",
+        "downloadFile(String, String, String)",
+        "",
+        "- Downloads the raw document file from DocuWare.",
+        "- Calls REST endpoint /FileCabinets/{FileCabinetId}/Documents/{DocumentId}/FileDownload via the download file RestClientCall.",
+        "- Maps FileCabinetId and DocumentId into the request path from input parameters.",
+        "- Sends configKey as REST client configuration via properties.configKey.",
+        "- Uses DocuWareService.get().downloadFile(client, in.configuration, in.downloadFolder); to perform the download and populate in.file / in.error.",
+        "- In the response entity script, extracts the filename from response headers and writes the binary payload into the downloaded File object.",
+        "",
+        "Parameters:",
+        "- configKey (String): REST client configuration key to identify the DocuWare server connection from rest-clients.yaml",
+        "- fileCabinetId (String): The unique identifier of the file cabinet containing the document",
+        "- documentId (String): The unique identifier of the document to move",
+        "",
+        "- Default / Return: Returns a File via result.file."
+      ],
+      "visual" : {
+        "at" : { "x" : 688, "y" : 792 },
+        "size" : { "width" : 544, "height" : 312 },
+        "color" : "NodeStyle4"
+      },
+      "connect" : [
+        { "id" : "f29", "to" : "f22" }
+      ]
+    }, {
+      "id" : "f30",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**Integration",
+        "downloadFileWithAllAnnotations(String, String, String)",
+        "",
+        "- Downloads the document as a PDF including all annotations.",
+        "- Calls REST endpoint /FileCabinets/{FileCabinetId}/Documents/{DocumentId}/FileDownload via the download file RestClientCall.",
+        "- Maps FileCabinetId and DocumentId into the request path from input parameters.",
+        "- Sets query parameters targetFileType = \"PDF\" and keepAnnotations = \"true\".",
+        "- Sends configKey as REST client configuration via properties.configKey.",
+        "- Uses DocuWareService.get().downloadFile(client, in.configuration, in.downloadFolder); to perform the download, then writes the response bytes into in.file using the filename from response headers.",
+        "",
+        "Parameters:",
+        "- configKey (String): REST client configuration key to identify the DocuWare server connection from rest-clients.yaml",
+        "- fileCabinetId (String): The unique identifier of the file cabinet containing the document",
+        "- documentId (String): The unique identifier of the document to move",
+        "",
+        "- Default / Return: Returns a File via result.file."
+      ],
+      "visual" : {
+        "at" : { "x" : 864, "y" : 1128 },
+        "size" : { "width" : 544, "height" : 312 },
+        "color" : "NodeStyle4"
+      },
+      "connect" : [
+        { "id" : "f32", "to" : "f0" }
+      ]
+    }, {
+      "id" : "f31",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**Integration",
+        "downloadFileAsPDF(String, String, String)",
+        "",
+        "- Downloads the document as a PDF without explicitly requesting annotations.",
+        "- Calls REST endpoint /FileCabinets/{FileCabinetId}/Documents/{DocumentId}/FileDownload via the download file RestClientCall.",
+        "- Maps FileCabinetId and DocumentId into the request path from input parameters.",
+        "- Sets query parameter targetFileType = \"PDF\" and leaves keepAnnotations empty.",
+        "- Sends configKey as REST client configuration via properties.configKey.",
+        "- Uses DocuWareService.get().downloadFile(client, in.configuration, in.downloadFolder); to perform the download, then writes the response bytes into in.file.",
+        "",
+        "Parameters:",
+        "- configKey (String): REST client configuration key to identify the DocuWare server connection from rest-clients.yaml",
+        "- fileCabinetId (String): The unique identifier of the file cabinet containing the document",
+        "- documentId (String): The unique identifier of the document to move",
+        "",
+        "- Default / Return: Returns a File via result.file."
+      ],
+      "visual" : {
+        "at" : { "x" : 1456, "y" : 1128 },
+        "size" : { "width" : 544, "height" : 312 },
+        "color" : "NodeStyle4"
+      },
+      "connect" : [
+        { "id" : "f33", "to" : "f8" }
+      ]
+    }, {
+      "id" : "f34",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**How to integrate",
+        "",
+        "- Add a Call element to your process that invokes the DownloadService callable sub-process using one of these signatures:",
+        "getDocument(String, String, String)",
+        "downloadFile(String, String, String)",
+        "downloadFileWithAllAnnotations(String, String, String)",
+        "downloadFileAsPDF(String, String, String)",
+        "",
+        "Prepare data",
+        "- Populate the input parameters before calling:",
+        "+ configKey: REST client configuration key matching the entry in config/rest-clients.yaml",
+        "+ documentId: ID of the document to retrieve or download",
+        "+ fileCabinetId: ID of the file cabinet containing the document",
+        "",
+        "Service behaviors",
+        "",
+        "getDocument(String, String, String)",
+        "",
+        "- Retrieves document metadata from DocuWare.",
+        "- Calls REST endpoint:",
+        "+ GET /FileCabinets/{FileCabinetId}/Documents/{DocumentId}",
+        "- Maps:",
+        "+ fileCabinetId → FileCabinetId path template",
+        "+ documentId → DocumentId path template",
+        "+ configKey → properties.configKey",
+        "- Response:",
+        "+ com.docuware.dev.schema._public.services.platform.Document",
+        "+ mapped to result.document",
+        "- Use this when you only need document metadata and attributes.",
+        "",
+        "downloadFile(String, String, String)",
+        "",
+        "- Downloads the raw document file content.",
+        "- Calls REST endpoint:",
+        "+ GET /FileCabinets/{FileCabinetId}/Documents/{DocumentId}/FileDownload",
+        "- Maps:",
+        "+ fileCabinetId → FileCabinetId",
+        "+ documentId → DocumentId",
+        "+ configKey → properties.configKey",
+        "- Request query parameters:",
+        "+ targetFileType = \"\"",
+        "+ keepAnnotations = \"\"",
+        "- Implementation detail:",
+        "+ DocuWareService.get().downloadFile(client, in.configuration, in.downloadFolder);",
+        "+ response script extracts filename from response headers and writes binary payload into in.file",
+        "- Return:",
+        "+ File via result.file",
+        "",
+        "downloadFileWithAllAnnotations(String, String, String)",
+        "",
+        "- Downloads the document as PDF including annotations.",
+        "- Calls REST endpoint:",
+        "+ GET /FileCabinets/{FileCabinetId}/Documents/{DocumentId}/FileDownload",
+        "- Maps:",
+        "+ fileCabinetId → FileCabinetId",
+        "+ documentId → DocumentId",
+        "+ configKey → properties.configKey",
+        "- Request query parameters:",
+        "+ targetFileType = \"PDF\"",
+        "+ keepAnnotations = \"true\"",
+        "- Implementation:",
+        "+ Calls DocuWareService.get().downloadFile(...)",
+        "+ writes downloaded bytes into in.file",
+        "- Return:",
+        "+ File via result.file",
+        "",
+        "downloadFileAsPDF(String, String, String)",
+        "",
+        "- Downloads the document as PDF without explicit annotation request.",
+        "- Calls REST endpoint:",
+        "+ GET /FileCabinets/{FileCabinetId}/Documents/{DocumentId}/FileDownload",
+        "Maps:",
+        "+ fileCabinetId → FileCabinetId",
+        "+ documentId → DocumentId",
+        "+ configKey → properties.configKey",
+        "- Request query parameters:",
+        "+ targetFileType = \"PDF\"",
+        "+ keepAnnotations = \"\"",
+        "- Implementation:",
+        "+ Uses DocuWareService.get().downloadFile(...)",
+        "+ writes response bytes into in.file",
+        "- Return:",
+        "+ File via result.file",
+        "",
+        "Example",
+        "- Set variables:",
+        "configKey = \"02d1eec1-32e9-4316-afc3-793448486203\"",
+        "fileCabinetId = \"FC-123\"",
+        "documentId = \"DOC-456\"",
+        "- Call the matching DownloadService sub-process signature",
+        "- After the call returns:",
+        "+ read result.document for metadata when using getDocument(...)",
+        "+ read result.file for the downloaded file when using any download method",
+        "",
+        "Notes & tips",
+        "- configKey must match the REST client entry so URL and credentials are correct.",
+        "- fileCabinetId and documentId must refer to valid DocuWare entities.",
+        "- downloadFileWithAllAnnotations(...) forces PDF with annotations.",
+        "- downloadFileAsPDF(...) forces PDF but leaves annotation handling empty.",
+        "- The download methods use DocuWareService.get().downloadFile(...) to handle the file download and filename extraction.",
+        "",
+        "Summary",
+        "- Add a Call to DownloadService with the correct signature, set configKey, documentId, and fileCabinetId, let the process invoke the appropriate REST endpoint, and then use result.document or result.file for the returned document data."
+      ],
+      "visual" : {
+        "at" : { "x" : 2172, "y" : 1041 },
+        "size" : { "width" : 807, "height" : 1517 },
+        "color" : "NodeStyle4"
+      }
+    }, {
+      "id" : "f35",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**get document",
+        "Call REST Client APIs from Docuware."
+      ],
+      "visual" : {
+        "at" : { "x" : 1480, "y" : 191 },
+        "size" : { "width" : 276, "height" : 45 }
+      },
+      "connect" : [
+        { "id" : "f36", "to" : "f5" }
+      ]
+    }, {
+      "id" : "f37",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**download file",
+        "Call REST Client APIs from Docuware."
+      ],
+      "visual" : {
+        "at" : { "x" : 1584, "y" : 415 },
+        "size" : { "width" : 276, "height" : 45 }
+      },
+      "connect" : [
+        { "id" : "f38", "to" : "f17" }
+      ]
+    }, {
+      "id" : "f39",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**download file",
+        "Call REST Client APIs from Docuware."
+      ],
+      "visual" : {
+        "at" : { "x" : 1584, "y" : 583 },
+        "size" : { "width" : 276, "height" : 45 }
+      },
+      "connect" : [
+        { "id" : "f40", "to" : "f3" }
+      ]
+    }, {
+      "id" : "f41",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**download file",
+        "Call REST Client APIs from Docuware."
+      ],
+      "visual" : {
+        "at" : { "x" : 1584, "y" : 743 },
+        "size" : { "width" : 276, "height" : 45 }
+      },
+      "connect" : [
+        { "id" : "f42", "to" : "f9" }
+      ]
     } ]
 }

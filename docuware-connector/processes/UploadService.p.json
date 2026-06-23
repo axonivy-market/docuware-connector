@@ -9,7 +9,7 @@
       "id" : "f1",
       "type" : "CallSubEnd",
       "visual" : {
-        "at" : { "x" : 432, "y" : 144 }
+        "at" : { "x" : 960, "y" : 480 }
       }
     }, {
       "id" : "f3",
@@ -53,7 +53,7 @@
         ]
       },
       "visual" : {
-        "at" : { "x" : 296, "y" : 144 },
+        "at" : { "x" : 824, "y" : 480 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -67,11 +67,11 @@
         "signature" : "uploadFileWithIndexFields",
         "input" : {
           "params" : [
-            { "name" : "configKey", "type" : "String", "desc" : "" },
-            { "name" : "fileCabinetId", "type" : "String", "desc" : "" },
-            { "name" : "file", "type" : "File", "desc" : "" },
-            { "name" : "indexFields", "type" : "List<com.axonivy.connector.docuware.connector.DocuWareProperty>", "desc" : "" },
-            { "name" : "storeDialogId", "type" : "String", "desc" : "" }
+            { "name" : "configKey", "type" : "String", "desc" : "REST client configuration key identifying the DocuWare connection from rest-clients.yaml" },
+            { "name" : "fileCabinetId", "type" : "String", "desc" : "The unique identifier of the file cabinet where the document should be uploaded" },
+            { "name" : "file", "type" : "File", "desc" : "Local file object whose content is uploaded to the selected DocuWare file cabinet" },
+            { "name" : "indexFields", "type" : "List<com.axonivy.connector.docuware.connector.DocuWareProperty>", "desc" : "List of DocuWare index field assignments to store with the uploaded document" },
+            { "name" : "storeDialogId", "type" : "String", "desc" : "Optional store dialog identifier used by DocuWare when storing the document" }
           ],
           "map" : {
             "out.configKey" : "param.#configKey",
@@ -84,7 +84,7 @@
         },
         "result" : {
           "params" : [
-            { "name" : "document", "type" : "com.docuware.dev.schema._public.services.platform.Document", "desc" : "" }
+            { "name" : "document", "type" : "com.docuware.dev.schema._public.services.platform.Document", "desc" : "Created DocuWare document metadata returned after successful upload" }
           ],
           "map" : {
             "result.document" : "in.#document"
@@ -95,12 +95,12 @@
         "connector"
       ],
       "visual" : {
-        "at" : { "x" : 96, "y" : 208 },
+        "at" : { "x" : 624, "y" : 544 },
         "labelOffset" : { "x" : 201, "y" : 49 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
-        { "id" : "f16", "to" : "f3", "via" : [ { "x" : 160, "y" : 208 }, { "x" : 160, "y" : 144 } ] }
+        { "id" : "f16", "to" : "f3", "via" : [ { "x" : 688, "y" : 544 }, { "x" : 688, "y" : 480 } ] }
       ]
     }, {
       "id" : "f0",
@@ -110,12 +110,12 @@
         "signature" : "uploadFileWithIndexFields",
         "input" : {
           "params" : [
-            { "name" : "configKey", "type" : "String", "desc" : "" },
-            { "name" : "fileCabinetId", "type" : "String", "desc" : "" },
-            { "name" : "fileStream", "type" : "java.io.InputStream", "desc" : "" },
-            { "name" : "fileName", "type" : "String", "desc" : "" },
-            { "name" : "indexFields", "type" : "List<com.axonivy.connector.docuware.connector.DocuWareProperty>", "desc" : "" },
-            { "name" : "storeDialogId", "type" : "String", "desc" : "" }
+            { "name" : "configKey", "type" : "String", "desc" : "REST client configuration key identifying the DocuWare connection from rest-clients.yaml" },
+            { "name" : "fileCabinetId", "type" : "String", "desc" : "The unique identifier of the file cabinet where the document should be uploaded" },
+            { "name" : "fileStream", "type" : "java.io.InputStream", "desc" : "Input stream containing the binary file data to upload" },
+            { "name" : "fileName", "type" : "String", "desc" : "Filename to assign to the uploaded document" },
+            { "name" : "indexFields", "type" : "List<com.axonivy.connector.docuware.connector.DocuWareProperty>", "desc" : "List of DocuWare index field assignments to store with the uploaded document" },
+            { "name" : "storeDialogId", "type" : "String", "desc" : "Optional store dialog identifier used by DocuWare when storing the document" }
           ],
           "map" : {
             "out.configKey" : "param.#configKey",
@@ -128,7 +128,7 @@
         },
         "result" : {
           "params" : [
-            { "name" : "document", "type" : "com.docuware.dev.schema._public.services.platform.Document", "desc" : "" }
+            { "name" : "document", "type" : "com.docuware.dev.schema._public.services.platform.Document", "desc" : "Created DocuWare document metadata returned after successful upload" }
           ],
           "map" : {
             "result.document" : "in.#document"
@@ -139,12 +139,158 @@
         "connector"
       ],
       "visual" : {
-        "at" : { "x" : 96, "y" : 80 },
+        "at" : { "x" : 624, "y" : 416 },
         "labelOffset" : { "x" : 273, "y" : -39 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
-        { "id" : "f6", "to" : "f3", "via" : [ { "x" : 160, "y" : 80 }, { "x" : 160, "y" : 144 } ] }
+        { "id" : "f6", "to" : "f3", "via" : [ { "x" : 688, "y" : 416 }, { "x" : 688, "y" : 480 } ] }
+      ]
+    }, {
+      "id" : "f17",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**Description",
+        "This HTTP POST request is used to add a document to a specific file cabinet in the system."
+      ],
+      "visual" : {
+        "at" : { "x" : 272, "y" : 184 },
+        "size" : { "width" : 520, "height" : 74 }
+      }
+    }, {
+      "id" : "f18",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**Integration",
+        "uploadFileWithIndexFields(String,String,File,List<DocuWareProperty>,String)",
+        "",
+        "- Uploads a local File to DocuWare with index field metadata.",
+        "- Calls REST endpoint /FileCabinets/{FileCabinetId}/Documents via the upload REST client call in UploadService.p.json.",
+        "- Uses file.getName() as the uploaded filename and sends indexFields as Properties.json in the multipart upload.",
+        "- Returns the created DocuWare Document.",
+        "",
+        "Parameters:",
+        "- configKey (String): REST client configuration key to identify the DocuWare server connection from rest-clients.yaml",
+        "- fileCabinetId (String): The unique identifier of the file cabinet where the document resides",
+        "- file (File): Local file to upload; the process converts it to a stream and uses its name for upload",
+        "- indexFields (List<DocuWareProperty>): Index field values to store with the uploaded document",
+        "- storeDialogId (String): Optional store dialog ID used by DocuWare when storing the document",
+        "",
+        "",
+        "- Default / Return: Returns a DocuWare Document object containing metadata from the created document."
+      ],
+      "visual" : {
+        "at" : { "x" : 272, "y" : 400 },
+        "size" : { "width" : 520, "height" : 314 },
+        "color" : "NodeStyle4"
+      },
+      "connect" : [
+        { "id" : "f20", "to" : "f0" }
+      ]
+    }, {
+      "id" : "f19",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**Integration",
+        "uploadFileWithIndexFields(String,String,InputStream,String,List<DocuWareProperty>,String)",
+        "",
+        "- Uploads file content from an InputStream to DocuWare with index field metadata.",
+        "- Calls the same REST endpoint /FileCabinets/{FileCabinetId}/Documents.",
+        "- Uses fileName to name the uploaded file and sends indexFields as Properties.json in the multipart upload.",
+        "- Useful when the source file is already available as a stream instead of a local File.",
+        "",
+        "Parameters:",
+        "- configKey (String): REST client configuration key to identify the DocuWare server connection from rest-clients.yaml",
+        "- fileCabinetId (String): The unique identifier of the file cabinet where the document resides",
+        "- fileStream (InputStream): Input stream containing the file content to upload",
+        "- fileName (String): Name to assign to the uploaded file",
+        "- indexFields (List<DocuWareProperty>): Index field values to store with the uploaded document",
+        "- storeDialogId (String): Optional store dialog ID used by DocuWare when storing the document",
+        "",
+        "",
+        "- Default / Return: Returns a DocuWare Document object containing metadata from the created document; no local temp file is required."
+      ],
+      "visual" : {
+        "at" : { "x" : 272, "y" : 752 },
+        "size" : { "width" : 520, "height" : 314 },
+        "color" : "NodeStyle4"
+      },
+      "connect" : [
+        { "id" : "f21", "to" : "f14" }
+      ]
+    }, {
+      "id" : "f22",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**How to integrate",
+        "- Add Call: Add a Call element to your process that invokes the UploadService sub-process. Use either signature:",
+        "+ uploadFileWithIndexFields(String,String,File,List<DocuWareProperty>,String) — basic local file upload",
+        "+ uploadFileWithIndexFields(String,String,InputStream,String,List<DocuWareProperty>,String) — stream upload",
+        "",
+        "- Prepare data: Populate the parameters before calling:",
+        "+ configKey: REST client configuration key matching the e+ntry in rest-clients.yaml",
+        "+ fileCabinetId: ID of the File Cabinet where the document should be uploaded",
+        "+ file: local File to upload (basic overload)",
+        "+ fileStream: InputStream containing the file content to upload (stream overload)",
+        "+ fileName: filename to assign to the uploaded document (stream overload)",
+        "+ indexFields: List<DocuWareProperty> with index metadata values to store with the upload",
+        "+ storeDialogId: optional store dialog ID used by DocuWare when storing the document",
+        "",
+        "- Build request body: UploadService.p.json maps the input parameters into a multipart upload request:",
+        "+ fileCabinetId becomes path param {FileCabinetId}",
+        "+ storeDialogId becomes query param StoreDialogId",
+        "+ configKey is passed as REST client config",
+        "+ indexFields is mapped into in.properties.properties",
+        "+ file content is sent as File[] multipart part",
+        "+ for the File overload, the process converts file into a stream and uses file.getName() for fileName",
+        "",
+        "- Call REST API: The upload RestClientCall sends the multipart upload to:",
+        "+ POST /FileCabinets/{FileCabinetId}/Documents",
+        "",
+        "- Return object: The call returns a com.docuware.dev.schema._public.services.platform.Document",
+        "+ map the process result to result.document",
+        "+ use that returned document to confirm upload success and access IDs/metadata",
+        "",
+        "- Post-success behavior: After success the document is created in DocuWare.",
+        "+ inspect the returned Document to verify the uploaded document ID, file name, and stored metadata",
+        "",
+        "- Example (conceptual):",
+        "+ Set variables:",
+        "configKey = \"02d1eec1-32e9-4316-afc3-793448486203\"",
+        "fileCabinetId = \"FC-123\"",
+        "file = <local File object>",
+        "indexFields = [DocuWareProperty(...), ...]",
+        "storeDialogId = \"\" (or a real store dialog ID if required)",
+        "+ Call the UploadService sub-process with the matching signature",
+        "+ After the Call returns, read document for confirmation",
+        "",
+        "- Notes & tips:",
+        "+ configKey must match the RestClients entry in rest-clients.yaml so URL and credentials are correct",
+        "+ Use the File overload when uploading from disk",
+        "+ Use the InputStream overload when you already have in-memory content or want to avoid a temporary local file",
+        "+ fileName should include the intended extension so DocuWare stores the file correctly",
+        "+ indexFields must match the file cabinet’s index schema",
+        "",
+        "Summary: Add a Call to UploadService with the appropriate uploadFileWithIndexFields signature, populate the required upload parameters, let the process build the multipart request to DocuWare, and use the returned Document metadata to verify the upload."
+      ],
+      "visual" : {
+        "at" : { "x" : 1544, "y" : 648 },
+        "size" : { "width" : 778, "height" : 948 },
+        "color" : "NodeStyle4"
+      }
+    }, {
+      "id" : "f23",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**upload",
+        "Call REST Client APIs from Docuware."
+      ],
+      "visual" : {
+        "at" : { "x" : 880, "y" : 303 },
+        "size" : { "width" : 276, "height" : 45 }
+      },
+      "connect" : [
+        { "id" : "f24", "to" : "f3" }
       ]
     } ]
 }

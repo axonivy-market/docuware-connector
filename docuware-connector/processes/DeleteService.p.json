@@ -9,7 +9,7 @@
       "id" : "f1",
       "type" : "CallSubEnd",
       "visual" : {
-        "at" : { "x" : 368, "y" : 64 }
+        "at" : { "x" : 1040, "y" : 416 }
       }
     }, {
       "id" : "f5",
@@ -39,7 +39,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 224, "y" : 64 },
+        "at" : { "x" : 896, "y" : 416 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
@@ -53,9 +53,9 @@
         "signature" : "deleteDocument",
         "input" : {
           "params" : [
-            { "name" : "configKey", "type" : "String", "desc" : "" },
-            { "name" : "documentId", "type" : "String", "desc" : "" },
-            { "name" : "fileCabinetId", "type" : "String", "desc" : "" }
+            { "name" : "configKey", "type" : "String", "desc" : "REST client configuration key identifying the DocuWare connection from rest-clients.yaml" },
+            { "name" : "documentId", "type" : "String", "desc" : "The unique identifier of the document to delete" },
+            { "name" : "fileCabinetId", "type" : "String", "desc" : "The unique identifier of the file cabinet containing the document" }
           ],
           "map" : {
             "out.configKey" : "param.#configKey",
@@ -68,12 +68,105 @@
         "connector"
       ],
       "visual" : {
-        "at" : { "x" : 96, "y" : 64 },
+        "at" : { "x" : 768, "y" : 416 },
         "labelOffset" : { "x" : 81, "y" : -31 },
         "icon" : "res:/webContent/icons/docuware.png"
       },
       "connect" : [
         { "id" : "f9", "to" : "f5" }
       ]
+    }, {
+      "id" : "f10",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**Description",
+        "This API endpoint is used to delete a specific document from a file cabinet in the specified platform. The document is identified by its unique document ID, which is provided in the URL path."
+      ],
+      "visual" : {
+        "at" : { "x" : 346, "y" : 305 },
+        "size" : { "width" : 540, "height" : 77 }
+      }
+    }, {
+      "id" : "f11",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**Integration",
+        "deleteDocument(String, String, String)",
+        "",
+        "- Deletes a document from a DocuWare file cabinet.",
+        "- Calls REST endpoint /FileCabinets/{FileCabinetId}/Documents/{DocumentId} via the delete RestClientCall in DeleteService.p.json.",
+        "- Maps FileCabinetId and DocumentId into the request path from input parameters.",
+        "- Sends configKey as REST client configuration via properties.configKey.",
+        "- Uses DocuWareService.get().throwErrorIfUnsuccessful(response); in the response entity script to throw an error for unsuccessful responses.",
+        "- Returns no payload; success is indicated by a successful HTTP response.",
+        "",
+        "Parameters:",
+        "- configKey (String): REST client configuration key to identify the DocuWare server connection from rest-clients.yaml",
+        "- fileCabinetId (String): The unique identifier of the file cabinet containing the document",
+        "- documentId (String): The unique identifier of the document to move",
+        "",
+        "- Default / Return: Returns void (no return object); the operation completes successfully if DocuWare responds without error."
+      ],
+      "visual" : {
+        "at" : { "x" : 344, "y" : 583 },
+        "size" : { "width" : 540, "height" : 421 },
+        "color" : "NodeStyle4"
+      }
+    }, {
+      "id" : "f13",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**delete",
+        "Call REST Client APIs from Docuware."
+      ],
+      "visual" : {
+        "at" : { "x" : 848, "y" : 559 },
+        "size" : { "width" : 276, "height" : 45 }
+      },
+      "connect" : [
+        { "id" : "f14", "to" : "f5" }
+      ]
+    }, {
+      "id" : "f15",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**How to integrate",
+        "- Add Call: Add a Call element to your process that invokes the DeleteService sub-process using signature deleteDocument(String, String, String).",
+        "",
+        "- Prepare data: Populate the parameters before calling:",
+        "+ configKey: REST client configuration key matching the entry in config/rest-clients.yaml",
+        "+ documentId: ID of the document to delete",
+        "+ fileCabinetId: ID of the file cabinet containing the document",
+        "",
+        "- Call REST API: DeleteService.p.json sends the request to:",
+        "+ DELETE /FileCabinets/{FileCabinetId}/Documents/{DocumentId}",
+        "",
+        "- Endpoint mapping: The delete RestClientCall maps FileCabinetId and DocumentId into the path template and sends configKey as properties.configKey.",
+        "- Response handling: Uses DocuWareService.get().throwErrorIfUnsuccessful(response); in the response entity script to raise an error for any unsuccessful response.",
+        "- Return object: This operation does not return a payload; success is confirmed by a successful HTTP response and no thrown exception.",
+        "",
+        "- Post-success behavior: After success, the specified document is deleted from the targeted DocuWare file cabinet.",
+        "",
+        "- Example (conceptual):",
+        "+ Set variables:",
+        "configKey = \"02d1eec1-32e9-4316-afc3-793448486203\"",
+        "documentId = \"DOC-456\"",
+        "fileCabinetId = \"FC-123\"",
+        "+ Call the DeleteService sub-process with the matching signature",
+        "+ After the Call returns, the document has been deleted if no error occurred",
+        "",
+        "- Notes & tips:",
+        "+ configKey must match the RestClients entry so URL and credentials are correct",
+        "+ documentId must refer to an existing document in the specified file cabinet",
+        "+ This operation does not upload or transfer files; it deletes an existing document",
+        "+ Use the absence of an exception and a successful HTTP response to verify completion",
+        "",
+        "Summary: Add a Call to DeleteService with deleteDocument(String, String, String), set configKey, documentId, and fileCabinetId, call DELETE /FileCabinets/{FileCabinetId}/Documents/{DocumentId}, and confirm success by the successful response."
+      ],
+      "visual" : {
+        "at" : { "x" : 1358, "y" : 626 },
+        "size" : { "width" : 531, "height" : 585 },
+        "color" : "NodeStyle4"
+      }
     } ]
 }
