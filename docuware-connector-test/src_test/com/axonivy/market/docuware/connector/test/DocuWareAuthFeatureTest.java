@@ -54,6 +54,6 @@ public class DocuWareAuthFeatureTest extends DocuWareConnectorTest {
 		ClientBuilder.newClient().register(new DocuWareAuthFeature())
 		.property(DocuWareService.CONFIG_KEY_PROPERTY, "test")
 		.target("someResource").request().get())
-		.withMessageContaining("URI is not absolute");
+		.withMessageContaining("protocol = null host = null");
 	}
 }
