@@ -24,6 +24,7 @@ import com.axonivy.connector.docuware.connector.DocuWareService;
 import ch.ivyteam.ivy.bpm.error.BpmError;
 import ch.ivyteam.ivy.bpm.error.BpmPublicErrorBuilder;
 import ch.ivyteam.ivy.environment.Ivy;
+import ch.ivyteam.ivy.rest.client.oauth2.OAuth2Error;
 
 public class DocuWareAuthFeature implements Feature {
 	private static final String WELL_KNOWN_OPENID_CONFIGURATION = ".well-known/openid-configuration";
@@ -283,6 +284,6 @@ public class DocuWareAuthFeature implements Feature {
 	 * @return
 	 */
 	private BpmPublicErrorBuilder authError(String type) {
-		return BpmError.create(DocuWareService.DOCUWARE_ERROR + "authentication:" + type);
+		return OAuth2Error.build().withErrorCode(DocuWareService.DOCUWARE_ERROR + "authentication:" + type);
 	}
 }

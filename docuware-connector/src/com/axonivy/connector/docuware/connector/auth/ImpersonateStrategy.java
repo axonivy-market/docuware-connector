@@ -8,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.axonivy.connector.docuware.connector.DocuWareService;
 
 import ch.ivyteam.ivy.bpm.error.BpmError;
+import ch.ivyteam.ivy.rest.client.oauth2.OAuth2Error;
 
 /**
  * Represent an Impersonation Strategy.
@@ -114,7 +115,7 @@ public class ImpersonateStrategy {
 				ex = e;
 			}
 			if(!valid) {
-				var error = BpmError.create(DocuWareService.DOCUWARE_ERROR + "invalidimpersonateUser")
+				var error = OAuth2Error.build().withErrorCode(DocuWareService.DOCUWARE_ERROR + "invalidimpersonateUser")
 						.withMessage("Invalid impersonate pattern: '%s'".formatted(impersonateUser));
 				if(ex != null) {
 					error.withCause(ex);
