@@ -107,6 +107,30 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-openapi-yml</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.basedir}/src_generated/rest/DocuWare</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.basedir}/src/main/resources</directory>
+                  <includes>
+                    <include>openapi.yaml</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 </project>
