@@ -44,7 +44,7 @@ import com.docuware.dev.schema._public.services.platform.Document;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import ch.ivyteam.ivy.application.IApplication;
+import ch.ivyteam.ivy.application.app.Application;
 import ch.ivyteam.ivy.bpm.error.BpmError;
 import ch.ivyteam.ivy.data.cache.IDataCache;
 import ch.ivyteam.ivy.data.cache.IDataCacheEntry;
@@ -347,7 +347,7 @@ public class DocuWareService {
 	public String clearCaches() {
 		try (var sw = new StringWriter();
 				var pw = new PrintWriter(sw)) {
-			var cache = IDataCache.of(IApplication.current());
+			var cache = IDataCache.of(Application.current());
 
 			pw.println("Removing caches:");
 			Stream.of(Configuration.APP_ATT_CONFIG_PREFIX, Configuration.APP_ATT_TOKEN_PREFIX)
@@ -373,7 +373,7 @@ public class DocuWareService {
 	 * @return
 	 */
 	public Map<String, Object> getCaches() {
-		var cache = IDataCache.of(IApplication.current());
+		var cache = IDataCache.of(Application.current());
 		return Stream.of(Configuration.APP_ATT_CONFIG_PREFIX, Configuration.APP_ATT_TOKEN_PREFIX)
 				.map(cache::getGroup)
 				.filter(Objects::nonNull)
@@ -404,7 +404,7 @@ public class DocuWareService {
 		Token token = null;
 		try {
 			token = Sudo.call(() -> {
-				var entry = IDataCache.of(IApplication.current()).getEntry(Configuration.APP_ATT_TOKEN_PREFIX, cacheKey);
+				var entry = IDataCache.of(Application.current()).getEntry(Configuration.APP_ATT_TOKEN_PREFIX, cacheKey);
 				return entry == null ? null : (Token) entry.getValue();
 			});
 		} catch (ClassCastException e) {
@@ -426,7 +426,7 @@ public class DocuWareService {
 	 */
 	public void setCachedToken(Configuration cfg, Token token) {
 		try {
-			Sudo.call(() -> IDataCache.of(IApplication.current())
+			Sudo.call(() -> IDataCache.of(Application.current())
 					.setEntry(Configuration.APP_ATT_TOKEN_PREFIX, cfg.tokenCacheKey(), token));
 		} catch (Exception e) {
 			BpmError.create(DocuWareService.DOCUWARE_ERROR + "putconfig")

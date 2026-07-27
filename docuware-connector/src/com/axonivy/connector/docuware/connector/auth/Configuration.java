@@ -9,7 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.axonivy.connector.docuware.connector.DocuWareService;
 import com.axonivy.connector.docuware.connector.enums.GrantType;
 
-import ch.ivyteam.ivy.application.IApplication;
+import ch.ivyteam.ivy.application.app.Application;
 import ch.ivyteam.ivy.bpm.error.BpmError;
 import ch.ivyteam.ivy.data.cache.IDataCache;
 import ch.ivyteam.ivy.environment.Ivy;
@@ -58,7 +58,7 @@ public abstract class Configuration {
 	public static void putKnownConfiguration(Configuration configuration) {
 		var key = configuration.getConfigKey();
 		try {
-			Sudo.call(() -> IDataCache.of(IApplication.current())
+			Sudo.call(() -> IDataCache.of(Application.current())
 					.setEntry(APP_ATT_CONFIG_PREFIX, configurationCacheKey(key), configuration));
 		} catch (Exception e) {
 			BpmError.create(DocuWareService.DOCUWARE_ERROR + "putconfig")
@@ -72,7 +72,7 @@ public abstract class Configuration {
 		Configuration configuration = null;
 		try {
 			configuration = Sudo.call(() -> {
-				var entry = IDataCache.of(IApplication.current())
+				var entry = IDataCache.of(Application.current())
 						.getEntry(APP_ATT_CONFIG_PREFIX, configurationCacheKey(configKey));
 				return entry == null ? null : (Configuration) entry.getValue();
 			});
