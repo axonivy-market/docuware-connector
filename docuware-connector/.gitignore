@@ -17,5 +17,5 @@ classes/
 src_generated/dataclass/
 src_generated/wsprocess/
 src_generated/repo/
+src_generated/rest/
 logs/
-lib/generated/rest/
