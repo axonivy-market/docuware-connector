@@ -93,10 +93,10 @@
         "response" : {
           "entity" : {
             "code" : [
-              "import javax.faces.application.FacesMessage;",
-              "import javax.faces.context.FacesContext;",
+              "import jakarta.faces.application.FacesMessage;",
+              "import jakarta.faces.context.FacesContext;",
               "import com.axonivy.connector.docuware.connector.DocuWarePropertiesUpdate;",
-              "import javax.ws.rs.core.Response.Status.Family;",
+              "import jakarta.ws.rs.core.Response.Status.Family;",
               "",
               "out.propertiesUpdate = new DocuWarePropertiesUpdate();",
               "out.isUpdateSuccess = false;",
