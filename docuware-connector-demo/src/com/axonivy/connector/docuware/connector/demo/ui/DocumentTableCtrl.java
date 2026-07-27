@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.net.URISyntaxException;
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
 
 import com.axonivy.connector.docuware.connector.DocuWareProperties;
 import com.axonivy.connector.docuware.connector.DocuWareProperty;
