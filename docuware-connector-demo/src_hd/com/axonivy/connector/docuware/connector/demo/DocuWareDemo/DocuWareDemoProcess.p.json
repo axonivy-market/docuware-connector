@@ -238,9 +238,8 @@
               "out.ctrl.document" : "result"
             },
             "code" : [
-              "import org.apache.http.HttpStatus;",
-              "import javax.faces.application.FacesMessage;",
-              "import javax.faces.context.FacesContext;",
+              "import jakarta.faces.application.FacesMessage;",
+              "import jakarta.faces.context.FacesContext;",
               "import com.axonivy.connector.docuware.connector.demo.service.DocuWareDemoService;",
               "",
               "",
@@ -250,7 +249,7 @@
               "",
               "",
               "FacesMessage message;",
-              "if (HttpStatus.SC_OK != response.getStatus()) {",
+              "if (200 != response.getStatus()) {",
               "  message.severity = FacesMessage.SEVERITY_ERROR;",
               "  message.summary = ivy.cms.co(\"/Dialogs/com/axonivy/connector/docuware/connector/demo/DocuWareDemo/uploadMessageFailed\");",
               "} else {",
@@ -335,8 +334,8 @@
       "config" : {
         "output" : {
           "code" : [
-            "import javax.faces.context.FacesContext;",
-            "import javax.faces.application.FacesMessage;",
+            "import jakarta.faces.context.FacesContext;",
+            "import jakarta.faces.application.FacesMessage;",
             "",
             "FacesMessage message;",
             "message.severity = FacesMessage.SEVERITY_ERROR;",
