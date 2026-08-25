@@ -1,0 +1,120 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/process-1.json",
+  "id" : "185160FC199C1871",
+  "kind" : "CALLABLE_SUB",
+  "config" : {
+    "data" : "com.axonivy.market.docuware.connector.UpdateServiceData"
+  },
+  "elements" : [ {
+      "id" : "f1",
+      "type" : "CallSubEnd",
+      "visual" : {
+        "at" : { "x" : 496, "y" : 64 }
+      }
+    }, {
+      "id" : "f3",
+      "type" : "Script",
+      "name" : "prepare index fields json",
+      "config" : {
+        "output" : {
+          "code" : [
+            "import com.axonivy.connector.docuware.connector.DocuWareService;",
+            "import com.axonivy.connector.docuware.connector.DocuWarePropertiesUpdate;",
+            "",
+            "DocuWarePropertiesUpdate properties = new DocuWarePropertiesUpdate(in.indexFields);",
+            "in.propertiesJson = DocuWareService.get().serializeProperties(properties);"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 208, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f6", "to" : "f5" }
+      ]
+    }, {
+      "id" : "f5",
+      "type" : "RestClientCall",
+      "name" : "update document",
+      "config" : {
+        "method" : "PUT",
+        "target" : {
+          "clientId" : "DocuWare",
+          "path" : "/FileCabinets/{FileCabinetId}/Documents/{DocumentId}/Fields",
+          "templateParams" : {
+            "FileCabinetId" : "in.#fileCabinetId",
+            "DocumentId" : "in.#documentId"
+          },
+          "properties" : {
+            "configKey" : "in.#configKey"
+          }
+        },
+        "body" : {
+          "type" : "RAW",
+          "raw" : "<%=in.propertiesJson%>",
+          "entity" : {
+            "type" : "com.docuware.dev.schema._public.services.platform.DocumentIndexFields"
+          }
+        },
+        "response" : {
+          "entity" : {
+            "code" : [
+              "import com.docuware.dev.schema._public.services.platform.DocumentIndexFields;",
+              "import com.axonivy.connector.docuware.connector.DocuWareService;",
+              "",
+              "DocuWareService.get().throwErrorIfUnsuccessful(response);",
+              "",
+              "in.documentIndexFields = response.readEntity(DocumentIndexFields.class) as DocumentIndexFields ;"
+            ]
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 368, "y" : 64 },
+        "icon" : "res:/webContent/icons/docuware.png"
+      },
+      "connect" : [
+        { "id" : "f2", "to" : "f1" }
+      ]
+    }, {
+      "id" : "f9",
+      "type" : "CallSubStart",
+      "name" : "updateDocument(String, String, String, List<DocuWareProperty>)",
+      "config" : {
+        "signature" : "updateDocument",
+        "input" : {
+          "params" : [
+            { "name" : "configKey", "type" : "String", "desc" : "" },
+            { "name" : "documentId", "type" : "String", "desc" : "" },
+            { "name" : "fileCabinetId", "type" : "String", "desc" : "" },
+            { "name" : "indexFields", "type" : "List<com.axonivy.connector.docuware.connector.DocuWareProperty>", "desc" : "" }
+          ],
+          "map" : {
+            "out.configKey" : "param.#configKey",
+            "out.documentId" : "param.#documentId",
+            "out.fileCabinetId" : "param.#fileCabinetId",
+            "out.indexFields" : "param.#indexFields"
+          }
+        },
+        "result" : {
+          "params" : [
+            { "name" : "documentIndexFields", "type" : "com.docuware.dev.schema._public.services.platform.DocumentIndexFields", "desc" : "" }
+          ],
+          "map" : {
+            "result.documentIndexFields" : "in.#documentIndexFields"
+          }
+        }
+      },
+      "tags" : [
+        "connector"
+      ],
+      "visual" : {
+        "at" : { "x" : 88, "y" : 64 },
+        "labelOffset" : { "x" : 169, "y" : 65 },
+        "icon" : "res:/webContent/icons/docuware.png"
+      },
+      "connect" : [
+        { "id" : "f11", "to" : "f3" }
+      ]
+    } ]
+}
