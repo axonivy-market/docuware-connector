@@ -7,9 +7,11 @@
     "type" : "com.axonivy.connector.docuware.connector.DocuWarePropertiesUpdate",
     "modifiers" : [ ]
   }, {
-    "name" : "documentId"
+    "name" : "documentId",
+    "modifiers" : [ ]
   }, {
-    "name" : "fileCabinetId"
+    "name" : "fileCabinetId",
+    "modifiers" : [ ]
   }, {
     "name" : "error",
     "type" : "ch.ivyteam.ivy.bpm.error.BpmError",
@@ -19,12 +21,15 @@
     "type" : "com.axonivy.connector.docuware.connector.DocuWareProperty",
     "modifiers" : [ ]
   }, {
-    "name" : "propertiesJson"
+    "name" : "propertiesJson",
+    "modifiers" : [ ]
   }, {
     "name" : "isUpdateSuccess",
-    "type" : "Boolean"
+    "type" : "Boolean",
+    "modifiers" : [ ]
   }, {
     "name" : "ctrl",
-    "type" : "com.axonivy.connector.docuware.connector.demo.ui.DocumentTableCtrl"
+    "type" : "com.axonivy.connector.docuware.connector.demo.ui.DocumentTableCtrl",
+    "modifiers" : [ ]
   } ]
 }

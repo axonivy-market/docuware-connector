@@ -4,9 +4,11 @@
   "namespace" : "com.axonivy.connector.docuware.connector.demo.DocuWareDemo",
   "fields" : [ {
     "name" : "file",
-    "type" : "File"
+    "type" : "File",
+    "modifiers" : [ ]
   }, {
     "name" : "ctrl",
-    "type" : "com.axonivy.connector.docuware.connector.demo.ui.DocuWareDemoCtrl"
+    "type" : "com.axonivy.connector.docuware.connector.demo.ui.DocuWareDemoCtrl",
+    "modifiers" : [ ]
   } ]
 }

@@ -8,6 +8,7 @@
     "modifiers" : [ ]
   }, {
     "name" : "ctrl",
-    "type" : "com.axonivy.connector.docuware.connector.demo.ui.DocumentTableCtrl"
+    "type" : "com.axonivy.connector.docuware.connector.demo.ui.DocumentTableCtrl",
+    "modifiers" : [ ]
   } ]
 }
