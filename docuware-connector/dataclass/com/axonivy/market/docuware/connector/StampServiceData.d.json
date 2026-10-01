@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/data-class.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0/project/data-class.json",
   "simpleName" : "StampServiceData",
   "namespace" : "com.axonivy.market.docuware.connector",
   "isBusinessCaseData" : false,
@@ -42,7 +42,7 @@
     "name" : "sectionNumber",
     "type" : "int",
     "comment" : "Zero-based index of the document section to stamp (0 = first section; a document may have multiple sections).",
-    "modifiers" : [ ]  
+    "modifiers" : [ ]
   }, {
     "name" : "layer",
     "type" : "int",
