@@ -1,57 +1,61 @@
 # DocuWare Connector
 
-[DocuWare](https://start.docuware.com/) offers cloud-based document management
-and workflow automation software. It can be used to digitize, archive, and
-process any business documents in an audit-proof manner to optimize your
-company's core processes.
+[DocuWare](https://start.docuware.com/) bietet cloudbasierte Software für
+Dokumentenmanagement und Workflow-Automatisierung. Damit lassen sich beliebige
+Geschäftsdokumente auf revisionssichere Weise digitalisieren, archivieren und
+verarbeiten, um die Kernprozesse Ihres Unternehmens zu optimieren.
 
-**DocuWare Organization**\
-A *DocuWare Organization* is the top-level tenant in DocuWare. It represents an
-isolated environment that contains users, roles, configurations, and all
-document repositories of the organization.
+**DocuWare-Organisation**\
+Ein *DocuWare-Organisation* ist der oberste Mandant in DocuWare. Er stellt eine
+isolierte Umgebung dar, die Benutzer, Rollen, Konfigurationen und alle
+Dokumenten-Repositorys der Organisation enthält.
 
 **File Cabinet**\
-A *File Cabinet* is a document repository within an organization. It stores
-documents together with their indexed metadata (fields such as invoice number,
-date, supplier) and enables searching, storing, and retrieving documents.
+Ein *File Cabinet* ist ein Dokumentenarchiv innerhalb einer Organisation. Es
+speichert Dokumente zusammen mit ihren indizierten Metadaten (Felder wie
+Rechnungsnummer, Datum, Lieferant) und ermöglicht das Suchen, Speichern und
+Abrufen von Dokumenten.
 
-**Connector Capability**\
-This connector allows you to connect **multiple DocuWare organizations**, each
-containing **multiple file cabinets**, within a single configuration. This makes
-it possible to access and manage documents across several DocuWare environments.
-It enables efficient integration of DocuWare functionalities into your **Axon
-Ivy process applications**.
+**Funktionsumfang des Konnektors**\
+Mit diesem Konnektor können Sie **mehrere DocuWare-Organisationen**, die jeweils
+**mehrere Aktenschränke** enthalten, in einer einzigen Konfiguration verbinden.
+Dies ermöglicht den Zugriff auf und die Verwaltung von Dokumenten über mehrere
+DocuWare-Umgebungen hinweg. Er ermöglicht die effiziente Integration von
+DocuWare-Funktionalitäten in Ihre **Axon Ivy-Prozessanwendungen**.
 
-This connector minimizes your integration effort by:
+Dieser Konnektor minimiert Ihren Integrationsaufwand durch:
 
-- Using REST web service technologies
-- Fetching one or more DocuWare organizations
-- Fetching file cabinets
-- Providing a GUI to view and edit document properties of the default DocuWare
-  instance
-- Providing configurations to test several authentication methods
+- Einsatz von REST-Webservice-Technologien
+- Eine oder mehrere DocuWare-Organisationen abrufen
+- Dateischränke abrufen
+- Bereitstellung einer grafischen Benutzeroberfläche zum Anzeigen und Bearbeiten
+  der Dokumenteigenschaften der Standard-DocuWare-Instanz
+- Bereitstellung von Konfigurationen zum Testen verschiedener
+  Authentifizierungsmethoden
 
 ## Demo
-### DocuWare Basic Demo: Fetching Organizations, File Cabinets and Documents
+### DocuWare Basic Demo: Organisationen, Aktenschränke und Dokumente abrufen
 
-1. Start the DocuWare Demo Process:
+1. Starten Sie den DocuWare-Demoprozess:
 
 ![start-demo-process](images/1-startdemo.png)
 
-The DocuWare Demo provides a GUI to test different DocuWare configurations. To
-use all demo features, multiple configurations with different grant types must
-be provided in `variables.yaml`. **For a basic demo (username and password
-based): - just provide a defaultConfig**.
+Die DocuWare-Demo bietet eine grafische Benutzeroberfläche zum Testen
+verschiedener DocuWare-Konfigurationen. Um alle Demo-Funktionen nutzen zu
+können, müssen mehrere Konfigurationen mit unterschiedlichen Berechtigungstypen
+in der Datei „ `variables.yaml“` bereitgestellt werden. **Für eine einfache Demo
+(basierend auf Benutzername und Passwort): – geben Sie einfach eine
+„defaultConfig“ an**.
 
-#### Fetch Organizations
+#### Organisationen abrufen
 ![fetch-organization](images/2-fetchorgas.png)
 
-If everything went well you will see `Response: Status: OK` in the textfield
-below the buttons. It may look like:
+Wenn alles geklappt hat, wird im Textfeld unterhalb der Schaltflächen die
+Antwort „ `: Status: OK` “ angezeigt. Das könnte etwa so aussehen:
 ```
-Response: Status: OK
+Antwort: Status: OK
 
-Headers
+Header
 =======
 Content-Type: application/xml; charset=utf-8
 Date: Fri, 06 Mar 2026 03:57:13 GMT
@@ -62,222 +66,239 @@ Vary: Cookie,Accept,Accept-Encoding
 Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 Server-Timing: proxy-start;dur=1.5
 ```
-#### Fetch File Cabinets
-When clicking "Fetch File Cabinets", several additional buttons (features)
-become available.
+#### Dateischränke abrufen
+Wenn Sie auf „Dateischränke abrufen“ klicken, werden mehrere zusätzliche
+Schaltflächen (Funktionen) verfügbar.
 
 ![fetch-cabinets](images/3-fetchcabinets.png)
 
-In particular, you will get a list of available file cabinets at the bottom of
-your log file. It might look like this:
+Insbesondere erhalten Sie am Ende Ihrer Protokolldatei eine Liste der
+verfügbaren Dateischränke. Diese könnte etwa so aussehen:
 
 ```
-File Cabinets:
-Size: 5
-Id: 4b4be7af-629f-4340-82cb-126d249d2b95 - 'Awesome Filecabinet'
-Id: 90b4f666-b79f-4d26-97f7-7786d8fbe4c2 - 'TEST Filecabinet'
-Id: 94532ab8-a22f-4b70-a15d-ba44d916bd45 - 'Archive Cabinet'
-Id: wdss996-b61c-4b4b-88fd-e506a58156278 - 'Src'
-Id: 43sfsdfb137-c5a8-4ab-ae73-715e7c360f - 'Not important'
+Aktenschränke:
+Anzahl: 5
+ID: 4b4be7af-629f-4340-82cb-126d249d2b95 – „Awesome Filecabinet“
+ID: 90b4f666-b79f-4d26-97f7-7786d8fbe4c2 – „TEST-Aktenordner“
+ID: 94532ab8-a22f-4b70-a15d-ba44d916bd45 – „Archiv-Aktenordner“
+Id: wdss996-b61c-4b4b-88fd-e506a58156278 – „Src“
+Id: 43sfsdfb137-c5a8-4ab-ae73-715e7c360f – „Nicht wichtig“
 ```
 
-Choose a File Cabinet you would like to inspect further and copy its ID into the
-UI.
+Wählen Sie einen Aktenschrank aus, den Sie genauer untersuchen möchten, und
+kopieren Sie dessen ID in die Benutzeroberfläche.
 
 ![fetch-cabinets](images/7-filecabinet.png)
 
-#### Fetch & download Documents
+#### Dokumente abrufen und herunterladen
 ![fetch-cabinets](images/4-downloaddocument.png)
 
-For fetching and downloading a document, click "Fetch Documents" (1) to get a
-list of available documents in the log viewer. You will get a list that looks
-like this:
+Um ein Dokument abzurufen und herunterzuladen, klicken Sie auf „Dokumente
+abrufen“ (1), um eine Liste der verfügbaren Dokumente im Protokoll-Viewer
+anzuzeigen. Sie erhalten eine Liste, die wie folgt aussieht:
 
 ```
-Documents:
-Size: 4
-Id: 11 - 'Hello World'
-Id: 10 - 'Bla'
-Id: 7 - 'Umlaut.äöüÄÖÜß'
-Id: 6 - 'Bla'
+Dokumente:
+Anzahl: 4
+ID: 11 – „Hello World“
+ID: 10 – „Bla“
+ID: 7 – „Umlaut.äöüÄÖÜß“
+ID: 6 – „Bla“
 ```
-Remember the ID of the document you would like to inspect further and enter it
-into the UI (2). With "Download Document" (3), you can then download the
-document associated with this ID.
+Merken Sie sich die ID des Dokuments, das Sie näher prüfen möchten, und geben
+Sie diese in die Benutzeroberfläche (2) ein. Mit „Dokument herunterladen“ (3)
+können Sie dann das zu dieser ID gehörende Dokument herunterladen.
 
-#### Further Features
-- Using different configurations, i.e. for different grant types
-- Getting document fields
-- Downloading a document
-- Creating a new version of a document
-- Attaching a document to an Ivy case
-- Uploading a document
-- Uploading a document with index fields
-- Viewing files with the embedded DocuWare viewer (if the configuration has an
-  `integrationPassphrase` set and your DocuWare installation allows embedding in
-  a frame - check your DocuWare's content security policy!)
-- Encrypting and decrypting parameters for embedding
+#### Weitere Funktionen
+- Unter Verwendung verschiedener Konfigurationen, d. h. für verschiedene
+  Förderarten
+- Dokumentfelder abrufen
+- Ein Dokument herunterladen
+- Eine neue Version eines Dokuments erstellen
+- Ein Dokument an einen Ivy-Fall anhängen
+- Ein Dokument hochladen
+- Hochladen eines Dokuments mit Indexfeldern
+- Anzeigen von Dateien mit dem eingebetteten DocuWare-Viewer (sofern in der
+  Konfiguration die „ `“-Passphrase` festgelegt ist und Ihre
+  DocuWare-Installation die Einbettung in einen Frame zulässt – überprüfen Sie
+  die Inhaltssicherheitsrichtlinie Ihres DocuWare-Systems!)
+- Verschlüsselung und Entschlüsselung von Parametern für die Einbettung
 
-### Second Demo: Document Table
+### Zweites Demo: Dokumenttabelle
 
-Make sure you have configured a File Cabinet ID in `variables.yaml`. Remember
-that you can fetch available File Cabinets using the first demo process (see
-above).
+Stellen Sie sicher, dass Sie eine File-Cabinet-ID in der Datei „variables.yaml“
+unter `` konfiguriert haben. Denken Sie daran, dass Sie verfügbare File Cabinets
+mithilfe des ersten Demo-Prozesses abrufen können (siehe oben).
 
 ```
-# Variables used by the demo.
+# Von der Demo verwendete Variablen.
   docuwareWorkflow:
     fileCabinetId: ""
 ```
 
-Start the process **Document Table** to get a basic viewer showing how to add,
-change, view and delete documents.
+Starten Sie den Prozess unter **Document Table**, um einen einfachen Viewer zu
+erhalten, der zeigt, wie man Dokumente hinzufügt, ändert, anzeigt und löscht.
 
 ![second-demo](images/5-startseconddemo.png)
 
-A user-friendly UI will open:
+Es öffnet sich eine benutzerfreundliche Oberfläche:
 
 ![table-demo](images/6-tabledemo.png)
 
-**Document Preview**
+**Dokumentvorschau**
 
-Note that previewing documents might require additional configuration of your
-DocuWare installation’s Content Security Policy (CSP) to allow embedding
-DocuWare frames into your Axon Ivy frames.
+Beachten Sie, dass für die Vorschau von Dokumenten möglicherweise eine
+zusätzliche Konfiguration der Content Security Policy (CSP) Ihrer
+DocuWare-Installation erforderlich ist, um die Einbettung von DocuWare-Frames in
+Ihre Axon Ivy-Frames zu ermöglichen.
 
 ![view-document](images/view-document.png)
 
-**Document Properties Editing** Modify document properties, including metadata
-and custom fields.
+**Dokumenteneigenschaften bearbeiten** Dokumenteneigenschaften ändern,
+einschließlich Metadaten und benutzerdefinierter Felder.
 
 ![edit-document-properties](images/edit-document-properties.png)
 
-**Document Deletion** Delete documents from the file cabinet.
+**Dokumentenlöschung** Löschen Sie Dokumente aus dem Aktenschrank.
 
 ![delete-document](images/delete-document.png)
 
-### Stamp Demo
+### Stamp-Demo
 
-Start the **Stamp** demo from its process start link.
+Starten Sie die „ **Stamp“ unter** über den Link zum Prozessstart.
 
 ![stamp-demo-start](images/stamp_demo_start.png)
 
-1. The demo fetches the stamp templates that the current account is allowed to
-   use. The result is printed to the log, for example:
+1. Die Demo ruft die Stempelvorlagen ab, die das aktuelle Konto verwenden darf.
+   Das Ergebnis wird im Protokoll ausgegeben, zum Beispiel:
 
 ```
-***DocuWareDemo-Stamp - Found Stamps: 3
-Stamp id=xxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, name=ABC-AP1
-Stamp id=yyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy, name=ABC-AP2
-Stamp id=zzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz, name=ABC-AP3
+***DocuWareDemo-Stamp – Gefundene Stempel: 3
+Stempel-ID=xxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, Name=ABC-AP1
+Stempel-ID=yyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy, Name=ABC-AP2
+Stempel-ID=zzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz, Name=ABC-AP3
 ```
 
-2. The demo uploads a document and applies a stamp on it using the first stamp
-   template.
-3. Finally, the stamped document is downloaded and attached to the Ivy case.
+2. In der Demo wird ein Dokument hochgeladen und mit der ersten Stempelvorlage
+   versehen.
+3. Schließlich wird das abgestempelte Dokument heruntergeladen und dem Ivy-Fall
+   beigefügt.
 
    ![stamped-document](images/stamped_document.png)
 
-### Other demos
+### Weitere Demos
 
-Other process starts show examples of DocuWare usage.
+Andere Startprozesse zeigen Beispiele für die Verwendung von DocuWare.
 
 
 
 
 
 ## Setup
-Please copy `variables.yaml` into your project.
+Bitte kopieren Sie `variables.yaml` in Ihr Projekt.
 
 ```
 @variables.yaml@
 ```
 
-At least `url`, `username` and `password` must be provided.
+Mindestens die URL „ `“ (`), der Benutzername „ `“ (` ) und das Passwort „ `“ (`
+) müssen angegeben werden.
 
 ### `configId`
 
-Any value that identifies this version of the configuration.
+Ein beliebiger Wert, der diese Version der Konfiguration identifiziert.
 
 ### `inherit`
 
-Any value that is non-existent, empty, or blank in the current configuration
-will be looked up in the configuration referenced by this variable. The lookup
-is performed recursively.
+Jeder Wert, der in der aktuellen Konfiguration nicht vorhanden, leer oder
+unbestimmt ist, wird in der durch diese Variable referenzierten Konfiguration
+nachgeschlagen. Die Suche erfolgt rekursiv.
 
 ### `grantType`
 
-This is the grant-type for your configuration. Possible values are `password`,
-`trusted`, and `dwtoken`.
+Dies ist der Grant-Typ für Ihre Konfiguration. Mögliche Werte sind „ `“,
+„password“`, „ `“, „trusted“` und „ `“ dwtoken`.
 
-#### `password`
+#### `Passwort`
 
-Grant type `password` uses a fixed `username` and `password` to connect to your
-DocuWare instance. All operations are performed using this user account, and all
-history entries will show this user. It is a simple setup using a _technical
-user_ to connect to a cloud or on-premise DocuWare instance.
+Die Berechtigungsart „ `“ (Passwort:` ) verwendet einen festen Benutzernamen „
+`“ (` ) und das Passwort „ `“ (` ), um eine Verbindung zu Ihrer DocuWare-Instanz
+herzustellen. Alle Vorgänge werden über dieses Benutzerkonto ausgeführt, und in
+allen Verlaufseinträgen wird dieser Benutzer angezeigt. Es handelt sich um eine
+einfache Konfiguration, bei der ein technischer Benutzer „ _“ (_ ) verwendet
+wird, um eine Verbindung zu einer DocuWare-Instanz in der Cloud oder vor Ort
+herzustellen.
 
-#### `trusted`
+#### `vertrauenswürdig`
 
-Grant type `trusted` uses a `username` and `password` to connect as a trusted
-user to your DocuWare instance. Currently, DocuWare supports trusted users only
-for on-premise installations. The trusted user is not used directly, but
-impersonates another user. Which user to impersonate can be configured in the
-global variable `impersonateUser`.
+Der Grant-Typ „ `“ für den vertrauenswürdigen Benutzer` verwendet den
+Benutzernamen `, den Benutzernamen` und das Passwort `sowie die E-Mail-Adresse`,
+um sich als vertrauenswürdiger Benutzer bei Ihrer DocuWare-Instanz anzumelden.
+Derzeit unterstützt DocuWare vertrauenswürdige Benutzer nur für
+On-Premise-Installationen. Der vertrauenswürdige Benutzer wird nicht direkt
+verwendet, sondern schlüpft in die Rolle eines anderen Benutzers. Welcher
+Benutzer nachahmt werden soll, kann in der globalen Variablen „
+`impersonateUser“ unter` konfiguriert werden.
 
-`impersonateUser` implements a special syntax to define which user to use for
-accesses by anonymous Ivy user, accesses by the system Ivy user and accesses by
-other Ivy users:
+`„impersonateUser“` implementiert eine spezielle Syntax, um festzulegen, welcher
+Benutzer für Zugriffe durch anonyme Ivy-Benutzer, Zugriffe durch den
+Ivy-Systembenutzer und Zugriffe durch andere Ivy-Benutzer verwendet werden soll:
 
-- Use a constant username in all situations
-- Use constant usernames for anonymous and system users, but the Ivy username
-  for others
-- Set the username in the user's session before making any calls and use this
-  name
+- Verwenden Sie in allen Fällen denselben Benutzernamen.
+- Verwende feste Benutzernamen für anonyme und Systembenutzer, für alle anderen
+  jedoch den Benutzernamen „Ivy“.
+- Legen Sie den Benutzernamen in der Benutzersitzung fest, bevor Sie Aufrufe
+  tätigen, und verwenden Sie diesen Namen.
 
-There is additional documentation in the `variables.yaml` file.
+Weitere Informationen finden Sie in der Datei „ `variables.yaml“ unter`.
 
 #### `dwtoken`
 
-The token is generated by using an existing token of DocuWare. Note: This
-use-case is probably not fully supported. Which token to use is configured in
-`dwToken`. Currently, the existing token can only be loaded from the session.
+Das Token wird unter Verwendung eines vorhandenen Tokens von DocuWare generiert.
+Hinweis: Dieser Anwendungsfall wird wahrscheinlich nicht vollständig
+unterstützt. Welches Token verwendet werden soll, wird unter `dwToken`
+konfiguriert. Derzeit kann das vorhandene Token nur aus der Sitzung geladen
+werden.
 
-### Other configuration variables
+### Weitere Konfigurationsvariablen
 
-Other configuration variables are documented directly in the variables supported
-by the connector. Please see there for a description and copy it to your
-project, if you are using it, so that it will be visible in the Engine cockpit
-for your application.
+Weitere Konfigurationsvariablen sind direkt in den vom Connector unterstützten
+Variablen dokumentiert. Bitte lesen Sie dort die Beschreibung und kopieren Sie
+sie in Ihr Projekt, falls Sie diese verwenden, damit sie im Engine-Cockpit für
+Ihre Anwendung sichtbar ist.
 
 ```
 @variables.yaml@
 ```
 
-### Using a single DocuWare instance
+### Verwendung einer einzelnen DocuWare-Instanz
 
-If you only work with one instance you should name it `defaultConfig` and it
-will be used automatically without any additional considerations.
+Wenn Sie nur mit einer Instanz arbeiten, sollten Sie diese „ `defaultConfig` “
+nennen; sie wird dann automatisch und ohne weitere Maßnahmen verwendet.
 
-### Using multiple DocuWare instances simultaneously
+### Gleichzeitige Nutzung mehrerer DocuWare-Instanzen
 
-If you work with multiple instances, every call must know which instance to use.
-Therefore, all instance-specific sub processes offered by this connector offer
-an additional `configKey` parameter which must be set to the name of the
-configuration to use in this sub-process. If the `configKey` is empty, the
-`defaultConfig` will be used automatically.
+Wenn Sie mit mehreren Instanzen arbeiten, muss jeder Aufruf wissen, welche
+Instanz verwendet werden soll. Daher bieten alle instanzspezifischen
+Unterprozesse, die von diesem Konnektor bereitgestellt werden, einen
+zusätzlichen Parameter „ `“ (configKey:` ) an, der auf den Namen der in diesem
+Unterprozess zu verwendenden Konfiguration gesetzt werden muss. Ist der
+Parameter „ `“ (configKey:` ) leer, wird automatisch die Standardkonfiguration „
+`“ (defaultConfig:` ) verwendet.
 
-If you want to use REST calls of this connector directly, you can use the call's
-property `configKey` in the same way. Have a look at the instance-aware
-sub-processes to see how this is done!
+Wenn Sie die REST-Aufrufe dieses Konnektors direkt nutzen möchten, können Sie
+die Eigenschaft „ `“ des Aufrufs „configKey“` auf dieselbe Weise verwenden.
+Sehen Sie sich die instanzbezogenen Unterprozesse an, um zu erfahren, wie das
+funktioniert!
 
-### Breaking changes in this version
+### Wichtige Änderungen in dieser Version
 
-* Global variables configuration changed to support multiple instances.
-* It is no longer possible to define a file cabinet id or other defaults for
-  DocuWare items in the global variables of a configuration. If needed, please
-  move these global variables to your project.
-* Error handling was changed to standard AxonIvy error handling, i.e.
-  sub-processes no longer return an error object, but rather throw exceptions in
-  the case of errors.
+* Die Konfiguration der globalen Variablen wurde geändert, um mehrere Instanzen
+  zu unterstützen.
+* Es ist nicht mehr möglich, eine Aktenschrank-ID oder andere Standardwerte für
+  DocuWare-Elemente in den globalen Variablen einer Konfiguration zu definieren.
+  Verschieben Sie diese globalen Variablen bei Bedarf bitte in Ihr Projekt.
+* Die Fehlerbehandlung wurde auf die Standard-Fehlerbehandlung von AxonIvy
+  umgestellt, d. h., Unterprozesse geben bei Fehlern kein Fehlerobjekt mehr
+  zurück, sondern lösen stattdessen Ausnahmen aus.
 
