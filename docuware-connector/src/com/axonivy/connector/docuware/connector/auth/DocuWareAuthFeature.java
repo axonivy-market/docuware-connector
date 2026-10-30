@@ -5,17 +5,17 @@ import java.net.URI;
 import java.util.List;
 import java.util.Map;
 
-import javax.ws.rs.Priorities;
-import javax.ws.rs.client.ClientRequestContext;
-import javax.ws.rs.client.ClientRequestFilter;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.core.Feature;
-import javax.ws.rs.core.FeatureContext;
-import javax.ws.rs.core.GenericType;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.MultivaluedHashMap;
-import javax.ws.rs.core.Response.Status.Family;
-import javax.ws.rs.core.UriBuilder;
+import jakarta.ws.rs.Priorities;
+import jakarta.ws.rs.client.ClientRequestContext;
+import jakarta.ws.rs.client.ClientRequestFilter;
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.core.Feature;
+import jakarta.ws.rs.core.FeatureContext;
+import jakarta.ws.rs.core.GenericType;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MultivaluedHashMap;
+import jakarta.ws.rs.core.Response.Status.Family;
+import jakarta.ws.rs.core.UriBuilder;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -24,6 +24,7 @@ import com.axonivy.connector.docuware.connector.DocuWareService;
 import ch.ivyteam.ivy.bpm.error.BpmError;
 import ch.ivyteam.ivy.bpm.error.BpmPublicErrorBuilder;
 import ch.ivyteam.ivy.environment.Ivy;
+import ch.ivyteam.ivy.rest.client.oauth2.OAuth2Error;
 
 public class DocuWareAuthFeature implements Feature {
 	private static final String WELL_KNOWN_OPENID_CONFIGURATION = ".well-known/openid-configuration";
@@ -283,6 +284,6 @@ public class DocuWareAuthFeature implements Feature {
 	 * @return
 	 */
 	private BpmPublicErrorBuilder authError(String type) {
-		return BpmError.create(DocuWareService.DOCUWARE_ERROR + "authentication:" + type);
+		return OAuth2Error.build().withErrorCode(DocuWareService.DOCUWARE_ERROR + "authentication:" + type);
 	}
 }

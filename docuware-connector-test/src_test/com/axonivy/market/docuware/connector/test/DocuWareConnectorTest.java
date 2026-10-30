@@ -8,10 +8,11 @@ import org.junit.jupiter.api.BeforeEach;
 import com.axonivy.connector.docuware.connector.DocuWareFieldTableItem;
 import com.axonivy.connector.docuware.connector.DocuWareKeywordsField;
 import com.axonivy.connector.docuware.connector.DocuWareProperty;
+import com.axonivy.connector.docuware.connector.DocuWareService;
 import com.axonivy.connector.docuware.connector.auth.DocuWareAuthFeature;
 import com.axonivy.market.docuware.connector.test.BearerDisableFilter.BearerDisableFeature;
 
-import ch.ivyteam.ivy.application.IApplication;
+import ch.ivyteam.ivy.application.app.Application;
 import ch.ivyteam.ivy.environment.AppFixture;
 import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.request.EngineUriResolver;
@@ -34,7 +35,7 @@ public class DocuWareConnectorTest {
 	 * @param fixture
 	 */
 	@BeforeAll
-	public static void prepareRestClient(IApplication app, AppFixture fixture) {
+	public static void prepareRestClient(Application app, AppFixture fixture) {
 		fixture.config("RestClients.DocuWare.Features", java.util.List.of(
 				JsonFeature.class.getCanonicalName(),
 				MultiPartFeature.class.getCanonicalName(),
@@ -49,9 +50,17 @@ public class DocuWareConnectorTest {
 	}
 
 	@BeforeEach
-	public void prepareConfigurations(AppFixture fix, IApplication app) {
+	public void prepareConfigurations(AppFixture fix, Application app) {
+		// Clear caches to ensure test isolation (configurations and tokens are cached
+		// in the application-scoped IDataCache, not test-scoped)
+		DocuWareService.get().clearCaches();
+		
 		// The URL of the local DocuWare mock service.
-		var docuWareMockUrl = "%s/%s/api/docuWareMock".formatted(EngineUriResolver.instance().local(), app.getContextPath());
+		var contextPath = app.contextPath();
+		if(contextPath.startsWith("/")) {
+			contextPath = contextPath.substring(1);
+		}
+		var docuWareMockUrl = "%s/%s/api/docuWareMock".formatted(EngineUriResolver.instance().local(), contextPath);
 
 		fix.var("docuwareConnector.test.url", docuWareMockUrl);
 		fix.var("docuwareConnector.test.grantType", "password");

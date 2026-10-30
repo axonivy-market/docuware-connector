@@ -13,7 +13,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
-import javax.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;

@@ -13,18 +13,20 @@ import java.util.Base64;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.crypto.Cipher;
-import javax.crypto.spec.GCMParameterSpec;
+import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status.Family;
-import javax.ws.rs.core.UriBuilder;
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.client.WebTarget;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status.Family;
+import jakarta.ws.rs.core.UriBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -42,8 +44,10 @@ import com.docuware.dev.schema._public.services.platform.Document;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import ch.ivyteam.ivy.application.IApplication;
+import ch.ivyteam.ivy.application.app.Application;
 import ch.ivyteam.ivy.bpm.error.BpmError;
+import ch.ivyteam.ivy.data.cache.IDataCache;
+import ch.ivyteam.ivy.data.cache.IDataCacheEntry;
 import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.security.exec.Sudo;
 
@@ -241,6 +245,14 @@ public class DocuWareService {
 	 * Key and Iv parameter needed for the Cipher are determined by building the SHA-512 hash of the password
 	 * and taking the first 256 bits for the key and the next 128 bits for the Iv parameter.
 	 * 
+	 * <b>Do not "modernize" this transformation.</b> AES/CBC/PKCS5Padding with a 128-bit IV is the wire
+	 * format that DocuWare itself uses for the encrypted <code>ep</code> parameter of integration URLs
+	 * (<code>DocuWare.Gapi.Utils.Web.DWIntegration</code>). Switching to an authenticated mode such as
+	 * AES/GCM makes DocuWare reject every integration URL with <code>EX_INVALID_PASS_PHRASE</code>, because
+	 * it can no longer decrypt what we send. This happened once already, see MARP-4159. A round-trip test of
+	 * {@link #dwEncrypt(String, String)} and {@link #dwDecrypt(String, String)} cannot catch that regression --
+	 * only an integration URL opened against a real DocuWare can.
+	 * 
 	 * @param configKey
 	 * @param mode
 	 * @return
@@ -259,7 +271,7 @@ public class DocuWareService {
 		}
 
 		try {
-			cipher = Cipher.getInstance("AES/GCM/NoPadding");
+			cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
 			var md = MessageDigest.getInstance("SHA-512");
 			md.reset();
 
@@ -267,14 +279,14 @@ public class DocuWareService {
 
 			// Split Hash into key and iv
 			int keySize = 256 / 8;
-			int ivSize = 96 / 8; // 96-bit IV for GCM
+			int ivSize = 128 / 8;
 			byte[] key = Arrays.copyOfRange(passphraseSHA512, 0, keySize);
 			byte[] iv = Arrays.copyOfRange(passphraseSHA512, keySize, keySize + ivSize);
 
 			var secretKeySpec = new SecretKeySpec(key, "AES");
-			var gcmParameterSpec = new GCMParameterSpec(128, iv); // 128-bit authentication tag length
+			var ivParameter = new IvParameterSpec(iv);
 
-			cipher.init(mode, secretKeySpec, gcmParameterSpec);
+			cipher.init(mode, secretKeySpec, ivParameter);
 		} catch (Exception e) {
 			BpmError
 			.create(DOCUWARE_ERROR + "ciphercreationerror")
@@ -343,16 +355,19 @@ public class DocuWareService {
 	public String clearCaches() {
 		try (var sw = new StringWriter();
 				var pw = new PrintWriter(sw)) {
-			var cachedNames = IApplication.current().getAttributeNames().stream()
-					.filter(n -> n.startsWith(Configuration.APP_ATT_CONFIG_PREFIX) || n.startsWith(Configuration.APP_ATT_TOKEN_PREFIX))
-					.sorted()
-					.toList();
+			var cache = IDataCache.of(Application.current());
 
 			pw.println("Removing caches:");
-			for (var name : cachedNames) {
-				IApplication.current().removeAttribute(name);
-				pw.println(name);
-			}
+			Stream.of(Configuration.APP_ATT_CONFIG_PREFIX, Configuration.APP_ATT_TOKEN_PREFIX)
+					.map(cache::getGroup)
+					.filter(Objects::nonNull)
+					.forEach(group -> {
+						group.getEntries().stream()
+								.map(IDataCacheEntry::getIdentifier)
+								.sorted()
+								.forEach(pw::println);
+						cache.invalidateGroup(group);
+					});
 
 			return sw.toString();
 		} catch (IOException e) {
@@ -366,9 +381,12 @@ public class DocuWareService {
 	 * @return
 	 */
 	public Map<String, Object> getCaches() {
-		return IApplication.current().getAttributeNames().stream()
-				.filter(n -> n.startsWith(Configuration.APP_ATT_CONFIG_PREFIX) || n.startsWith(Configuration.APP_ATT_TOKEN_PREFIX))
-				.collect(Collectors.toMap(n -> n, n -> IApplication.current().getAttribute(n)));
+		var cache = IDataCache.of(Application.current());
+		return Stream.of(Configuration.APP_ATT_CONFIG_PREFIX, Configuration.APP_ATT_TOKEN_PREFIX)
+				.map(cache::getGroup)
+				.filter(Objects::nonNull)
+				.flatMap(g -> g.getEntries().stream())
+				.collect(Collectors.toMap(IDataCacheEntry::getIdentifier, IDataCacheEntry::getValue));
 	}
 
 	/**
@@ -393,7 +411,10 @@ public class DocuWareService {
 	public Token getCachedToken(String cacheKey) {
 		Token token = null;
 		try {
-			token = Sudo.call(() -> (Token)IApplication.current().getAttribute(cacheKey));
+			token = Sudo.call(() -> {
+				var entry = IDataCache.of(Application.current()).getEntry(Configuration.APP_ATT_TOKEN_PREFIX, cacheKey);
+				return entry == null ? null : (Token) entry.getValue();
+			});
 		} catch (ClassCastException e) {
 			Ivy.log().error("Cache contained an old version of the token class, ignoring it.");
 		} catch (Exception e) {
@@ -413,7 +434,8 @@ public class DocuWareService {
 	 */
 	public void setCachedToken(Configuration cfg, Token token) {
 		try {
-			Sudo.call(() -> IApplication.current().setAttribute(cfg.tokenCacheKey(), token));
+			Sudo.call(() -> IDataCache.of(Application.current())
+					.setEntry(Configuration.APP_ATT_TOKEN_PREFIX, cfg.tokenCacheKey(), token));
 		} catch (Exception e) {
 			BpmError.create(DocuWareService.DOCUWARE_ERROR + "putconfig")
 			.withMessage("Could not set token '%s'.".formatted(cfg.tokenCacheKey()))

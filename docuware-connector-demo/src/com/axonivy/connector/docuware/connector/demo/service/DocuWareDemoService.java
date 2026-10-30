@@ -4,7 +4,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.function.Consumer;
 
-import javax.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response;
 
 import ch.ivyteam.ivy.environment.Ivy;
 

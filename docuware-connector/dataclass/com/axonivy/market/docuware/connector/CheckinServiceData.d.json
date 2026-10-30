@@ -1,0 +1,38 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/14.0/project/data-class.json",
+  "simpleName" : "CheckinServiceData",
+  "namespace" : "com.axonivy.market.docuware.connector",
+  "fields" : [ {
+    "name" : "configKey",
+    "modifiers" : [ ]
+  }, {
+    "name" : "fileCabinetId",
+    "modifiers" : [ ]
+  }, {
+    "name" : "documentId",
+    "modifiers" : [ ]
+  }, {
+    "name" : "file",
+    "type" : "File",
+    "modifiers" : [ ]
+  }, {
+    "name" : "checkInParameters",
+    "type" : "com.axonivy.connector.docuware.connector.DocuWareCheckInActionParameters",
+    "modifiers" : [ ]
+  }, {
+    "name" : "document",
+    "type" : "com.docuware.dev.schema._public.services.platform.Document",
+    "modifiers" : [ ]
+  }, {
+    "name" : "checkOutAsStream",
+    "type" : "Boolean",
+    "modifiers" : [ ]
+  }, {
+    "name" : "stream",
+    "type" : "java.io.InputStream",
+    "modifiers" : [ ]
+  }, {
+    "name" : "fileName",
+    "modifiers" : [ ]
+  } ]
+}

@@ -3,11 +3,10 @@
   <groupId>com.axonivy.connector.docuware</groupId>
   <name>docuware-connector</name>
   <artifactId>docuware-connector-modules</artifactId>
-  <version>13.2.8-SNAPSHOT</version>
+  <version>14.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <modules>
-    <module>docuware-connector-openapi</module>
     <module>docuware-connector</module>
     <module>docuware-connector-demo</module>
     <module>docuware-connector-test</module>

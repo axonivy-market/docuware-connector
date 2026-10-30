@@ -5,8 +5,8 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import java.util.UUID;
 
-import javax.ws.rs.ProcessingException;
-import javax.ws.rs.core.Response.Status.Family;
+import jakarta.ws.rs.ProcessingException;
+import jakarta.ws.rs.core.Response.Status.Family;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

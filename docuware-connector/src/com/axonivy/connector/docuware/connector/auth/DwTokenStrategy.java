@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.axonivy.connector.docuware.connector.DocuWareService;
 
 import ch.ivyteam.ivy.bpm.error.BpmError;
+import ch.ivyteam.ivy.rest.client.oauth2.OAuth2Error;
 
 /**
  * Represent a Strategy.
@@ -66,7 +67,7 @@ public class DwTokenStrategy {
 			}
 
 			if(!valid) {
-				var error = BpmError.create(DocuWareService.DOCUWARE_ERROR + "invaliddwToken")
+				var error = OAuth2Error.build().withErrorCode(DocuWareService.DOCUWARE_ERROR + "invaliddwToken")
 						.withMessage("Invalid dw token pattern: '%s'".formatted(dwToken));
 				if(ex != null) {
 					error.withCause(ex);

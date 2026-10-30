@@ -1,0 +1,35 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/14.0/project/data-class.json",
+  "simpleName" : "UpdateDocumentFieldsData",
+  "namespace" : "com.axonivy.connector.docuware.connector.demo.component.UpdateDocumentFields",
+  "fields" : [ {
+    "name" : "propertiesUpdate",
+    "type" : "com.axonivy.connector.docuware.connector.DocuWarePropertiesUpdate",
+    "modifiers" : [ ]
+  }, {
+    "name" : "documentId",
+    "modifiers" : [ ]
+  }, {
+    "name" : "fileCabinetId",
+    "modifiers" : [ ]
+  }, {
+    "name" : "error",
+    "type" : "ch.ivyteam.ivy.bpm.error.BpmError",
+    "modifiers" : [ ]
+  }, {
+    "name" : "property",
+    "type" : "com.axonivy.connector.docuware.connector.DocuWareProperty",
+    "modifiers" : [ ]
+  }, {
+    "name" : "propertiesJson",
+    "modifiers" : [ ]
+  }, {
+    "name" : "isUpdateSuccess",
+    "type" : "Boolean",
+    "modifiers" : [ ]
+  }, {
+    "name" : "ctrl",
+    "type" : "com.axonivy.connector.docuware.connector.demo.ui.DocumentTableCtrl",
+    "modifiers" : [ ]
+  } ]
+}

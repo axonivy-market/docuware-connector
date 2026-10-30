@@ -1,0 +1,14 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/14.0/project/data-class.json",
+  "simpleName" : "DocumentTableData",
+  "namespace" : "com.axonivy.connector.docuware.connector.demo.DocumentTable",
+  "fields" : [ {
+    "name" : "error",
+    "type" : "ch.ivyteam.ivy.bpm.error.BpmError",
+    "modifiers" : [ ]
+  }, {
+    "name" : "ctrl",
+    "type" : "com.axonivy.connector.docuware.connector.demo.ui.DocumentTableCtrl",
+    "modifiers" : [ ]
+  } ]
+}

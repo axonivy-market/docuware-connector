@@ -1,0 +1,38 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/14.0/project/data-class.json",
+  "simpleName" : "UploadServiceData",
+  "namespace" : "com.axonivy.market.docuware.connector",
+  "fields" : [ {
+    "name" : "configKey",
+    "modifiers" : [ ]
+  }, {
+    "name" : "fileCabinetId",
+    "modifiers" : [ ]
+  }, {
+    "name" : "storeDialogId",
+    "modifiers" : [ ]
+  }, {
+    "name" : "uploadFile",
+    "type" : "File",
+    "modifiers" : [ ]
+  }, {
+    "name" : "properties",
+    "type" : "com.axonivy.connector.docuware.connector.DocuWareProperties",
+    "modifiers" : [ ]
+  }, {
+    "name" : "document",
+    "type" : "com.docuware.dev.schema._public.services.platform.Document",
+    "modifiers" : [ ]
+  }, {
+    "name" : "fileStream",
+    "type" : "java.io.InputStream",
+    "modifiers" : [ ]
+  }, {
+    "name" : "fileName",
+    "modifiers" : [ ]
+  }, {
+    "name" : "file",
+    "type" : "List<java.lang.Byte>",
+    "modifiers" : [ ]
+  } ]
+}
