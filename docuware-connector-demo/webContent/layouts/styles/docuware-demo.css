@@ -1,0 +1,395 @@
+/* Page-scoped styles for the DocuWare demo. All rules are scoped to .docuware-demo. */
+
+body > div.layout-wrapper > div.layout-main > div > div {
+	border-radius: 14px;
+}
+
+.docuware-demo {
+	--dw-canvas: #eef2f5;
+	--dw-card: #ffffff;
+	--dw-panel: #f3f7f9;
+	--dw-border: #d5dfe6;
+	--dw-accent: #087e9f;
+	--dw-accent-hover: #066a85;
+	--dw-text: #183441;
+	--dw-muted: #5b6f7a;
+	--dw-console: #0b202b;
+	--dw-console-text: #d6e4ea;
+	--dw-radius: 10px;
+	background: var(--dw-canvas);
+	color: var(--dw-text);
+	font-size: 14px;
+	padding: 24px;
+	border-radius: 14px;
+	box-sizing: border-box;
+}
+
+.docuware-demo .dw-card {
+	max-width: none;
+	margin: 0 auto;
+	background: var(--dw-card);
+	border-radius: 14px;
+	padding: 28px;
+	box-sizing: border-box;
+	box-shadow: 0 1px 3px rgba(24, 52, 65, 0.08);
+	min-width: 0;
+}
+
+.docuware-demo .dw-intro {
+	margin: 0 0 20px;
+	color: var(--dw-muted);
+}
+
+/* Current configuration */
+
+.docuware-demo .dw-config {
+	width: 100%;
+	background: var(--dw-panel);
+	border: 1px solid var(--dw-border);
+	border-radius: var(--dw-radius);
+	padding: 16px;
+	margin-bottom: 20px;
+	min-width: 0;
+}
+
+.docuware-demo .dw-config-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin-bottom: 12px;
+}
+
+.docuware-demo .dw-section-title {
+	margin: 0;
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--dw-muted);
+}
+
+.docuware-demo .dw-raw > summary {
+	cursor: pointer;
+	color: var(--dw-accent);
+	font-size: 13px;
+}
+
+.docuware-demo .dw-raw[open] {
+	flex-basis: 100%;
+}
+
+.docuware-demo .dw-raw textarea {
+	margin-top: 8px;
+}
+
+.docuware-demo .dw-details {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+	gap: 10px;
+	margin-bottom: 12px;
+}
+
+.docuware-demo .dw-detail {
+	background: #ffffff;
+	border: 1px solid var(--dw-border);
+	border-radius: 8px;
+	padding: 10px 12px;
+	min-width: 0;
+}
+
+.docuware-demo .dw-detail-wide {
+	grid-column: 1 / -1;
+}
+
+.docuware-demo .dw-detail-label {
+	display: block;
+	font-size: 12px;
+	color: var(--dw-muted);
+}
+
+.docuware-demo .dw-detail-value {
+	display: block;
+	font-weight: 600;
+	overflow-wrap: anywhere;
+}
+
+.docuware-demo .dw-fields {
+	display: grid;
+	grid-template-columns: minmax(300px, 1.6fr) repeat(3, minmax(0, 1fr));
+	gap: 12px 16px;
+	align-items: end;
+}
+
+.docuware-demo .dw-field {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	min-width: 0;
+}
+
+.docuware-demo .ui-outputlabel,
+.docuware-demo .dw-label {
+	font-weight: 600;
+	font-size: 13px;
+	color: var(--dw-text);
+}
+
+.docuware-demo .dw-inline {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	min-width: 0;
+}
+
+.docuware-demo .dw-inline .ui-selectonemenu {
+	flex: 1;
+	min-width: 0;
+}
+
+.docuware-demo .ui-selectonemenu .ui-selectonemenu-label {
+	padding-right: 2.25em;
+	white-space: nowrap;
+}
+
+.docuware-demo .ui-selectonemenu .ui-selectonemenu-trigger {
+	width: 2em;
+}
+
+/* Tabs */
+
+.docuware-demo .ui-tabs.dw-tabs {
+	background: transparent;
+	border: none;
+	padding: 0;
+	margin-bottom: 20px;
+}
+
+.docuware-demo .ui-tabs.dw-tabs .ui-tabs-nav {
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid var(--dw-border);
+	border-radius: 0;
+	padding: 0;
+}
+
+.docuware-demo .ui-tabs.dw-tabs .ui-tabs-nav li {
+	border: none;
+	background: transparent;
+	margin-right: 16px;
+}
+
+.docuware-demo .ui-tabs.dw-tabs .ui-tabs-nav li .ui-tabs-anchor {
+	padding: 10px 2px;
+	color: var(--dw-muted);
+	font-weight: 500;
+}
+
+.docuware-demo .ui-tabs.dw-tabs .ui-tabs-nav li.ui-state-active {
+	border-bottom: 2px solid var(--dw-accent);
+}
+
+.docuware-demo .ui-tabs.dw-tabs .ui-tabs-nav li.ui-state-active .ui-tabs-anchor {
+	color: var(--dw-accent);
+}
+
+.docuware-demo .ui-tabs.dw-tabs .ui-tabs-panels {
+	background: transparent;
+	border: none;
+	padding: 16px 0 0;
+}
+
+.docuware-demo .dw-group {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin-bottom: 16px;
+}
+
+.docuware-demo .dw-actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin: 8px 0 12px;
+}
+
+.docuware-demo .dw-push-end {
+	margin-left: auto;
+}
+
+.docuware-demo .dw-note {
+	margin: 8px 0;
+	color: var(--dw-muted);
+	font-size: 13px;
+}
+
+.docuware-demo .dw-text {
+	margin: 0 0 12px;
+	line-height: 1.5;
+}
+
+.docuware-demo .dw-banner {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	padding: 12px 14px;
+	border: 1px solid #bfdde8;
+	border-radius: 8px;
+	background: #e8f4f8;
+	color: var(--dw-text);
+}
+
+.docuware-demo .dw-banner > i {
+	color: var(--dw-accent);
+	margin-top: 2px;
+}
+
+.docuware-demo .dw-table {
+	overflow-x: auto;
+}
+
+/* Buttons and inputs: override the global full-width rules from toolstyles.css */
+
+.docuware-demo .ui-button {
+	width: auto;
+	border-radius: 8px;
+}
+
+.docuware-demo .ui-button:not(.ui-button-outlined) {
+	background: var(--dw-accent);
+	border-color: var(--dw-accent);
+	color: #ffffff;
+}
+
+.docuware-demo .ui-button:not(.ui-button-outlined):hover {
+	background: var(--dw-accent-hover);
+	border-color: var(--dw-accent-hover);
+}
+
+.docuware-demo .ui-button.ui-button-outlined {
+	background: #ffffff;
+	border: 1px solid var(--dw-border);
+	color: var(--dw-text);
+}
+
+.docuware-demo .ui-button:focus-visible {
+	outline: 3px solid rgba(8, 126, 159, 0.35);
+	outline-offset: 2px;
+}
+
+.docuware-demo .ui-inputfield,
+.docuware-demo .ui-selectonemenu {
+	border: 1px solid var(--dw-border);
+	border-radius: 8px;
+	background: #ffffff;
+	box-sizing: border-box;
+}
+
+.docuware-demo .ui-inputfield:focus {
+	border-color: var(--dw-accent);
+	box-shadow: 0 0 0 3px rgba(8, 126, 159, 0.2);
+}
+
+.docuware-demo .ui-inputfield[readonly] {
+	background: #f7fafb;
+}
+
+/* Shared output console */
+
+.docuware-demo .dw-output {
+	position: relative;
+	background: var(--dw-console);
+	border-radius: var(--dw-radius);
+	overflow: hidden;
+	margin-top: 20px;
+	isolation: isolate;
+}
+
+.docuware-demo .dw-output .ui-blockui {
+	z-index: 2;
+}
+
+.docuware-demo .dw-output-title {
+	color: #e6f0f4;
+}
+
+.docuware-demo .dw-output-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 10px 14px;
+	background: #24495a;
+	color: #e6f0f4;
+	position: relative;
+	z-index: 1;
+}
+
+.docuware-demo .dw-output-head .ui-button:not(.ui-button-outlined) {
+	background: transparent;
+	border: 1px solid rgba(214, 228, 234, 0.35);
+	color: #cfe0e7;
+}
+
+body .docuware-demo .dw-output .output-console.ui-inputfield[readonly] {
+	width: 100%;
+	box-sizing: border-box;
+	min-height: 120px;
+	max-height: 320px;
+	overflow: auto;
+	margin: 0;
+	padding: 0 14px 14px;
+	border: none;
+	border-radius: 0;
+	background: var(--dw-console);
+	position: relative;
+	z-index: 0;
+	color: var(--dw-console-text);
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	font-size: 13px;
+	resize: none;
+}
+
+body .docuware-demo .dw-output .output-console.ui-inputfield[readonly]::placeholder {
+	color: #9fb8c4;
+	opacity: 1;
+}
+
+.docuware-demo .dw-footer {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 20px;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+	.docuware-demo {
+		padding: 12px;
+	}
+
+	.docuware-demo .dw-card {
+		padding: 18px;
+	}
+
+	.docuware-demo .dw-push-end {
+		margin-left: 0;
+	}
+
+	.docuware-demo .dw-fields {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 480px) {
+	.docuware-demo .dw-fields {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.docuware-demo .dw-actions .ui-button,
+	.docuware-demo .dw-footer .ui-button {
+		width: 100%;
+	}
+}
